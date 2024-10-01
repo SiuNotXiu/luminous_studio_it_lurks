@@ -805,7 +805,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7.4
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1728,7 +1728,11 @@ Transform:
   m_GameObject: {fileID: 1384918995}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0.58, y: 1.61, z: 0}
+=======
+  m_LocalPosition: {x: 0.3, y: 0.65, z: 0}
+>>>>>>> f7cfc99a6ee9876d3919d92945ea2ecbd439fb57
   m_LocalScale: {x: 0.91991717, y: 1.1577805, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1746,7 +1750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16ab55d7bb7d78488210ae86498e1ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 5
   rb2d: {fileID: 1384918999}
 --- !u!50 &1384918999
 Rigidbody2D:
@@ -1775,6 +1779,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
 --- !u!1 &1446196832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,6 +1881,8 @@ MonoBehaviour:
   minSpeed: 2
   maxSpeed: 5
   speedMultiplier: 1
+=======
+>>>>>>> f7cfc99a6ee9876d3919d92945ea2ecbd439fb57
 --- !u!1 &1494785460
 GameObject:
   m_ObjectHideFlags: 0
