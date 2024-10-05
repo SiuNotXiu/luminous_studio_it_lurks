@@ -2,28 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerBehaviourScript : MonoBehaviour
 {
-    [SerializeField]
-    private UI_Inventory_Page inventoryUI;
+    [SerializeField] private UI_Journal_Page JinventoryUI;
+    [SerializeField] private UI_Backpack_Page BackpackUI;
 
     private int inventorySize = 6;
     private void Start()
     {
-        inventoryUI.InitializeInventoryUI(inventorySize);
+        JinventoryUI.InitializeInventoryUI(inventorySize);
+
     }
 
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            if (inventoryUI.isActiveAndEnabled == false) 
+            if (JinventoryUI.isActiveAndEnabled == false) 
             {
-                inventoryUI.Show();
+                JinventoryUI.Show();
+                BackpackUI.Hide();
             }
             else
             {
-                inventoryUI.Hide();
+                JinventoryUI.Hide();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (BackpackUI.isActiveAndEnabled == false)
+            {
+                BackpackUI.Show();
+                JinventoryUI.Hide();
+            }
+            else
+            {
+                BackpackUI.Hide();
             }
         }
     }

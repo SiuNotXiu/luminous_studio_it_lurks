@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Inventory_Page : MonoBehaviour
+public class UI_Backpack_Page : MonoBehaviour
 {
-    [SerializeField]
     private UI_Inventory_Item itemPrefab;
 
     [SerializeField]
     private RectTransform contentPanenl;
 
-    List<UI_Inventory_Item>listOfUIItems = new List<UI_Inventory_Item>();
-
+    List<UI_Inventory_Item> listOfUIItems = new List<UI_Inventory_Item>();
     public void InitializeInventoryUI(int inventorysize)
     {
-        for(int i = 0;i<inventorysize;i++)
+        for (int i = 0; i < inventorysize; i++)
         {
             UI_Inventory_Item uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
             uiItem.transform.SetParent(contentPanenl);
@@ -32,5 +30,4 @@ public class UI_Inventory_Page : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
 }
