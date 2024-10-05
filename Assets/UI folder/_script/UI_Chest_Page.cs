@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Backpack_Page : MonoBehaviour
+public class UI_Chest_Page : MonoBehaviour
 {
-    [SerializeField] private UI_Inventory_Item itemPrefab;
+    [SerializeField]
+    private UI_Inventory_Item itemPrefab;
 
-    [SerializeField] private RectTransform contentPanenl;
-
+    [SerializeField]
+    private RectTransform contentPanenl;
+    
+    //for the left side part storage only
     List<UI_Inventory_Item> listOfUIItems = new List<UI_Inventory_Item>();
+
     public void InitializeInventoryUI(int inventorysize)
     {
         for (int i = 0; i < inventorysize; i++)
@@ -20,11 +24,11 @@ public class UI_Backpack_Page : MonoBehaviour
         }
     }
 
+
     public void Show()
     {
         gameObject.SetActive(true);
     }
-
     public void Hide()
     {
         gameObject.SetActive(false);
