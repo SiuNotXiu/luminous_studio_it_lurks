@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Journal_Page : MonoBehaviour
+public class UI_Journal_Page2 : MonoBehaviour
 {
     [SerializeField]
     private UI_Inventory_Item itemPrefab;
@@ -26,6 +26,7 @@ public class UI_Journal_Page : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        Debug.Log("Print?");
     }
 
     public void Hide()

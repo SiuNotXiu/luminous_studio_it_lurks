@@ -5,8 +5,12 @@ using UnityEngine.Events;
 
 public class PlayerBehaviourScript : MonoBehaviour
 {
-    [SerializeField] private UI_Journal_Page JinventoryUI;
+
+    [SerializeField] private UI_Journal_Page2 JinventoryUI;
+    [SerializeField] private Journal_display journal_Display;
+    [SerializeField] private Button_display button_display;
     [SerializeField] private UI_Backpack_Page BackpackUI;
+
     [SerializeField] private UI_Chest_Page ChestUI;
     [SerializeField] private ChestController DetectChest;
     public UnityEvent interactAction;
@@ -20,17 +24,20 @@ public class PlayerBehaviourScript : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))//Journal
+  
+        if (Input.GetKeyDown(KeyCode.Tab))//Journal
         {
-            if (JinventoryUI.isActiveAndEnabled == false) 
+            if (journal_Display.isActiveAndEnabled == false) 
             {
-                JinventoryUI.Show();
+                button_display.ShowPanels();
+                journal_Display.ShowPanels();
                 BackpackUI.Hide();
                 ChestUI.Hide();
             }
             else
             {
-                JinventoryUI.Hide();
+                journal_Display.HidePanels();
+                button_display.HidePanels();
             }
         }
         else if (Input.GetKeyDown(KeyCode.B))//Backpack
@@ -38,8 +45,9 @@ public class PlayerBehaviourScript : MonoBehaviour
             if (BackpackUI.isActiveAndEnabled == false)
             {
                 BackpackUI.Show();
-                JinventoryUI.Hide();
                 ChestUI.Hide();
+                journal_Display.HidePanels();
+                button_display.HidePanels();
             }
             else
             {
@@ -54,8 +62,9 @@ public class PlayerBehaviourScript : MonoBehaviour
                 {
                     interactAction.Invoke(); // Interact with chest
                     ChestUI.Show();
-                    JinventoryUI.Hide();
-                    BackpackUI.Hide();
+                    journal_Display.HidePanels();
+                    button_display.HidePanels();
+                    BackpackUI.Hide();                  
                     //PlayerMovement.enabled = false;
                 }
                 else
