@@ -25,4 +25,13 @@ public class Journal_display : MonoBehaviour
         }
     }
 
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

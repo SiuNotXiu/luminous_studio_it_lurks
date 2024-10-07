@@ -26,7 +26,14 @@ public class Button_display : MonoBehaviour
             panel.SetActive(false);
         }
     }
-
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 
 }
 

@@ -27,17 +27,27 @@ public class PlayerBehaviourScript : MonoBehaviour
   
         if (Input.GetKeyDown(KeyCode.Tab))//Journal
         {
+            Debug.Log("tab1");
+            Debug.Log("journal_Display.isActiveAndEnabled > "+ journal_Display.isActiveAndEnabled);
             if (journal_Display.isActiveAndEnabled == false) 
             {
+
+                button_display.Show();
                 button_display.ShowPanels();
+
+                journal_Display.Show();
                 journal_Display.ShowPanels();
+
                 BackpackUI.Hide();
                 ChestUI.Hide();
             }
             else
             {
                 journal_Display.HidePanels();
+                journal_Display.Hide();
+
                 button_display.HidePanels();
+                button_display.Hide();
             }
         }
         else if (Input.GetKeyDown(KeyCode.B))//Backpack
@@ -48,6 +58,9 @@ public class PlayerBehaviourScript : MonoBehaviour
                 ChestUI.Hide();
                 journal_Display.HidePanels();
                 button_display.HidePanels();
+
+                journal_Display.Hide();
+                button_display.Hide();
             }
             else
             {
@@ -64,7 +77,10 @@ public class PlayerBehaviourScript : MonoBehaviour
                     ChestUI.Show();
                     journal_Display.HidePanels();
                     button_display.HidePanels();
-                    BackpackUI.Hide();                  
+                    BackpackUI.Hide();
+
+                    journal_Display.Hide();
+                    button_display.Hide();
                     //PlayerMovement.enabled = false;
                 }
                 else

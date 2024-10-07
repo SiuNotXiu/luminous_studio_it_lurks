@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Journal_Switching_Button : MonoBehaviour
 {
+
     // Variables to store the panels
     public GameObject panelToHide1;
     public GameObject panelToHide2;
@@ -12,10 +13,11 @@ public class Journal_Switching_Button : MonoBehaviour
     // Method to switch panels
     public void SwitchPanels()
     {
-        // Hide the first panel
+        // Hide the panel
         panelToHide1.SetActive(false);
         panelToHide2.SetActive(false);
-        // Show the second panel
+        // Show the panel
         panelToShow.SetActive(true);
+
     }
 }
