@@ -7,56 +7,51 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Inventory_Item : MonoBehaviour
-{
-    /*
-    [SerializeField] private Image itemImage;  
-    [SerializeField] private Text itemName;
+{ 
+    
+    [SerializeField] private Image itemImage;
 
-    [SerializeField] private Image borderImage;
+   public event Action<UI_Inventory_Item> OnItemClicked, OnRightMouseBtnClick;
 
-    public event Action<UI_Inventory_Item> OnItemClicked;
+   private bool empty = true;
 
-    private bool empty = true;
     public void Awake()
     {
         ResetData();
-        Deselect();
     }
 
     public void ResetData()
     {
-       this.itemImage.gameObject.SetActive(false);
-       empty = true;
+        this.itemImage.gameObject.SetActive(false);
+        this.empty = true;
     }
 
-    public void Deselect()
-    {
-        borderImage.enabled = false;
-    }
 
     public void SetData(Sprite sprite)
     {
         this.itemImage.gameObject.SetActive(true);
         this.itemImage.sprite = sprite;
-        empty = false;
-    }
-
-    public void Select()
-    {
-        borderImage.enabled = true;
+        this.empty = false;
     }
 
     public void OnPointerClick(BaseEventData data)
     {
-        PointerEventData pointerData = (PointerEventData)data;
-        if (pointerData.button == PointerEventData.InputButton.Left)
+        /*
+        if (this.empty)
         {
-            OnItemClicked?.Invoke(this);
+            return;
+        }
+        */
+        PointerEventData pointerData = (PointerEventData)data;
+        if (pointerData.button == PointerEventData.InputButton.Right)
+        {
+            OnRightMouseBtnClick?.Invoke(this);
+            Debug.Log("Right click on item: " + this.name);
         }
         else
         {
-            //
+            OnItemClicked?.Invoke(this);
+            Debug.Log("Left click on item: " + this.name);
         }
     }
-    */
 }

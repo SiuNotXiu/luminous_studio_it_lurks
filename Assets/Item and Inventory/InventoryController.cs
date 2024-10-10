@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerBehaviourScript : MonoBehaviour
+public class InventoryController : MonoBehaviour
 {
-
     [SerializeField] private UI_Journal_Page2 JinventoryUI;
     [SerializeField] private Journal_display journal_Display;
     [SerializeField] private Button_display button_display;
@@ -15,11 +14,13 @@ public class PlayerBehaviourScript : MonoBehaviour
     [SerializeField] private ChestController DetectChest;
     public UnityEvent interactAction;
 
-    private int inventorySize = 6;
+    // chermin inventory
+    [SerializeField] private InventorySO inventoryData;
+
     private void Start()
     {
-        JinventoryUI.InitializeInventoryUI(inventorySize);
-
+        JinventoryUI.InitializeInventoryUI(inventoryData.Size);
+        inventoryData.Initialize();
     }
 
     public void Update()
@@ -36,6 +37,10 @@ public class PlayerBehaviourScript : MonoBehaviour
                 button_display.ShowPanels();
 
                 journal_Display.Show();
+                foreach (var item in inventoryData.GetCurrentInventoryState())
+                {
+                    BackpackUI.UpdateData(item.Key, item.Value.item.ItemImage);
+                }
                 journal_Display.ShowPanels();
 
                 BackpackUI.Hide();
@@ -54,8 +59,16 @@ public class PlayerBehaviourScript : MonoBehaviour
             if (BackpackUI.isActiveAndEnabled == false)
             {
                 BackpackUI.Show();
+                foreach (var item in inventoryData.GetCurrentInventoryState())
+                {
+                    BackpackUI.UpdateData(item.Key, item.Value.item.ItemImage);
+                }
                 ChestUI.Hide();
                 journal_Display.HidePanels();
+                foreach (var item in inventoryData.GetCurrentInventoryState())
+                {
+                    JinventoryUI.UpdateData(item.Key, item.Value.item.ItemImage);
+                }
                 button_display.HidePanels();
 
                 journal_Display.Hide();

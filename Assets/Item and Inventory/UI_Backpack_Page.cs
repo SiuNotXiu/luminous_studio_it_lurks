@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class UI_Backpack_Page : MonoBehaviour
 {
@@ -20,6 +21,13 @@ public class UI_Backpack_Page : MonoBehaviour
         }
     }
 
+    public void UpdateData(int itemIndex, Sprite itemImage)
+    {
+        if (listOfUIItems.Count > itemIndex)
+        {
+            listOfUIItems[itemIndex].SetData(itemImage);
+        }
+    }
 
     public void Show()
     {
