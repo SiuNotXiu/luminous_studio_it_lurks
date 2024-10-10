@@ -33,5 +33,4 @@ public class Journal_display : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
 }

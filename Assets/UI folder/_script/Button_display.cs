@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Button_display : MonoBehaviour
 {
-    public GameObject[] panelsToHide;  // Array to store panels to hide
-    public GameObject[] panelsToShow;  // Array to store panels to show
+    public GameObject[] panelsToShow;  // Array to store panels to hide
+    public GameObject[] panelsToHide;  // Array to store panels to show
 
     // Method to show specific panels
     public void ShowPanels()
@@ -34,6 +34,4 @@ public class Button_display : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
 }
-
