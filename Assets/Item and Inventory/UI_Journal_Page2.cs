@@ -16,10 +16,18 @@ public class UI_Journal_Page2 : MonoBehaviour
     {
         for(int i = 0;i<inventorysize;i++)
         {
-            /*UI_Inventory_Item uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
-            uiItem.transform.SetParent(contentPanenl);
-            listOfUIItems.Add(uiItem);*/
+            UI_Inventory_Item uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
+            uiItem.transform.SetParent(contentPanenl, false);
+            listOfUIItems.Add(uiItem);
             //the script was unperfect as it only keep collect without limiting, should limit to 6
+        }
+    }
+
+    public void UpdateData(int itemIndex, Sprite itemImage)
+    {
+        if (listOfUIItems.Count > itemIndex)
+        {
+            listOfUIItems[itemIndex].SetData(itemImage);
         }
     }
 
