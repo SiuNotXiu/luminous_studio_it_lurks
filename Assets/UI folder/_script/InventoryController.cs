@@ -44,9 +44,8 @@ public class PlayerBehaviourScript : MonoBehaviour
             else
             {
                 journal_Display.HidePanels();
-                journal_Display.Hide();
-
                 button_display.HidePanels();
+                journal_Display.Hide();
                 button_display.Hide();
             }
         }
