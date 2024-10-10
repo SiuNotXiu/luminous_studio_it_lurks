@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenJournalControl : MonoBehaviour
+public class InventoryController : MonoBehaviour
 {
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
