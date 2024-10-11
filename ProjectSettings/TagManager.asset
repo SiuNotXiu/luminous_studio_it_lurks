@@ -12,9 +12,9 @@ TagManager:
   - World
   - Water
   - UI
-  - 
-  - 
-  - 
+  - player
+  - flashlight_monster_dont_change_name
+  - flashlight_wall_dont_change_name
   - 
   - 
   - 
