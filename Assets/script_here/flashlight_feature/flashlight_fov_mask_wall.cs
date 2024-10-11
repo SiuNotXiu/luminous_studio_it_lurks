@@ -90,9 +90,10 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                     #endregion
                 }
                 #region monster detection
+                //if straight away pointing the monster
                 for (int j = 0; j < raycast_hit_2d.Length; j++)
                 {
-                    Debug.Log(raycast_hit_2d[j].collider.gameObject.name);
+                    //Debug.Log(raycast_hit_2d[j].collider.gameObject.name);
                     if (raycast_hit_2d[j].collider.gameObject.name == "flashlight_trigger_area_dont_change_name")
                     {
                         raycast_hit_2d[j].collider.gameObject.transform.parent.gameObject.GetComponent<monster_database>().flashed = true;
