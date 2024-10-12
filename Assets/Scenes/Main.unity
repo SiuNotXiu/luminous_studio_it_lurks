@@ -15739,6 +15739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flashlight_visible_dont_change_name
       objectReference: {fileID: 0}
+    - target: {fileID: 5347090793748905055, guid: 1998d2b841359774ebfbf6b80eb94b83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6398310141532713115, guid: 1998d2b841359774ebfbf6b80eb94b83, type: 3}
       propertyPath: m_Name
       value: player_dont_change_name

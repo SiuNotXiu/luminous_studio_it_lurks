@@ -67,7 +67,6 @@ public class flashlight_fov_wall_mask : MonoBehaviour
             }
             RaycastHit2D[] raycast_hit_2d = Physics2D.RaycastAll(end_of_sector, get_vector_from_angle(angle_reverse), view_distance, layer_that_detects_flashlight);
             #endregion
-
             //mesh rendering using local_position
             vertex = gameObject.transform.InverseTransformPoint(end_of_sector);
             if (raycast_hit_2d.Length != 0)
@@ -91,13 +90,11 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                 }
                 #region monster detection
                 //if straight away pointing the monster
-                for (int j = 0; j < raycast_hit_2d.Length; j++)
+                //Debug.Log(raycast_hit_2d[j].collider.gameObject.name);
+                if (raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.name == "flashlight_trigger_area_dont_change_name")
                 {
-                    //Debug.Log(raycast_hit_2d[j].collider.gameObject.name);
-                    if (raycast_hit_2d[j].collider.gameObject.name == "flashlight_trigger_area_dont_change_name")
-                    {
-                        raycast_hit_2d[j].collider.gameObject.transform.parent.gameObject.GetComponent<monster_database>().flashed = true;
-                    }
+                    //detected monster here
+                    raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.transform.parent.gameObject.GetComponent<monster_database>().flashed = true;
                 }
                 #endregion
             }
