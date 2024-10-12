@@ -18,6 +18,7 @@ public class monster_database : MonoBehaviour
 
     void die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        Debug.Log("Flashed");
     }
 }

@@ -8,11 +8,11 @@ public class player_flashlight_direction : MonoBehaviour
 
     /*[HideInInspector] private flashlight_fov_with_damage script_fov_mask;
     [HideInInspector] private flashlight_fov_with_damage script_fov_visible;*/
-    [HideInInspector] private flashlight_fov_wall_mask script_fov_mask;
-    [HideInInspector] private flashlight_fov_wall_mask script_fov_visible;
-    [HideInInspector] private Vector3 mouse_position;
-    [HideInInspector] private Vector3 aim_direction;
-    [HideInInspector] private Camera camera_for_calculation;
+    [SerializeField] private flashlight_fov_wall_mask script_fov_mask;
+    [SerializeField] private flashlight_fov_wall_mask script_fov_visible;
+    [SerializeField] private Vector3 mouse_position;
+    [SerializeField] private Vector3 aim_direction;
+    [SerializeField] private Camera camera_for_calculation;
 
     void Start()
     {
@@ -47,8 +47,8 @@ public class player_flashlight_direction : MonoBehaviour
     Vector3 get_mouse_position()
     {
         Vector3 mousePosition = Input.mousePosition;
-        Vector3 worldPosition = camera_for_calculation.ScreenToWorldPoint(mousePosition);
-        worldPosition.z = 0f; // Set z to 0 for 2D
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        worldPosition.z = 0f;       // Set z to 0 for 2D
         return worldPosition;
     }
     #endregion
