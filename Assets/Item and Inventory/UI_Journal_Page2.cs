@@ -59,6 +59,7 @@ public class UI_Journal_Page2 : MonoBehaviour
     {
         if (inventory.AddItem(item))
         {
+            Debug.Log("Item has added");
             RefreshInventoryUI();
         }
     }
