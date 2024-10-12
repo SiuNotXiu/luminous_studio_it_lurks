@@ -8,7 +8,8 @@ public class EnemyMovement : MonoBehaviour
     {
         Idle,
         Chasing,
-        Attack
+        Attack,
+        Fleeing
     }
 
     public float stuckThreshold = 1f;
@@ -88,37 +89,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-   /* private void ChasingState()
-    {
-       
-        
-        if (!canMove) return;
-
-        chaseTimer += Time.deltaTime;
-        if(chaseTimer > chaseTime)
-        {
-            speed = 7;
-        }
-        else
-        {
-            speed = 3;
-        }
-
-        if (target == null || !LineOfSight())
-        {
-            // Generate waypoints when the enemy loses sight of the player
-            AddWaypoint();
-            ChaseWaypoints();
-            DetectStuck();
-        }
-        else
-        {
-            waypoints.Clear();
-            // Move towards the player only if movement is allowed
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        }
-
-    }*/
+  
 
     private void ChasingState()
     {
