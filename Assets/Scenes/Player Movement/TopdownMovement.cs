@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TopdownMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 10f;
     public Rigidbody2D rb2d;
     
     private Vector2 moveInput;
@@ -12,7 +12,7 @@ public class TopdownMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
