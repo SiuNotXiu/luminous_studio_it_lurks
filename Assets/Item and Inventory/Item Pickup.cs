@@ -5,26 +5,27 @@ using static UnityEditor.Progress;
 
 public class ItemPickup : MonoBehaviour
 { 
-    public Item item ;
-
-    /*
+    public Item item ; // for SO
+    private bool isPickedUp = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (isPickedUp) { return; }
+        if (other.CompareTag("Player") && isPickedUp == false)
         {
-            BackpackInventory playerBackpackInventory = other.GetComponent<BackpackInventory>();
-            if (playerBackpackInventory != null && other.GetComponent<BackpackInventory>().backpackInventorySpace.Count >= other.GetComponent<BackpackInventory>().backpackInventorySize)
+            InventorySystem inventory = other.GetComponent<InventorySystem>();
+            if (inventory != null)
             {
-               // Debug.Log(item.itemName + " cannot be picked up as inventory is full!");
+                if (inventory.AddItem(item))
+                {
+                    isPickedUp = true;
+                    Destroy(gameObject);
+                }
+      
 
             }
-            if (playerBackpackInventory != null && other.GetComponent<BackpackInventory>().backpackInventorySpace.Count < other.GetComponent<BackpackInventory>().backpackInventorySize)
-            {
-                playerBackpackInventory.AddItem(item);
-                Destroy(gameObject);
-            }
+
         }
     }
-    */
+    
 }

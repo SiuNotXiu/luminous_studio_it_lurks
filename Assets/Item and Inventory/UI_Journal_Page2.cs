@@ -5,29 +5,75 @@ using UnityEngine;
 public class UI_Journal_Page2 : MonoBehaviour
 {
     [SerializeField]
-    private UI_Inventory_Item itemPrefab;
+    private UI_Inventory_Item itemPrefab; //prefab slot for item UI
 
     [SerializeField]
-    private RectTransform contentPanenl;
+    private RectTransform contentPanenl; // panel for items
 
-    List<UI_Inventory_Item>listOfUIItems = new List<UI_Inventory_Item>();
+    private List<UI_Inventory_Item> listOfUIItems = new List<UI_Inventory_Item>();
+    private InventorySystem inventory;
 
-    public void InitializeInventoryUI(int inventorysize)
+    private void Start()
     {
-        for(int i = 0;i<inventorysize;i++)
+        // search for active InventorySystem in the scene
+        inventory = FindObjectOfType<InventorySystem>();
+        if (inventory != null)
+        {
+            InitializeInventoryUI(inventory);
+        }
+        else
+        {
+            Debug.LogError("InventorySystem not found!");
+        }
+    }
+
+    public void InitializeInventoryUI(InventorySystem inv)
+    {
+        inventory = inv;
+
+        int inventorySize = Mathf.Min(inventory.inventorySize, 6);
+
+        for(int i = 0;i < inventorySize; i++)
         {
             UI_Inventory_Item uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
             uiItem.transform.SetParent(contentPanenl, false);
             listOfUIItems.Add(uiItem);
-            //the script was unperfect as it only keep collect without limiting, should limit to 6
         }
+
+        RefreshInventoryUI();
     }
 
-    public void UpdateData(int itemIndex, Sprite itemImage)
+    // update UI based on inventory data
+    public void UpdateData(int itemIndex, Item item)
     {
         if (listOfUIItems.Count > itemIndex)
         {
-            listOfUIItems[itemIndex].SetData(itemImage);
+            UI_Inventory_Item uiItem = listOfUIItems[itemIndex];
+            uiItem.SetData(item.icon);
+            uiItem.AssignInventorySlot(item, inventory);
+        }
+    }
+
+    // add item on empty slot and call update
+    public void AddNewItem(Item item)
+    {
+        if (inventory.AddItem(item))
+        {
+            RefreshInventoryUI();
+        }
+    }
+
+    // keep update to latest state
+    public void RefreshInventoryUI()
+    {
+        foreach (UI_Inventory_Item uiItem in listOfUIItems)
+        {
+            uiItem.ClearData();
+        }
+
+        for (int i = 0; i < inventory.items.Count; i++)
+        {
+            UpdateData(i, inventory.items[i]);
         }
     }
 
