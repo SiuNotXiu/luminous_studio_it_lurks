@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class UI_Inventory_Item : MonoBehaviour
 {
+    /*
+
     [SerializeField] private Image itemIcon;
     private Item assignedItem;
 
@@ -37,4 +39,6 @@ public class UI_Inventory_Item : MonoBehaviour
     {
         return assignedItem == null;
     }
+
+    */
 }

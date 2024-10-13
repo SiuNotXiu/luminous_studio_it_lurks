@@ -11,7 +11,8 @@ public class UI_Journal_Page2 : MonoBehaviour
     private RectTransform contentPanenl; // panel for items
 
     private List<UI_Inventory_Item> listOfUIItems = new List<UI_Inventory_Item>();
-    private InventorySystem inventory;
+
+    /*
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class UI_Journal_Page2 : MonoBehaviour
             Debug.LogError("InventorySystem not found!");
         }
     }
+    
 
     public void InitializeInventoryUI(InventorySystem inv)
     {
@@ -42,7 +44,7 @@ public class UI_Journal_Page2 : MonoBehaviour
 
         RefreshInventoryUI();
     }
-
+    /*
     // update UI based on inventory data
     public void UpdateData(int itemIndex, Item item)
     {
@@ -77,7 +79,7 @@ public class UI_Journal_Page2 : MonoBehaviour
             UpdateData(i, inventory.items[i]);
         }
     }
-
+    */
     public void Show()
     {
         gameObject.SetActive(true);

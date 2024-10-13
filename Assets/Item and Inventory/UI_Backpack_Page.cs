@@ -21,6 +21,7 @@ public class UI_Backpack_Page : MonoBehaviour
         }
     }
 
+    /*
     public void UpdateData(int itemIndex, Sprite itemImage)
     {
         if (listOfUIItems.Count > itemIndex)
@@ -28,6 +29,7 @@ public class UI_Backpack_Page : MonoBehaviour
             listOfUIItems[itemIndex].SetData(itemImage);
         }
     }
+    */
 
     public void Show()
     {
