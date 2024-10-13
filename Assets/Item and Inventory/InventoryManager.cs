@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject InventoryMenu;
     private bool menuActivated;
+    public ItemSlot[] itemSlot;
 
     [SerializeField] private InventoryController inventoryController;
 
@@ -19,12 +20,12 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && menuActivated)
+        if (Input.GetButtonDown("Inventory") && menuActivated)
         {
             InventoryMenu.SetActive(false);
             menuActivated = false;
         }
-        else if (Input.GetKeyDown(KeyCode.Tab) && !menuActivated)
+        else if (Input.GetButtonDown("Inventory") && !menuActivated)
         {
             InventoryMenu.SetActive(true);
             menuActivated = true;
@@ -32,14 +33,13 @@ public class InventoryManager : MonoBehaviour
     }
     public void AddItem(string itemName, Sprite itemSprite)
     {
-        if (!inventoryController.ArePanelsOpen())
+        for (int i = 0; i < itemSlot.Length; i++)
         {
-            Debug.Log("Adding item: " + itemName);
-            // Add item to inventory logic here
-        }
-        else
-        {
-            Debug.Log("Cannot add item: Panels are open");
+            if (itemSlot[i].isFull == false)
+            {
+                itemSlot[i].AddItem(itemName, itemSprite);
+                return;
+            }
         }
     }
     
