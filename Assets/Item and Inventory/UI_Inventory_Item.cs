@@ -7,51 +7,34 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Inventory_Item : MonoBehaviour
-{ 
-    
-    [SerializeField] private Image itemImage;
+{
+    [SerializeField] private Image itemIcon;
+    private Item assignedItem;
 
-   public event Action<UI_Inventory_Item> OnItemClicked, OnRightMouseBtnClick;
-
-   private bool empty = true;
-
-    public void Awake()
+    public void SetData(Sprite icon)
     {
-        ResetData();
+        itemIcon.sprite = icon;
+        itemIcon.enabled = true; 
     }
 
-    public void ResetData()
+    // link dropdown with slot UI and inventory system
+    public void AssignInventorySlot(Item item, InventorySystem inv)
     {
-        this.itemImage.gameObject.SetActive(false);
-        this.empty = true;
+        assignedItem = item;
+
+        //buttons for item actions can continue script here
     }
 
 
-    public void SetData(Sprite sprite)
+    public void ClearData()
     {
-        this.itemImage.gameObject.SetActive(true);
-        this.itemImage.sprite = sprite;
-        this.empty = false;
+        itemIcon.sprite = null;
+        itemIcon.enabled = false;
+        assignedItem = null;
     }
 
-    public void OnPointerClick(BaseEventData data)
+    public bool IsEmpty()
     {
-        /*
-        if (this.empty)
-        {
-            return;
-        }
-        */
-        PointerEventData pointerData = (PointerEventData)data;
-        if (pointerData.button == PointerEventData.InputButton.Right)
-        {
-            OnRightMouseBtnClick?.Invoke(this);
-            Debug.Log("Right click on item: " + this.name);
-        }
-        else
-        {
-            OnItemClicked?.Invoke(this);
-            Debug.Log("Left click on item: " + this.name);
-        }
+        return assignedItem == null;
     }
 }

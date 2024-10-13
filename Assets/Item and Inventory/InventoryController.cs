@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
+    //UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
+
+
+    private void Start()
+    {
+    }
 
     // Update is called once per frame
     public void Update()
@@ -19,7 +25,7 @@ public class InventoryController : MonoBehaviour
 
                 button_display.Show();
                 button_display.ShowPanels();
-
+                
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
