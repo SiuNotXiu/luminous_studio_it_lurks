@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     [SerializeField] private Sprite sprite;
 
     private InventoryController inventoryController;
+    private bool isPlayerInRange = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +18,28 @@ public class Item : MonoBehaviour
         inventoryController = GameObject.Find("Journal_Canvas").GetComponent<InventoryController>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.name == "Player")
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             inventoryController.AddItem(itemName, sprite);
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            isPlayerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            isPlayerInRange = false;
         }
     }
 }

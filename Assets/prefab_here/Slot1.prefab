@@ -274,6 +274,7 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   isFull: 0
   itemImage: {fileID: 3870888290961356340}
+  dropdownMenuPrefab: {fileID: 3619431009058916955, guid: f5dc3a1dd3591aa48aef04f613dff47e, type: 3}
 --- !u!114 &6389150074322427216
 MonoBehaviour:
   m_ObjectHideFlags: 0
