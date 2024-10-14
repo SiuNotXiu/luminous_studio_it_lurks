@@ -9711,6 +9711,10 @@ PrefabInstance:
       value: -95
       objectReference: {fileID: 0}
     - target: {fileID: 3210599251917103945, guid: 25ea849a21ccee94db78047954b5b7cc, type: 3}
+      propertyPath: datax
+      value: -41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210599251917103945, guid: 25ea849a21ccee94db78047954b5b7cc, type: 3}
       propertyPath: popUpMenu
       value: 
       objectReference: {fileID: 2086408649}
@@ -9721,7 +9725,7 @@ PrefabInstance:
     - target: {fileID: 3210599251917103945, guid: 25ea849a21ccee94db78047954b5b7cc, type: 3}
       propertyPath: dropdownMenuPrefab
       value: 
-      objectReference: {fileID: 787467080}
+      objectReference: {fileID: 2664137742798027793, guid: f5dc3a1dd3591aa48aef04f613dff47e, type: 3}
     - target: {fileID: 3750425502767895441, guid: 25ea849a21ccee94db78047954b5b7cc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

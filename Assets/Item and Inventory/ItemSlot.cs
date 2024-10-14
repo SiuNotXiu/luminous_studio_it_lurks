@@ -25,6 +25,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     // Keep track of the dropdown menu instance
     private GameObject activeDropdownMenu;
+    private GameObject activeDropdownMenu_panel;
 
     public event Action<ItemSlot> OnItemClicked, OnRightMouseBtnClick;
 
@@ -74,17 +75,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
 
         // Instantiate the dropdown menu prefab
-        activeDropdownMenu = Instantiate(dropdownMenuPrefab); 
+        activeDropdownMenu = Instantiate(dropdownMenuPrefab);
+        activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject;
 
         // Get the RectTransform of the dropdown menu
         RectTransform dropdownRectTransform = activeDropdownMenu.GetComponent<RectTransform>();
 
         // Calculate the new position for the pop-up menu
-        Vector3 popUpPosition = new Vector3(itemSlot.position.x -datax, itemSlot.position.y);
+        Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y);
 
         // Set the position of the pop-up menu
-        dropdownRectTransform.position = popUpPosition;
-
+        //dropdownRectTransform.position = popUpPosition;
+        activeDropdownMenu_panel.transform.position = popUpPosition;
+        //activeDropdownMenu_panel.transform.localPosition = new Vector3(datax, 0);
         // Add listeners to the dropdown buttons
         Button[] buttons = activeDropdownMenu.GetComponentsInChildren<Button>();
         foreach (Button btn in buttons)
