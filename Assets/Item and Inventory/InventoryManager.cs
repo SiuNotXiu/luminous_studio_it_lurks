@@ -20,12 +20,12 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Inventory") && menuActivated)
+        if (Input.GetButtonDown("Journal") && menuActivated)
         {
             InventoryMenu.SetActive(false);
             menuActivated = false;
         }
-        else if (Input.GetButtonDown("Inventory") && !menuActivated)
+        else if (Input.GetButtonDown("Journal") && !menuActivated)
         {
             InventoryMenu.SetActive(true);
             menuActivated = true;
