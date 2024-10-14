@@ -9,12 +9,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public string itemName;
     public Sprite itemSprite;
     public bool isFull;
+    public GameObject popUpMenu; // Reference to the pop-up menu(activeDropdownMenu)
+    public RectTransform itemSlot; // Reference to the item slot RectTransform
+
+    //temporary data for calculation
+    public int datax;
+    public int datay;
+
 
     //=====ITEM SLOT=====//
     [SerializeField] private Image itemImage;
 
     // Dropdown menu prefab reference
-    [SerializeField] private GameObject dropdownMenuPrefab;
+    [SerializeField] public GameObject dropdownMenuPrefab;
 
     // Keep track of the dropdown menu instance
     private GameObject activeDropdownMenu;
@@ -66,16 +73,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             Destroy(activeDropdownMenu);
         }
 
-        // Instantiate the dropdown menu prefab at the slot's position
-        activeDropdownMenu = Instantiate(dropdownMenuPrefab, transform.position, Quaternion.identity, transform.parent);
+        // Instantiate the dropdown menu prefab
+        activeDropdownMenu = Instantiate(dropdownMenuPrefab); 
 
-        // Adjust the position to be below the item slot or in a visible area
-        RectTransform rt = activeDropdownMenu.GetComponent<RectTransform>();
+        // Get the RectTransform of the dropdown menu
+        RectTransform dropdownRectTransform = activeDropdownMenu.GetComponent<RectTransform>();
 
-        // Set the dropdown's z position to 2
-        Vector3 newPosition = transform.position + new Vector3(0, -rt.rect.height / 2, 0);
-        newPosition.z = 2; // Adjust z position to be 2
-        rt.position = newPosition;
+        // Calculate the new position for the pop-up menu
+        Vector3 popUpPosition = new Vector3(itemSlot.position.x -datax, itemSlot.position.y);
+
+        // Set the position of the pop-up menu
+        dropdownRectTransform.position = popUpPosition;
 
         // Add listeners to the dropdown buttons
         Button[] buttons = activeDropdownMenu.GetComponentsInChildren<Button>();
