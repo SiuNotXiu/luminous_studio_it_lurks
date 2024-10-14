@@ -7,6 +7,7 @@ public class InventoryController : MonoBehaviour
     //UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
+    [SerializeField] private ItemSlot slotDropDown;
     public GameObject Journal;
     public ItemSlot[] itemSlot;
     private bool JournalOpen= true;
@@ -33,17 +34,20 @@ public class InventoryController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape)&& !JournalOpen)
         {
             Debug.Log("Trigger Tab2");
+            slotDropDown.HideDropdownMenu();
             button_display.HidePanels();
             journal_display.HidePanels();
             journal_display.Hide();
             button_display.Hide();
             Journal.SetActive(false);
+
             JournalOpen = true;
 
         }
         else if (Input.GetButtonDown("Journal") && !JournalOpen)
         {
             Debug.Log("Trigger Tab3");
+            slotDropDown.HideDropdownMenu();
             button_display.HidePanels();
             journal_display.HidePanels();
             journal_display.Hide();

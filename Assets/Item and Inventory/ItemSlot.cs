@@ -9,7 +9,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public string itemName;
     public Sprite itemSprite;
     public bool isFull;
-    public GameObject popUpMenu; // Reference to the pop-up menu(activeDropdownMenu)
     public RectTransform itemSlot; // Reference to the item slot RectTransform
 
     //temporary data for calculation
@@ -24,8 +23,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField] public GameObject dropdownMenuPrefab;
 
     // Keep track of the dropdown menu instance
-    private GameObject activeDropdownMenu;
-    private GameObject activeDropdownMenu_panel;
+    public GameObject activeDropdownMenu;
+    private GameObject activeDropdownMenu_panel;//child
 
     public event Action<ItemSlot> OnItemClicked, OnRightMouseBtnClick;
 
@@ -76,19 +75,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         // Instantiate the dropdown menu prefab
         activeDropdownMenu = Instantiate(dropdownMenuPrefab);
-        activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject;
+        activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject;//from child find it from parent
 
-        // Get the RectTransform of the dropdown menu
-        RectTransform dropdownRectTransform = activeDropdownMenu.GetComponent<RectTransform>();
 
         // Calculate the new position for the pop-up menu
-        Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y);
+        Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y + datay);
 
         // Set the position of the pop-up menu
-        //dropdownRectTransform.position = popUpPosition;
         activeDropdownMenu_panel.transform.position = popUpPosition;
-        //activeDropdownMenu_panel.transform.localPosition = new Vector3(datax, 0);
-        // Add listeners to the dropdown buttons
+
         Button[] buttons = activeDropdownMenu.GetComponentsInChildren<Button>();
         foreach (Button btn in buttons)
         {
@@ -128,10 +123,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     }
 
 
-    private void HideDropdownMenu()
+    public void HideDropdownMenu()
     {
         if (activeDropdownMenu != null)
         {
+            Debug.Log("Destroy");
             Destroy(activeDropdownMenu);
             activeDropdownMenu = null;
         }
