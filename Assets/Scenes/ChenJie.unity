@@ -495,8 +495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4703d89037f987940ad77cf0f4e8244c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
-  contentPanenl: {fileID: 0}
 --- !u!1 &102987367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,8 +1372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63ec016cd46569439e87f1d525a9f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
-  contentPanenl: {fileID: 0}
 --- !u!1 &757795077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,13 +1592,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796877996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0bcb1386065d3947acff6354da43a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   journal_display: {fileID: 8707172781295309582}
   button_display: {fileID: 5064563457525097625}
+  Journal: {fileID: 0}
+  itemSlot: []
 --- !u!61 &796878002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1821,9 +1819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab88096057d217449adbccd96ecbbba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelToHide1: {fileID: 1990288071}
-  panelToHide2: {fileID: 102987367}
-  panelToShow: {fileID: 1649531337}
 --- !u!114 &840618253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2560,9 +2555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab88096057d217449adbccd96ecbbba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelToHide1: {fileID: 1649531337}
-  panelToHide2: {fileID: 102987367}
-  panelToShow: {fileID: 1990288071}
 --- !u!114 &1104679675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3020,8 +3012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2632a5f4239ad4a9c76a0884477a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
-  contentPanel: {fileID: 0}
 --- !u!1001 &1261602652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3526,9 +3516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab88096057d217449adbccd96ecbbba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelToHide1: {fileID: 1649531337}
-  panelToHide2: {fileID: 1990288071}
-  panelToShow: {fileID: 102987367}
 --- !u!114 &1348595351
 MonoBehaviour:
   m_ObjectHideFlags: 0
