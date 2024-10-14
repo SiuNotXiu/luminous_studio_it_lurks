@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -8,19 +9,19 @@ public class Item : MonoBehaviour
 
     [SerializeField] private Sprite sprite;
 
-    private InventoryManager inventoryManager;
+    private InventoryController inventoryController;
 
     // Start is called before the first frame update
     void Start()
     {
-        inventoryManager = GameObject.Find("Journal_Canvas").GetComponent<InventoryManager>();
+        inventoryController = GameObject.Find("Journal_Canvas").GetComponent<InventoryController>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.name == "Player")
         {
-            inventoryManager.AddItem(itemName, sprite);
+            inventoryController.AddItem(itemName, sprite);
             Destroy(gameObject);
         }
     }

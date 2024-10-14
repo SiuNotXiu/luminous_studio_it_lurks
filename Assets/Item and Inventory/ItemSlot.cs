@@ -23,7 +23,7 @@ public class ItemSlot : MonoBehaviour
         this.itemSprite = itemSprite;
         isFull = true;
 
-        itemImage.sprite = itemSprite;
+        this.itemImage.sprite = itemSprite;
     }
 
 }

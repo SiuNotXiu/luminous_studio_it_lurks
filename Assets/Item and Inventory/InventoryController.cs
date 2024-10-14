@@ -68,10 +68,6 @@ public class InventoryController : MonoBehaviour
 
 
 
-
-
-
-
     public bool ArePanelsOpen()
     {
         return journal_display.isActiveAndEnabled || button_display.isActiveAndEnabled;

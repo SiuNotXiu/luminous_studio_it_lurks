@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    /*
     public GameObject InventoryMenu;
     private bool menuActivated;
     public ItemSlot[] itemSlot;
@@ -42,5 +43,5 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
-    
+    */
 }
