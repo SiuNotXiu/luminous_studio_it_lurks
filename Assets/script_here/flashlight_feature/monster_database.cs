@@ -29,6 +29,8 @@ public class monster_database : MonoBehaviour
 
 
         }
+        //because flashlight works as lateUpdate()
+        flashed = false;
     }
 
     void die()

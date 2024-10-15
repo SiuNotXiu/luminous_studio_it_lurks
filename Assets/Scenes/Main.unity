@@ -17867,25 +17867,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3441564025586816432, guid: d9dc239311b90704e8f7effd2d3ca4d6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     - target: {fileID: 3642296453228727230, guid: d9dc239311b90704e8f7effd2d3ca4d6, type: 3}
       propertyPath: m_Name
       value: canvas_battery_bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188308237396095776, guid: d9dc239311b90704e8f7effd2d3ca4d6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-    - target: {fileID: 4680618591166592549, guid: d9dc239311b90704e8f7effd2d3ca4d6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-    - target: {fileID: 4680618591166592549, guid: d9dc239311b90704e8f7effd2d3ca4d6, type: 3}
-      propertyPath: m_Maskable
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
