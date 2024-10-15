@@ -14,7 +14,8 @@ public class flashlight_fov_wall_mask : MonoBehaviour
     #endregion
     #region sector drawing
     [HideInInspector] private Mesh mesh;
-    [HideInInspector] private float fov = 90f;
+    [HideInInspector] private float fov = 60f;      //degree
+    [HideInInspector] private float view_distance = 11f;
     [HideInInspector] private Vector3 origin;
     [HideInInspector] private Vector3 player_position;
     [HideInInspector] private float angle;
@@ -58,7 +59,6 @@ public class flashlight_fov_wall_mask : MonoBehaviour
         {
             int ray_count = (int)fov * 2;
             float angle_increase = -fov / ray_count;
-            float view_distance = 7f;
 
             Vector3[] vertices = new Vector3[ray_count + 1 + 1];
             Vector2[] uv = new Vector2[vertices.Length];
