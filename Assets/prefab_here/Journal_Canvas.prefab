@@ -2908,7 +2908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   journal_display: {fileID: 7317870468275218620}
   button_display: {fileID: 7337347575539058557}
-  Journal: {fileID: 7052797625709910638}
+  Journal: {fileID: 4455381168256105402}
   itemSlot:
   - {fileID: 5784041784639840250}
   - {fileID: 1486058389239165104}
