@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class monster_database : MonoBehaviour
 {
     //this script is used by monster
-    
+
     [SerializeField] public bool flashed = false;
 
     private bool flash = false;
@@ -26,8 +26,8 @@ public class monster_database : MonoBehaviour
                 flee = true;
                 flashtimer = 0;
             }
-           
-            
+
+
         }
     }
 

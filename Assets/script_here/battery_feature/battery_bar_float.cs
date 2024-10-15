@@ -15,6 +15,7 @@ public class battery_bar_float : MonoBehaviour
     void Start()
     {
         script_player_database = GetComponent<player_database>();
+        battery_green = GameObject.Find("canvas_battery_bar").transform.Find("green").gameObject.GetComponent<Image>();
     }
 
     void Update()

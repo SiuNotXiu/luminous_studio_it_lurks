@@ -23,6 +23,16 @@ public class flashlight_fov_wall_mask : MonoBehaviour
     [HideInInspector] private float mask_z_local_position;
     #endregion
 
+    private void OnValidate()
+    {
+        #region set z depth
+        camera_main = GameObject.Find("camera_main_dont_change_name");
+        //z + 1 is used for black circle
+        transform.position = new Vector3(transform.position.x,
+            transform.position.y,
+            camera_main.transform.position.z + 1);
+        #endregion
+    }
     private void Start()
     {
         #region initialize variable
@@ -31,9 +41,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
         mesh = new Mesh();
         //GetComponent<MeshFilter>().mesh = mesh;
         //shape drawing
-        camera_main = GameObject.Find("camera_main_dont_change_name");
         origin = Vector3.zero;
-        origin.z = camera_main.transform.position.z - 1;
         angle = 0f;
         layer_that_detects_flashlight = LayerMask.GetMask("flashlight_monster_dont_change_name", "flashlight_wall_dont_change_name");
 
@@ -48,7 +56,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
         }
         else
         {
-            int ray_count = 10;
+            int ray_count = (int)fov * 2;
             float angle_increase = -fov / ray_count;
             float view_distance = 7f;
 
