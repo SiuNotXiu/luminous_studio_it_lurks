@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class monster_database : MonoBehaviour
 {
@@ -9,18 +10,20 @@ public class monster_database : MonoBehaviour
     [SerializeField] public bool flashed = false;
 
     private bool flash = false;
-    private float flashtimer = 0;
+    public float flashtimer = 0;
     private float flashtime = 2;
+    private bool flee = false;
 
     private void Update()
     {
         if (flashed)
         {
+            flash = true;
             flashtimer += Time.deltaTime;
             if (flashtimer > flashtime)
             {
-                die();
-                flash = true;
+                //die();
+                flee = true;
                 flashtimer = 0;
             }
            
@@ -37,5 +40,20 @@ public class monster_database : MonoBehaviour
     {
         Debug.Log("Flash function work");
         return flash;
+    }
+
+    public void SetFlashed(bool p_flash)
+    {
+        flash = p_flash;
+    }
+
+    public bool GetFlee()
+    {
+        return flee;
+    }
+
+    public void SetFlee(bool p_flee)
+    {
+        flee = p_flee;
     }
 }

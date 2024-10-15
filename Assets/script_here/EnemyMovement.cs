@@ -30,12 +30,14 @@ public class EnemyMovement : MonoBehaviour
     public float chaseTime = 10;
     public float speedBoostTimer = 0;
     public float speedBoostTime = 2;
+    public float idleTimer = 0;
+    public float idleTime = 2;
     public TopdownMovement player;
 
 
     private Transform target;
     private List<Vector3> waypoints = new List<Vector3>();
-    private Vector3 lastPosition;
+    private Vector3 lastPlayerPosition;
     private EnemyState currentState = EnemyState.Idle;
     private bool speedBoosted = false;
     private float originalSpeed;
@@ -45,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        lastPosition = transform.position;
+        lastPlayerPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
         agent.updateRotation = false;
@@ -55,6 +57,8 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         idleRangeTrigger.EnteredTrigger += OnIndleRangeTriggerEntered;
+        idleRangeTrigger.ExitedTrigger += OnIdleRangeTriggerExited;
+
         attackRangeTrigger.EnteredTrigger += OnAttackRangeTriggerEntered;
         chaseRangeTrigger.EnteredTrigger += OnChaseRangeTriggerEntered;
     }
@@ -110,6 +114,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void StalkingState()
     {
+        speed = 3;
+        agent.speed = speed;
         float distanceToPlayer = Vector2.Distance(transform.position, target.position);
         float closeEnoughThreshold = 0.1f;
 
@@ -145,19 +151,39 @@ public class EnemyMovement : MonoBehaviour
             {
                 waypoints.Clear();
 
-                // Move towards the player if movement is allowed
+                
                 if (canMove)
                 {
                     agent.SetDestination(target.position);
                 }
             }
         }
-        // If the enemy is at the ideal distance, stay still
+        
         else if (Mathf.Abs(distanceToPlayer - stalkingDistance) <= closeEnoughThreshold)
         {
-            // The enemy stays still or can play an idle animation here
-            agent.SetDestination(transform.position); // Stop movement
+            
+            agent.SetDestination(transform.position); 
         }
+
+        
+        Vector3 currentPlayerPosition = player.transform.position;
+
+        if (currentPlayerPosition == lastPlayerPosition) 
+        {
+            idleTimer += Time.deltaTime;
+
+            if (idleTimer >= idleTime)
+            {
+                currentState = EnemyState.Chasing; 
+                Debug.Log("Player idle for too long. Switching to Chasing state.");
+            }
+        }
+        else 
+        {
+            idleTimer = 0; 
+        }
+
+        lastPlayerPosition = currentPlayerPosition; // Update last known player position
     }
 
     private void ChasingState()
@@ -231,11 +257,21 @@ public class EnemyMovement : MonoBehaviour
 
         if (target != null)
         {
-            // Calculate the direction away from the player
-            Vector2 fleeDirection = (transform.position - target.position).normalized;
+            agent.SetDestination(transform.position);
+            if(gameObject.GetComponent<monster_database>().GetFlee()==true)
+            {
+                speed = 7;
+                agent.speed = speed;
+                // Calculate the direction away from the player
+                Vector2 fleeDirection = (transform.position - target.position).normalized;
 
-            // Move the enemy in the flee direction
-            transform.position += (Vector3)fleeDirection * speed * Time.deltaTime;
+                // Set a destination in the flee direction
+                Vector3 fleePosition = transform.position + (Vector3)fleeDirection;
+
+                // Use NavMeshAgent to flee away from the player
+                agent.SetDestination(fleePosition);
+
+            }
 
         }
     }
@@ -293,6 +329,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 waypoints.RemoveAt(0);
             }
+
         }
     }
 
@@ -335,6 +372,26 @@ public class EnemyMovement : MonoBehaviour
             currentState = EnemyState.Chasing;
         }
     }
+
+    private void OnIdleRangeTriggerExited(Collider2D collision)
+    {
+        Debug.Log("OnIdleRangeTriggerExited called");
+
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Player exited the idle range");
+
+            if (currentState == EnemyState.Fleeing && target != null)
+            {
+                gameObject.GetComponent<monster_database>().SetFlee(false);
+                gameObject.GetComponent<monster_database>().SetFlashed(false);
+                currentState = EnemyState.Stalking;
+            }
+
+            Debug.Log("Player exited idle range trigger, current state: " + currentState);
+        }
+    }
+
 
     private void OnDrawGizmos()
     {

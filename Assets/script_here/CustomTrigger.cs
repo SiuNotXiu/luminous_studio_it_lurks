@@ -18,4 +18,5 @@ public class CustomTrigger : MonoBehaviour
     {
         ExitedTrigger?.Invoke(collision);
     }
+
 }
