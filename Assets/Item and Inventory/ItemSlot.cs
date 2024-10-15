@@ -96,6 +96,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // Set the position of the pop-up menu
         activeDropdownMenu_panel.transform.position = popUpPosition;
 
+        inventoryManager.SetDropdownMenuInstance(activeDropdownMenu);
+
         Button[] buttons = activeDropdownMenu.GetComponentsInChildren<Button>();
         foreach (Button btn in buttons)
         {

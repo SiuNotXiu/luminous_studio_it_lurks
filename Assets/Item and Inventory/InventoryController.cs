@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    //UI
+    // UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
     public GameObject Journal;
     public ItemSlot[] itemSlot;
-    private bool JournalOpen= true;
+    private bool JournalOpen = true;
 
-    public event Action OnJournalClosed; // Event to notify when journal is closed
+    // Store reference to the dropdown menu GameObject
+    private GameObject dropdownMenuInstance;
 
     // Update is called once per frame
     public void Update()
@@ -26,6 +25,12 @@ public class InventoryController : MonoBehaviour
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
             CloseJournal();
+            // Destroy dropdown menu instance if it exists
+            if (dropdownMenuInstance != null)
+            {
+                Destroy(dropdownMenuInstance);
+                dropdownMenuInstance = null;
+            }
         }
     }
 
@@ -49,7 +54,6 @@ public class InventoryController : MonoBehaviour
         journal_display.Hide();
         button_display.Hide();
         Journal.SetActive(false);
-        OnJournalClosed?.Invoke(); // Notify subscribers that the journal is closed
     }
 
     public bool IsJournalOpen()
@@ -57,12 +61,11 @@ public class InventoryController : MonoBehaviour
         return JournalOpen;
     }
 
-
     public void AddItem(string itemName, Sprite itemSprite)
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i].isFull == false)
+            if (!itemSlot[i].isFull)
             {
                 itemSlot[i].AddItem(itemName, itemSprite);
                 return;
@@ -70,12 +73,14 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-
-
     public bool ArePanelsOpen()
     {
         return journal_display.isActiveAndEnabled || button_display.isActiveAndEnabled;
     }
+
+    // Function to set the dropdown menu instance
+    public void SetDropdownMenuInstance(GameObject dropdown)
+    {
+        dropdownMenuInstance = dropdown;
+    }
 }
-
-
