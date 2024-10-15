@@ -40,6 +40,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 lastPlayerPosition;
     private EnemyState currentState = EnemyState.Idle;
     private bool speedBoosted = false;
+    private bool attack = false;
     private float originalSpeed;
     private bool canMove = true;
     private float timeSinceLastAttack = 0f;
@@ -100,6 +101,8 @@ public class EnemyMovement : MonoBehaviour
                 FleeingState();
                 break;
         }
+
+        
     }
 
     private void IdleState()
@@ -228,6 +231,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackState()
     {
+        
+        if (!attack)  
+        {
+            attack = true;
+            gameObject.GetComponent<EnemyAttack>().Attack();
+        }
+        
 
         if (!speedBoosted)
         {
@@ -247,6 +257,7 @@ public class EnemyMovement : MonoBehaviour
             speedBoostTimer = 0;
             speedBoosted = false;
             currentState = EnemyState.Stalking;
+            attack = false;
         }
 
         FleeingChecks();

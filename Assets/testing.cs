@@ -5,21 +5,20 @@ using UnityEngine.AI;
 
 public class testing : MonoBehaviour
 {
-    public Transform player;
-    private NavMeshAgent agent;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public HealthEffects _healtheffects = null;
+    private float damage = 10f;
+    private void start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        agent.SetDestination(player.position);
+        if (collision.CompareTag("Player")) 
+        {
+            _healtheffects.currentHp -= damage;
+            _healtheffects.TakeDamage();
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        }
     }
 }

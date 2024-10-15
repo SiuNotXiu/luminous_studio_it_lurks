@@ -335,6 +335,8 @@ GameObject:
   - component: {fileID: 5813085379830691728}
   - component: {fileID: 3744177220498758824}
   - component: {fileID: 162004682532734470}
+  - component: {fileID: -5529215569427422409}
+  - component: {fileID: 3547470084883853217}
   m_Layer: 0
   m_Name: Nightwalkers
   m_TagString: Untagged
@@ -425,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9562a3a2e869bd439c21e17f5175022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  _healtheffects: {fileID: 0}
 --- !u!195 &388977694933684988
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -506,3 +508,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f299fb9283f47c44905a1068eb49b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &-5529215569427422409
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766521153818071665}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.3600001
+--- !u!114 &3547470084883853217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766521153818071665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3cfe8b67b4eb74d85b9bc66186f22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healtheffects: {fileID: 0}
