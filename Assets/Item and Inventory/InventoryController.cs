@@ -10,6 +10,8 @@ public class InventoryController : MonoBehaviour
     public ItemSlot[] itemSlot;
     private bool JournalOpen = true;
 
+    public int InventorySize => itemSlot.Length;
+
     // Store reference to the dropdown menu GameObject
     private GameObject dropdownMenuInstance;
 

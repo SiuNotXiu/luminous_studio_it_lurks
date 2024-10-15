@@ -28,7 +28,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public event Action<ItemSlot> OnItemClicked, OnRightMouseBtnClick;
 
     // Reference to the inventory manager that handles the inventory open/close state
-    [SerializeField] private InventoryController inventoryManager;
+    [SerializeField] private InventoryController inventoryController;
 
     private void Update()
     {
@@ -96,7 +96,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // Set the position of the pop-up menu
         activeDropdownMenu_panel.transform.position = popUpPosition;
 
-        inventoryManager.SetDropdownMenuInstance(activeDropdownMenu);
+        inventoryController.SetDropdownMenuInstance(activeDropdownMenu);
 
         Button[] buttons = activeDropdownMenu.GetComponentsInChildren<Button>();
         foreach (Button btn in buttons)
