@@ -1,27 +1,30 @@
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
     private enum EnemyState
     {
         Idle,
+        Stalking,
         Chasing,
         Attack,
         Fleeing
     }
 
-    public float stuckThreshold = 1f;
-    public float unstuckWaypointRadius = 3f;
+   
     public float speed;
     public LayerMask worldMask;
     public float sightRange;
+    public float stalkingDistance = 6f;
     public float waypointDistanceThreshold = 1f;
     public float waypointReachThreshold = 3f;
     public float waypointGizmoRadius = 1f;
     public CustomTrigger idleRangeTrigger;
     public CustomTrigger attackRangeTrigger;
+    public CustomTrigger chaseRangeTrigger;
     public float postAttackDelay = 3f;
     public float chaseTimer = 0;
     public float chaseTime = 10;
@@ -29,25 +32,31 @@ public class EnemyMovement : MonoBehaviour
     public float speedBoostTime = 2;
     public TopdownMovement player;
 
+
     private Transform target;
     private List<Vector3> waypoints = new List<Vector3>();
     private Vector3 lastPosition;
-    private float stuckTime = 0f;
     private EnemyState currentState = EnemyState.Idle;
     private bool speedBoosted = false;
     private float originalSpeed;
-    private bool canMove = true; 
-    private float timeSinceLastAttack = 0f; 
+    private bool canMove = true;
+    private float timeSinceLastAttack = 0f;
+    private NavMeshAgent agent;
 
     void Start()
     {
-        lastPosition = transform.position; 
+        lastPosition = transform.position;
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateUpAxis = false;
+        agent.updateRotation = false;
+        agent.speed = speed;
     }
 
     private void Awake()
     {
         idleRangeTrigger.EnteredTrigger += OnIndleRangeTriggerEntered;
         attackRangeTrigger.EnteredTrigger += OnAttackRangeTriggerEntered;
+        chaseRangeTrigger.EnteredTrigger += OnChaseRangeTriggerEntered;
     }
 
     void Update()
@@ -60,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
             if (timeSinceLastAttack >= postAttackDelay)
             {
                 canMove = true;
-                
+
                 timeSinceLastAttack = 0f;
             }
         }
@@ -71,12 +80,20 @@ public class EnemyMovement : MonoBehaviour
                 IdleState();
                 break;
 
+            case EnemyState.Stalking:
+                StalkingState();
+                break;
+
             case EnemyState.Chasing:
                 ChasingState();
                 break;
 
             case EnemyState.Attack:
                 AttackState();
+                break;
+
+            case EnemyState.Fleeing:
+                FleeingState();
                 break;
         }
     }
@@ -85,11 +102,63 @@ public class EnemyMovement : MonoBehaviour
     {
         if (target != null && LineOfSight())
         {
-            currentState = EnemyState.Chasing;
+            currentState = EnemyState.Stalking;
         }
+
+
     }
 
-  
+    private void StalkingState()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+        float closeEnoughThreshold = 0.1f;
+
+        // If the enemy is too close to the player, move away (flee)
+        if (distanceToPlayer < stalkingDistance - closeEnoughThreshold)
+        {
+            waypoints.Clear();
+
+            // Calculate the direction away from the player
+            Vector2 fleeDirection = (transform.position - target.position).normalized;
+
+            // Set a destination in the flee direction
+            Vector3 fleePosition = transform.position + (Vector3)fleeDirection * stalkingDistance;
+
+            // Use NavMeshAgent to flee away from the player
+            agent.SetDestination(fleePosition);
+        }
+        // If the enemy is too far from the player, move closer
+        else if (distanceToPlayer > stalkingDistance + closeEnoughThreshold)
+        {
+            if (target == null || !LineOfSight())
+            {
+                // Generate waypoints when the enemy loses sight of the player
+                AddWaypoint();
+
+                // Continue chasing the waypoints
+                if (canMove)
+                {
+                    ChaseWaypoints();
+                }
+            }
+            else
+            {
+                waypoints.Clear();
+
+                // Move towards the player if movement is allowed
+                if (canMove)
+                {
+                    agent.SetDestination(target.position);
+                }
+            }
+        }
+        // If the enemy is at the ideal distance, stay still
+        else if (Mathf.Abs(distanceToPlayer - stalkingDistance) <= closeEnoughThreshold)
+        {
+            // The enemy stays still or can play an idle animation here
+            agent.SetDestination(transform.position); // Stop movement
+        }
+    }
 
     private void ChasingState()
     {
@@ -103,6 +172,7 @@ public class EnemyMovement : MonoBehaviour
         {
             speed = 3;
         }
+        agent.speed = speed;
 
         // Check for line of sight; if lost, create waypoints even if stunned
         if (target == null || !LineOfSight())
@@ -115,7 +185,6 @@ public class EnemyMovement : MonoBehaviour
             {
                 AddWaypoint();
                 ChaseWaypoints();
-                DetectStuck();
             }
         }
         else
@@ -124,53 +193,80 @@ public class EnemyMovement : MonoBehaviour
             // Move towards the player only if movement is allowed
             if (canMove)
             {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                agent.SetDestination(target.position);
             }
         }
-    }
 
+        FleeingChecks();
+    }
 
     private void AttackState()
     {
-        
+
         if (!speedBoosted)
         {
-            originalSpeed = player.GetMoveSpeed(); 
-            player.ChangeSpeed(originalSpeed + 8); 
-            speedBoosted = true; 
+            originalSpeed = player.GetMoveSpeed();
+            player.ChangeSpeed(originalSpeed + 8);
+            speedBoosted = true;
         }
 
         canMove = false;
         chaseTimer = 0;
         speedBoostTimer += Time.deltaTime;
 
-       
+
         if (speedBoostTimer >= 2)
         {
-            player.ChangeSpeed(originalSpeed);  
-            speedBoostTimer = 0;  
-            speedBoosted = false;  
-            currentState = EnemyState.Chasing;  
+            player.ChangeSpeed(originalSpeed);
+            speedBoostTimer = 0;
+            speedBoosted = false;
+            currentState = EnemyState.Stalking;
+        }
+
+        FleeingChecks();
+    }
+
+    private void FleeingState()
+    {
+
+        if (target != null)
+        {
+            // Calculate the direction away from the player
+            Vector2 fleeDirection = (transform.position - target.position).normalized;
+
+            // Move the enemy in the flee direction
+            transform.position += (Vector3)fleeDirection * speed * Time.deltaTime;
+
         }
     }
 
     private bool LineOfSight()
     {
+
+        if (target == null)
+        {
+            Debug.Log("raycast not working");
+            return false;
+        }
+        else
+        {
+            Debug.Log("raycast is working");
+        }
         Vector2 directionToPlayer = target.position - transform.position;
 
         // Perform the raycast
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, sightRange, worldMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, sightRange,worldMask);
 
         // Check if the ray hits the player
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
-            
+
             Debug.DrawRay(transform.position, directionToPlayer.normalized * sightRange, Color.green);
             return true;
         }
         else
         {
-            
+
             Debug.DrawRay(transform.position, directionToPlayer.normalized * sightRange, Color.red);
             return false;
         }
@@ -191,7 +287,7 @@ public class EnemyMovement : MonoBehaviour
             Vector3 currentWaypoint = waypoints[0];
 
             // Move towards the current waypoint only if movement is allowed
-            transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            agent.SetDestination(currentWaypoint);
 
             if (Vector3.Distance(transform.position, currentWaypoint) < waypointReachThreshold)
             {
@@ -200,51 +296,13 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void DetectStuck()
+    private void FleeingChecks()
     {
-        float minMovementThreshold = 0.2f; // Adjust this value to a reasonable threshold
-
-        if (Vector3.Distance(transform.position, lastPosition) < minMovementThreshold)
+        if (gameObject.GetComponent<monster_database>().GetFlashed() == true)
         {
-            stuckTime += Time.deltaTime;
-            Debug.Log("Timer Starts");
-            if (stuckTime > stuckThreshold)
-            {
-                InsertUnstuckWaypoint();
-                Debug.Log("Timer Resets");
-                stuckTime = 0f;
-            }
-        }
-        else
-        {
-            stuckTime = 0f;
-            // Update lastPosition only if the enemy has moved significantly
-            if (Vector3.Distance(transform.position, lastPosition) > minMovementThreshold)
-            {
-                lastPosition = transform.position;
-            }
+            currentState = EnemyState.Fleeing;
         }
     }
-
-    private void InsertUnstuckWaypoint()
-    {
-        
-        Vector2 randomInCircle = Random.insideUnitCircle.normalized * unstuckWaypointRadius;
-        Vector3 newWaypoint = new Vector3(randomInCircle.x, randomInCircle.y, 0) + transform.position;
-
-        Collider2D overlap = Physics2D.OverlapCircle(newWaypoint, 0.5f, worldMask);
-        if (overlap == null)
-        {
-            waypoints.Insert(0, newWaypoint);
-            Debug.Log("Unstuck waypoint added.");
-        }
-        else
-        {
-            Debug.Log("Unstuck waypoint overlap");
-            InsertUnstuckWaypoint();
-        }
-    }
-
 
     private void OnIndleRangeTriggerEntered(Collider2D collision)
     {
@@ -252,6 +310,11 @@ public class EnemyMovement : MonoBehaviour
         {
             target = collision.transform;
             Debug.Log("It works");
+
+            if (currentState == EnemyState.Idle)
+            {
+                currentState = EnemyState.Stalking;
+            }
         }
     }
 
@@ -264,6 +327,15 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void OnChaseRangeTriggerEntered(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Attacking");
+            currentState = EnemyState.Chasing;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -271,5 +343,8 @@ public class EnemyMovement : MonoBehaviour
         {
             Gizmos.DrawSphere(waypoint, waypointGizmoRadius);
         }
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, stalkingDistance);
     }
 }

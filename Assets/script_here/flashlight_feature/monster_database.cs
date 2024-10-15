@@ -5,14 +5,26 @@ using UnityEngine;
 public class monster_database : MonoBehaviour
 {
     //this script is used by monster
-
+    
     [SerializeField] public bool flashed = false;
+
+    private bool flash = false;
+    private float flashtimer = 0;
+    private float flashtime = 2;
 
     private void Update()
     {
         if (flashed)
         {
-            die();
+            flashtimer += Time.deltaTime;
+            if (flashtimer > flashtime)
+            {
+                die();
+                flash = true;
+                flashtimer = 0;
+            }
+           
+            
         }
     }
 
@@ -20,5 +32,11 @@ public class monster_database : MonoBehaviour
     {
         //Destroy(gameObject);
         Debug.Log("Flashed");
+    }
+
+    public bool GetFlashed()
+    {
+        Debug.Log("Flash function work");
+        return flash;
     }
 }
