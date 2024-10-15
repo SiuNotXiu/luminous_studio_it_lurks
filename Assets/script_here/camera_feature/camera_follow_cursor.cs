@@ -13,7 +13,7 @@ public class camera_follow_cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float remember_this_float = transform.position.z;
+        float remember_this_float = object_player.transform.position.z - 100f;
         transform.position = (get_mouse_position() + object_player.transform.position) / 2;
         transform.position = new Vector3(transform.position.x,
             transform.position.y,

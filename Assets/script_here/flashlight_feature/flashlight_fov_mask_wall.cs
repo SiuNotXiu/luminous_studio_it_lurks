@@ -9,6 +9,9 @@ public class flashlight_fov_wall_mask : MonoBehaviour
 {
     //this script is used by the mask of flashlight
 
+    #region script finding
+    [HideInInspector] private player_database script_player_database;
+    #endregion
     #region sector drawing
     [HideInInspector] private Mesh mesh;
     [HideInInspector] private float fov = 90f;
@@ -23,8 +26,10 @@ public class flashlight_fov_wall_mask : MonoBehaviour
     private void Start()
     {
         #region initialize variable
+        script_player_database = gameObject.transform.parent.gameObject.GetComponent<player_database>();
+
         mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        //GetComponent<MeshFilter>().mesh = mesh;
         //shape drawing
         camera_main = GameObject.Find("camera_main_dont_change_name");
         origin = Vector3.zero;
@@ -37,92 +42,99 @@ public class flashlight_fov_wall_mask : MonoBehaviour
 
     private void LateUpdate()
     {
-        int ray_count = 10;
-        float angle_increase = -fov / ray_count;
-        float view_distance = 7f;
-
-        Vector3[] vertices = new Vector3[ray_count + 1 + 1];
-        Vector2[] uv = new Vector2[vertices.Length];
-        int[] triangles = new int[ray_count * 3];
-
-        origin.z = mask_z_local_position;
-        vertices[0] = origin;
-
-        int vertex_index = 1;
-        int triangle_index = 0;
-        for (int i = 0; i <= ray_count; i++)
+        if (script_player_database.is_flashlight_on == false)
         {
-            //edge to origin and mask wall
-            Vector3 vertex;
-            Vector3 end_of_sector = player_position + get_vector_from_angle(angle) * view_distance;
-            #region reverse raycast
-            float angle_reverse;
-            if (angle > 180)
+            GetComponent<MeshFilter>().mesh = null;
+        }
+        else
+        {
+            int ray_count = 10;
+            float angle_increase = -fov / ray_count;
+            float view_distance = 7f;
+
+            Vector3[] vertices = new Vector3[ray_count + 1 + 1];
+            Vector2[] uv = new Vector2[vertices.Length];
+            int[] triangles = new int[ray_count * 3];
+
+            origin.z = mask_z_local_position;
+            vertices[0] = origin;
+
+            int vertex_index = 1;
+            int triangle_index = 0;
+            for (int i = 0; i <= ray_count; i++)
             {
-                angle_reverse = angle - 180;
-            }
-            else
-            {
-                angle_reverse = angle + 180;
-            }
-            RaycastHit2D[] raycast_hit_2d = Physics2D.RaycastAll(end_of_sector, get_vector_from_angle(angle_reverse), view_distance, layer_that_detects_flashlight);
-            #endregion
-            //mesh rendering using local_position
-            vertex = gameObject.transform.InverseTransformPoint(end_of_sector);
-            if (raycast_hit_2d.Length != 0)
-            {
-                if (raycast_hit_2d[raycast_hit_2d.Length - 1].collider != null && raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.GetComponent<light_blocking>() != null)
+                //edge to origin and mask wall
+                Vector3 vertex;
+                Vector3 end_of_sector = player_position + get_vector_from_angle(angle) * view_distance;
+                #region reverse raycast
+                float angle_reverse;
+                if (angle > 180)
                 {
-                    //mesh rendering using local_position
-                    vertex = gameObject.transform.InverseTransformPoint(raycast_hit_2d[raycast_hit_2d.Length - 1].point);
-                    #region debug
-                    //drawline using world position
-                    /*Debug.DrawLine(end_of_sector,
-                    raycast_hit_2d[raycast_hit_2d.Length - 1].point,
-                    Color.green, 0.1f);*/
+                    angle_reverse = angle - 180;
+                }
+                else
+                {
+                    angle_reverse = angle + 180;
+                }
+                RaycastHit2D[] raycast_hit_2d = Physics2D.RaycastAll(end_of_sector, get_vector_from_angle(angle_reverse), view_distance, layer_that_detects_flashlight);
+                #endregion
+                //mesh rendering using local_position
+                vertex = gameObject.transform.InverseTransformPoint(end_of_sector);
+                if (raycast_hit_2d.Length != 0)
+                {
+                    if (raycast_hit_2d[raycast_hit_2d.Length - 1].collider != null && raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.GetComponent<light_blocking>() != null)
+                    {
+                        //mesh rendering using local_position
+                        vertex = gameObject.transform.InverseTransformPoint(raycast_hit_2d[raycast_hit_2d.Length - 1].point);
+                        #region debug
+                        //drawline using world position
+                        /*Debug.DrawLine(end_of_sector,
+                        raycast_hit_2d[raycast_hit_2d.Length - 1].point,
+                        Color.green, 0.1f);*/
 
-                    /*Debug.DrawLine(player_position,
-                    raycast_hit_2d[raycast_hit_2d.Length - 1].point,
-                    Color.red, 0.1f);*/
+                        /*Debug.DrawLine(player_position,
+                        raycast_hit_2d[raycast_hit_2d.Length - 1].point,
+                        Color.red, 0.1f);*/
 
-                    /*Debug.Log(raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.name);*/
+                        /*Debug.Log(raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.name);*/
+                        #endregion
+                    }
+                    #region monster detection
+                    //if straight away pointing the monster
+                    //Debug.Log(raycast_hit_2d[j].collider.gameObject.name);
+                    if (raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.name == "flashlight_trigger_area_dont_change_name")
+                    {
+                        //detected monster here
+                        raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.transform.parent.gameObject.GetComponent<monster_database>().flashed = true;
+                    }
                     #endregion
                 }
-                #region monster detection
-                //if straight away pointing the monster
-                //Debug.Log(raycast_hit_2d[j].collider.gameObject.name);
-                if (raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.name == "flashlight_trigger_area_dont_change_name")
+                //ensure mask is between camera and
+                //origin is 0 localposition
+                //vertex.z is also localposition
+                vertex.z = origin.z;
+
+                vertices[vertex_index] = vertex;
+
+                if (i > 0)
                 {
-                    //detected monster here
-                    raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.transform.parent.gameObject.GetComponent<monster_database>().flashed = true;
+                    triangles[triangle_index + 0] = 0;
+                    triangles[triangle_index + 1] = vertex_index - 1;
+                    triangles[triangle_index + 2] = vertex_index;
+
+                    triangle_index += 3;
                 }
-                #endregion
+                vertex_index++;
+                //the tutorial is using -= but -= vertex arrangement is terbalik for me
+                angle += angle_increase;
             }
-            //ensure mask is between camera and
-            //origin is 0 localposition
-            //vertex.z is also localposition
-            vertex.z = origin.z;
 
-            vertices[vertex_index] = vertex;
+            mesh.vertices = vertices;
+            mesh.uv = uv;
+            mesh.triangles = triangles;
 
-            if (i > 0)
-            {
-                triangles[triangle_index + 0] = 0;
-                triangles[triangle_index + 1] = vertex_index - 1;
-                triangles[triangle_index + 2] = vertex_index;
-
-                triangle_index += 3;
-            }
-            vertex_index++;
-            //the tutorial is using -= but -= vertex arrangement is terbalik for me
-            angle += angle_increase;
+            GetComponent<MeshFilter>().mesh = mesh;
         }
-
-        mesh.vertices = vertices;
-        mesh.uv = uv;
-        mesh.triangles = triangles;
-
-        GetComponent<MeshFilter>().mesh = mesh;
     }
 
     #region update variables called by other script
