@@ -16,7 +16,7 @@ public class player_flashlight_on_off : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             script_player_database.is_flashlight_on = !script_player_database.is_flashlight_on;
         }

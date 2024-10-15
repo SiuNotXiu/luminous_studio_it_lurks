@@ -33,6 +33,7 @@ public class battery_bar_float : MonoBehaviour
         {
             battery_remaining = battery_max;
         }
+
         battery_green.fillAmount = battery_remaining / battery_max;
     }
 }

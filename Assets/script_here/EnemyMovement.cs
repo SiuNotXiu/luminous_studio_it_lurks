@@ -166,7 +166,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
         
-        Vector3 currentPlayerPosition = player.transform.position;
+        Vector3 currentPlayerPosition = target.transform.position;
 
         if (currentPlayerPosition == lastPlayerPosition) 
         {
