@@ -15,7 +15,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public int datax;
     public int datay;
 
-
     //=====ITEM SLOT=====//
     [SerializeField] private Image itemImage;
 
@@ -23,10 +22,27 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField] public GameObject dropdownMenuPrefab;
 
     // Keep track of the dropdown menu instance
-    public GameObject activeDropdownMenu;
-    private GameObject activeDropdownMenu_panel;//child
+    private GameObject activeDropdownMenu;
+    private GameObject activeDropdownMenu_panel; //child
 
     public event Action<ItemSlot> OnItemClicked, OnRightMouseBtnClick;
+
+    // Reference to the inventory manager that handles the inventory open/close state
+    [SerializeField] private InventoryController inventoryManager;
+
+    private void Update()
+    {
+        // Check if a click occurs outside the dropdown menu and item slot
+        if (activeDropdownMenu != null && Input.GetMouseButtonDown(0))
+        {
+            // Check if the pointer is over any UI element
+            if (!IsPointerOverUIObject())
+            {
+                HideDropdownMenu(); // Hide the menu if clicked outside
+            }
+        }
+
+    }
 
     public void AddItem(string itemName, Sprite itemSprite)
     {
@@ -35,7 +51,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         isFull = true;
         this.itemImage.sprite = itemSprite;
     }
-
 
     public bool IsEmpty()
     {
@@ -59,8 +74,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             OnRightMouseBtnClick?.Invoke(this);
             Debug.Log("Right click on item: " + itemName);
-
-            // Show dropdown menu on right-click
             ShowDropdownMenu();
         }
     }
@@ -75,8 +88,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         // Instantiate the dropdown menu prefab
         activeDropdownMenu = Instantiate(dropdownMenuPrefab);
-        activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject;//from child find it from parent
-
+        activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject; //from child find it from parent
 
         // Calculate the new position for the pop-up menu
         Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y + datay);
@@ -102,12 +114,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+
     private void FunctionableItem()
     {
         Debug.Log("Functionable item: " + itemName);
         // Logic to discard the item
         HideDropdownMenu();
     }
+
     private void UseItem()
     {
         Debug.Log("Using item: " + itemName);
@@ -122,7 +136,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         HideDropdownMenu();
     }
 
-
     public void HideDropdownMenu()
     {
         if (activeDropdownMenu != null)
@@ -131,5 +144,24 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             Destroy(activeDropdownMenu);
             activeDropdownMenu = null;
         }
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        // Check if the pointer is over a UI element, either the item slot or the dropdown menu
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = Input.mousePosition;
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        foreach (RaycastResult result in results)
+        {
+            // If the raycast hit the item slot or the dropdown menu, return true
+            if (result.gameObject == gameObject || result.gameObject == activeDropdownMenu)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

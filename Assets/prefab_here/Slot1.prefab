@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 1140579746774296446}
   - component: {fileID: 5455306584994677006}
   - component: {fileID: 1907050789138779918}
-  - component: {fileID: 8120086726541791}
   - component: {fileID: 6389150074322427216}
   m_Layer: 5
   m_Name: Slot1
@@ -279,19 +278,7 @@ MonoBehaviour:
   datay: -40
   itemImage: {fileID: 3870888290961356340}
   dropdownMenuPrefab: {fileID: 2664137742798027793, guid: f5dc3a1dd3591aa48aef04f613dff47e, type: 3}
-  activeDropdownMenu: {fileID: 0}
---- !u!114 &8120086726541791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834773463716585994}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2664b99e4b2d87f43a2a810695b787d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
 --- !u!114 &6389150074322427216
 MonoBehaviour:
   m_ObjectHideFlags: 0
