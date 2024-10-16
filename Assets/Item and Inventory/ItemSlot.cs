@@ -20,6 +20,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     // Dropdown menu prefab reference
     [SerializeField] public GameObject dropdownMenuPrefab;
+    [SerializeField] private ChangingDropdownText dropdownText;
 
     // Keep track of the dropdown menu instance
     private GameObject activeDropdownMenu;
@@ -68,12 +69,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             OnItemClicked?.Invoke(this);
             Debug.Log("Left click on item: " + itemName);
+            dropdownText.Ava_Panels();
             ShowDropdownMenu();
         }
-        else if (eventData.button == PointerEventData.InputButton.Right)
+        else if (eventData.button == PointerEventData.InputButton.Right)//we may only using left, still need confirm
         {
             OnRightMouseBtnClick?.Invoke(this);
             Debug.Log("Right click on item: " + itemName);
+            dropdownText.Ava_Panels();
             ShowDropdownMenu();
         }
     }

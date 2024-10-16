@@ -278,6 +278,7 @@ MonoBehaviour:
   datay: -40
   itemImage: {fileID: 3870888290961356340}
   dropdownMenuPrefab: {fileID: 2664137742798027793, guid: f5dc3a1dd3591aa48aef04f613dff47e, type: 3}
+  dropdownText: {fileID: 4853481544547868100, guid: eb25da9f64a4c724fa0049308b3ee971, type: 3}
   inventoryC: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
 --- !u!114 &6389150074322427216
 MonoBehaviour:

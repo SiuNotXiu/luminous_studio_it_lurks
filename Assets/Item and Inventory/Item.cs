@@ -25,6 +25,7 @@ public class Item : MonoBehaviour
             inventoryController.AddItem(itemName, sprite);
             Destroy(gameObject);
         }
+        //need to consider if the inventory is full cant pick up, i think the code should be here
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
