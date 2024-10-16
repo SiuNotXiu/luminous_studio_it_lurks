@@ -26,12 +26,14 @@ public class EnemyMovement : MonoBehaviour
     public CustomTrigger attackRangeTrigger;
     public CustomTrigger chaseRangeTrigger;
     public float postAttackDelay = 3f;
-    public float chaseTimer = 0;
-    public float chaseTime = 10;
-    public float speedBoostTimer = 0;
-    public float speedBoostTime = 2;
-    public float idleTimer = 0;
-    public float idleTime = 2;
+    public float chaseTimer = 0f;
+    public float chaseTime = 10f;
+    public float speedBoostTimer = 0f;
+    public float speedBoostTime = 2f;
+    public float idleTimer = 0f;
+    public float idleTime = 2f;
+    public float fleeTime = 5f;
+    public float fleeTimer = 0f;
     public TopdownMovement player;
 
 
@@ -58,7 +60,7 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         idleRangeTrigger.EnteredTrigger += OnIndleRangeTriggerEntered;
-        idleRangeTrigger.ExitedTrigger += OnIdleRangeTriggerExited;
+       // idleRangeTrigger.ExitedTrigger += OnIdleRangeTriggerExited;
 
         attackRangeTrigger.EnteredTrigger += OnAttackRangeTriggerEntered;
         chaseRangeTrigger.EnteredTrigger += OnChaseRangeTriggerEntered;
@@ -187,6 +189,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
         lastPlayerPosition = currentPlayerPosition; // Update last known player position
+        FleeingChecks();
     }
 
     private void ChasingState()
@@ -281,6 +284,15 @@ public class EnemyMovement : MonoBehaviour
 
                 // Use NavMeshAgent to flee away from the player
                 agent.SetDestination(fleePosition);
+                fleeTimer += Time.deltaTime;
+                if (fleeTimer >= fleeTime)
+                {
+                    currentState = EnemyState.Stalking;
+                    fleeTimer = 0f;
+                    gameObject.GetComponent<monster_database>().SetFlee(false);
+                    gameObject.GetComponent<monster_database>().SetFlashed(false);
+
+                }
 
             }
 
@@ -384,7 +396,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnIdleRangeTriggerExited(Collider2D collision)
+    /*private void OnIdleRangeTriggerExited(Collider2D collision)
     {
         Debug.Log("OnIdleRangeTriggerExited called");
 
@@ -401,7 +413,7 @@ public class EnemyMovement : MonoBehaviour
 
             Debug.Log("Player exited idle range trigger, current state: " + currentState);
         }
-    }
+    }*/
 
 
     private void OnDrawGizmos()

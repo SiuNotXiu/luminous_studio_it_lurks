@@ -1808,6 +1808,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 580152299}
+    - target: {fileID: 5813085379830691728, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
+      propertyPath: fleeTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813085379830691728, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
+      propertyPath: fleeTimer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7407456413002066286, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
       propertyPath: m_Enabled
       value: 1
