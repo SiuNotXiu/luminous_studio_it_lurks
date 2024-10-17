@@ -11,6 +11,7 @@ public class ChangingDropdownText : MonoBehaviour
     private string Store = "Store";
     private string Craft = "Craft";
     private string Perks = "Fuse";
+    public TextMeshProUGUI buttonText;
 
     public string CraftItemTag = "CraftItem";
     public string PerksItemTag = "PerksItem";
@@ -21,34 +22,43 @@ public class ChangingDropdownText : MonoBehaviour
         foreach (GameObject panel in AvailablePanel)
         {
             TextMeshProUGUI buttonText = Multi_function.GetComponentInChildren<TextMeshProUGUI>();
+            Debug.Log("Button text component found: " + (buttonText != null));
+
             // Check if panel is active
             if (panel.name == "JournalP1_RightsideChest" && panel.activeSelf)
             {
-                
                 buttonText.text = Store;
-                Debug.Log(Multi_function.GetComponentInChildren<TextMeshProUGUI>());
-                Debug.Log(buttonText.text);
+                Debug.Log("Panel JournalP1 is active. Changing button text to: " + buttonText.text);
             }
-
             else if (panel.name == "JournalP2_RightsideCraft" && panel.activeSelf)
             {
                 // Find all items within the panel (or as children) and check their tags
+                bool textChanged = false;
                 foreach (Transform child in panel.transform)
                 {
-                    // If the child has a CraftItem tag
+                    Debug.Log("Checking child: " + child.name);
+
                     if (child.CompareTag(CraftItemTag))
                     {
                         buttonText.text = Craft;
+                        Debug.Log("Craft item found. Changing button text to: " + buttonText.text);
+                        textChanged = true;
                         break; // Stop once a craft item is found
                     }
-                    // If the child has a PerksItem tag
                     else if (child.CompareTag(PerksItemTag))
                     {
                         buttonText.text = Perks;
-                        break; // Stop once a perks item is found (reduce)
+                        Debug.Log("Perks item found. Changing button text to: " + buttonText.text);
+                        textChanged = true;
+                        break; // Stop once a perks item is found
                     }
+                }
+                if (!textChanged)
+                {
+                    Debug.Log("No matching items found in JournalP2.");
                 }
             }
         }
     }
+
 }

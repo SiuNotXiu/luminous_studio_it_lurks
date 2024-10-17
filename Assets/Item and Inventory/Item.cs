@@ -6,7 +6,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private string itemName;
-
+    [SerializeField] private string itemTag;
     [SerializeField] private Sprite sprite;
 
     private InventoryController inventoryController;
@@ -22,10 +22,10 @@ public class Item : MonoBehaviour
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            inventoryController.AddItem(itemName, sprite);
+            inventoryController.AddItem(itemName,itemTag, sprite);
             Destroy(gameObject);
         }
-        //need to consider if the inventory is full cant pick up, i think the code should be here
+        //need to consider if the inventory is full cant pick up, i think the code should be here OR item slot
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

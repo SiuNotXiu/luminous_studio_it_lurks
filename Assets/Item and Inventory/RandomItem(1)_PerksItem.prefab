@@ -176,4 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Battery
+  itemTag: PerksItem
   sprite: {fileID: 21300000, guid: de881267d7084b646910f92bb984c707, type: 3}

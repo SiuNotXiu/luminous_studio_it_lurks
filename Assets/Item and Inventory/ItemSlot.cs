@@ -2,12 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     //=====ITEM DATA=====//
     public string itemName;
     public Sprite itemSprite;
+    public string itemTag;
     public bool isFull;
     public RectTransform itemSlot; // Reference to the item slot RectTransform
 
@@ -19,17 +21,25 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image itemImage;
 
     // Dropdown menu prefab reference
-    [SerializeField] public GameObject dropdownMenuPrefab;
-    [SerializeField] private ChangingDropdownText dropdownText;
+    [SerializeField] private GameObject dropdownMenuPrefab;
 
     // Keep track of the dropdown menu instance
     private GameObject activeDropdownMenu;
     private GameObject activeDropdownMenu_panel; //child
+    //button
+    private GameObject activeDropdownMenu_buttonS; 
+    private GameObject activeDropdownMenu_buttonC; 
+    private GameObject activeDropdownMenu_buttonF; 
+    private GameObject activeDropdownMenu_buttonU; 
+    private GameObject activeDropdownMenu_buttonD; 
 
     public event Action<ItemSlot> OnItemClicked, OnRightMouseBtnClick;
 
     // Reference to the inventory manager that handles the inventory open/close state
     [SerializeField] private InventoryController inventoryC;
+    public GameObject P1;
+    public GameObject P2;
+
 
     private void Update()
     {
@@ -45,10 +55,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     }
 
-    public void AddItem(string itemName, Sprite itemSprite)
+    public void AddItem(string itemName,string itemTag, Sprite itemSprite)
     {
         this.itemName = itemName;
         this.itemSprite = itemSprite;
+        Debug.Log(itemTag + "is the rechange tag");
+        this.itemTag = itemTag;
         isFull = true;
         this.itemImage.sprite = itemSprite;
     }
@@ -69,14 +81,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             OnItemClicked?.Invoke(this);
             Debug.Log("Left click on item: " + itemName);
-            dropdownText.Ava_Panels();
             ShowDropdownMenu();
         }
         else if (eventData.button == PointerEventData.InputButton.Right)//we may only using left, still need confirm
         {
             OnRightMouseBtnClick?.Invoke(this);
             Debug.Log("Right click on item: " + itemName);
-            dropdownText.Ava_Panels();
             ShowDropdownMenu();
         }
     }
@@ -92,10 +102,48 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // Instantiate the dropdown menu prefab
         activeDropdownMenu = Instantiate(dropdownMenuPrefab);
         activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject; //from child find it from parent
+/*        //storing
+        if (P1.activeSelf)
+        {
+            Debug.Log("Detect it is on p1: " + P1.activeSelf);
+            //storing
+            activeDropdownMenu_buttonS = activeDropdownMenu_panel.transform.Find("Store").gameObject;
+            activeDropdownMenu_buttonU = activeDropdownMenu_panel.transform.Find("Use").gameObject;
+            activeDropdownMenu_buttonD = activeDropdownMenu_panel.transform.Find("Drop").gameObject;
+
+            activeDropdownMenu_buttonS.SetActive(true);
+            activeDropdownMenu_buttonU.SetActive(true);
+            activeDropdownMenu_buttonD.SetActive(true);
+        }
+        else if (!P1.activeSelf)
+        {
+            if (this.itemTag == "CraftItem")
+            {
+                Debug.Log("Detect it is on p2: " + P2.activeSelf);
+                //crafting
+                activeDropdownMenu_buttonC = activeDropdownMenu_panel.transform.Find("Craft").gameObject;
+                activeDropdownMenu_buttonU = activeDropdownMenu_panel.transform.Find("Use").gameObject;
+                activeDropdownMenu_buttonD = activeDropdownMenu_panel.transform.Find("Drop").gameObject;
+
+                activeDropdownMenu_buttonC.SetActive(true);
+                activeDropdownMenu_buttonU.SetActive(true);
+                activeDropdownMenu_buttonD.SetActive(true);
+            }
+            else if (this.itemTag == "PerksItem")
+            {
+                Debug.Log("Detect it is on p2: " + P2.activeSelf);
+                //fuse
+                activeDropdownMenu_buttonF = activeDropdownMenu_panel.transform.Find("Fuse").gameObject;
+                activeDropdownMenu_buttonD = activeDropdownMenu_panel.transform.Find("Drop").gameObject;
+
+                activeDropdownMenu_buttonF.SetActive(true);
+                activeDropdownMenu_buttonD.SetActive(true);
+            }
+
+        }*/
 
         // Calculate the new position for the pop-up menu
         Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y + datay);
-
         // Set the position of the pop-up menu
         activeDropdownMenu_panel.transform.position = popUpPosition;
 
@@ -106,9 +154,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             switch (btn.name)
             {
-                case "ManyFunctionable":
-                    Debug.Log("Work Many Function");
-                    btn.onClick.AddListener(() => FunctionableItem());
+                case "Store":
+                    Debug.Log("Store button work");
+                    btn.onClick.AddListener(() => StoreItem());
+                    break;
+                case "Craft":
+                    btn.onClick.AddListener(() => CraftItem());
+                    break;
+                case "Fuse":
+                    btn.onClick.AddListener(() => FuseItem());
                     break;
                 case "Use":
                     btn.onClick.AddListener(() => UseItem());
@@ -120,9 +174,21 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void FunctionableItem()
+    private void StoreItem()
     {
-        Debug.Log("Functionable item: " + itemName);
+        Debug.Log("Store item: " + itemName);
+        // Logic to discard the item
+        HideDropdownMenu();
+    }
+    private void CraftItem()
+    {
+        Debug.Log("Store item: " + itemName);
+        // Logic to discard the item
+        HideDropdownMenu();
+    }
+    private void FuseItem()
+    {
+        Debug.Log("Store item: " + itemName);
         // Logic to discard the item
         HideDropdownMenu();
     }

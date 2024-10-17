@@ -63,13 +63,13 @@ public class InventoryController : MonoBehaviour
         return JournalOpen;
     }
 
-    public void AddItem(string itemName, Sprite itemSprite)
+    public void AddItem(string itemName, string itemTag, Sprite itemSprite)
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if (!itemSlot[i].isFull)
             {
-                itemSlot[i].AddItem(itemName, itemSprite);
+                itemSlot[i].AddItem(itemName, itemTag, itemSprite);
                 return;
             }
         }
