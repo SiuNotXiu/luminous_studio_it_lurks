@@ -26,12 +26,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     // Keep track of the dropdown menu instance
     private GameObject activeDropdownMenu;
     private GameObject activeDropdownMenu_panel; //child
-    //button
-    private GameObject activeDropdownMenu_buttonS; 
-    private GameObject activeDropdownMenu_buttonC; 
-    private GameObject activeDropdownMenu_buttonF; 
-    private GameObject activeDropdownMenu_buttonU; 
-    private GameObject activeDropdownMenu_buttonD; 
+    
 
     public event Action<ItemSlot> OnItemClicked, OnRightMouseBtnClick;
 
@@ -102,18 +97,29 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // Instantiate the dropdown menu prefab
         activeDropdownMenu = Instantiate(dropdownMenuPrefab);
         activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject; //from child find it from parent
-/*        //storing
+
+        // Calculate the new position for the pop-up menu
+        Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y + datay);
+        // Set the position of the pop-up menu
+        activeDropdownMenu_panel.transform.position = popUpPosition;
+
+        //find the button
+        Button buttonS = activeDropdownMenu.transform.Find("Panel/Store").GetComponent<Button>();
+        Button buttonC = activeDropdownMenu.transform.Find("Panel/Craft").GetComponent<Button>();
+        Button buttonF = activeDropdownMenu.transform.Find("Panel/Fuse").GetComponent<Button>();
+        Button buttonU = activeDropdownMenu.transform.Find("Panel/Use").GetComponent<Button>();
+        Button buttonD = activeDropdownMenu.transform.Find("Panel/Drops").GetComponent<Button>();
+
+        inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
+
+        //storing
         if (P1.activeSelf)
         {
             Debug.Log("Detect it is on p1: " + P1.activeSelf);
             //storing
-            activeDropdownMenu_buttonS = activeDropdownMenu_panel.transform.Find("Store").gameObject;
-            activeDropdownMenu_buttonU = activeDropdownMenu_panel.transform.Find("Use").gameObject;
-            activeDropdownMenu_buttonD = activeDropdownMenu_panel.transform.Find("Drop").gameObject;
 
-            activeDropdownMenu_buttonS.SetActive(true);
-            activeDropdownMenu_buttonU.SetActive(true);
-            activeDropdownMenu_buttonD.SetActive(true);
+            buttonC.gameObject.SetActive(false);
+            buttonF.gameObject.SetActive(false);
         }
         else if (!P1.activeSelf)
         {
@@ -121,33 +127,20 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             {
                 Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //crafting
-                activeDropdownMenu_buttonC = activeDropdownMenu_panel.transform.Find("Craft").gameObject;
-                activeDropdownMenu_buttonU = activeDropdownMenu_panel.transform.Find("Use").gameObject;
-                activeDropdownMenu_buttonD = activeDropdownMenu_panel.transform.Find("Drop").gameObject;
 
-                activeDropdownMenu_buttonC.SetActive(true);
-                activeDropdownMenu_buttonU.SetActive(true);
-                activeDropdownMenu_buttonD.SetActive(true);
+                buttonS.gameObject.SetActive(false);
+                buttonF.gameObject.SetActive(false);
             }
             else if (this.itemTag == "PerksItem")
             {
                 Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //fuse
-                activeDropdownMenu_buttonF = activeDropdownMenu_panel.transform.Find("Fuse").gameObject;
-                activeDropdownMenu_buttonD = activeDropdownMenu_panel.transform.Find("Drop").gameObject;
-
-                activeDropdownMenu_buttonF.SetActive(true);
-                activeDropdownMenu_buttonD.SetActive(true);
+                buttonS.gameObject.SetActive(false);
+                buttonU.gameObject.SetActive(false);
+                buttonC.gameObject.SetActive(false);
             }
 
-        }*/
-
-        // Calculate the new position for the pop-up menu
-        Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y + datay);
-        // Set the position of the pop-up menu
-        activeDropdownMenu_panel.transform.position = popUpPosition;
-
-       inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
+        }
 
         Button[] buttons = activeDropdownMenu.GetComponentsInChildren<Button>();
         foreach (Button btn in buttons)
