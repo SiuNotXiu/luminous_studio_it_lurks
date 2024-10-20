@@ -512,6 +512,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c756b9424be9342b8eb3c89a0d44c6, type: 3}
+--- !u!114 &1080814409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 281121130889989704, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+  m_PrefabInstance: {fileID: 1924729828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86053f068c111d47a51d624296191ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1095418742 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4689076183810754369, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
@@ -1099,6 +1110,10 @@ PrefabInstance:
       propertyPath: P2
       value: 
       objectReference: {fileID: 5036492259651597496}
+    - target: {fileID: 751787346627283196, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: ChestIn
+      value: 
+      objectReference: {fileID: 1080814409}
     - target: {fileID: 871771269222461375, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1155,6 +1170,10 @@ PrefabInstance:
       propertyPath: P2
       value: 
       objectReference: {fileID: 5036492259651597496}
+    - target: {fileID: 1177016108885108318, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: ChestIn
+      value: 
+      objectReference: {fileID: 1080814409}
     - target: {fileID: 1270576498450120602, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1211,6 +1230,10 @@ PrefabInstance:
       propertyPath: P2
       value: 
       objectReference: {fileID: 5036492259651597496}
+    - target: {fileID: 1486058389239165104, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: ChestIn
+      value: 
+      objectReference: {fileID: 1080814409}
     - target: {fileID: 1486952048817948738, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1464,6 +1487,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5036492259651597496}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: ChestIn
+      value: 
+      objectReference: {fileID: 1080814409}
+    - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: inventoryController
       value: 
       objectReference: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
@@ -1499,6 +1526,10 @@ PrefabInstance:
       propertyPath: P2
       value: 
       objectReference: {fileID: 5036492259651597496}
+    - target: {fileID: 6582740148063472783, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: ChestIn
+      value: 
+      objectReference: {fileID: 1080814409}
     - target: {fileID: 6692853291130191887, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1695,6 +1726,10 @@ PrefabInstance:
       propertyPath: P2
       value: 
       objectReference: {fileID: 5036492259651597496}
+    - target: {fileID: 9053771260724263637, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: ChestIn
+      value: 
+      objectReference: {fileID: 1080814409}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8868744228934624586, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}

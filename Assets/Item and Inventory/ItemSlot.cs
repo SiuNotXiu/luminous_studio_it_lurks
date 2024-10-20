@@ -31,7 +31,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public GameObject P1;
     public GameObject P2;
 
-    private bool Campsite;
+    //detect if in range of the campsite or not
+    [SerializeField] private ChestController ChestIn;
 
 
     private void Update()
@@ -46,14 +47,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             }
         }
 
-    }
-
-    public bool CheckingInrange(bool range)
-    {
-        // Set internal state based on range
-        Debug.Log("Checking in range status: " + range);
-        Campsite = range; // Updating the 'Campsite' flag
-        return range;
     }
 
     public void AddItem(string itemName, string itemTag, Sprite itemSprite)
@@ -118,10 +111,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
 
-        Debug.Log("wwwwww    " + Campsite);
-        if (Campsite)
+        if (ChestIn.isInRange)
         {
-            Debug.Log("wwwwww    " + Campsite);
             buttonD.gameObject.SetActive(false);
         }
         if (P1.activeSelf)

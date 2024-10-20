@@ -17,8 +17,6 @@ public class ChestController : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
-            assignRange.CheckingInrange(isInRange);
-
             Debug.Log("Player is in the chest range");
         }
 
@@ -29,7 +27,6 @@ public class ChestController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = !isInRange;
-            assignRange.CheckingInrange(isInRange);
             Debug.Log("Player is not in the chest range");
         }
     }
