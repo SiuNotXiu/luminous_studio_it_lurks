@@ -7,10 +7,8 @@ public class InventoryController : MonoBehaviour
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
     public GameObject Journal;
-    public ItemSlot[] itemSlot;
+    public ItemSlot[] itemSlot = new ItemSlot[6];
     private bool JournalOpen = true;
-
-    public int InventorySize => itemSlot.Length;
 
     // Store reference to the dropdown menu GameObject
     private GameObject dropdownMenuInstance;
@@ -65,6 +63,10 @@ public class InventoryController : MonoBehaviour
 
     public void AddItem(string itemName, string itemTag, Sprite itemSprite)
     {
+        if (IsInventoryFull())
+        {
+            return;
+        }
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if (!itemSlot[i].isFull)
@@ -73,6 +75,18 @@ public class InventoryController : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public bool IsInventoryFull()
+    {
+        foreach (var slot in itemSlot)
+        {
+            if (!slot.isFull)
+            {
+                return false; 
+            }
+        }
+        return true;
     }
 
     public bool ArePanelsOpen()

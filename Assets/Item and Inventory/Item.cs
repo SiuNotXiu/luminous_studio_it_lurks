@@ -22,11 +22,20 @@ public class Item : MonoBehaviour
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            inventoryController.AddItem(itemName,itemTag, sprite);
-            Destroy(gameObject);
+            {
+                if (!inventoryController.IsInventoryFull())
+                {
+                    inventoryController.AddItem(itemName, itemTag, sprite);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Debug.Log("Inventory is full bro stapt");
+                }
+            }
         }
-        //need to consider if the inventory is full cant pick up, i think the code should be here OR item slot
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,4 +52,5 @@ public class Item : MonoBehaviour
             isPlayerInRange = false;
         }
     }
+    
 }

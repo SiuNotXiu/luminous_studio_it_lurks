@@ -19,11 +19,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     //=====ITEM SLOT=====//
     [SerializeField] private Image itemImage;
-
-    // Dropdown menu prefab reference
     [SerializeField] private GameObject dropdownMenuPrefab;
-
-    // Keep track of the dropdown menu instance
     private GameObject activeDropdownMenu;
     private GameObject activeDropdownMenu_panel; //child
     
@@ -50,7 +46,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     }
 
-    public void AddItem(string itemName,string itemTag, Sprite itemSprite)
+    public void AddItem(string itemName, string itemTag, Sprite itemSprite)
     {
         this.itemName = itemName;
         this.itemSprite = itemSprite;
@@ -175,10 +171,35 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     }
     private void CraftItem()
     {
-        Debug.Log("Store item: " + itemName);
-        // Logic to discard the item
+        Debug.Log("Crafting item: " + itemName);
+        CraftingSlot craftingSlot = FindObjectOfType<CraftingSlot>();
+
+        if (craftingSlot != null)
+        {
+            bool addedToCrafting = craftingSlot.AddItemToCraftingSlot(this);
+
+            if (addedToCrafting)
+            {
+                //success
+                RemoveItem();
+            }
+            else
+            {
+                Debug.Log("No available crafting slots.");
+            }
+        }
         HideDropdownMenu();
     }
+
+    private void RemoveItem()
+    {
+        itemName = "";
+        itemSprite = null;
+        itemTag = "";
+        isFull = false;
+        itemImage.sprite = null;
+    }
+
     private void FuseItem()
     {
         Debug.Log("Store item: " + itemName);
