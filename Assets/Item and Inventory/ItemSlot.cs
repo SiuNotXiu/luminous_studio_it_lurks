@@ -31,6 +31,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public GameObject P1;
     public GameObject P2;
 
+    private bool Campsite;
+
 
     private void Update()
     {
@@ -44,6 +46,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             }
         }
 
+    }
+
+    public bool CheckingInrange(bool range)
+    {
+        // Set internal state based on range
+        Debug.Log("Checking in range status: " + range);
+        Campsite = range; // Updating the 'Campsite' flag
+        return range;
     }
 
     public void AddItem(string itemName, string itemTag, Sprite itemSprite)
@@ -104,34 +114,40 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         Button buttonC = activeDropdownMenu.transform.Find("Panel/Craft").GetComponent<Button>();
         Button buttonF = activeDropdownMenu.transform.Find("Panel/Fuse").GetComponent<Button>();
         Button buttonU = activeDropdownMenu.transform.Find("Panel/Use").GetComponent<Button>();
-        Button buttonD = activeDropdownMenu.transform.Find("Panel/Drops").GetComponent<Button>();
+        Button buttonD = activeDropdownMenu.transform.Find("Panel/Drop").GetComponent<Button>();
 
         inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
 
-        //storing
+        Debug.Log("wwwwww    " + Campsite);
+        if (Campsite)
+        {
+            Debug.Log("wwwwww    " + Campsite);
+            buttonD.gameObject.SetActive(false);
+        }
         if (P1.activeSelf)
         {
             Debug.Log("Detect it is on p1: " + P1.activeSelf);
             //storing
-
+            if (this.itemTag == "PerksItem")
+            {
+                buttonU.gameObject.SetActive(false);
+            }
             buttonC.gameObject.SetActive(false);
             buttonF.gameObject.SetActive(false);
         }
         else if (!P1.activeSelf)
         {
+            buttonS.gameObject.SetActive(false);
             if (this.itemTag == "CraftItem")
             {
                 Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //crafting
-
-                buttonS.gameObject.SetActive(false);
                 buttonF.gameObject.SetActive(false);
             }
             else if (this.itemTag == "PerksItem")
             {
                 Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //fuse
-                buttonS.gameObject.SetActive(false);
                 buttonU.gameObject.SetActive(false);
                 buttonC.gameObject.SetActive(false);
             }
