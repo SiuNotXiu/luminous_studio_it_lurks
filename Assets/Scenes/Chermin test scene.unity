@@ -1479,6 +1479,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: itemDataArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 7908376976359145853, guid: d29eab696597cee46b25d691c8758547, type: 3}
@@ -1498,6 +1502,22 @@ PrefabInstance:
       propertyPath: craftingSlots.Array.data[1]
       value: 
       objectReference: {fileID: 1180742781}
+    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: itemDataArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 698936e86cce96c48a5a7a9e2dcec991, type: 2}
+    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: itemDataArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d3a573158b8a974da153c7dbc66ad51, type: 2}
+    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: itemDataArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: d35017d043b27c04984367b368c47a29, type: 2}
+    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: itemDataArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: d35017d043b27c04984367b368c47a29, type: 2}
     - target: {fileID: 5543902144142036102, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
