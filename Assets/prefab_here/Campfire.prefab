@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isInRange: 0
+  assignRange: {fileID: 0}
   animator: {fileID: 0}
 --- !u!1001 &1334911749023116334
 PrefabInstance:

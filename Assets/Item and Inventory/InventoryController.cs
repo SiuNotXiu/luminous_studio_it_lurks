@@ -6,9 +6,14 @@ public class InventoryController : MonoBehaviour
     // UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
+    [SerializeField] private ChestController chest_detect;
     public GameObject Journal;
     public ItemSlot[] itemSlot = new ItemSlot[6];
     private bool JournalOpen = true;
+
+    //specific page of the journal will open first
+    public GameObject Page1;
+    public GameObject Page2;
 
     // Store reference to the dropdown menu GameObject
     private GameObject dropdownMenuInstance;
@@ -20,6 +25,15 @@ public class InventoryController : MonoBehaviour
         if (Input.GetButtonDown("Journal") && JournalOpen)
         {
             OpenJournal();
+            Page1.SetActive(false);
+            Page2.SetActive(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
+        {
+            OpenJournal();
+            Page1.SetActive(true);
+            Page2.SetActive(false);
+
         }
         // Close Journal with Escape or the same Journal button
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)

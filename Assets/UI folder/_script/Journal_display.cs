@@ -6,6 +6,8 @@ public class Journal_display : MonoBehaviour
 {
     public GameObject[] panelsToShow;
     public GameObject[] panelsToHide;
+    public GameObject Page1;
+    public GameObject Page2;
 
     // Method to show specific panels
     public void ShowPanels()
@@ -23,6 +25,12 @@ public class Journal_display : MonoBehaviour
         {
             panel.SetActive(false);
         }
+    }
+
+    public void playerPressedE()
+    {
+        Page1.SetActive(true);
+        Page2.SetActive(false);
     }
 
     public void Show()
