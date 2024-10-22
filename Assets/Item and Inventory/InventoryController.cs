@@ -17,14 +17,12 @@ public class InventoryController : MonoBehaviour
     public ResultSlot resultSlot;
     private bool JournalOpen = true;
 
-<<<<<<< Updated upstream
     //specific page of the journal will open first
     public GameObject Page1;
     public GameObject Page2;
-=======
+
     // temp items (moved from craftingslot)
     private List<ItemData> tempItems = new List<ItemData>();
->>>>>>> Stashed changes
 
     // Store reference to the dropdown menu GameObject
     private GameObject dropdownMenuInstance;
@@ -44,14 +42,13 @@ public class InventoryController : MonoBehaviour
             Page1.SetActive(false);
             Page2.SetActive(true);
         }
-        else if(Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
+        else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
         {
             OpenJournal();
             Page1.SetActive(true);
             Page2.SetActive(false);
 
         }
-        // Close Journal with Escape or the same Journal button
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
             CloseJournal();
