@@ -28,12 +28,12 @@ public class Dropdowntext_display : MonoBehaviour
         }
         else if (Craft.activeSelf)
         {
-            if (itemSlot.itemTag == "CraftItem")
+            if (itemSlot.itemData.itemTag == "CraftItem")
             {
                 Debug.Log("Displaying Craft Panels");
                 CraftPanels();
             }
-            else if (itemSlot.itemTag == "PerksItem")
+            else if (itemSlot.itemData.itemTag == "PerksItem")
             {
                 Debug.Log("Displaying Perks Panels");
                 PerksPanels();

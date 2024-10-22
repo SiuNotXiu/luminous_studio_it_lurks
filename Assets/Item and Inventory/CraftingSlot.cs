@@ -1,45 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftingSlot : MonoBehaviour
 {
-    [SerializeField] private CraftingSlot[] craftingSlots = new CraftingSlot[2];
-    [SerializeField] private ResultSlot resultSlot;
-    private Dictionary<string, string> knownRecipes;
-    private List<ItemSlot> tempItems = new List<ItemSlot>();
     private InventoryController inventoryController;
 
     //=====ITEM DATA=====//
-    public string itemName;
-    public Sprite itemSprite;
-    public string itemTag;
+    public ItemData itemData;
     public bool isFull;
+
+    //=====ITEM SLOT=====//
+    [SerializeField] private Image itemImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        inventoryController = GameObject.Find("Journal_Canvas").GetComponent<InventoryController>();
-        InitializeRecipes();
-    }
-
-    // add recipes here in future
-    private void InitializeRecipes()
-    {
-        knownRecipes = new Dictionary<string, string>
+        inventoryController = FindObjectOfType<InventoryController>();
+        //first check for itemimage
+        if (itemImage == null)
         {
-            // example recipe: combine "ItemA" and "ItemB" to get "ResultItem"
-            { "ItemA+ItemB", "ResultItem" }
-        };
+            itemImage = GetComponent<Image>();  // Ensure the image component is assigned
+            if (itemImage == null)
+            {
+                Debug.LogError("itemImage is not assigned in CraftingSlot.");
+            }
+        }
     }
 
-    public void AddItem(string itemName, string itemTag, Sprite itemSprite)
+    public void AddItem(ItemData newItemData)
     {
-        this.itemName = itemName;
-        this.itemSprite = itemSprite;
-        this.itemTag = itemTag;
+        if (newItemData == null)
+        {
+            Debug.LogError("Trying to add null ItemData to CraftingSlot.");
+            return;
+        }
+        this.itemData = newItemData;
         this.isFull = true;
-        Debug.Log("Item added to CraftingSlot: " + itemName);
+        this.itemImage.sprite = newItemData.itemSprite;
+        Debug.Log("Item added to CraftingSlot: " + newItemData.itemName);
+
+        inventoryController.OnCraftingSlotUpdated();
     }
 
     public bool IsEmpty()
@@ -47,29 +49,23 @@ public class CraftingSlot : MonoBehaviour
         return !isFull;
     }
 
-    public ItemSlot RemoveItem()
+    public ItemData RemoveItem()
     {
-        ItemSlot temp = new ItemSlot
-        {
-            itemName = this.itemName,
-            itemTag = this.itemTag,
-            itemSprite = this.itemSprite,
-            isFull = this.isFull
-        };
+        //store tempitem
+        ItemData tempItemData = this.itemData;
 
-        this.itemName = "";
-        this.itemSprite = null;
-        this.itemTag = "";
-        this.isFull = false;
+        //clear crafting slot
+        ClearSlot();
 
-        return temp;
+        // return store item
+        return tempItemData;
     }
+
     public void ClearSlot()
     {
-        this.itemName = "";
-        this.itemSprite = null;
-        this.itemTag = "";
+        this.itemData = null;
         this.isFull = false;
+        itemImage.sprite = null;
     }
 
     public bool HasItem()
@@ -79,76 +75,6 @@ public class CraftingSlot : MonoBehaviour
 
     public string GetItemName()
     {
-        return itemName;
-    }
-
-
-
-    public bool AddItemToCraftingSlot(ItemSlot itemSlot)
-    {
-        for (int i = 0; i < craftingSlots.Length; i++)
-        {
-            if (craftingSlots[i].IsEmpty())
-            {
-                craftingSlots[i].AddItem(itemSlot.itemName, itemSlot.itemTag, itemSlot.itemSprite);
-                tempItems.Add(itemSlot);
-                CheckAndCraft();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private void CheckAndCraft()
-    {
-        if (craftingSlots[0].isFull && craftingSlots[1].isFull)
-        {
-            string item1Name = craftingSlots[0].GetItemName();
-            string item2Name = craftingSlots[1].GetItemName();
-
-            string recipeKey = item1Name + "+" + item2Name;
-
-            if (knownRecipes.ContainsKey(recipeKey))
-            {
-                string resultItemName = knownRecipes[recipeKey];
-                Sprite resultSprite = GetItemSprite(resultItemName); // Fetch the sprite for the result item
-
-                // removed items remembered
-                tempItems.Add(craftingSlots[0].RemoveItem());
-                tempItems.Add(craftingSlots[1].RemoveItem());
-
-                resultSlot.ShowResult(resultItemName, resultSprite);
-            }
-        }
-    }
-
-    public void OnClickAddToInventory()
-    {
-        if (HasItem() && !inventoryController.IsInventoryFull())
-        {
-            string resultItemName = GetItemName();
-            Sprite resultItemSprite = GetItemSprite(resultItemName);
-
-            inventoryController.AddItem(resultItemName, "Crafted", resultItemSprite);
-
-            ClearSlot();
-        }
-    }
-
-    public void CancelCrafting()
-    {
-        foreach (ItemSlot itemSlot in tempItems)
-        {
-            inventoryController.AddItem(itemSlot.itemName, itemSlot.itemTag, itemSlot.itemSprite);
-        }
-        tempItems.Clear();
-    }
-
-    // Helper method to get the sprite based on item name (to be implemented)
-    private Sprite GetItemSprite(string itemName)
-    {
-        // Your logic to fetch the sprite from a resource manager or database
-        return null;
+        return itemData != null ? itemData.itemName : "";
     }
 }

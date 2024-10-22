@@ -2515,6 +2515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bcb1386065d3947acff6354da43a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPrefabs: []
   journal_display: {fileID: 7317870468275218620}
   button_display: {fileID: 7337347575539058557}
   Journal: {fileID: 7052797625709910638}
@@ -2525,6 +2526,10 @@ MonoBehaviour:
   - {fileID: 751787346627283196}
   - {fileID: 6582740148063472783}
   - {fileID: 1177016108885108318}
+  craftingSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  resultSlot: {fileID: 0}
 --- !u!1 &4553726039314084734
 GameObject:
   m_ObjectHideFlags: 0
@@ -5551,6 +5556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2403b8bdb1f0bbd458b391b23ca0a2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryController: {fileID: 0}
+  isFull: 0
   resultImage: {fileID: 1564992192245928952}
 --- !u!1 &8505915161493363642 stripped
 GameObject:

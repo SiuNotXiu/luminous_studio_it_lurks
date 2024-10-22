@@ -7,9 +7,7 @@ using static UnityEditor.Progress;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     //=====ITEM DATA=====//
-    public string itemName;
-    public Sprite itemSprite;
-    public string itemTag;
+    public ItemData itemData;
     public bool isFull;
     public RectTransform itemSlot; // Reference to the item slot RectTransform
 
@@ -49,14 +47,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     }
 
-    public void AddItem(string itemName, string itemTag, Sprite itemSprite)
+    public void AddItem(ItemData itemData)
     {
-        this.itemName = itemName;
-        this.itemSprite = itemSprite;
-        Debug.Log(itemTag + "is the rechange tag");
-        this.itemTag = itemTag;
+        this.itemData = itemData;
         isFull = true;
-        this.itemImage.sprite = itemSprite;
+        this.itemImage.sprite = itemData.itemSprite;
     }
 
     public bool IsEmpty()
@@ -74,13 +69,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             OnItemClicked?.Invoke(this);
-            Debug.Log("Left click on item: " + itemName);
+            Debug.Log("Left click on item: " + itemData.itemName);
             ShowDropdownMenu();
         }
         else if (eventData.button == PointerEventData.InputButton.Right)//we may only using left, still need confirm
         {
             OnRightMouseBtnClick?.Invoke(this);
-            Debug.Log("Right click on item: " + itemName);
+            Debug.Log("Right click on item: " + itemData.itemName);
             ShowDropdownMenu();
         }
     }
@@ -119,7 +114,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             Debug.Log("Detect it is on p1: " + P1.activeSelf);
             //storing
-            if (this.itemTag == "PerksItem")
+            if (this.itemData.itemTag == "PerksItem")
             {
                 buttonU.gameObject.SetActive(false);
             }
@@ -129,13 +124,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         else if (!P1.activeSelf)
         {
             buttonS.gameObject.SetActive(false);
-            if (this.itemTag == "CraftItem")
+            if (this.itemData.itemTag == "CraftItem")
             {
                 Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //crafting
                 buttonF.gameObject.SetActive(false);
             }
-            else if (this.itemTag == "PerksItem")
+            else if (this.itemData.itemTag == "PerksItem")
             {
                 Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //fuse
@@ -172,58 +167,53 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void StoreItem()
     {
-        Debug.Log("Store item: " + itemName);
+        Debug.Log("Store item: " + itemData.itemName);
         // Logic to discard the item
         HideDropdownMenu();
     }
     private void CraftItem()
     {
-        Debug.Log("Crafting item: " + itemName);
-        CraftingSlot craftingSlot = FindObjectOfType<CraftingSlot>();
+        Debug.Log("Crafting item: " + itemData.itemName);
 
-        if (craftingSlot != null)
+        //check for craftingslot to add
+        if (inventoryC.AddItemToCraftingSlot(itemData))
         {
-            bool addedToCrafting = craftingSlot.AddItemToCraftingSlot(this);
+            RemoveItem();
 
-            if (addedToCrafting)
-            {
-                //success
-                RemoveItem();
-            }
-            else
-            {
-                Debug.Log("No available crafting slots.");
-            }
+            // Attempt crafting once items are added
+            inventoryC.TryCrafting();
+        }
+        else
+        {
+            Debug.Log("No available crafting slots.");
         }
         HideDropdownMenu();
     }
 
     private void RemoveItem()
     {
-        itemName = "";
-        itemSprite = null;
-        itemTag = "";
+        itemData = null;
         isFull = false;
         itemImage.sprite = null;
     }
 
     private void FuseItem()
     {
-        Debug.Log("Store item: " + itemName);
+        Debug.Log("Store item: " + itemData.itemName);
         // Logic to discard the item
         HideDropdownMenu();
     }
 
     private void UseItem()
     {
-        Debug.Log("Using item: " + itemName);
+        Debug.Log("Using item: " + itemData.itemName);
         // Logic to use the item
         HideDropdownMenu();
     }
 
     private void DropItem()
     {
-        Debug.Log("Dropping item: " + itemName);
+        Debug.Log("Dropping item: " + itemData.itemName);
         // Logic to drop the item
         HideDropdownMenu();
     }

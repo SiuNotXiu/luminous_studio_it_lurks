@@ -1,22 +1,38 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
+    [SerializeField] private ItemData[] itemDataArray; // for resultslot (crafting)
+    private Dictionary<string, ItemData> itemDataDict = new Dictionary<string, ItemData>();
+
     // UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
     [SerializeField] private ChestController chest_detect;
     public GameObject Journal;
     public ItemSlot[] itemSlot = new ItemSlot[6];
+    public CraftingSlot[] craftingSlots = new CraftingSlot[2];
+    public ResultSlot resultSlot;
     private bool JournalOpen = true;
 
+<<<<<<< Updated upstream
     //specific page of the journal will open first
     public GameObject Page1;
     public GameObject Page2;
+=======
+    // temp items (moved from craftingslot)
+    private List<ItemData> tempItems = new List<ItemData>();
+>>>>>>> Stashed changes
 
     // Store reference to the dropdown menu GameObject
     private GameObject dropdownMenuInstance;
+
+    private void Start()
+    {
+        InitializeItemDictionary();
+    }
 
     // Update is called once per frame
     public void Update()
@@ -68,6 +84,19 @@ public class InventoryController : MonoBehaviour
         journal_display.Hide();
         button_display.Hide();
         Journal.SetActive(false);
+
+        TryCrafting();
+
+        // Clear crafting slots and move items back to tempItems if crafting is incomplete
+        foreach (CraftingSlot slot in craftingSlots)
+        {
+            if (slot.HasItem())
+            {
+                tempItems.Add(slot.RemoveItem());
+            }
+        }
+
+        ReturnTempItemsToInventory();
     }
 
     public bool IsJournalOpen()
@@ -75,7 +104,7 @@ public class InventoryController : MonoBehaviour
         return JournalOpen;
     }
 
-    public void AddItem(string itemName, string itemTag, Sprite itemSprite)
+    public void AddItem(ItemData itemData)
     {
         if (IsInventoryFull())
         {
@@ -85,7 +114,7 @@ public class InventoryController : MonoBehaviour
         {
             if (!itemSlot[i].isFull)
             {
-                itemSlot[i].AddItem(itemName, itemTag, itemSprite);
+                itemSlot[i].AddItem(itemData);
                 return;
             }
         }
@@ -113,4 +142,86 @@ public class InventoryController : MonoBehaviour
     {
         dropdownMenuInstance = dropdown;
     }
+
+    public bool AddItemToCraftingSlot(ItemData itemData)
+    {
+        foreach (CraftingSlot slot in craftingSlots)
+        {
+            if (slot.IsEmpty())
+            {
+                slot.AddItem(itemData);
+                return true;
+            }
+        }
+        Debug.Log("No empty crafting slot available.");
+        return false;
+    }
+
+    public void OnCraftingSlotUpdated()
+    {
+        if (craftingSlots[0].HasItem() && craftingSlots[1].HasItem())
+        {
+            TryCrafting();
+        }
+        else
+        {
+            // If both items are not present, clear the result slot
+            resultSlot.ClearSlot();
+        }
+    }
+
+    public void TryCrafting()
+    {
+        if (craftingSlots[0].HasItem() && craftingSlots[1].HasItem())
+        {
+            resultSlot.CheckAndShowCraftingResult(craftingSlots[0], craftingSlots[1]);
+        }
+    }
+
+    public void AddCraftedItemToInventory(ItemData itemData)
+    {
+        if (!IsInventoryFull())
+        {
+            AddItem(itemData);
+            resultSlot.ClearSlot();
+        }
+    }
+
+    private void InitializeItemDictionary()
+    {
+        foreach (var itemData in itemDataArray)
+        {
+            if (itemData != null)
+            {
+                itemDataDict[itemData.itemName] = itemData;
+            }
+        }
+    }
+
+    public ItemData GetItemData(string itemName)
+    {
+        if (itemDataDict.ContainsKey(itemName))
+        {
+            return itemDataDict[itemName];
+        }
+        Debug.LogWarning("ItemData not found for: " + itemName);
+        return null;
+    }
+
+    public void StoreTempItem(ItemData itemData)
+    {
+        tempItems.Add(itemData);
+    }
+
+    public void ReturnTempItemsToInventory()
+    {
+        foreach (ItemData item in tempItems)
+        {
+            AddItem(item);
+        }
+        tempItems.Clear();
+    }
+
 }
+
+

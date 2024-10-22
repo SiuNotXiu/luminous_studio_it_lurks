@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private string itemName;
-    [SerializeField] private string itemTag;
-    [SerializeField] private Sprite sprite;
+    [SerializeField] private ItemData itemData; // Reference to the ItemData ScriptableObject
+
+    public string ItemName => itemData != null ? itemData.itemName : "";
+    public string ItemTag => itemData != null ? itemData.itemTag : "";
+    public Sprite Sprite => itemData != null ? itemData.itemSprite : null;
 
     private InventoryController inventoryController;
     private bool isPlayerInRange = false;
@@ -23,9 +25,9 @@ public class Item : MonoBehaviour
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             {
-                if (!inventoryController.IsInventoryFull())
+                if (!inventoryController.IsInventoryFull() && itemData != null)
                 {
-                    inventoryController.AddItem(itemName, itemTag, sprite);
+                    inventoryController.AddItem(itemData);
                     Destroy(gameObject);
                 }
                 else
