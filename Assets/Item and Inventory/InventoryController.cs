@@ -10,6 +10,7 @@ public class InventoryController : MonoBehaviour
     // UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
+    [SerializeField] private ChestController chest_detect;
     public GameObject Journal;
     public ItemSlot[] itemSlot = new ItemSlot[6];
     public CraftingSlot[] craftingSlots = new CraftingSlot[2];
@@ -21,6 +22,9 @@ public class InventoryController : MonoBehaviour
 
     // Store reference to the dropdown menu GameObject
     private GameObject dropdownMenuInstance;
+
+    public GameObject Page1;
+    public GameObject Page2;
 
     private void Start()
     {
@@ -34,17 +38,20 @@ public class InventoryController : MonoBehaviour
         if (Input.GetButtonDown("Journal") && JournalOpen)
         {
             OpenJournal();
+            Page1.SetActive(false);
+            Page2.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
+        {
+            OpenJournal();
+            Page1.SetActive(true);
+            Page2.SetActive(false);
+
         }
         // Close Journal with Escape or the same Journal button
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
             CloseJournal();
-            // Destroy dropdown menu instance if it exists
-            if (dropdownMenuInstance != null)
-            {
-                Destroy(dropdownMenuInstance);
-                dropdownMenuInstance = null;
-            }
         }
     }
 
@@ -62,6 +69,12 @@ public class InventoryController : MonoBehaviour
     private void CloseJournal()
     {
         Debug.Log("Closing Journal");
+        // Destroy dropdown menu instance if it exists
+        if (dropdownMenuInstance != null)
+        {
+            Destroy(dropdownMenuInstance);
+            dropdownMenuInstance = null;
+        }
         JournalOpen = true;
         button_display.HidePanels();
         journal_display.HidePanels();
@@ -82,11 +95,12 @@ public class InventoryController : MonoBehaviour
 
         ReturnTempItemsToInventory();
     }
-
-    public bool IsJournalOpen()
+    // Function to set the dropdown menu instance
+    public void SetDropdownMenuInstance(GameObject dropdown)
     {
-        return JournalOpen;
+        dropdownMenuInstance = dropdown;
     }
+
 
     public void AddItem(ItemData itemData)
     {
@@ -121,11 +135,6 @@ public class InventoryController : MonoBehaviour
         return journal_display.isActiveAndEnabled || button_display.isActiveAndEnabled;
     }
 
-    // Function to set the dropdown menu instance
-    public void SetDropdownMenuInstance(GameObject dropdown)
-    {
-        dropdownMenuInstance = dropdown;
-    }
 
     public bool AddItemToCraftingSlot(ItemData itemData)
     {
