@@ -27,6 +27,8 @@ public class InventoryController : MonoBehaviour
     public GameObject Page1;
     public GameObject Page2;
     public GameObject button_Pg1;
+    public GameObject setting;
+    public GameObject journal_p1n2;
 
     private void Start()
     {
@@ -49,6 +51,14 @@ public class InventoryController : MonoBehaviour
             OpenJournal();
             Page1.SetActive(true);
             Page2.SetActive(false);
+
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen)
+        {
+            OpenJournal();
+            button_Pg1.SetActive(false);
+            journal_p1n2.SetActive(false);
+            setting.SetActive(true);
 
         }
         // Close Journal with Escape or the same Journal button
