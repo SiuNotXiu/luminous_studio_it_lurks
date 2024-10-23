@@ -22,7 +22,6 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         InitializeRecipes();
-        resultImage = GetComponent<Image>();
         inventoryController = FindObjectOfType<InventoryController>();
     }
 
