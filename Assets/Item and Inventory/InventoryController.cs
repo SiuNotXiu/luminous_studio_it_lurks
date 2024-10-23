@@ -12,6 +12,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] private Button_display button_display;
     [SerializeField] private ChestController chest_detect;
     public GameObject Journal;
+    public GameObject Description;
     public ItemSlot[] itemSlot = new ItemSlot[6];
     public CraftingSlot[] craftingSlots = new CraftingSlot[2];
     public ResultSlot resultSlot;
@@ -75,6 +76,7 @@ public class InventoryController : MonoBehaviour
             Destroy(dropdownMenuInstance);
             dropdownMenuInstance = null;
         }
+        Description.SetActive(false);
         JournalOpen = true;
         button_display.HidePanels();
         journal_display.HidePanels();

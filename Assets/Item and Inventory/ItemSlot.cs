@@ -2,9 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 using static UnityEditor.Progress;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     //=====ITEM DATA=====//
     public ItemData itemData;
@@ -14,13 +15,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     //temporary data for calculation
     public int datax;
     public int datay;
+    public int dataIx;//this is for the item description 
+    public int dataIy;
 
     //=====ITEM SLOT=====//
     [SerializeField] private Image itemImage;
     [SerializeField] private GameObject dropdownMenuPrefab;
-    private GameObject activeDropdownMenu;
+    private GameObject activeDropdownMenu; //crearting dropdown
     private GameObject activeDropdownMenu_panel; //child
-    
+    public GameObject itemDescription;
+    private GameObject itemDescription_panel;
+
 
     public event Action<ItemSlot> OnItemClicked, OnRightMouseBtnClick;
 
@@ -35,6 +40,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void Update()
     {
+
         // Check if a click occurs outside the dropdown menu and item slot
         if (activeDropdownMenu != null && Input.GetMouseButtonDown(0))
         {
@@ -78,6 +84,40 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             Debug.Log("Right click on item: " + itemData.itemName);
             ShowDropdownMenu();
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        //not need to create one just make it position to the item
+        if (!isFull)
+        {
+            return;
+        }
+        else
+        {
+            //positioning the item pop up description
+            itemDescription.SetActive(true);
+            itemDescription_panel = itemDescription.transform.Find("Panel").gameObject;
+            Vector3 itemdescriptionPosition =  new Vector3(itemSlot.position.x + dataIx, itemSlot.position.y + dataIy);
+            itemDescription_panel.transform.position = itemdescriptionPosition;
+
+            //Find the button text and change the text to the item data
+            Button buttonI = itemDescription.transform.Find("Panel/description").GetComponent<Button>();
+            TextMeshProUGUI buttonText = buttonI.GetComponentInChildren<TextMeshProUGUI>(); // Get the Text component of the button
+
+            if (buttonText != null)
+            {
+                Debug.Log("Name has change");
+                buttonText.text = itemData.itemName; // Set the button text to the item's name or any data
+            }
+
+
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        itemDescription.SetActive(false);
     }
 
     private void ShowDropdownMenu()
@@ -235,6 +275,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         eventDataCurrentPosition.position = Input.mousePosition;
         var results = new System.Collections.Generic.List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
 
         foreach (RaycastResult result in results)
         {
