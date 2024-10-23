@@ -26,6 +26,7 @@ public class InventoryController : MonoBehaviour
 
     public GameObject Page1;
     public GameObject Page2;
+    public GameObject button_Pg1;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class InventoryController : MonoBehaviour
         if (Input.GetButtonDown("Journal") && JournalOpen)
         {
             OpenJournal();
+            button_Pg1.SetActive(false);
             Page1.SetActive(false);
             Page2.SetActive(true);
         }
