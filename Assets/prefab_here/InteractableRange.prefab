@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7971317445475868058}
   m_Layer: 0
   m_Name: InteractableRange
-  m_TagString: Untagged
+  m_TagString: Campsite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,4 +82,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isInRange: 0
+  assignRange: {fileID: 0}
   animator: {fileID: 0}

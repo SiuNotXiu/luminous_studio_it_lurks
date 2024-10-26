@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - CraftItem
   - PerksItem
+  - Campsite
   layers:
   - Default
   - TransparentFX

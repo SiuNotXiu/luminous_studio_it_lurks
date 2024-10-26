@@ -12,7 +12,7 @@ public class Item : MonoBehaviour
     public Sprite Sprite => itemData != null ? itemData.itemSprite : null;
 
     private InventoryController inventoryController;
-    private bool isPlayerInRange = false;
+    public bool isPlayerInRange = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +24,14 @@ public class Item : MonoBehaviour
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
+            if (!inventoryController.IsInventoryFull() && itemData != null)
             {
-                if (!inventoryController.IsInventoryFull() && itemData != null)
-                {
-                    inventoryController.AddItem(itemData);
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Debug.Log("Inventory is full bro stapt");
-                }
+                inventoryController.AddItem(itemData);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("Inventory is full bro stapt");
             }
         }
     }

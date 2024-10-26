@@ -4,25 +4,51 @@ using UnityEngine;
 
 public class Hintappear : MonoBehaviour
 {
-    [SerializeField] private ChestController chest;
+    [SerializeField] private Transform playerTransform; 
+    public RectTransform hintpanel;      
+    public Vector3 offset = new Vector3(0, 1.5f, 0); // Adjust this offset to position above the head
 
-    // Start is called before the first frame update
+    public GameObject hint;
+
     void Start()
     {
-        
+        hint.SetActive(false); 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(chest.isInRange)
+        if (hint.activeSelf)
         {
-
+            Reposition(); // Reposition the hint image each frame
         }
     }
-    
-    private void appear()
-    {
 
+    private void Reposition()
+    {
+        // Calculate the world position for the hint image
+        Vector3 hintPosition = playerTransform.position + offset;
+
+        // Convert the world position to screen space
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, hintPosition);
+
+        // Set the image position to the calculated screen point
+        hintpanel.position = screenPoint;
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite"))
+        {
+            hint.SetActive(true); // Show the hint when colliding with specified objects
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite"))
+        {
+            hint.SetActive(false); // Hide the hint when exiting the trigger
+        }
     }
 }

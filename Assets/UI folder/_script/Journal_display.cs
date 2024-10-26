@@ -27,7 +27,7 @@ public class Journal_display : MonoBehaviour
         }
     }
 
-    public void playerPressedE()
+    public void PlayerPressedE()
     {
         Page1.SetActive(true);
         Page2.SetActive(false);
