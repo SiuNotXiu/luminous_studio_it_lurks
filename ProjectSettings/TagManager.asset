@@ -8,6 +8,7 @@ TagManager:
   - CraftItem
   - PerksItem
   - Campsite
+  - ScrapPaper
   layers:
   - Default
   - TransparentFX

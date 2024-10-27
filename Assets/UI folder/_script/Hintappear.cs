@@ -38,7 +38,7 @@ public class Hintappear : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite"))
+        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite") || collision.CompareTag("ScrapPaper"))
         {
             hint.SetActive(true); // Show the hint when colliding with specified objects
         }
@@ -46,7 +46,7 @@ public class Hintappear : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite"))
+        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite") || collision.CompareTag("ScrapPaper"))
         {
             hint.SetActive(false); // Hide the hint when exiting the trigger
         }

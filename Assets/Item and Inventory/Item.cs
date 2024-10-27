@@ -6,26 +6,34 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private ItemData itemData; // Reference to the ItemData ScriptableObject
+    [SerializeField] private CollectedScrapPaper paper;
 
     public string ItemName => itemData != null ? itemData.itemName : "";
     public string ItemTag => itemData != null ? itemData.itemTag : "";
     public Sprite Sprite => itemData != null ? itemData.itemSprite : null;
 
     private InventoryController inventoryController;
+    public int ScrapPaperId;
     public bool isPlayerInRange = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        inventoryController = GameObject.Find("Journal_Canvas").GetComponent<InventoryController>();
+        inventoryController = GameObject.Find("Journal_Canvas")?.GetComponent<InventoryController>();
     }
 
     private void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            if (!inventoryController.IsInventoryFull() && itemData != null)
+            if (gameObject.CompareTag("ScrapPaper") && paper != null)
             {
+                paper.CollectScrapPaper(ScrapPaperId);
+                Destroy(gameObject);
+            }
+            else if (!inventoryController.IsInventoryFull() && itemData != null)
+            {
+                Debug.Log("Store check");
                 inventoryController.AddItem(itemData);
                 Destroy(gameObject);
             }
