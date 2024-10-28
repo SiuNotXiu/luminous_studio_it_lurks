@@ -46,14 +46,14 @@ public class CollectedScrapPaper : MonoBehaviour
         foreach (Transform child in leftPageParent) Destroy(child.gameObject);
         foreach (Transform child in rightPageParent) Destroy(child.gameObject);
 
-        // Ensure valid page index
-        currentPageIndex = Mathf.Clamp(currentPageIndex, 0, Mathf.CeilToInt(journalScrapPapers.Count / (float)scrapsPerPage) - 1);
+        // Ensure the current page index is within bounds of the journal pages
+        int maxPageIndex = Mathf.Max(0, Mathf.CeilToInt(journalScrapPapers.Count / (float)scrapsPerPage) - 1);
+        currentPageIndex = Mathf.Clamp(currentPageIndex, 0, maxPageIndex);
 
         // Display scraps based on current page
         int startIndex = currentPageIndex * scrapsPerPage;
         for (int i = startIndex; i < startIndex + scrapsPerPage && i < journalScrapPapers.Count; i++)
         {
-            //got bug need fix for the index out of range, already solve in gpt just need move here
             ScrapPaper scrap = journalScrapPapers[i];
             GameObject leftPage;
             GameObject rightPage;
@@ -74,14 +74,15 @@ public class CollectedScrapPaper : MonoBehaviour
             }
         }
 
-        // Update button interactability
+        // Update button interactability based on the current page index
         previousPageButton.interactable = currentPageIndex > 0;
-        nextPageButton.interactable = currentPageIndex < Mathf.CeilToInt(journalScrapPapers.Count / (float)scrapsPerPage) - 1;
+        nextPageButton.interactable = currentPageIndex < maxPageIndex;
     }
 
     private void FlipToNextPage()
     {
-        if (currentPageIndex < Mathf.CeilToInt(journalScrapPapers.Count / (float)scrapsPerPage) - 1)
+        int maxPageIndex = Mathf.CeilToInt(journalScrapPapers.Count / (float)scrapsPerPage) - 1;
+        if (currentPageIndex < maxPageIndex)
         {
             currentPageIndex++;
             UpdateJournal();
