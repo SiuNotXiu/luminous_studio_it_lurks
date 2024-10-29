@@ -13,9 +13,10 @@ public class Item : MonoBehaviour
     public Sprite Sprite => itemData != null ? itemData.itemSprite : null;
 
     private InventoryController inventoryController;
-    public int ScrapPaperId;
+    public int ScrapPaperId;//start from 1
     public bool isPlayerInRange = false;
 
+    [HideInInspector] private GameObject[] object_landmark;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,23 @@ public class Item : MonoBehaviour
             if (gameObject.CompareTag("ScrapPaper") && paper != null)
             {
                 paper.CollectScrapPaper(ScrapPaperId);
+                #region map icon activation
+                if (object_landmark[ScrapPaperId - 1] != null)
+                {
+                    if (object_landmark[ScrapPaperId - 1].GetComponent<map_display_icon>() != null)
+                    {
+                        object_landmark[ScrapPaperId - 1].GetComponent<map_display_icon>().display_icon_on_map();
+                    }
+                    else
+                    {
+                        Debug.Log(gameObject.name + " need map icon");
+                    }
+                }
+                else
+                {
+                    Debug.Log("object_landmark[ScrapPaperId - 1] is null");
+                }
+                #endregion
                 Destroy(gameObject);
             }
             else if (!inventoryController.IsInventoryFull() && itemData != null)
