@@ -19,7 +19,7 @@ public class player_flashlight_direction : MonoBehaviour
         /*script_fov_mask   = gameObject.transform.Find("mask").gameObject.GetComponent<flashlight_fov_with_damage>();
         script_fov_visible  = gameObject.transform.Find("visible").gameObject.GetComponent<flashlight_fov_with_damage>();*/
         script_fov_mask = gameObject.transform.Find("flashlight_mask_dont_change_name").gameObject.GetComponent<flashlight_fov_wall_mask>();
-        script_fov_visible = gameObject.transform.Find("flashlight_visible_dont_change_name").gameObject.GetComponent<flashlight_fov_wall_mask>();
+        //script_fov_visible = gameObject.transform.Find("flashlight_visible_dont_change_name").gameObject.GetComponent<flashlight_fov_wall_mask>();
 
         camera_for_calculation = GameObject.Find("camera_for_calculation").GetComponent<Camera>();
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class object_mask_under_flashlight : MonoBehaviour
 {
-    void Start()
+    void Start()//never use onValidate, dont ask why
     {
         GetComponent<SpriteRenderer>().material.renderQueue = 3002;
     }

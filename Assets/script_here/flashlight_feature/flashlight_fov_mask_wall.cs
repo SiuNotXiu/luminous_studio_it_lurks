@@ -20,18 +20,25 @@ public class flashlight_fov_wall_mask : MonoBehaviour
     [HideInInspector] private Vector3 player_position;
     [HideInInspector] private float angle;
     [HideInInspector] private LayerMask layer_that_detects_flashlight;
-    [HideInInspector] private GameObject camera_main;
+    [HideInInspector] private GameObject object_camera_main;
     [HideInInspector] private float mask_z_local_position;
     #endregion
 
     private void OnValidate()
     {
         #region set z depth
-        camera_main = GameObject.Find("camera_main_dont_change_name");
-        //z + 1 is used for black circle
-        transform.position = new Vector3(transform.position.x,
+        object_camera_main = GameObject.Find("camera_main_dont_change_name");
+        if (object_camera_main != null)
+        {
+            //z + 1 is used for black circle
+            transform.position = new Vector3(transform.position.x,
             transform.position.y,
-            camera_main.transform.position.z + 1);
+            object_camera_main.transform.position.z + 1);
+        }
+        else
+        {
+            Debug.Log("(can ignore) object_camera_main is null, cannot move the z depth of flashlight");
+        }
         #endregion
     }
     private void Start()

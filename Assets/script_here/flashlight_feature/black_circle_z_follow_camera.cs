@@ -11,9 +11,15 @@ public class black_circle_z_follow_camera : MonoBehaviour
     void OnValidate()
     {
         object_camera_main = GameObject.Find("camera_main_dont_change_name");
-        transform.position = new Vector3(transform.position.x,
-            transform.position.y,
-            object_camera_main.transform.position.z + 2);
-        //Debug.Log("changing position of z");
+        if (object_camera_main != null)
+        {
+            transform.position = new Vector3(transform.position.x,
+                transform.position.y,
+                object_camera_main.transform.position.z + 2);
+        }
+        else
+        {
+            Debug.Log("(can ignore) object_camera_main is null, cannot move the z depth of flashlight");
+        }
     }
 }
