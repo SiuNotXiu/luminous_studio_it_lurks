@@ -30,7 +30,7 @@ public class Item : MonoBehaviour
             if (gameObject.CompareTag("ScrapPaper") && paper != null)
             {
                 paper.CollectScrapPaper(ScrapPaperId);
-                #region map icon activation
+/*                #region map icon activation
                 if (object_landmark[ScrapPaperId - 1] != null)
                 {
                     if (object_landmark[ScrapPaperId - 1].GetComponent<map_display_icon>() != null)
@@ -46,7 +46,7 @@ public class Item : MonoBehaviour
                 {
                     Debug.Log("object_landmark[ScrapPaperId - 1] is null");
                 }
-                #endregion
+                #endregion*/
                 Destroy(gameObject);
             }
             else if (!inventoryController.IsInventoryFull() && itemData != null)
