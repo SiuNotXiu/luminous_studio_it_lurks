@@ -62,7 +62,6 @@ public class CollectedScrapPaper : MonoBehaviour
         //Debug.Log("current?:     " + currentPageIndex);
         //Debug.Log("max?:     " + currentMaxPage);
 
-
         if (collectedScrapIDs.Contains(currentPageIndex +1))
         {
             //display

@@ -2008,6 +2008,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1980330239006017995, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_Name
+      value: MonsterSFX
+      objectReference: {fileID: 0}
     - target: {fileID: 3056118866645240778, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2144,6 +2148,10 @@ PrefabInstance:
       propertyPath: m_Maskable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4028299072126515998, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_Name
+      value: MonsterSFX Slider
+      objectReference: {fileID: 0}
     - target: {fileID: 4180950189893729004, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
@@ -2179,6 +2187,10 @@ PrefabInstance:
     - target: {fileID: 4888921639911832663, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980129068407531010, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_text
+      value: Monster SFX
       objectReference: {fileID: 0}
     - target: {fileID: 5108413448603300836, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchoredPosition.x
