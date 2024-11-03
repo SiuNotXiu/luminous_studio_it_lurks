@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class CollectedScrapPaper : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public class CollectedScrapPaper : MonoBehaviour
     {
         public int id;                 // Unique identifier for each scrap
     }
-
-    public List<ScrapPaper> journalScrapPapers;  // Complete list of scrap papers in chronological order
 
     public Image leftImage;
     public Image rightImage;
@@ -24,12 +23,13 @@ public class CollectedScrapPaper : MonoBehaviour
 
     private List<int> collectedScrapIDs = new List<int>(); // IDs of collected scraps
     private int currentPageIndex = 0;            // Tracks the current page index
-    private int scrapsPerPage = 1;               // Number of scraps per page (can adjust if needed)
+    private int currentMaxPage = 1;
+
 
     private void Start()
     {
         nextPageButton.onClick.AddListener(FlipToNextPage);
-        previousPageButton.onClick.AddListener(FlipToPreviousPage);
+        previousPageButton.onClick.AddListener(FlipToPreviousPage);//shouldn't assign it on the button cuz it already assign it form here
         UpdateJournal();
     }
 
@@ -39,60 +39,66 @@ public class CollectedScrapPaper : MonoBehaviour
         {
             Debug.Log("Id added: " + id);
             collectedScrapIDs.Add(id);
-
-            //debug process
-            if (id == 1)
-            {
-                leftImage.sprite = leftSprite[0];
-
-                // Display corresponding comment
-                rightImage.sprite = rightSprite[0];
-            }
             UpdateJournal();
         }
     }
 
-    private void UpdateJournal()
+    public void UpdateJournal()
     {
-        Debug.Log("SCcrap in");
-        // Ensure the current page index is within bounds of the journal pages
-        int maxPageIndex = Mathf.Max(0, Mathf.CeilToInt(journalScrapPapers.Count / (float)scrapsPerPage) - 1);
-        currentPageIndex = Mathf.Clamp(currentPageIndex, 0, maxPageIndex);
+        Debug.Log("Scrap in");
 
-        // Display scraps based on current page
-        int startIndex = currentPageIndex * scrapsPerPage;
-        for (int i = startIndex; i < startIndex + scrapsPerPage && i < journalScrapPapers.Count; i++) //looping is to ensure got blank page
+        if (collectedScrapIDs.Count >= 1)
         {
-            ScrapPaper scrap = journalScrapPapers[i];
- 
-            if (collectedScrapIDs.Contains(scrap.id))
-            {
-                // Display collected scrap
-                Debug.Log("Assign True tot");
-                leftImage.sprite = leftSprite[i];
+            currentMaxPage = GetMaxValue(collectedScrapIDs);
+        }
+        else
+        {
+            //the sprite for theleft right should be blank//i think no need?
+        }
 
-                // Display corresponding comment
-                rightImage.sprite = rightSprite[i];
-            }
-            else
+        currentPageIndex = Mathf.Clamp(currentPageIndex, 0, currentMaxPage);
+        
+        // Show the images based on the current page index
+        //Debug.Log("current?:     " + currentPageIndex);
+        //Debug.Log("max?:     " + currentMaxPage);
+
+
+        if (collectedScrapIDs.Contains(currentPageIndex +1))
+        {
+            //display
+            leftImage.sprite = leftSprite[currentPageIndex];
+            rightImage.sprite = rightSprite[currentPageIndex];
+        }
+        else
+        {
+            //display blank
+            leftImage.sprite = emptySprite;
+            rightImage.sprite = emptySprite;
+        }
+
+        previousPageButton.interactable = currentPageIndex > 0;
+        nextPageButton.interactable = currentPageIndex < currentMaxPage - 1 ;
+    }
+
+    private int GetMaxValue(List<int> numbers)
+    {
+        int maxValue = numbers[0]; 
+        for (int i = 1; i < numbers.Count; i++)
+        {
+            if (numbers[i] > maxValue)
             {
-                // Display blank page for missed scrap
-                leftImage.sprite = emptySprite;
-                rightImage.sprite = emptySprite;
+                maxValue = numbers[i]; // Update maxValue if current number is greater
             }
         }
 
-        // Update button interactability based on the current page index
-        //here's maybe the problem causing the button can't interact
-        previousPageButton.interactable = currentPageIndex > 0;
-        nextPageButton.interactable = currentPageIndex < maxPageIndex;
+        return maxValue;
     }
+
 
     public void FlipToNextPage()
     {
         Debug.Log("Flipping");
-        int maxPageIndex = Mathf.CeilToInt(journalScrapPapers.Count / (float)scrapsPerPage) - 1;
-        if (currentPageIndex < maxPageIndex)
+        if (currentPageIndex < currentMaxPage -1)
         {
             currentPageIndex++;
             UpdateJournal();
