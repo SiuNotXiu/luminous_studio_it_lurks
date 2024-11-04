@@ -6,11 +6,7 @@ using Unity.Collections.LowLevel.Unsafe;
 
 public class CollectedScrapPaper : MonoBehaviour
 {
-    [System.Serializable]
-    public class ScrapPaper
-    {
-        public int id;                 // Unique identifier for each scrap
-    }
+
 
     public Image leftImage;
     public Image rightImage;
@@ -24,6 +20,7 @@ public class CollectedScrapPaper : MonoBehaviour
     private List<int> collectedScrapIDs = new List<int>(); // IDs of collected scraps
     private int currentPageIndex = 0;            // Tracks the current page index
     private int currentMaxPage = 1;
+    public bool[] unlockJournal;
 
 
     private void Start()
@@ -38,6 +35,7 @@ public class CollectedScrapPaper : MonoBehaviour
         if (!collectedScrapIDs.Contains(id))
         {
             Debug.Log("Id added: " + id);
+            unlockJournal[id -1] = true;
             collectedScrapIDs.Add(id);
             UpdateJournal();
         }

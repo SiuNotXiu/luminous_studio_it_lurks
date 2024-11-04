@@ -23,10 +23,7 @@ public class CollectedRnU : MonoBehaviour
     private int currentRecipePage = 0;
     private int currentUpgradePage = 0;
     private bool showingUpgrades = false;
-
-    //the script doest finish
-    //got bug where the player got the item it should assign the upgrade photo(using collected scrap paper as reference)
-    //the max value isnt right for this, the upgrade should got the sprite where assign it to this script
+    private List<int> collectedUpgrade = new List<int>(); // collected scraps
 
     private void Start()
     {
@@ -34,6 +31,15 @@ public class CollectedRnU : MonoBehaviour
         previousPageButton.onClick.AddListener(FlipToPreviousPage);
 
         UpdatePage();
+    }
+
+    public void CollectedUpgrade(int id)
+    {
+        if (!collectedUpgrade.Contains(id))
+        {
+            collectedUpgrade.Add(id);
+            UpdatePage();
+        }
     }
 
     private void UpdatePage()
@@ -44,20 +50,30 @@ public class CollectedRnU : MonoBehaviour
             leftImage.sprite = leftRecipe[currentRecipePage];
             rightImage.sprite = rightRecipe[currentRecipePage];
         }
-        else if (showingUpgrades && currentUpgradePage < upgrades.Length)
+        else if (showingUpgrades)
         {
-            // Display upgrade pages once recipes are finished
-            leftImage.sprite = upgrades[currentUpgradePage];
-            rightImage.sprite = emptySprite; // Assuming right side is empty for upgrades
+            // Display upgrade pages in pairs
+            int leftIndex = currentUpgradePage * 2;
+            int rightIndex = leftIndex + 1;
+
+            // Assign left image
+            leftImage.sprite = upgrades[collectedUpgrade[leftIndex] - 1];
+
+            // Assign right image, or empty if there’s no corresponding right-side upgrade
+            if (rightIndex < collectedUpgrade.Count)
+            {
+                rightImage.sprite = upgrades[collectedUpgrade[rightIndex] - 1];
+            }
+            else
+            {
+                rightImage.sprite = emptySprite;
+            }
         }
-        else
-        {
-            // Out of bounds, set empty sprites
-            leftImage.sprite = emptySprite;
-            rightImage.sprite = emptySprite;
-        }
-        previousPageButton.interactable = currentRecipePage > 0;
-        nextPageButton.interactable = (showingUpgrades && currentUpgradePage < upgrades.Length - 1) ;
+
+        previousPageButton.interactable = currentRecipePage > 0 ; 
+        nextPageButton.interactable = (!showingUpgrades && currentRecipePage < leftRecipe.Length - 1)
+                                      || (showingUpgrades && currentUpgradePage < (collectedUpgrade.Count + 1) / 2 - 1)
+                                      || (!showingUpgrades && currentRecipePage == leftRecipe.Length - 1 && collectedUpgrade.Count > 0);
     }
 
     public void FlipToNextPage()
@@ -71,10 +87,10 @@ public class CollectedRnU : MonoBehaviour
             else
             {
                 showingUpgrades = true;
-                currentUpgradePage = 0; // Start upgrades after all recipes
+                currentUpgradePage = 0;
             }
         }
-        else if (currentUpgradePage < upgrades.Length - 1)
+        else if (currentUpgradePage < (collectedUpgrade.Count - 1) / 2) // left right as one page
         {
             currentUpgradePage++;
         }
@@ -92,8 +108,9 @@ public class CollectedRnU : MonoBehaviour
             }
             else
             {
+                // Go back to the last recipe page
                 showingUpgrades = false;
-                currentRecipePage = leftRecipe.Length - 1; // Go back to last recipe
+                currentRecipePage = leftRecipe.Length - 1;
             }
         }
         else if (currentRecipePage > 0)
