@@ -37,6 +37,12 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
 
     public void CheckAndShowCraftingResult(CraftingSlot slot1, CraftingSlot slot2)
     {
+        if (slot1.IsEmpty() || slot2.IsEmpty())
+        {
+            ClearSlot();
+            return;
+        }
+
         string item1Name = slot1.GetItemName().ToLower();
         string item2Name = slot2.GetItemName().ToLower();
         string recipeKey = item1Name + "+" + item2Name;
@@ -107,5 +113,10 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
                 Debug.LogWarning("ResultSlot clicked, but it is empty or invalid");
             }
         }
+    }
+
+    public void ResetResultOnInventoryClose()
+    {
+        ClearSlot();
     }
 }
