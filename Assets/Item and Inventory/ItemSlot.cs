@@ -11,6 +11,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public ItemData itemData;
     public bool isFull;
     public RectTransform itemSlot; // Reference to the item slot RectTransform
+    [SerializeField] private GameObject droppedItemPrefab; // reference to the item prefab (for dropping function)
+    [SerializeField] private Transform playerTransform;
 
     //temporary data for calculation
     public int datax;
@@ -240,7 +242,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void FuseItem()
     {
         Debug.Log("Store item: " + itemData.itemName);
-        // Logic to discard the item
+        if (itemData.isBulbCompatible || itemData.isBatteryCompatible)
+        {
+            inventoryC.FuseItemToPerkSlot(itemData);
+            RemoveItem();
+        }
+        else
+        {
+            Debug.Log("Item cannot be used in perk slots.");
+        }
         HideDropdownMenu();
     }
 
@@ -253,8 +263,18 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private void DropItem()
     {
+        if (itemData == null) return;
+
         Debug.Log("Dropping item: " + itemData.itemName);
-        // Logic to drop the item
+
+        Vector3 dropPosition = playerTransform.position + new Vector3(0, 0.5f, 0);
+        GameObject droppedItem = Instantiate(droppedItemPrefab, dropPosition, Quaternion.identity);
+
+        SpriteRenderer spriteRenderer = droppedItem.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = itemData.itemSprite;
+        }
         HideDropdownMenu();
     }
 

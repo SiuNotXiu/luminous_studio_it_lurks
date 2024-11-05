@@ -273,4 +273,20 @@ public class InventoryController : MonoBehaviour
     {
         Boarder.sprite = PageSprite[1];
     }
+
+    public void FuseItemToPerkSlot(ItemData itemData)
+    {
+        if (itemData.isBulbCompatible && bulbUpgradeSlot.IsEmpty())
+        {
+            bulbUpgradeSlot.FuseItem(itemData);
+        }
+        else if (itemData.isBatteryCompatible && batteryUpgradeSlot.IsEmpty())
+        {
+            batteryUpgradeSlot.FuseItem(itemData);
+        }
+        else
+        {
+            Debug.Log("No compatible perk slot or slot is full.");
+        }
+    }
 }
