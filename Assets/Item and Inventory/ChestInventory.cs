@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChestController : MonoBehaviour
+public class ChestInventory : MonoBehaviour
 {
     public CampSlot[] chestSlots = new CampSlot[9]; 
     private Dictionary<string, ItemData> chestItemDict = new Dictionary<string, ItemData>();
