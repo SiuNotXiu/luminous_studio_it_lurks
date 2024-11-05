@@ -12,6 +12,7 @@ public class CampInsideItem : MonoBehaviour
 
 
 
+
     //if player inventory all full, cant assign
     //if player inventory not full, add item to player inventory
 

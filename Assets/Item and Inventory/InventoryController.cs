@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class InventoryController : MonoBehaviour
     public GameObject setting;
     public GameObject journal_p1n2;
 
+    [Header("Switching Sprite")]
+    public Image Boarder;
+    public Sprite[] PageSprite; 
+
     private void Start()
     {
         InitializeItemDictionary();
@@ -44,6 +49,7 @@ public class InventoryController : MonoBehaviour
         if (Input.GetButtonDown("Journal") && JournalOpen)
         {
             OpenJournal();
+            Switching2();
             button_Pg1.SetActive(false);
             Page1.SetActive(false);
             Page2.SetActive(true);
@@ -51,6 +57,7 @@ public class InventoryController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
         {
             OpenJournal();
+            Switching1();
             Page1.SetActive(true);
             Page2.SetActive(false);
 
@@ -253,4 +260,14 @@ public class InventoryController : MonoBehaviour
         tempItems.Clear();
     }
 
+    public void Switching1()
+    {
+        Boarder.sprite = PageSprite[0];
+
+
+    }
+    public void Switching2()
+    {
+        Boarder.sprite = PageSprite[1];
+    }
 }
