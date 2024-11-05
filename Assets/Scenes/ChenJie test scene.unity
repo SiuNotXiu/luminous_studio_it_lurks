@@ -764,7 +764,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: -2
   m_TargetDisplay: 0
 --- !u!1001 &999732322
 PrefabInstance:
@@ -926,6 +926,10 @@ PrefabInstance:
     - target: {fileID: 1897578560905141494, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -538.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849245634756665807, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3648571824174059145, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_IsActive
@@ -1207,6 +1211,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7564238094575555205, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564238094575555205, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7628588939869754240, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -1426,7 +1438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c3a1faa20bab8749b4a51d3bd00d18c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe2b24552ac3a6a44b546a55f3d96e25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
