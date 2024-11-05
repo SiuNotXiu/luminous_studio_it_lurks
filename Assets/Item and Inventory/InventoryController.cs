@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
@@ -13,9 +14,14 @@ public class InventoryController : MonoBehaviour
     [SerializeField] private ChestController chest_detect;
     public GameObject Journal;
     public GameObject Description;
+
+    // GAME SYSTEMS
     public ItemSlot[] itemSlot = new ItemSlot[6];
     public CraftingSlot[] craftingSlots = new CraftingSlot[2];
     public ResultSlot resultSlot;
+    public PerkSlot bulbUpgradeSlot;
+    public PerkSlot batteryUpgradeSlot;
+
     private bool JournalOpen = true;
 
     // temp items (moved from craftingslot)
@@ -30,6 +36,10 @@ public class InventoryController : MonoBehaviour
     public GameObject setting;
     public GameObject journal_p1n2;
 
+    [Header("Switching Sprite")]
+    public Image Boarder;
+    public Sprite[] PageSprite; 
+
     private void Start()
     {
         InitializeItemDictionary();
@@ -42,6 +52,7 @@ public class InventoryController : MonoBehaviour
         if (Input.GetButtonDown("Journal") && JournalOpen)
         {
             OpenJournal();
+            Switching2();
             button_Pg1.SetActive(false);
             Page1.SetActive(false);
             Page2.SetActive(true);
@@ -49,6 +60,7 @@ public class InventoryController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
         {
             OpenJournal();
+            Switching1();
             Page1.SetActive(true);
             Page2.SetActive(false);
 
@@ -108,6 +120,8 @@ public class InventoryController : MonoBehaviour
         }
 
         ReturnTempItemsToInventory();
+
+        resultSlot.ResetResultOnInventoryClose();
     }
     // Function to set the dropdown menu instance
     public void SetDropdownMenuInstance(GameObject dropdown)
@@ -170,7 +184,7 @@ public class InventoryController : MonoBehaviour
         {
             TryCrafting();
         }
-        else
+        else if (!craftingSlots[0].HasItem() || !craftingSlots[1].HasItem())
         {
             // If both items are not present, clear the result slot
             resultSlot.ClearSlot();
@@ -192,6 +206,26 @@ public class InventoryController : MonoBehaviour
             AddItem(itemData);
             resultSlot.ClearSlot();
         }
+    }
+
+    public bool AddCraftingSlotItemToInventory(ItemData itemData)
+    {
+        if (IsInventoryFull())
+        {
+            Debug.Log("Cannot add item. Inventory is full.");
+            return false;
+        }
+        for (int i = 0; i < itemSlot.Length; i++)
+        {
+            if (!itemSlot[i].isFull)
+            {
+                itemSlot[i].AddItem(itemData);
+                Debug.Log("Item added to inventory slot: " + itemData.itemName);
+                return true;
+            }
+        }
+        Debug.Log("No empty slot found to add item.");
+        return false;
     }
 
     private void InitializeItemDictionary()
@@ -229,4 +263,14 @@ public class InventoryController : MonoBehaviour
         tempItems.Clear();
     }
 
+    public void Switching1()
+    {
+        Boarder.sprite = PageSprite[0];
+
+
+    }
+    public void Switching2()
+    {
+        Boarder.sprite = PageSprite[1];
+    }
 }

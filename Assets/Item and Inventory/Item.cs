@@ -7,13 +7,14 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private ItemData itemData; // Reference to the ItemData ScriptableObject
     [SerializeField] private CollectedScrapPaper paper;
+    [SerializeField] private CollectedRnU upgrade;
 
     public string ItemName => itemData != null ? itemData.itemName : "";
     public string ItemTag => itemData != null ? itemData.itemTag : "";
     public Sprite Sprite => itemData != null ? itemData.itemSprite : null;
 
     private InventoryController inventoryController;
-    public int ScrapPaperId;//start from 1
+    public int ScrapPaperId;//start from 1 ,, it also use for unlock upgrade paper
     public bool isPlayerInRange = false;
 
     [HideInInspector] private GameObject[] object_landmark;
@@ -52,6 +53,10 @@ public class Item : MonoBehaviour
             else if (!inventoryController.IsInventoryFull() && itemData != null)
             {
                 Debug.Log("Store check");
+                if (gameObject.CompareTag("PerksItem"))
+                {
+                    upgrade.CollectedUpgrade(ScrapPaperId);
+                }
                 inventoryController.AddItem(itemData);
                 Destroy(gameObject);
             }
