@@ -44,6 +44,8 @@ public class WeepingScarecrowManager : MonoBehaviour
     {
         idleTrigger.EnteredTrigger += OnIdleTriggerEntered;
         idleTrigger.ExitedTrigger += OnIdleTriggerExited;
+        attackTrigger.EnteredTrigger += OnAtkTriggerEntered;
+
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = speed;
         agent.updateRotation = false;
@@ -91,7 +93,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         }
     }
 
-    private void OnAttackTriggerEntered(Collider2D collision)
+    private void OnAtkTriggerEntered(Collider2D collision)
     {
         if (collision.CompareTag("Player") && target != null)
         {
