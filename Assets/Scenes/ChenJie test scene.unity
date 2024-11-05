@@ -1585,11 +1585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4647178866203849353, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.89
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: 4647178866203849353, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.84
+      value: 3.23
       objectReference: {fileID: 0}
     - target: {fileID: 4647178866203849353, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2175,6 +2175,7 @@ MonoBehaviour:
   itemData:
   - {fileID: 0}
   - {fileID: 0}
+  brokeCampsite: 0
 --- !u!1 &1998606510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,11 +2339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4647178866203849353, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.26
+      value: -4.76
       objectReference: {fileID: 0}
     - target: {fileID: 4647178866203849353, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.84
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4647178866203849353, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
       propertyPath: m_LocalPosition.z

@@ -118,14 +118,14 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         // Instantiate the dropdown menu prefab
         activeDropdownMenu = Instantiate(dropdownMenuPrefab);
-        activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject; //from child find it from parent
+        activeDropdownMenu_panel = activeDropdownMenu.transform.Find("Panel").gameObject;
 
         // Calculate the new position for the pop-up menu
         Vector3 popUpPosition = new Vector3(campSlot.position.x + datax, campSlot.position.y + datay);
         // Set the position of the pop-up menu
         activeDropdownMenu_panel.transform.position = popUpPosition;
 
-        //find the button
+        // Find the buttons
         Button buttonS = activeDropdownMenu.transform.Find("Panel/Store").GetComponent<Button>();
         Button buttonC = activeDropdownMenu.transform.Find("Panel/Craft").GetComponent<Button>();
         Button buttonF = activeDropdownMenu.transform.Find("Panel/Fuse").GetComponent<Button>();
@@ -140,11 +140,12 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         buttonU.gameObject.SetActive(false);
         buttonD.gameObject.SetActive(false);
 
-        buttonS.onClick.AddListener(() => StoreItem());
-
+        // Corrected listener
+        buttonS.onClick.AddListener(() => StoreItem(itemData)); // Use itemData instead of itemdata
     }
 
-    private void StoreItem()
+
+    private void StoreItem(ItemData item)
     {
         Debug.Log("Store item: " + itemData.itemName);
         // Logic to store it to item slot
