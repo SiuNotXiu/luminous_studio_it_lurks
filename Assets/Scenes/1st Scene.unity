@@ -1639,12 +1639,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601008412}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1392485543}
+  m_Father: {fileID: 1928515863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2231,6 +2231,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1453084158}
+  - {fileID: 1776852899}
   - {fileID: 568121816}
   - {fileID: 1221201030}
   - {fileID: 209453810}
@@ -3564,7 +3565,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 601008413}
   - {fileID: 1134388428}
   m_Father: {fileID: 1928515863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3756,8 +3756,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1776852899}
+  m_Children: []
   m_Father: {fileID: 796880884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4171,7 +4170,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776852898}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4179,11 +4178,11 @@ RectTransform:
   - {fileID: 1336724224}
   - {fileID: 1109616717}
   - {fileID: 915541527}
-  m_Father: {fileID: 1453084158}
+  m_Father: {fileID: 796880884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 86.7246, y: -10.7288}
+  m_AnchoredPosition: {x: 122, y: 48.623}
   m_SizeDelta: {x: 333.4493, y: 41.4576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1776852900
@@ -4467,6 +4466,7 @@ RectTransform:
   m_Children:
   - {fileID: 1392485543}
   - {fileID: 1438638653}
+  - {fileID: 601008413}
   - {fileID: 796880884}
   - {fileID: 1292585895}
   m_Father: {fileID: 0}
