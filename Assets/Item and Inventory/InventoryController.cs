@@ -15,9 +15,12 @@ public class InventoryController : MonoBehaviour
     public GameObject Journal;
     public GameObject Description;
 
+    // GAME SYSTEMS
     public ItemSlot[] itemSlot = new ItemSlot[6];
     public CraftingSlot[] craftingSlots = new CraftingSlot[2];
     public ResultSlot resultSlot;
+    public PerkSlot bulbUpgradeSlot;
+    public PerkSlot batteryUpgradeSlot;
 
     private bool JournalOpen = true;
 
