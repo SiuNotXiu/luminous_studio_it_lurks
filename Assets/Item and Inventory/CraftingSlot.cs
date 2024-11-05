@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CraftingSlot : MonoBehaviour
+public class CraftingSlot : MonoBehaviour, IPointerClickHandler
 {
     private InventoryController inventoryController;
 
@@ -31,11 +32,6 @@ public class CraftingSlot : MonoBehaviour
 
     public void AddItem(ItemData newItemData)
     {
-        if (newItemData == null)
-        {
-            Debug.LogError("Trying to add null ItemData to CraftingSlot.");
-            return;
-        }
         this.itemData = newItemData;
         this.isFull = true;
         this.itemImage.sprite = newItemData.itemSprite;
@@ -51,13 +47,10 @@ public class CraftingSlot : MonoBehaviour
 
     public ItemData RemoveItem()
     {
-        //store tempitem
         ItemData tempItemData = this.itemData;
-
-        //clear crafting slot
         ClearSlot();
 
-        // return store item
+        inventoryController.OnCraftingSlotUpdated();
         return tempItemData;
     }
 
@@ -76,5 +69,27 @@ public class CraftingSlot : MonoBehaviour
     public string GetItemName()
     {
         return itemData != null ? itemData.itemName : "";
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // If slot has an item, return it to the inventory
+        if (isFull && itemData != null)
+        {
+            bool addedToInventory = inventoryController.AddCraftingSlotItemToInventory(itemData);
+            if (addedToInventory)
+            {
+                Debug.Log("Item returned to inventory from CraftingSlot: " + itemData.itemName);
+                RemoveItem(); // Clear slot only if item was successfully added to inventory
+            }
+            else
+            {
+                Debug.LogWarning("Inventory is full. Cannot return item to inventory.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("CraftingSlot clicked, but it is empty.");
+        }
     }
 }
