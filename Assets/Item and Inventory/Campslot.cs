@@ -7,6 +7,7 @@ using static UnityEditor.Progress;
 
 public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+
     //=====ITEM DATA=====//
     public ItemData itemData;
     public bool isFull;
@@ -30,13 +31,18 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     // Reference to the inventory manager that handles the inventory open/close state
     [SerializeField] private InventoryController inventoryC;
+
+
     public GameObject P1;
     public GameObject P2;
 
     //detect if in range of the campsite or not
     [SerializeField] private ChestController ChestIn;
 
-    
+    private void Start()
+    {
+    }
+
     //should have a detect tell player the campsite is full and and store anymore
     private void Update()
     {
@@ -51,18 +57,6 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
         }
 
-    }
-
-    public void AddItem(ItemData itemData)
-    {
-        this.itemData = itemData;
-        isFull = true;
-        this.itemImage.sprite = itemData.itemSprite;
-    }
-
-    public bool IsEmpty()
-    {
-        return !isFull;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -194,4 +188,24 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
         return false;
     }
+
+    public void AddItemToSlot(ItemData newItem)
+    {
+        itemData = newItem;
+        isFull = true;
+        itemImage.sprite = itemData.itemSprite;
+    }
+
+    public void ClearSlot()
+    {
+        itemData = null;
+        isFull = false;
+        itemImage.sprite = null;
+    }
+
+    public bool IsEmpty()
+    {
+        return !isFull;
+    }
+
 }
