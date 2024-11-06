@@ -2681,6 +2681,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1678899613}
+    - targetCorrespondingSourceObject: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1678899614}
   m_SourcePrefab: {fileID: 100100000, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
 --- !u!114 &1678899611 stripped
 MonoBehaviour:
@@ -2715,6 +2718,31 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   brokeCampsite: 0
+--- !u!114 &1678899614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678899612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef88aff989ddfa143884ddbe973668f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  isFull: 0
+  campSlot: {fileID: 0}
+  datax: 0
+  datay: 0
+  dataIy: 0
+  itemImage: {fileID: 0}
+  dropdownMenuPrefab: {fileID: 0}
+  itemDescription: {fileID: 0}
+  inventoryC: {fileID: 0}
+  P1: {fileID: 0}
+  P2: {fileID: 0}
+  ChestIn: {fileID: 0}
 --- !u!1 &1687114690
 GameObject:
   m_ObjectHideFlags: 0
