@@ -3457,6 +3457,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: {fileID: 0}
   itemData:
+  - {fileID: 11400000, guid: 663dddf2b347b79448535d7662164195, type: 2}
+  - {fileID: 11400000, guid: 3ae187f79603f2942842161d184441ef, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   brokeCampsite: 0
