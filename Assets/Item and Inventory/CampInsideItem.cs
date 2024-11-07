@@ -7,7 +7,7 @@ public class CampInsideItem : MonoBehaviour
     // Logic for this is to assign random items (4-5) into the campsite inventory journal
     // This acts as data storage for the items
 
-    [SerializeField] private CampSlot slot;
+    [SerializeField] private ChestSlot slot;
     [SerializeField] private ItemData[] itemData;
     public bool brokeCampsite;
     private int luckynum;
@@ -47,18 +47,18 @@ public class CampInsideItem : MonoBehaviour
             ItemData randomItem = itemData[randomIndex];
 
             // Attempt to add the random item to the camp slot
-            slot.AddItemToSlot(randomItem); // Add to camp slot
+            slot.AddItem(randomItem); // Add to camp slot
         }
 
         if(brokeCampsite)
         {
             ItemData randomItem = itemData[0];//bandage
-            slot.AddItemToSlot(randomItem);
+            slot.AddItem(randomItem);
         }
         else
         {
             ItemData randomItem = itemData[0];//medkit
-            slot.AddItemToSlot(randomItem);
+            slot.AddItem(randomItem);
         }
     }
 }

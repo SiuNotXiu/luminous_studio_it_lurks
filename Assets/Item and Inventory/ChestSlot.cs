@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using static UnityEditor.Progress;
 
-public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     //=====ITEM DATA=====//
@@ -27,10 +27,12 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private GameObject itemDescription_panel;
 
 
-    public event Action<CampSlot> OnItemClicked;
+    public event Action<ChestSlot> OnItemClicked;
 
     // Reference to the inventory manager that handles the inventory open/close state
     [SerializeField] private InventoryController inventoryC;
+
+    private ChestInventory chestInventory;
 
 
     public GameObject P1;
@@ -148,10 +150,20 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void StoreItem(ItemData item)
     {
         Debug.Log("Store item: " + itemData.itemName);
-        // Logic to store it to item slot
+        if (inventoryC.CanAddToPlayerInventory(itemData))
+        {
+            inventoryC.AddItemToPlayerInventory(itemData);
+            ClearSlot();
+
+            Debug.Log("Item stored in player inventory: " + itemData.itemName);
+        }
+        else
+        {
+            Debug.Log("Player inventory is full, cannot store item.");
+        }
         HideDropdownMenu();
     }
-   
+
 
     private void RemoveItem()
     {
@@ -190,18 +202,31 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         return false;
     }
 
-    public void AddItemToSlot(ItemData newItem)
+    public void AddItem(ItemData newItem)
     {
-        itemData = newItem;
+        if (newItem == null)
+        {
+            Debug.LogError("AddItemToSlot: newItem is null.");
+            return;
+        }
+
+        if (itemImage == null)
+        {
+            Debug.LogError("AddItemToSlot: itemImage is not assigned.");
+            return;
+        }
+
+        this.itemData = newItem;
         isFull = true;
-        itemImage.sprite = itemData.itemSprite;
+        this.itemImage.sprite = newItem.itemSprite;
     }
+
 
     public void ClearSlot()
     {
-        itemData = null;
+        this.itemData = null;
         isFull = false;
-        itemImage.sprite = null;
+        this.itemImage.sprite = null;
     }
 
     public bool IsEmpty()
@@ -209,4 +234,32 @@ public class CampSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         return !isFull;
     }
 
+    //from player inventory to chest inventory
+    public void StoreItemFromPlayer(ItemData itemData)
+    {
+        if (!isFull)
+        {
+            AddItem(itemData);
+            inventoryC.RemoveItemFromPlayerInventory(itemData);
+            Debug.Log("Item stored in chest: " + itemData.itemName);
+        }
+    }
+
+    //get from chest inventory to player inventory
+    public void RetrieveItemToPlayer()
+    {
+        if (isFull)
+        {
+            if (inventoryC.CanAddToPlayerInventory(itemData))
+            {
+                inventoryC.AddItemToPlayerInventory(itemData);
+                ClearSlot();
+                Debug.Log("Item retrieved from chest: " + itemData.itemName);
+            }
+            else
+            {
+                Debug.Log("Player inventory is full.");
+            }
+        }
+    }
 }

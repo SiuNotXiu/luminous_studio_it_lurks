@@ -38,6 +38,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     //detect if in range of the campsite or not
     [SerializeField] private ChestController ChestIn;
+    [SerializeField] private ChestInventory chestInventory;
 
 
     private void Update()
@@ -210,7 +211,18 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void StoreItem()
     {
         Debug.Log("Store item: " + itemData.itemName);
-        // Logic to discard the item
+        if (ChestIn.isInRange && chestInventory.CanAddToChestInventory(itemData))
+        {
+            // Add the item to the chest
+            chestInventory.StoreItemFromPlayer(itemData);
+            ClearSlot();
+
+            Debug.Log("Item successfully stored in chest: " + itemData.itemName);
+        }
+        else
+        {
+            Debug.Log("Cannot store item: Chest is either full or out of range.");
+        }
         HideDropdownMenu();
     }
     private void CraftItem()
@@ -306,5 +318,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
         }
         return false;
+    }
+
+    public void ClearSlot()
+    {
+        itemData = null;
+        isFull = false;
+        itemImage.sprite = null;
     }
 }

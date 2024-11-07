@@ -4,78 +4,49 @@ using UnityEngine;
 
 public class ChestInventory : MonoBehaviour
 {
-    public CampSlot[] chestSlots = new CampSlot[9]; 
-    private Dictionary<string, ItemData> chestItemDict = new Dictionary<string, ItemData>();
+    public ChestSlot[] chestSlots = new ChestSlot[9];
+    [SerializeField] public InventoryController playerInventory;
 
-    [SerializeField] private InventoryController playerInventory; 
-
-    private void Start()
-    {
-        InitializeChestSlots();
-    }
-
-    
-    private void InitializeChestSlots()
+    //store (from player to chest)
+    public void StoreItemFromPlayer(ItemData itemData)
     {
         foreach (var slot in chestSlots)
         {
-            slot.ClearSlot(); 
+            if (!slot.isFull)
+            {
+                slot.AddItem(itemData);
+                playerInventory.RemoveItemFromPlayerInventory(itemData);
+                Debug.Log("Item stored in chest: " + itemData.itemName);
+                return;
+            }
+        }
+        Debug.Log("Chest is full, cannot store item.");
+    }
+
+    //retrieve (from chest to player)
+    public void RetrieveItemToPlayer(ChestSlot chestSlot)
+    {
+        if (chestSlot.isFull && playerInventory.CanAddToPlayerInventory(chestSlot.itemData))
+        {
+            playerInventory.AddItemToPlayerInventory(chestSlot.itemData);
+            chestSlot.ClearSlot();
+            Debug.Log("Item retrieved from chest: " + chestSlot.itemData.itemName);
+        }
+        else
+        {
+            Debug.Log("Cannot retrieve item, player inventory may be full.");
         }
     }
 
-    public bool AddItemToChest(ItemData itemData)
+    public bool CanAddToChestInventory(ItemData itemdata)
     {
         foreach (var slot in chestSlots)
         {
-            if (slot.IsEmpty())
+            if (!slot.isFull)
             {
-                slot.AddItemToSlot(itemData);
-                chestItemDict[itemData.itemName] = itemData;
                 return true;
             }
         }
-        Debug.Log("Chest is full. Cannot add item.");
-        return false;
-    }
-
-    public bool RemoveItemFromChest(string itemName)
-    {
-        foreach (var slot in chestSlots)
-        {
-            if (slot.isFull && slot.itemData.itemName == itemName)
-            {
-                slot.ClearSlot();
-                chestItemDict.Remove(itemName);
-                return true;
-            }
-        }
-        Debug.LogWarning("Item not found in chest.");
-        return false;
-    }
-
-    public bool TransferItemToChest(string itemName)
-    {
-        ItemData item = playerInventory.GetItemData(itemName);
-        if (item != null && AddItemToChest(item))
-        {
-         //   playerInventory.RemoveItem(itemName);
-            Debug.Log("Transferred item to chest: " + itemName);
-            return true;
-        }
-        return false;
-    }
-
-    // Transfer item from chest to player inventory
-    public bool TransferItemToInventory(string itemName)
-    {
-        if (RemoveItemFromChest(itemName) && !playerInventory.IsInventoryFull())
-        {
-            ItemData item = chestItemDict[itemName];
-            playerInventory.AddItem(item);
-            Debug.Log("Transferred item to player inventory: " + itemName);
-            return true;
-        }
-        Debug.LogWarning("Failed to transfer item to inventory.");
         return false;
     }
 }

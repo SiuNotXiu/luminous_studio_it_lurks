@@ -289,4 +289,42 @@ public class InventoryController : MonoBehaviour
             Debug.Log("No compatible perk slot or slot is full.");
         }
     }
+
+    public void RemoveItemFromPlayerInventory(ItemData itemData)
+    {
+        foreach (var slot in itemSlot)
+        {
+            if (slot.isFull && slot.itemData == itemData)
+            {
+                slot.ClearSlot();
+                return;
+            }
+        }
+        Debug.Log("Item not found in player inventory.");
+    }
+
+    public bool CanAddToPlayerInventory(ItemData itemData)
+    {
+        foreach (var slot in itemSlot)
+        {
+            if (!slot.isFull)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void AddItemToPlayerInventory(ItemData itemData)
+    {
+        foreach (var slot in itemSlot)
+        {
+            if (!slot.isFull)
+            {
+                slot.AddItem(itemData);
+                return;
+            }
+        }
+        Debug.Log("Player inventory is full.");
+    }
 }
