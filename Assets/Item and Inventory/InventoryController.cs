@@ -74,7 +74,7 @@ public class InventoryController : MonoBehaviour
 
         }
         // Close Journal with Escape or the same Journal button
-        else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
+        else if ((Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
             CloseJournal();
         }
