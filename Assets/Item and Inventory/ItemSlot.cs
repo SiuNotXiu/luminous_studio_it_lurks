@@ -201,7 +201,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 case "Use":
                     btn.onClick.AddListener(() => UseItem());
                     break;
-                case "Drops":
+                case "Drop":
                     btn.onClick.AddListener(() => DropItem());
                     break;
             }
@@ -234,7 +234,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             RemoveItem();
 
-            // Attempt crafting once items are added
+            // attempt crafting once items are added
             inventoryC.TryCrafting();
         }
         else
@@ -282,11 +282,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         Vector3 dropPosition = playerTransform.position + new Vector3(0, 0.5f, 0);
         GameObject droppedItem = Instantiate(droppedItemPrefab, dropPosition, Quaternion.identity);
 
-        SpriteRenderer spriteRenderer = droppedItem.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        DroppedItem droppedItemScript = droppedItem.GetComponent<DroppedItem>();
+        if (droppedItemScript != null)
         {
-            spriteRenderer.sprite = itemData.itemSprite;
+            droppedItemScript.Initialize(itemData);
         }
+
+        ClearSlot();
         HideDropdownMenu();
     }
 

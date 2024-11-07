@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private ItemData itemData; // Reference to the ItemData ScriptableObject
+    [SerializeField] private ItemData itemData; // find item properties with scriptableobjects
     [SerializeField] private CollectedScrapPaper paper;
     [SerializeField] private CollectedRnU upgrade;
 
+    public ItemData ItemData => itemData;
     public string ItemName => itemData != null ? itemData.itemName : "";
     public string ItemTag => itemData != null ? itemData.itemTag : "";
     public Sprite Sprite => itemData != null ? itemData.itemSprite : null;
+    public Sprite DroppedSprite => itemData != null ? itemData.droppedSprite : null;
+    public Sprite SelectedSprite => itemData != null ? itemData.selectedSprite : null;
+
 
     private InventoryController inventoryController;
     public int ScrapPaperId;//start from 1 ,, it also use for unlock upgrade paper
@@ -64,6 +68,17 @@ public class Item : MonoBehaviour
             {
                 Debug.Log("Inventory is full bro stapt");
             }
+        }
+    }
+
+    public void SetItemData(ItemData data)
+    {
+        itemData = data;
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && itemData != null)
+        {
+            spriteRenderer.sprite = itemData.itemSprite;
         }
     }
 

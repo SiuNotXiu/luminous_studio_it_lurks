@@ -273,7 +273,7 @@ MonoBehaviour:
   itemData: {fileID: 0}
   isFull: 0
   itemSlot: {fileID: 714611747564924067}
-  droppedItemPrefab: {fileID: 0}
+  droppedItemPrefab: {fileID: 4904651877909844242, guid: 518c30e668b1bb4428827d0e2e28ec36, type: 3}
   playerTransform: {fileID: 0}
   datax: -70
   datay: -40
@@ -286,6 +286,7 @@ MonoBehaviour:
   P1: {fileID: 0}
   P2: {fileID: 0}
   ChestIn: {fileID: 0}
+  chestInventory: {fileID: 0}
 --- !u!114 &6389150074322427216
 MonoBehaviour:
   m_ObjectHideFlags: 0
