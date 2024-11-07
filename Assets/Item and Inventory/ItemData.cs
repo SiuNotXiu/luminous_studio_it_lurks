@@ -13,4 +13,6 @@ public class ItemData : ScriptableObject
 
     public bool isBulbCompatible;
     public bool isBatteryCompatible;
+
+
 }

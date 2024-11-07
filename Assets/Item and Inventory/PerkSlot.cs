@@ -33,12 +33,14 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
             itemData = newItemData;
             isFull = true;
             itemImage.sprite = newItemData.itemSprite;
+            ApplyPerkEffects();
         }
         else if (!isBulbSlot && newItemData.isBatteryCompatible)
         {
             itemData = newItemData;
             isFull = true;
             itemImage.sprite = newItemData.itemSprite;
+            ApplyPerkEffects();
         }
         else
         {
@@ -46,15 +48,9 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public ItemData RemoveItem()
-    {
-        ItemData tempItemData = this.itemData;
-        ClearSlot();
-        return tempItemData;
-    }
-
     public void ClearSlot()
     {
+        RemovePerkEffects();
         this.itemData = null;
         this.isFull = false;
         itemImage.sprite = null;
@@ -69,16 +65,55 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
     {
         if (isFull && itemData != null)
         {
-            // Check if the inventory is full before adding
             if (inventoryController != null && !inventoryController.IsInventoryFull())
             {
-                inventoryController.AddItem(itemData); // Add item to the inventory
-                ClearSlot(); // Clear the slot after moving item
+                inventoryController.AddItem(itemData); 
+                ClearSlot();
             }
             else
             {
                 Debug.Log("Cannot add item. Player inventory is full.");
             }
+        }
+    }
+
+    private void ApplyPerkEffects()
+    {
+        if (itemData == null) return;
+
+        switch (itemData.itemName)
+        {
+            case "1300 mAh Casing":
+                
+                break;
+
+            case "20k Lumen Bulb":
+                
+                break;
+
+            default:
+                Debug.LogWarning("No effect yet: " + itemData.itemName);
+                break;
+        }
+    }
+
+    private void RemovePerkEffects()
+    {
+        if (itemData == null) return;
+
+        switch (itemData.itemName)
+        {
+            case "1300 mAh Casing":
+                
+                break;
+
+            case "20k Lumen Bulb":
+                
+                break;
+
+            default:
+                Debug.LogWarning("No effect yet: " + itemData.itemName);
+                break;
         }
     }
 }

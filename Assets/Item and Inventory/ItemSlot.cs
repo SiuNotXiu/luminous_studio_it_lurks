@@ -40,6 +40,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] private ChestController ChestIn;
     [SerializeField] private ChestInventory chestInventory;
 
+    
 
     private void Update()
     {
@@ -266,8 +267,34 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private void UseItem()
     {
+        if (itemData == null) return;
         Debug.Log("Using item: " + itemData.itemName);
-        // Logic to use the item
+
+        switch (itemData.itemName)
+        {
+            case "Battery":
+                //Refills flashlight
+                break;
+
+            case "1300 mAh Battery":
+                //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
+                break;
+            case "First Aid Kit":
+                //Restores full health
+                break;
+
+            case "Bandage":
+                //Restores 1 hit
+                break;
+
+            case "Adrenaline":
+                //A syringe that makes the character move 1.5 times faster for 5 seconds
+                break;
+
+            default:
+                Debug.Log("Unknown usage: " + itemData.itemName);
+                break;
+        }
         HideDropdownMenu();
     }
 
