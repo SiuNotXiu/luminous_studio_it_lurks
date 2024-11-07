@@ -216,8 +216,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             // Add the item to the chest
             chestInventory.StoreItemFromPlayer(itemData);
             ClearSlot();
-
-            Debug.Log("Item successfully stored in chest: " + itemData.itemName);
         }
         else
         {
