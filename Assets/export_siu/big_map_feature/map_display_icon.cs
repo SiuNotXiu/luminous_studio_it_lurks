@@ -8,15 +8,7 @@ public class map_display_icon : MonoBehaviour
 
     private void Start()
     {
-        object_big_map_icon = gameObject.transform.Find("big_map_icon").gameObject;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            display_icon_on_map();
-        }
+        object_big_map_icon = transform.Find("big_map_icon").gameObject;
     }
 
     public void display_icon_on_map()
