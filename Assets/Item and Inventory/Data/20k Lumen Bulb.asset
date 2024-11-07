@@ -15,5 +15,7 @@ MonoBehaviour:
   itemName: 20k Lumen Bulb
   itemTag: PerksItem
   itemSprite: {fileID: 21300000, guid: 275725aa2b9c12148b5d6fdabce72ff5, type: 3}
+  droppedSprite: {fileID: 21300000, guid: 275725aa2b9c12148b5d6fdabce72ff5, type: 3}
+  selectedSprite: {fileID: 0}
   isBulbCompatible: 1
   isBatteryCompatible: 0

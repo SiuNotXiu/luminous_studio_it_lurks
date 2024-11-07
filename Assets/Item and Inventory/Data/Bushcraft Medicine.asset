@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Bushcraft Medicine
   itemTag: PerksItem
-  itemSprite: {fileID: 21300000, guid: 4b021a10e5170a74abf0d576ff29d3d9, type: 3}
+  itemSprite: {fileID: 21300000, guid: dddddedb30c42504da3f87f1556e415a, type: 3}
+  droppedSprite: {fileID: 21300000, guid: bc6d8ecc80b8d6845a7c5597c07c3a4c, type: 3}
+  selectedSprite: {fileID: 0}
   isBulbCompatible: 0
   isBatteryCompatible: 0

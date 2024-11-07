@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Yarrow
   itemTag: CraftItem
-  itemSprite: {fileID: 21300000, guid: 62f3c7c8a099d0c418e222b6492a8a9f, type: 3}
+  itemSprite: {fileID: 21300000, guid: 40f1fd6dc26883e479124a3a0f4679fe, type: 3}
+  droppedSprite: {fileID: 21300000, guid: 942291af4f1a52642a70acd97b731c4c, type: 3}
+  selectedSprite: {fileID: 0}
+  isBulbCompatible: 0
+  isBatteryCompatible: 0
