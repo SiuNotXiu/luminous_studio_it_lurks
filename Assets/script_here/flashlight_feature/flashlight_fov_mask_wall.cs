@@ -14,6 +14,10 @@ public class flashlight_fov_wall_mask : MonoBehaviour
     [HideInInspector] public static bool this_frame_calculated_shape = false;
     [HideInInspector] public static Mesh mesh;
     [HideInInspector] public static float fov = 90f;
+    [HideInInspector] public static int ray_count;
+    [HideInInspector] public static float angle_increase;
+    [HideInInspector] public static float view_distance_initial = 7f;
+    [HideInInspector] public static float view_distance = 7f;//default value follow initial
     [HideInInspector] private Vector3 origin;
     [HideInInspector] public static Vector3 player_position;
     [HideInInspector] public static float angle;
@@ -46,7 +50,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
     {
         #region initialize variable
         mesh = new Mesh();
-        //GetComponent<MeshFilter>().mesh = mesh;
+        view_distance = view_distance_initial;
         //shape drawing
         origin = Vector3.zero;
         angle = 0f;
@@ -88,9 +92,9 @@ public class flashlight_fov_wall_mask : MonoBehaviour
             this_frame_calculated_shape = true;
             if (player_database.is_flashlight_on == true)
             {
-                int ray_count = (int)fov * 2;
-                float angle_increase = -fov / ray_count;
-                float view_distance = 7f;
+                //if fov changed, the calculation will follow up
+                ray_count = (int)fov * 2;
+                angle_increase = -fov / (float)ray_count;
 
                 Vector3[] vertices = new Vector3[ray_count + 1 + 1];
                 Vector2[] uv = new Vector2[vertices.Length];

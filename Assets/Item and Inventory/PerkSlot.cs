@@ -7,12 +7,11 @@ using UnityEngine.EventSystems;
 public class PerkSlot : MonoBehaviour, IPointerClickHandler
 {
     private InventoryController inventoryController;
-    public static bool perks_battery_capacity_increase = false;
-    public static bool perks_flashlight_range_increase = false;
 
     //=====ITEM DATA=====//
     public ItemData itemData;
     public bool isFull;
+    public bool batteryCaseCheck = false; //check battery in slot
 
     //=====ITEM SLOT=====//
     [SerializeField] private bool isBulbSlot; // true for Bulb - false for Battery
@@ -86,11 +85,11 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
-                perks_battery_capacity_increase = true;
+                //
                 break;
 
             case "20k Lumen Bulb":
-                perks_flashlight_range_increase = true;
+                flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial * 2;
                 break;
 
             default:
@@ -106,11 +105,11 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
-                perks_battery_capacity_increase = false;
+                //
                 break;
 
             case "20k Lumen Bulb":
-                perks_flashlight_range_increase = false;
+                flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial;
                 break;
 
             default:

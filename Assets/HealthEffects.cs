@@ -66,4 +66,28 @@
             }
         }
 
+    public void Heal()
+    {
+        currentHp += 10f;
     }
+
+    public void FullHeal()
+    {
+        currentHp = maxHp;
+    }
+
+    public bool GetFullHealth()
+    {
+        if (currentHp == maxHp)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    }
+
+
