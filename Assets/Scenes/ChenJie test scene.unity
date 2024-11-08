@@ -3450,18 +3450,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924729829}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1586ed436291c6439a8a9fe878093df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot: {fileID: 0}
   itemData:
   - {fileID: 11400000, guid: 663dddf2b347b79448535d7662164195, type: 2}
   - {fileID: 11400000, guid: 9536611eff716854682df93a3c186bd4, type: 2}
   - {fileID: 11400000, guid: 8501742e54a8ffc4d96604cc49b12ae8, type: 2}
   - {fileID: 11400000, guid: 880f165f5bcd6d4439d1c772b38f2285, type: 2}
   - {fileID: 11400000, guid: ea935fbde0a789243bec8d0334e631c0, type: 2}
+  chestIn: {fileID: 1924729834}
   brokeCampsite: 0
 --- !u!114 &1924729834
 MonoBehaviour:
