@@ -33,12 +33,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     // Reference to the inventory manager that handles the inventory open/close state
     [SerializeField] private InventoryController inventoryC;
+    private battery_bar_float playerFlashlightBattery;
     public GameObject P1;
     public GameObject P2;
 
     //detect if in range of the campsite or not
     [SerializeField] private ChestController ChestIn;
     [SerializeField] private ChestInventory chestInventory;
+    private PerkSlot perksEquip;
 
     
 
@@ -273,7 +275,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         switch (itemData.itemName)
         {
             case "Battery":
-                //Refills flashlight
+                playerFlashlightBattery.battery_remaining = playerFlashlightBattery.battery_max;
+                RemoveItem();
                 break;
 
             case "1300 mAh Battery":
