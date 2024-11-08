@@ -43,7 +43,7 @@ public class ShapeShifterManager : MonoBehaviour
 
     private void Update()
     {
-
+        currentState.UpdateState(this);
     }
 
     public void SwitchState(ShapeShifterBaseState state)

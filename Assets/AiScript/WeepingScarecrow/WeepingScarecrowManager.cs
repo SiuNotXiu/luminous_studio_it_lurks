@@ -15,6 +15,8 @@ public class WeepingScarecrowManager : MonoBehaviour
     #region<CustomTrigger>
     public CustomTrigger idleTrigger;
     public CustomTrigger attackTrigger;
+    public CustomTrigger followTrigger;
+
     #endregion
 
     #region<Variables>
@@ -22,8 +24,9 @@ public class WeepingScarecrowManager : MonoBehaviour
     private Transform target;
     private NavMeshAgent agent;
     private float speed = 6f;
-    private float timer = 0f;
+    [SerializeField] private float timer = 0f;
     private float time = 5f;
+    private bool flw = false;
 
     #endregion
 
@@ -37,7 +40,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     private void Start()
     {
         currentState = idleState;
-        currentState.EnterState(this);
+        idleState.EnterState(this);
     }
 
     private void Awake()
@@ -45,6 +48,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         idleTrigger.EnteredTrigger += OnIdleTriggerEntered;
         idleTrigger.ExitedTrigger += OnIdleTriggerExited;
         attackTrigger.EnteredTrigger += OnAtkTriggerEntered;
+        followTrigger.EnteredTrigger += OnFollowTriggerEntered;
 
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = speed;
@@ -71,15 +75,6 @@ public class WeepingScarecrowManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             target = collision.transform;
-            SoundEffectManager.instance.PlayRandomSoundFxClip(enterSoundClips, transform, 1f);
-            timer += Time.deltaTime;
-            if (timer > time) 
-            {
-                SwitchState(followState);
-                timer = 0;
-            }
-            
-                    
         }
     }
 
@@ -88,6 +83,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             target = null;
+            flw = false;
             SwitchState(idleState);
             Debug.Log("thiswork");
         }
@@ -99,6 +95,16 @@ public class WeepingScarecrowManager : MonoBehaviour
         {
             SwitchState(attackState);
         }
+    }
+
+    private void OnFollowTriggerEntered(Collider2D collision)
+    {
+        if (flw == false && target != null) 
+        {
+            SoundEffectManager.instance.PlayRandomSoundFxClip(enterSoundClips, transform, 1f);
+            StartCoroutine(FollowStateDelay());
+        }
+    
     }
     #endregion
 
@@ -118,6 +124,11 @@ public class WeepingScarecrowManager : MonoBehaviour
         return flahsed;
     }
 
+    public bool GetFlw()
+    {
+        return flw;
+    }
+
     public AudioClip[] GetFlwSoundClips()
     {
         return flwSoundClips;
@@ -128,4 +139,11 @@ public class WeepingScarecrowManager : MonoBehaviour
         return atkSoundClips;
     }
     #endregion
+
+    private IEnumerator FollowStateDelay()
+    {
+        yield return new WaitForSeconds(4f);
+        SwitchState(followState);
+        flw = true;
+    }
 }

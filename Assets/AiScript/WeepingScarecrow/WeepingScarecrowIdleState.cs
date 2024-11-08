@@ -17,13 +17,13 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
             agent.velocity = Vector3.zero;
         }
 
-        Debug.Log("Hi im idle");
+        //Debug.Log("Hi im idle");
         
     }
 
     public override void UpdateState(WeepingScarecrowManager weepingScarecrow)
     {
-        if (weepingScarecrow.GetFlashed() == false && weepingScarecrow.GetTarget() != null)  
+        if (weepingScarecrow.GetFlashed() == false && weepingScarecrow.GetFlw() == true)  
         {
             weepingScarecrow.SwitchState(weepingScarecrow.followState);
         }
