@@ -1,4 +1,4 @@
-Shader"Custom/mask"
+Shader "Custom/mask"
 {
     SubShader
     {

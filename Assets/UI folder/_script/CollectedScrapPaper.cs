@@ -6,7 +6,7 @@ using Unity.Collections.LowLevel.Unsafe;
 
 public class CollectedScrapPaper : MonoBehaviour
 {
-
+    [SerializeField] big_map_icon_reveal_manager map;
 
     public Image leftImage;
     public Image rightImage;
@@ -36,6 +36,7 @@ public class CollectedScrapPaper : MonoBehaviour
         {
             Debug.Log("Id added: " + id);
             unlockJournal[id -1] = true;
+            map.call_this_after_scrap_paper_taken(unlockJournal);
             collectedScrapIDs.Add(id);
             UpdateJournal();
         }
@@ -56,9 +57,6 @@ public class CollectedScrapPaper : MonoBehaviour
 
         currentPageIndex = Mathf.Clamp(currentPageIndex, 0, currentMaxPage);
         
-        // Show the images based on the current page index
-        //Debug.Log("current?:     " + currentPageIndex);
-        //Debug.Log("max?:     " + currentMaxPage);
 
         if (collectedScrapIDs.Contains(currentPageIndex +1))
         {

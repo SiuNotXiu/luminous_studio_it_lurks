@@ -30,8 +30,8 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
         knownRecipes = new Dictionary<string, string>
         {
             // example recipe: combine "ItemA" and "ItemB" to get "ResultItem"
-            { "ginseng+yarrow", "Medicine" },
-            { "yarrow+ginseng", "Medicine" }
+            { "ginseng+yarrow", "Bushcraft Medicine" },
+            { "yarrow+ginseng", "Bushcraft Medicine" }
         };
     }
 

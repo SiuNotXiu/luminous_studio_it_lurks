@@ -11,6 +11,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public ItemData itemData;
     public bool isFull;
     public RectTransform itemSlot; // Reference to the item slot RectTransform
+    [SerializeField] private GameObject droppedItemPrefab; // reference to the item prefab (for dropping function)
+    [SerializeField] private Transform playerTransform;
 
     //temporary data for calculation
     public int datax;
@@ -36,7 +38,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     //detect if in range of the campsite or not
     [SerializeField] private ChestController ChestIn;
+    [SerializeField] private ChestInventory chestInventory;
 
+    
 
     private void Update()
     {
@@ -198,7 +202,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 case "Use":
                     btn.onClick.AddListener(() => UseItem());
                     break;
-                case "Drops":
+                case "Drop":
                     btn.onClick.AddListener(() => DropItem());
                     break;
             }
@@ -208,7 +212,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void StoreItem()
     {
         Debug.Log("Store item: " + itemData.itemName);
-        // Logic to discard the item
+        if (ChestIn.isInRange && chestInventory.CanAddToChestInventory(itemData))
+        {
+            // Add the item to the chest
+            chestInventory.StoreItemFromPlayer(itemData);
+            ClearSlot();
+        }
+        else
+        {
+            Debug.Log("Cannot store item: Chest is either full or out of range.");
+        }
         HideDropdownMenu();
     }
     private void CraftItem()
@@ -220,7 +233,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             RemoveItem();
 
-            // Attempt crafting once items are added
+            // attempt crafting once items are added
             inventoryC.TryCrafting();
         }
         else
@@ -240,21 +253,67 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void FuseItem()
     {
         Debug.Log("Store item: " + itemData.itemName);
-        // Logic to discard the item
+        if (itemData.isBulbCompatible || itemData.isBatteryCompatible)
+        {
+            inventoryC.FuseItemToPerkSlot(itemData);
+            RemoveItem();
+        }
+        else
+        {
+            Debug.Log("Item cannot be used in perk slots.");
+        }
         HideDropdownMenu();
     }
 
     private void UseItem()
     {
+        if (itemData == null) return;
         Debug.Log("Using item: " + itemData.itemName);
-        // Logic to use the item
+
+        switch (itemData.itemName)
+        {
+            case "Battery":
+                //Refills flashlight
+                break;
+
+            case "1300 mAh Battery":
+                //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
+                break;
+            case "First Aid Kit":
+                //Restores full health
+                break;
+
+            case "Bandage":
+                //Restores 1 hit
+                break;
+
+            case "Adrenaline":
+                //A syringe that makes the character move 1.5 times faster for 5 seconds
+                break;
+
+            default:
+                Debug.Log("Unknown usage: " + itemData.itemName);
+                break;
+        }
         HideDropdownMenu();
     }
 
     private void DropItem()
     {
+        if (itemData == null) return;
+
         Debug.Log("Dropping item: " + itemData.itemName);
-        // Logic to drop the item
+
+        Vector3 dropPosition = playerTransform.position + new Vector3(0, 0.5f, 0);
+        GameObject droppedItem = Instantiate(droppedItemPrefab, dropPosition, Quaternion.identity);
+
+        DroppedItem droppedItemScript = droppedItem.GetComponent<DroppedItem>();
+        if (droppedItemScript != null)
+        {
+            droppedItemScript.Initialize(itemData);
+        }
+
+        ClearSlot();
         HideDropdownMenu();
     }
 
@@ -286,5 +345,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
         }
         return false;
+    }
+
+    public void ClearSlot()
+    {
+        itemData = null;
+        isFull = false;
+        itemImage.sprite = null;
     }
 }

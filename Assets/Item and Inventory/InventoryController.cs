@@ -74,7 +74,7 @@ public class InventoryController : MonoBehaviour
 
         }
         // Close Journal with Escape or the same Journal button
-        else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
+        else if ((Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
             CloseJournal();
         }
@@ -272,5 +272,59 @@ public class InventoryController : MonoBehaviour
     public void Switching2()
     {
         Boarder.sprite = PageSprite[1];
+    }
+
+    public void FuseItemToPerkSlot(ItemData itemData)
+    {
+        if (itemData.isBulbCompatible && bulbUpgradeSlot.IsEmpty())
+        {
+            bulbUpgradeSlot.FuseItem(itemData);
+        }
+        else if (itemData.isBatteryCompatible && batteryUpgradeSlot.IsEmpty())
+        {
+            batteryUpgradeSlot.FuseItem(itemData);
+        }
+        else
+        {
+            Debug.Log("No compatible perk slot or slot is full.");
+        }
+    }
+
+    public void RemoveItemFromPlayerInventory(ItemData itemData)
+    {
+        foreach (var slot in itemSlot)
+        {
+            if (slot.isFull && slot.itemData == itemData)
+            {
+                slot.ClearSlot();
+                return;
+            }
+        }
+        Debug.Log("Item not found in player inventory.");
+    }
+
+    public bool CanAddToPlayerInventory(ItemData itemData)
+    {
+        foreach (var slot in itemSlot)
+        {
+            if (!slot.isFull)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void AddItemToPlayerInventory(ItemData itemData)
+    {
+        foreach (var slot in itemSlot)
+        {
+            if (!slot.isFull)
+            {
+                slot.AddItem(itemData);
+                return;
+            }
+        }
+        Debug.Log("Player inventory is full.");
     }
 }

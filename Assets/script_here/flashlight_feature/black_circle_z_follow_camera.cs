@@ -11,7 +11,7 @@ public class black_circle_z_follow_camera : MonoBehaviour
     void OnValidate()
     {
         object_camera_main = GameObject.Find("camera_main_dont_change_name");
-        if (object_camera_main != null)
+        if (object_camera_main != null )
         {
             transform.position = new Vector3(transform.position.x,
                 transform.position.y,

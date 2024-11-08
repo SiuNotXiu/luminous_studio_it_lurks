@@ -270,18 +270,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbb1bf02a5fbe147a068f3b2e0f288d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  itemSprite: {fileID: 0}
-  itemTag: 
+  itemData: {fileID: 0}
   isFull: 0
   itemSlot: {fileID: 714611747564924067}
+  droppedItemPrefab: {fileID: 4904651877909844242, guid: 518c30e668b1bb4428827d0e2e28ec36, type: 3}
+  playerTransform: {fileID: 0}
   datax: -70
   datay: -40
+  dataIx: 0
+  dataIy: 100
   itemImage: {fileID: 3870888290961356340}
   dropdownMenuPrefab: {fileID: 2664137742798027793, guid: f5dc3a1dd3591aa48aef04f613dff47e, type: 3}
-  inventoryC: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-  P1: {fileID: 3073720125559571428, guid: cd6cedaf20175b94d8964291c3376525, type: 3}
-  P2: {fileID: 7536959926735978244, guid: 001efc194eca95848b78488d67511b0f, type: 3}
+  itemDescription: {fileID: 0}
+  inventoryC: {fileID: 0}
+  P1: {fileID: 0}
+  P2: {fileID: 0}
+  ChestIn: {fileID: 0}
+  chestInventory: {fileID: 0}
 --- !u!114 &6389150074322427216
 MonoBehaviour:
   m_ObjectHideFlags: 0

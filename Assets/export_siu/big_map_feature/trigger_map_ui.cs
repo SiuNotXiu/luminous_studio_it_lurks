@@ -6,9 +6,20 @@ public class trigger_map_ui : MonoBehaviour
 {
     [SerializeField] private GameObject big_map;
 
+    [SerializeField] private GameObject object_big_map_background;
+    [HideInInspector] private Vector2 obmb_initial_scale;
+    [HideInInspector] private big_map_scrolling script_bms;
+
+
+    [SerializeField] private GameObject object_map_and_icon;
+
     private void Start()
     {
         big_map.SetActive(false);
+        #region for mouse scrolling zoom map
+        obmb_initial_scale = object_big_map_background.transform.localScale;
+        script_bms = GetComponent<big_map_scrolling>();
+        #endregion
     }
     // Update is called once per frame
     void Update()
@@ -24,6 +35,13 @@ public class trigger_map_ui : MonoBehaviour
                 else
                 {
                     big_map.SetActive(false);
+                    #region for mouse scrolling zoom map
+                    object_big_map_background.transform.localScale = obmb_initial_scale;
+                    script_bms.current_zoom_count = 0;
+                    #endregion
+                    #region for mouse drag map
+                    object_map_and_icon.transform.localPosition = new Vector2(0,0);
+                    #endregion
                 }
             }
         }
