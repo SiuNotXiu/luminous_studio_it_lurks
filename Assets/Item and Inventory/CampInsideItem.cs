@@ -18,11 +18,11 @@ public class CampInsideItem : MonoBehaviour
         AssignRandomItems();
     }
 
+
     public void AsssignToPlayerJournal()//active this at inventoryController
     {
         for (int i = 0; i < 9; i++) 
         {
-            Debug.Log("two dawg run at the ame time");
             if (itemDataStroing[i] == null)
             {
                 continue;
@@ -30,6 +30,7 @@ public class CampInsideItem : MonoBehaviour
             else
             {
                 // Attempt to add the random item to the camp slot
+                //Debug.Log("chestIn > " + chestIn);
                 chestIn.StoreItemFromChest(itemDataStroing[i]);
             }
 

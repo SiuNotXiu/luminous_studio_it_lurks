@@ -7,17 +7,22 @@ public class ChestController : MonoBehaviour
 {
     public bool isOpen;
     public bool isInRange;
-    [SerializeField] ItemSlot assignRange;
 
     public Animator animator;
+
+    //chest recorgnise player
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+
             isInRange = true;
-            Debug.Log("Player is in the chest range");
+            InventoryController.chest_detect = gameObject.GetComponent<ChestController>();
+            InventoryController.chestIn = gameObject.GetComponent<CampInsideItem>();
+            InventoryController.chestOut = gameObject.GetComponent<ChestInventory>();
+            Debug.Log("Player is in the chest range of > " + gameObject.name);
         }
 
     }
@@ -27,6 +32,7 @@ public class ChestController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = !isInRange;
+            InventoryController.chest_detect = gameObject.GetComponent<ChestController>();
             Debug.Log("Player is not in the chest range");
         }
     }

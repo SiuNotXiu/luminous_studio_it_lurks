@@ -529,7 +529,6 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
 --- !u!224 &386853241 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6690409700933608604, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
@@ -836,7 +835,6 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
 --- !u!114 &711601700 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2949946816197595861, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
@@ -998,7 +996,6 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
 --- !u!1 &747469227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1312,6 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
 --- !u!1 &945258271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,7 +1614,7 @@ PrefabInstance:
     - target: {fileID: 3758260710429886559, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 0}
     - target: {fileID: 3758260710429886559, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: campSlot
       value: 
@@ -1642,7 +1638,7 @@ PrefabInstance:
     - target: {fileID: 3823068050714335898, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 0}
     - target: {fileID: 3823068050714335898, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
@@ -1658,7 +1654,7 @@ PrefabInstance:
     - target: {fileID: 4050376293259420406, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 0}
     - target: {fileID: 4050376293259420406, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
@@ -1746,7 +1742,7 @@ PrefabInstance:
     - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chest_detect
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 1924729838}
     - target: {fileID: 5543902144142036102, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1834,7 +1830,7 @@ PrefabInstance:
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 0}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
@@ -1878,7 +1874,7 @@ PrefabInstance:
     - target: {fileID: 6055679722957636142, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 0}
     - target: {fileID: 6055679722957636142, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
@@ -1930,7 +1926,7 @@ PrefabInstance:
     - target: {fileID: 7331284937691953623, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 0}
     - target: {fileID: 7331284937691953623, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
@@ -1986,7 +1982,7 @@ PrefabInstance:
     - target: {fileID: 8352448813385210775, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
-      objectReference: {fileID: 1749824926}
+      objectReference: {fileID: 0}
     - target: {fileID: 8352448813385210775, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
@@ -2518,7 +2514,6 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
 --- !u!1001 &1387626887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2592,6 +2587,111 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
+--- !u!1001 &1408622519
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 798836379}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestItem
+      value: 
+      objectReference: {fileID: 1992257151}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 1436578160}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 1613026522}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 1553371653}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 651086124}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 848704837}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 713172013}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 235832737}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1983667729}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1355352244}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 1596940545}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Name
+      value: Campfire (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
 --- !u!114 &1436578157 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
@@ -2775,7 +2875,6 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
 --- !u!1001 &1596940541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2926,7 +3025,6 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
 --- !u!114 &1613026522 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3758260710429886559, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
@@ -2943,17 +3041,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1486952048817948738, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   m_PrefabInstance: {fileID: 1155232070}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1749824926 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 281121130889989704, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-  m_PrefabInstance: {fileID: 1924729828}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86053f068c111d47a51d624296191ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1774833102
 GameObject:
   m_ObjectHideFlags: 0
@@ -3343,10 +3430,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 798836379}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: chestItem
-      value: 
-      objectReference: {fileID: 1924729830}
-    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 1436578160}
@@ -3388,11 +3471,11 @@ PrefabInstance:
       objectReference: {fileID: 1596940545}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.05
+      value: 4.03
       objectReference: {fileID: 0}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.83
+      value: -3.65
       objectReference: {fileID: 0}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3455,6 +3538,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a14d1a42e3b2b534db8eee5a70171b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1924729838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 857864008950184117, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+  m_PrefabInstance: {fileID: 1924729828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86053f068c111d47a51d624296191ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1983667725
@@ -3607,7 +3701,17 @@ MonoBehaviour:
   inventoryC: {fileID: 1436578160}
   P1: {fileID: 798836379}
   P2: {fileID: 1286377182}
-  ChestIn: {fileID: 1749824926}
+--- !u!114 &1992257151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674443295624880104, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+  m_PrefabInstance: {fileID: 1408622519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1586ed436291c6439a8a9fe878093df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1998606510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4140,11 +4244,11 @@ PrefabInstance:
       objectReference: {fileID: 1882465782}
     - target: {fileID: 3813107642604499116, guid: d29eab696597cee46b25d691c8758547, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.44
+      value: -6.75
       objectReference: {fileID: 0}
     - target: {fileID: 3813107642604499116, guid: d29eab696597cee46b25d691c8758547, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.04
+      value: -4.14
       objectReference: {fileID: 0}
     - target: {fileID: 3813107642604499116, guid: d29eab696597cee46b25d691c8758547, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4811,6 +4915,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 462072716}
   - {fileID: 1924729828}
+  - {fileID: 1408622519}
   - {fileID: 7558431539241435820}
   - {fileID: 1815730041}
   - {fileID: 1155232070}

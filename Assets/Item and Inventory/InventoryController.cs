@@ -11,7 +11,7 @@ public class InventoryController : MonoBehaviour
     // UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
-    [SerializeField] private ChestController chest_detect;
+    [SerializeField] public static ChestController chest_detect;
     public GameObject Journal;
     public GameObject Description;
 
@@ -41,8 +41,8 @@ public class InventoryController : MonoBehaviour
     public Sprite[] PageSprite;
 
     [Header("For chest")]
-    [SerializeField] ChestInventory chestOut;
-    [SerializeField] CampInsideItem ChestIn;
+    [SerializeField] public static ChestInventory chestOut;
+    [SerializeField] public static CampInsideItem chestIn;
 
     private void Start()
     {
@@ -64,7 +64,9 @@ public class InventoryController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
         {
-
+            Debug.Log("is it gay?: " + chest_detect.isInRange);//true
+            Debug.Log("chest_detect > " + chest_detect);
+            chestIn.AsssignToPlayerJournal();
             OpenJournal();
             Switching1();
             Page1.SetActive(true);
@@ -83,14 +85,16 @@ public class InventoryController : MonoBehaviour
         // Close Journal with Escape or the same Journal button
         else if ((Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
+            Debug.Log("is it gay?: " + chest_detect.isInRange);
             CloseJournal();
         }
     }
 
     private void OpenJournal()
     {
-        ChestIn.AsssignToPlayerJournal();
-        Debug.Log("Opening Journal");
+        //chest problem here in chest in
+        Debug.Log("wwwwwwwww > " + chestIn);
+        //Debug.Log("Opening Journal");
         JournalOpen = false;
         Journal.SetActive(true);
         journal_display.Show();
@@ -101,8 +105,9 @@ public class InventoryController : MonoBehaviour
 
     private void CloseJournal()
     {
-        chestOut.ClosingChest();
-        Debug.Log("Closing Journal");
+
+        chestOut.ClosingChest();//cant work if tab open,tab close
+        //Debug.Log("Closing Journal");
         // Destroy dropdown menu instance if it exists
         if (dropdownMenuInstance != null)
         {

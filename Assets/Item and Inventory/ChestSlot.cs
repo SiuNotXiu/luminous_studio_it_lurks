@@ -32,14 +32,9 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     // Reference to the inventory manager that handles the inventory open/close state
     [SerializeField] private InventoryController inventoryC;
 
-    private ChestInventory chestInventory;
-
 
     public GameObject P1;
     public GameObject P2;
-
-    //detect if in range of the campsite or not
-    [SerializeField] private ChestController ChestIn;
 
 
     //should have a detect tell player the campsite is full and and store anymore

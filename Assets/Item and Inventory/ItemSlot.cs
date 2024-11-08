@@ -37,10 +37,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public GameObject P1;
     public GameObject P2;
 
-    //detect if in range of the campsite or not
-    [SerializeField] private ChestController ChestIn;
-    [SerializeField] private ChestInventory chestInventory;
-
     //for items reference
     private PerkSlot perksEquip; //to check can use better battery or not
     private HealthEffects playerHealth;
@@ -155,13 +151,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
 
-        if (ChestIn.isInRange)
+        if (InventoryController.chest_detect.isInRange)
         {
             buttonD.gameObject.SetActive(false);
         }
         if (P1.activeSelf)
         {
-            Debug.Log("Detect it is on p1: " + P1.activeSelf);
             //storing
             if (this.itemData.itemTag == "PerksItem")
             {
@@ -175,13 +170,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             buttonS.gameObject.SetActive(false);
             if (this.itemData.itemTag == "CraftItem")
             {
-                Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //crafting
                 buttonF.gameObject.SetActive(false);
             }
             else if (this.itemData.itemTag == "PerksItem")
             {
-                Debug.Log("Detect it is on p2: " + P2.activeSelf);
                 //fuse
                 buttonU.gameObject.SetActive(false);
                 buttonC.gameObject.SetActive(false);
@@ -217,10 +210,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void StoreItem()
     {
         Debug.Log("Store item: " + itemData.itemName);
-        if (ChestIn.isInRange && chestInventory.CanAddToChestInventory(itemData))
+        if (InventoryController.chest_detect.isInRange && InventoryController.chestOut.CanAddToChestInventory(itemData))
         {
             // Add the item to the chest
-            chestInventory.StoreItemFromPlayer(itemData);
+            InventoryController.chestOut.StoreItemFromPlayer(itemData);
             ClearSlot();
         }
         else

@@ -8,7 +8,6 @@ public class ChestInventory : MonoBehaviour
     public GameObject JournalP1;
     [SerializeField] public InventoryController playerInventory;
     [SerializeField] CampInsideItem chestItem;
-    private ItemData[] item;
 
 
     //store (from player to chest)
@@ -70,6 +69,7 @@ public class ChestInventory : MonoBehaviour
                 {
                     chestItem.TakeBackFromPlayerJournal(slot.GetItemData());
                     slot.ClearSlot();
+                    continue;
 
                 }
             }
