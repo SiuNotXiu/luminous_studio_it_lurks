@@ -22,6 +22,20 @@ public class ChestInventory : MonoBehaviour
         }
         Debug.Log("Chest is full, cannot store item.");
     }
+    public void StoreItemFromChest(ItemData itemData)
+    {
+        foreach (var slot in chestSlots)
+        {
+            if (!slot.isFull)
+            {
+                slot.AddItem(itemData);
+                Debug.Log("Item stored in chest: " + itemData.itemName);
+                return;
+            }
+        }
+        Debug.Log("Chest is full, cannot store item.");
+    }
+
 
     //retrieve (from chest to player)
     public void RetrieveItemToPlayer(ChestSlot chestSlot)
