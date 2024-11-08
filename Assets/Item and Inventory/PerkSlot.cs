@@ -11,6 +11,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
     //=====ITEM DATA=====//
     public ItemData itemData;
     public bool isFull;
+    public bool batteryCaseCheck = false; //check battery in slot
 
     //=====ITEM SLOT=====//
     [SerializeField] private bool isBulbSlot; // true for Bulb - false for Battery
@@ -84,6 +85,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
+                //
                 break;
 
             case "20k Lumen Bulb":
@@ -103,6 +105,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
+                //
                 break;
 
             case "20k Lumen Bulb":
