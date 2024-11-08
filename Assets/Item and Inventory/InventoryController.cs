@@ -11,7 +11,7 @@ public class InventoryController : MonoBehaviour
     // UI
     [SerializeField] private Journal_display journal_display;
     [SerializeField] private Button_display button_display;
-    [SerializeField] public static ChestController chest_detect;
+    public static ChestController chest_detect;
     public GameObject Journal;
     public GameObject Description;
 
@@ -67,7 +67,6 @@ public class InventoryController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
         {
             Debug.Log("is it gay?: " + chest_detect.isInRange);//true
-            Debug.Log("chest_detect > " + chest_detect);
             chestIn.AsssignToPlayerJournal();
             Special_Bool_For_Inventory = true;
             OpenJournal();

@@ -89,7 +89,6 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
             if (buttonText != null)
             {
-                Debug.Log("Name has change");
                 buttonText.text = itemData.itemName; // Set the button text to the item's name or any data
             }
 

@@ -83,12 +83,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             Debug.Log("Left click on item: " + itemData.itemName);
             ShowDropdownMenu();
         }
-        else if (eventData.button == PointerEventData.InputButton.Right)//we may only using left, still need confirm
-        {
-            OnRightMouseBtnClick?.Invoke(this);
-            Debug.Log("Right click on item: " + itemData.itemName);
-            ShowDropdownMenu();
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -151,6 +145,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
 
+        Debug.Log("IDK CHEcking : " + InventoryController.chest_detect.isInRange);
         if (InventoryController.chest_detect.isInRange)
         {
             buttonD.gameObject.SetActive(false);
