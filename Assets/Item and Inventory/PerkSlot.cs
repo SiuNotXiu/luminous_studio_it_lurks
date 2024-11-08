@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class PerkSlot : MonoBehaviour, IPointerClickHandler
 {
     private InventoryController inventoryController;
+    public static bool perks_battery_capacity_increase = false;
+    public static bool perks_flashlight_range_increase = false;
 
     //=====ITEM DATA=====//
     public ItemData itemData;
@@ -84,11 +86,11 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
-                
+                perks_battery_capacity_increase = true;
                 break;
 
             case "20k Lumen Bulb":
-                
+                perks_flashlight_range_increase = true;
                 break;
 
             default:
@@ -104,11 +106,11 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
-                
+                perks_battery_capacity_increase = false;
                 break;
 
             case "20k Lumen Bulb":
-                
+                perks_flashlight_range_increase = false;
                 break;
 
             default:

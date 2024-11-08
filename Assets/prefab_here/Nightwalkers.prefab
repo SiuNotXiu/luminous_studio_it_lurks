@@ -330,7 +330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3035412185471361213}
   - component: {fileID: 7407456413002066286}
-  - component: {fileID: 3458044284441842174}
   - component: {fileID: 388977694933684988}
   - component: {fileID: 5813085379830691728}
   - component: {fileID: 3744177220498758824}
@@ -415,19 +414,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3458044284441842174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2766521153818071665}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9562a3a2e869bd439c21e17f5175022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healtheffects: {fileID: 0}
 --- !u!195 &388977694933684988
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -481,6 +467,8 @@ MonoBehaviour:
   speedBoostTime: 2
   idleTimer: 0
   idleTime: 2
+  fleeTime: 0
+  fleeTimer: 5
   player: {fileID: 0}
 --- !u!114 &3744177220498758824
 MonoBehaviour:
