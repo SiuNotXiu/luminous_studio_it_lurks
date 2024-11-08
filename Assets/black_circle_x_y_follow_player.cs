@@ -10,8 +10,9 @@ public class black_circle_x_y_follow_player : MonoBehaviour
     {
         if (object_player != null)
         {
-            transform.position = new Vector2(object_player.transform.position.x,
-                                             object_player.transform.position.y);
+            transform.position = new Vector3(object_player.transform.position.x,
+                                             object_player.transform.position.y,
+                                             transform.position.z);
         }
     }
 }
