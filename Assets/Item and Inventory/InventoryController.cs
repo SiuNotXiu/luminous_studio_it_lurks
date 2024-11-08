@@ -23,6 +23,7 @@ public class InventoryController : MonoBehaviour
     public PerkSlot batteryUpgradeSlot;
 
     private bool JournalOpen = true;
+    private bool Special_Bool_For_Inventory = true;
 
     // temp items (moved from craftingslot)
     private List<ItemData> tempItems = new List<ItemData>();
@@ -56,6 +57,7 @@ public class InventoryController : MonoBehaviour
         // Switching is use to switch the boarder
         if (Input.GetButtonDown("Journal") && JournalOpen)
         {
+            Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
             OpenJournal();
             Switching2();
             button_Pg1.SetActive(false);
@@ -67,6 +69,7 @@ public class InventoryController : MonoBehaviour
             Debug.Log("is it gay?: " + chest_detect.isInRange);//true
             Debug.Log("chest_detect > " + chest_detect);
             chestIn.AsssignToPlayerJournal();
+            Special_Bool_For_Inventory = true;
             OpenJournal();
             Switching1();
             Page1.SetActive(true);
@@ -82,10 +85,11 @@ public class InventoryController : MonoBehaviour
             setting.SetActive(true);
 
         }
-        // Close Journal with Escape or the same Journal button
+        // Close Journal with Escape or the same Journal button or backspace
         else if ((Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
-            Debug.Log("is it gay?: " + chest_detect.isInRange);
+            Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
+
             CloseJournal();
         }
     }
@@ -106,10 +110,13 @@ public class InventoryController : MonoBehaviour
     private void CloseJournal()
     {
 
-        chestOut.ClosingChest();//cant work if tab open,tab close
-        //Debug.Log("Closing Journal");
-        // Destroy dropdown menu instance if it exists
-        if (dropdownMenuInstance != null)
+        if(Special_Bool_For_Inventory)//for chest inventory
+        {
+            chestOut.ClosingChest();
+            Special_Bool_For_Inventory= false;
+        }
+
+        if (dropdownMenuInstance != null)// Destroy dropdown menu instance if it exists
         {
             Destroy(dropdownMenuInstance);
             dropdownMenuInstance = null;
