@@ -149,19 +149,19 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     private void StoreItem(ItemData item)
     {
-        Debug.Log("Store item: " + itemData.itemName);
-        if (inventoryC.CanAddToPlayerInventory(itemData))
+        Debug.Log("Store item: " + item.itemName);
+        HideDropdownMenu();
+        if (inventoryC.CanAddToPlayerInventory(item))
         {
-            inventoryC.AddItemToPlayerInventory(itemData);
+            inventoryC.AddItemToPlayerInventory(item);
             ClearSlot();
 
-            Debug.Log("Item stored in player inventory: " + itemData.itemName);
+            Debug.Log("Item stored in player inventory: " + item.itemName);
         }
         else
         {
             Debug.Log("Player inventory is full, cannot store item.");
         }
-        HideDropdownMenu();
     }
 
 
