@@ -5,35 +5,40 @@ using UnityEngine.UI;
 
 public class battery_bar_float : MonoBehaviour
 {
-    #region script finding
-    [HideInInspector] private player_database script_player_database;
-    #endregion
-    [SerializeField] public float battery_remaining = 20.0f;
+    [HideInInspector] public float battery_remaining = 20.0f;
     [HideInInspector] public float battery_max = 20.0f;
     [SerializeField] public Image battery_green;
 
+    [HideInInspector] private flashlight_battery_blink script_flashlight_battery_blink;
+
     void Start()
     {
-        script_player_database = GetComponent<player_database>();
-        battery_green = GameObject.Find("canvas_battery_bar").transform.Find("green").gameObject.GetComponent<Image>();
+        script_flashlight_battery_blink = transform.Find("flashlight_mask").GetComponent<flashlight_battery_blink>();
     }
 
     void Update()
     {
-        if (script_player_database.is_flashlight_on == true)
+        if (player_database.is_flashlight_on == true)
         {
             battery_remaining -= Time.deltaTime;
+
+            //battery changed, check animation
+            script_flashlight_battery_blink.check_should_flashlight_blink(battery_remaining, battery_max);
+
+            if (battery_remaining >= 0)
+            {
+                //visual
+                battery_green.fillAmount = battery_remaining / battery_max;
+            }
+            if (battery_remaining <= 0)//only need to check this if flashlight is on
+            {
+                battery_remaining = 0;
+                player_database.is_flashlight_on = false;
+            }
         }
-        if (battery_remaining <= 0)
-        {
-            battery_remaining = 0;
-            script_player_database.is_flashlight_on = false;
-        }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))//temporary reload, later change to chermin use battery in journal
         {
             battery_remaining = battery_max;
         }
-
-        battery_green.fillAmount = battery_remaining / battery_max;
     }
 }
