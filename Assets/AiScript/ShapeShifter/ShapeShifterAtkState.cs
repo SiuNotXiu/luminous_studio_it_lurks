@@ -7,8 +7,8 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
     private EnemyAttack atk;
     public override void EnterState(ShapeShifterManager shapeShifter)
     {
-        //atk = shapeShifter.GetComponent<EnemyAttack>();
-        //atk.Attack();
+        atk = shapeShifter.GetComponent<EnemyAttack>();
+        atk.Attack();
         SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetAtkAudio(),shapeShifter.transform, 1f);
     }
 

@@ -34,7 +34,7 @@ public class CampInsideItem : MonoBehaviour
             chestIn.StoreItemFromChest(randomItem);
         }
 
-        for (int i = 0; i < luckynum-1; i++) //-1 is to let the cmapsite got fixed specific item
+        for (int i = 1; i < luckynum; i++) //-1 is to let the cmapsite got fixed specific item
         {
             // Select a random item from the itemData array
             int randomIndex = Random.Range(0, itemData.Length);
