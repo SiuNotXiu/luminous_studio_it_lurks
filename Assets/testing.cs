@@ -5,20 +5,20 @@ using UnityEngine.AI;
 
 public class testing : MonoBehaviour
 {
-    public HealthEffects _healtheffects = null;
-    private float damage = 10f;
-    private void start()
+    public Transform target;
+
+    NavMeshAgent agent;
+
+    private void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.CompareTag("Player")) 
-        {
-            _healtheffects.currentHp -= damage;
-            _healtheffects.TakeDamage();
-            gameObject.GetComponent<CircleCollider2D>().enabled = false;
-        }
+        agent.SetDestination(target.position);
     }
 }

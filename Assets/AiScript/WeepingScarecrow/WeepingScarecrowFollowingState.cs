@@ -11,23 +11,30 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
-        agent = weepingScarecrow.GetAgent();
-        if (agent.isStopped)
+        if (weepingScarecrow.GetTarget() != null)
         {
-            agent.isStopped = false;
-        }
+            agent = weepingScarecrow.GetAgent();
+            if (agent.isStopped)
+            {
+                agent.isStopped = false;
+            }
 
-        weepingScarecrow.StartCoroutine(UpdateTargetPosition(weepingScarecrow, agent));
-        playSoundCoroutine = weepingScarecrow.StartCoroutine(PlaySoundEffect(weepingScarecrow));
-        Debug.Log("Hi, I'm following");
+            weepingScarecrow.StartCoroutine(UpdateTargetPosition(weepingScarecrow, agent));
+            playSoundCoroutine = weepingScarecrow.StartCoroutine(PlaySoundEffect(weepingScarecrow));
+            Debug.Log("Hi, I'm following");
+        }
     }
 
     public override void UpdateState(WeepingScarecrowManager weepingScarecrow)
     {
-        if (weepingScarecrow.GetFlashed())
+        if (weepingScarecrow.GetTarget() != null)
         {
-            weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
+            if (weepingScarecrow.GetFlashed())
+            {
+                weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
+            }
         }
+      
     }
 
     public override void ExitState(WeepingScarecrowManager weepingScarecrow)
