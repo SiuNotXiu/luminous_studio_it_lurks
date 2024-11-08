@@ -5,7 +5,11 @@ using UnityEngine;
 public class ChestInventory : MonoBehaviour
 {
     public ChestSlot[] chestSlots = new ChestSlot[9];
+    public GameObject JournalP1;
     [SerializeField] public InventoryController playerInventory;
+    [SerializeField] CampInsideItem chestItem;
+    private ItemData[] item;
+
 
     //store (from player to chest)
     public void StoreItemFromPlayer(ItemData itemData)
@@ -29,6 +33,7 @@ public class ChestInventory : MonoBehaviour
             if (!slot.isFull)
             {
                 slot.AddItem(itemData);
+                
                 Debug.Log("Item stored in chest: " + itemData.itemName);
                 return;
             }
@@ -49,6 +54,29 @@ public class ChestInventory : MonoBehaviour
         else
         {
             Debug.Log("Cannot retrieve item, player inventory may be full.");
+        }
+    }
+
+    public void ClosingChest()//active this at inventoryController
+    {
+        foreach (var slot in chestSlots)
+        {
+            if (slot != null) // Ensure slot exists and contains an item
+            {
+                // Retrieve item data from the slot
+                ItemData itemData = slot.GetItemData();
+
+                if (itemData != null)
+                {
+                    chestItem.TakeBackFromPlayerJournal(slot.GetItemData());
+                    slot.ClearSlot();
+
+                }
+            }
+            else
+            {
+                Debug.Log("Empty or invalid slot, skipping.");
+            }
         }
     }
 

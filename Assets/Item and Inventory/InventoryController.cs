@@ -38,7 +38,11 @@ public class InventoryController : MonoBehaviour
 
     [Header("Switching Sprite")]
     public Image Boarder;
-    public Sprite[] PageSprite; 
+    public Sprite[] PageSprite;
+
+    [Header("For chest")]
+    [SerializeField] ChestInventory chestOut;
+    [SerializeField] CampInsideItem ChestIn;
 
     private void Start()
     {
@@ -49,6 +53,7 @@ public class InventoryController : MonoBehaviour
     public void Update()
     {
         // Open Journal
+        // Switching is use to switch the boarder
         if (Input.GetButtonDown("Journal") && JournalOpen)
         {
             OpenJournal();
@@ -59,6 +64,7 @@ public class InventoryController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
         {
+
             OpenJournal();
             Switching1();
             Page1.SetActive(true);
@@ -67,6 +73,7 @@ public class InventoryController : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen)
         {
+ 
             OpenJournal();
             button_Pg1.SetActive(false);
             journal_p1n2.SetActive(false);
@@ -82,6 +89,7 @@ public class InventoryController : MonoBehaviour
 
     private void OpenJournal()
     {
+        ChestIn.AsssignToPlayerJournal();
         Debug.Log("Opening Journal");
         JournalOpen = false;
         Journal.SetActive(true);
@@ -93,6 +101,7 @@ public class InventoryController : MonoBehaviour
 
     private void CloseJournal()
     {
+        chestOut.ClosingChest();
         Debug.Log("Closing Journal");
         // Destroy dropdown menu instance if it exists
         if (dropdownMenuInstance != null)

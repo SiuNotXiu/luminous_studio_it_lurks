@@ -41,9 +41,6 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     //detect if in range of the campsite or not
     [SerializeField] private ChestController ChestIn;
 
-    private void Start()
-    {
-    }
 
     //should have a detect tell player the campsite is full and and store anymore
     private void Update()
@@ -108,6 +105,10 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public void OnPointerExit(PointerEventData eventData)
     {
         itemDescription.SetActive(false);
+    }
+    public ItemData GetItemData()
+    {
+        return itemData;
     }
 
     private void ShowDropdownMenu()
