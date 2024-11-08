@@ -40,7 +40,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     //detect if in range of the campsite or not
     [SerializeField] private ChestController ChestIn;
     [SerializeField] private ChestInventory chestInventory;
-    private PerkSlot perksEquip;
+
+    //for items reference
+    private PerkSlot perksEquip; //to check can use better battery or not
+    private HealthEffects playerHealth;
 
     
 
@@ -275,19 +278,46 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         switch (itemData.itemName)
         {
             case "Battery":
-                playerFlashlightBattery.battery_remaining = playerFlashlightBattery.battery_max;
-                RemoveItem();
+                if (playerFlashlightBattery.battery_remaining == playerFlashlightBattery.battery_max)
+                {
+                    Debug.Log("Battery max, item can't be used");
+                }
+                else
+                {
+                    playerFlashlightBattery.battery_remaining = playerFlashlightBattery.battery_max;
+                    RemoveItem();
+                }
                 break;
 
             case "1300 mAh Battery":
                 //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
+                if (perksEquip.batteryCaseCheck == true)
+                {
+                    // playerFlashlightBattery.battery_max *= 2.5f; (see other code have this implementation or not)
+                    playerFlashlightBattery.battery_remaining = playerFlashlightBattery.battery_max;
+                    RemoveItem();
+                }
+                else
+                {
+                    Debug.Log("Battery Case not found, item can't be used");
+                }
                 break;
+
             case "First Aid Kit":
-                //Restores full health
+                if (!playerHealth.GetFullHealth())
+                {
+                    playerHealth.FullHeal();
+                    RemoveItem();
+                }
+                else
+                {
+                    Debug.Log("Player current health is max");
+                }
                 break;
 
             case "Bandage":
-                //Restores 1 hit
+                playerHealth.Heal();
+                RemoveItem();
                 break;
 
             case "Adrenaline":
