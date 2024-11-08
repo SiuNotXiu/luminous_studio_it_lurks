@@ -36,4 +36,9 @@ public class TopdownMovement : MonoBehaviour
         moveSpeed = p_speed;
         
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with > " + collision.gameObject.name);
+    }
 }

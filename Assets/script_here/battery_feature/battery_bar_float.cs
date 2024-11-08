@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class battery_bar_float : MonoBehaviour
 {
-    [HideInInspector] public float battery_remaining = 20.0f;
+    [SerializeField] public float battery_remaining = 20.0f;
     [HideInInspector] public float battery_max = 20.0f;
     [SerializeField] public Image battery_green;
 
