@@ -22,7 +22,7 @@ public class InventoryController : MonoBehaviour
     public PerkSlot bulbUpgradeSlot;
     public PerkSlot batteryUpgradeSlot;
 
-    private bool JournalOpen = true;
+    public static bool JournalOpen = true;
     private bool Special_Bool_For_Inventory = true;
 
     // temp items (moved from craftingslot)
@@ -44,6 +44,7 @@ public class InventoryController : MonoBehaviour
     [Header("For chest")]
     [SerializeField] public static ChestInventory chestOut;
     [SerializeField] public static CampInsideItem chestIn;
+    public static Item item;
 
     private void Start()
     {
@@ -64,15 +65,30 @@ public class InventoryController : MonoBehaviour
             Page1.SetActive(false);
             Page2.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.E) && JournalOpen && chest_detect.isInRange)
+        else if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("is it gay?: " + chest_detect.isInRange);//true
-            chestIn.AsssignToPlayerJournal();
-            Special_Bool_For_Inventory = true;
-            OpenJournal();
-            Switching1();
-            Page1.SetActive(true);
-            Page2.SetActive(false);
+            if(Item.isPlayerInRange)
+            {
+                //Debug.Log("In range>>>>>>>>: " + Item.isPlayerInRange);
+
+                item.Item_Scrap_Check();
+            }
+            else if (JournalOpen && chest_detect.isInRange)
+            {
+                chest_detect.OpenChest();
+                Debug.Log("is it gay?: " + chest_detect.isInRange);//true
+                chestIn.AsssignToPlayerJournal();
+                Special_Bool_For_Inventory = true;
+                OpenJournal();
+                Switching1();
+                Page1.SetActive(true);
+                Page2.SetActive(false);
+            }
+            else
+            {
+                return;
+            }
+
 
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen)
@@ -92,6 +108,7 @@ public class InventoryController : MonoBehaviour
             CloseJournal();
         }
     }
+
 
     private void OpenJournal()
     {

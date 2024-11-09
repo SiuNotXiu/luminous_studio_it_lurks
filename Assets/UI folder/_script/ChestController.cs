@@ -11,7 +11,12 @@ public class ChestController : MonoBehaviour
     public Animator animator;
 
     //chest recorgnise player
-
+    private void Start()
+    {
+        InventoryController.chest_detect = gameObject.GetComponent<ChestController>();
+        InventoryController.chestIn = gameObject.GetComponent<CampInsideItem>();
+        InventoryController.chestOut = gameObject.GetComponent<ChestInventory>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,8 +27,10 @@ public class ChestController : MonoBehaviour
             InventoryController.chest_detect = gameObject.GetComponent<ChestController>();
             InventoryController.chestIn = gameObject.GetComponent<CampInsideItem>();
             InventoryController.chestOut = gameObject.GetComponent<ChestInventory>();
+
             Debug.Log("Player is in the chest range of > " + gameObject.name);
         }
+
 
     }
 
@@ -31,8 +38,7 @@ public class ChestController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isInRange = !isInRange;
-            InventoryController.chest_detect = gameObject.GetComponent<ChestController>();
+            isInRange = false;
             Debug.Log("Player is not in the chest range");
         }
     }
@@ -45,7 +51,7 @@ public class ChestController : MonoBehaviour
         {
             isOpen = true;
             Debug.Log("Campfire loot is open");
-            animator.SetBool("isOpen", isOpen);
+            //animator.SetBool("isOpen", isOpen);
         }
 
     }

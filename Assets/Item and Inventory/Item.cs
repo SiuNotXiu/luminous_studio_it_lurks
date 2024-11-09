@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Item : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Item : MonoBehaviour
 
     private InventoryController inventoryController;
     public int ScrapPaperId;//start from 1 ,, it also use for unlock upgrade paper
-    public bool isPlayerInRange = false;
+    public static bool isPlayerInRange = false;
 
     [HideInInspector] private GameObject[] object_landmark;
     // Start is called before the first frame update
@@ -28,46 +29,45 @@ public class Item : MonoBehaviour
         inventoryController = GameObject.Find("Journal_Canvas")?.GetComponent<InventoryController>();
     }
 
-    private void Update()
+
+    public void Item_Scrap_Check()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        Debug.Log("Sick brooooooo");
+        if (gameObject.CompareTag("ScrapPaper") && paper != null)
         {
-            if (gameObject.CompareTag("ScrapPaper") && paper != null)
+            paper.CollectScrapPaper(ScrapPaperId);
+            /*                #region map icon activation
+                            if (object_landmark[ScrapPaperId - 1] != null)
+                            {
+                                if (object_landmark[ScrapPaperId - 1].GetComponent<map_display_icon>() != null)
+                                {
+                                    object_landmark[ScrapPaperId - 1].GetComponent<map_display_icon>().display_icon_on_map();
+                                }
+                                else
+                                {
+                                    Debug.Log(gameObject.name + " need map icon");
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("object_landmark[ScrapPaperId - 1] is null");
+                            }
+                            #endregion*/
+            Destroy(gameObject);
+        }
+        else if (!inventoryController.IsInventoryFull() && itemData != null)
+        {
+            Debug.Log("Store check");
+            if (gameObject.CompareTag("PerksItem"))
             {
-                paper.CollectScrapPaper(ScrapPaperId);
-/*                #region map icon activation
-                if (object_landmark[ScrapPaperId - 1] != null)
-                {
-                    if (object_landmark[ScrapPaperId - 1].GetComponent<map_display_icon>() != null)
-                    {
-                        object_landmark[ScrapPaperId - 1].GetComponent<map_display_icon>().display_icon_on_map();
-                    }
-                    else
-                    {
-                        Debug.Log(gameObject.name + " need map icon");
-                    }
-                }
-                else
-                {
-                    Debug.Log("object_landmark[ScrapPaperId - 1] is null");
-                }
-                #endregion*/
-                Destroy(gameObject);
+                upgrade.CollectedUpgrade(ScrapPaperId);
             }
-            else if (!inventoryController.IsInventoryFull() && itemData != null)
-            {
-                Debug.Log("Store check");
-                if (gameObject.CompareTag("PerksItem"))
-                {
-                    upgrade.CollectedUpgrade(ScrapPaperId);
-                }
-                inventoryController.AddItem(itemData);
-                Destroy(gameObject);
-            }
-            else
-            {
-                Debug.Log("Inventory is full bro stapt");
-            }
+            inventoryController.AddItem(itemData);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Inventory is full bro stapt");
         }
     }
 
@@ -88,6 +88,7 @@ public class Item : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isPlayerInRange = true;
+            InventoryController.item = gameObject.GetComponent<Item>();
         }
     }
 

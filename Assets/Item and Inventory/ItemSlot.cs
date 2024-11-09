@@ -208,6 +208,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         if (InventoryController.chest_detect.isInRange && InventoryController.chestOut.CanAddToChestInventory(itemData))
         {
             // Add the item to the chest
+            Debug.Log("Item data>>>>>>>:" + itemData);
             InventoryController.chestOut.StoreItemFromPlayer(itemData);
             ClearSlot();
         }
