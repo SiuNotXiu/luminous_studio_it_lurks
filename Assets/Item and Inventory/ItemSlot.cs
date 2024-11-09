@@ -266,13 +266,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         switch (itemData.itemName)
         {
             case "Battery":
-                if (playerFlashlightBattery.battery_remaining == playerFlashlightBattery.battery_max)
+                if (battery_bar_float.battery_remaining == battery_bar_float.battery_max)
                 {
                     Debug.Log("Battery max, item can't be used");
                 }
                 else
                 {
-                    playerFlashlightBattery.battery_remaining = playerFlashlightBattery.battery_max;
+                    battery_bar_float.battery_remaining = battery_bar_float.battery_max;
                     RemoveItem();
                 }
                 break;
@@ -282,7 +282,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 if (perksEquip.batteryCaseCheck == true)
                 {
                     // playerFlashlightBattery.battery_max *= 2.5f; (see other code have this implementation or not)
-                    playerFlashlightBattery.battery_remaining = playerFlashlightBattery.battery_max;
+                    battery_bar_float.battery_remaining = battery_bar_float.battery_max;
                     RemoveItem();
                 }
                 else
