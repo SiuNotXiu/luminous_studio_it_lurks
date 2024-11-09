@@ -5368,6 +5368,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 3766148214228808827, guid: 68e10708c62820a44b2e45d8a596e88c, type: 3}
+      propertyPath: m_Name
+      value: monochrome
+      objectReference: {fileID: 0}
     - target: {fileID: 5773838883642107157, guid: 68e10708c62820a44b2e45d8a596e88c, type: 3}
       propertyPath: m_Name
       value: Tree (1)
@@ -26399,6 +26403,14 @@ PrefabInstance:
       propertyPath: battery_green
       value: 
       objectReference: {fileID: 1710077988}
+    - target: {fileID: 7610613252158909856, guid: 1998d2b841359774ebfbf6b80eb94b83, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939695356360849100, guid: 1998d2b841359774ebfbf6b80eb94b83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31443,17 +31455,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
---- !u!114 &429969118 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 281121130889989704, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-  m_PrefabInstance: {fileID: 429969117}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86053f068c111d47a51d624296191ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &432371328
 GameObject:
   m_ObjectHideFlags: 0
@@ -61351,7 +61352,7 @@ PrefabInstance:
     - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chest_detect
       value: 
-      objectReference: {fileID: 429969118}
+      objectReference: {fileID: 0}
     - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: Need_To_Destroy
       value: DropDown_Canvas(Clone)

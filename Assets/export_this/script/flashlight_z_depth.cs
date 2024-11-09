@@ -28,7 +28,7 @@ public class flashlight_z_depth : MonoBehaviour
         }
         else
         {
-            Debug.Log("(can ignore) object_camera_main is null, cannot move the z depth of flashlight");
+            //Debug.Log("(can ignore) object_camera_main is null, cannot move the z depth of flashlight");
         }
         #endregion
     }

@@ -90,6 +90,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
 
             case "20k Lumen Bulb":
                 flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial * 2;
+                battery_bar_float.battery_duration_multiplier += 0.5f;
                 break;
 
             default:
@@ -110,6 +111,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
 
             case "20k Lumen Bulb":
                 flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial;
+                battery_bar_float.battery_duration_multiplier -= 0.5f;
                 break;
 
             default:
