@@ -10,7 +10,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     //=====ITEM DATA=====//
     public ItemData itemData;
     public bool isFull;
+    public int slotIndex;
     public RectTransform itemSlot; // Reference to the item slot RectTransform
+
     [SerializeField] private GameObject droppedItemPrefab; // reference to the item prefab (for dropping function)
     [SerializeField] private Transform playerTransform;
 
@@ -184,7 +186,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             {
                 case "Store":
                     Debug.Log("Store button work");
-                    btn.onClick.AddListener(() => StoreItem());
+                    btn.onClick.AddListener(() => StoreItem(this));
                     break;
                 case "Craft":
                     btn.onClick.AddListener(() => CraftItem());
@@ -202,14 +204,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
-    private void StoreItem()
+    private void StoreItem(ItemSlot itemSlot)
     {
-        Debug.Log("Store item: " + itemData.itemName);
-        if (InventoryController.chest_detect.isInRange && InventoryController.chestOut.CanAddToChestInventory(itemData))
+        Debug.Log("Store item: " + itemSlot.itemData.itemName);
+        if (InventoryController.chest_detect.isInRange && InventoryController.chestOut.CanAddToChestInventory(itemSlot.itemData))
         {
             // Add the item to the chest
-            Debug.Log("Item data>>>>>>>:" + itemData);
-            InventoryController.chestOut.StoreItemFromPlayer(itemData);
+            Debug.Log("Item data>>>>>>>:" + itemSlot.itemData);
+            InventoryController.chestOut.StoreItemFromPlayer(itemSlot.itemData, itemSlot.slotIndex);
         }
         else
         {
@@ -373,5 +375,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         itemData = null;
         isFull = false;
         itemImage.sprite = null;
+    }
+
+    public int GetSlotIndex()
+    {
+        return slotIndex;
     }
 }

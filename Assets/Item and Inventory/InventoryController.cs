@@ -327,17 +327,35 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void RemoveItemFromPlayerInventory(ItemData itemData)
+    public void RemoveItemFromPlayerInventory(ItemData itemData, int slotIndex = -1)
     {
-        foreach (var slot in itemSlot)
+        if (slotIndex >= 0 && slotIndex < itemSlot.Length)
         {
+            var slot = itemSlot[slotIndex];
             if (slot.isFull && slot.itemData == itemData)
             {
                 slot.ClearSlot();
-                return;
+                Debug.Log("Removed item from inventory slot " + slotIndex + ": " + itemData.itemName);
+            }
+            else
+            {
+                Debug.Log("Slot " + slotIndex + " is empty or doesn't contain the specified item.");
             }
         }
-        Debug.Log("Item not found in player inventory.");
+        else
+        {
+            // just remove the item from any matching slot in the inventory
+            foreach (var slot in itemSlot)
+            {
+                if (slot.isFull && slot.itemData == itemData)
+                {
+                    slot.ClearSlot();
+                    Debug.Log("Removed item from inventory: " + itemData.itemName);
+                    return;
+                }
+            }
+            Debug.Log("Item not found in player inventory.");
+        }
     }
 
     public bool CanAddToPlayerInventory(ItemData itemData)

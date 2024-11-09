@@ -12,6 +12,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public ItemData itemData;
     public bool isFull;
     public RectTransform campSlot; // Reference to the camp slot RectTransform
+    private GameObject clickedObject;
 
     //temporary data for calculation
     public int datax;
@@ -62,6 +63,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
         if (eventData.button == PointerEventData.InputButton.Left) //only using left
         {
+            clickedObject = null;
+            clickedObject = gameObject;
             OnItemClicked?.Invoke(this);
             Debug.Log("Left click on item: " + itemData.itemName);
             ShowDropdownMenu();
@@ -146,6 +149,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     {
         Debug.Log("Store item: " + item.itemName);
         HideDropdownMenu();
+
         if (inventoryC.CanAddToPlayerInventory(item))
         {
             inventoryC.AddItemToPlayerInventory(item);
@@ -156,7 +160,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         else
         {
             Debug.Log("Player inventory is full, cannot store item.");
-        }
+        }                                                                   
     }
 
 
@@ -229,32 +233,5 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         return !isFull;
     }
 
-    //from player inventory to chest inventory
-    public void StoreItemFromPlayer(ItemData itemData)
-    {
-        if (!isFull)
-        {
-            AddItem(itemData);
-            inventoryC.RemoveItemFromPlayerInventory(itemData);
-            Debug.Log("Item stored in chest: " + itemData.itemName);
-        }
-    }
 
-    //get from chest inventory to player inventory
-    public void RetrieveItemToPlayer()
-    {
-        if (isFull)
-        {
-            if (inventoryC.CanAddToPlayerInventory(itemData))
-            {
-                inventoryC.AddItemToPlayerInventory(itemData);
-                ClearSlot();
-                Debug.Log("Item retrieved from chest: " + itemData.itemName);
-            }
-            else
-            {
-                Debug.Log("Player inventory is full.");
-            }
-        }
-    }
 }

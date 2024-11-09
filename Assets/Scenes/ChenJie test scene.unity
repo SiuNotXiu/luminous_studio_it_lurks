@@ -1761,6 +1761,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3823068050714335898, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: slotIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823068050714335898, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
       objectReference: {fileID: 1924729834}
@@ -1775,6 +1779,10 @@ PrefabInstance:
     - target: {fileID: 4050376293259420406, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050376293259420406, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: slotIndex
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4050376293259420406, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
@@ -1953,6 +1961,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: slotIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
       value: 
       objectReference: {fileID: 1924729834}
@@ -1995,6 +2007,10 @@ PrefabInstance:
     - target: {fileID: 6055679722957636142, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055679722957636142, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: slotIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6055679722957636142, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
@@ -2047,6 +2063,10 @@ PrefabInstance:
     - target: {fileID: 7331284937691953623, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331284937691953623, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: slotIndex
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7331284937691953623, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory
@@ -2103,6 +2123,10 @@ PrefabInstance:
     - target: {fileID: 8352448813385210775, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: ChestIn
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352448813385210775, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: slotIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8352448813385210775, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: chestInventory

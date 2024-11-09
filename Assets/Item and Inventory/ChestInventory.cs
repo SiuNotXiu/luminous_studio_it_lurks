@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ChestInventory : MonoBehaviour
@@ -11,44 +12,71 @@ public class ChestInventory : MonoBehaviour
 
 
     //store (from player to chest)
-    public void StoreItemFromPlayer(ItemData itemData)
+    public void StoreItemFromPlayer(ItemData itemData, int slotIndex)
     {
-        foreach (var slot in chestSlots)
+        for (int i = 0; i < chestSlots.Length; i++)
         {
-            if (!slot.isFull)
+            if (!chestSlots[i].isFull)
             {
-                slot.AddItem(itemData);
-                playerInventory.RemoveItemFromPlayerInventory(itemData);
-                Debug.Log("Item stored in chest: " + itemData.itemName);
+                // Store item in the chest slot
+                chestSlots[i].AddItem(itemData);
+                playerInventory.RemoveItemFromPlayerInventory(itemData, slotIndex); // pass slot for correct inv removal
+                Debug.Log("Item stored in chest slot " + i + ": " + itemData.itemName);
                 return;
             }
         }
-        Debug.Log("Chest is full, cannot store item.");
     }
-    public void StoreItemFromChest(ItemData itemData)
+
+    public void StoreItemFromChest(ItemData itemData, int slotIndex = -1)
     {
-        foreach (var slot in chestSlots)
+        if (slotIndex >= 0 && slotIndex < chestSlots.Length)
         {
-            if (!slot.isFull)
+            ChestSlot targetSlot = chestSlots[slotIndex];
+            if (!targetSlot.isFull)
             {
-                slot.AddItem(itemData);
-                
-                Debug.Log("Item stored in chest: " + itemData.itemName);
+                targetSlot.AddItem(itemData);
+                Debug.Log("Item stored into chest slot no. " + targetSlot + ": " + itemData.itemName);
                 return;
             }
+            else
+            {
+                Debug.Log("Chest slot no. " + slotIndex + " is full, cannot store item.");
+            }
         }
-        Debug.Log("Chest is full, cannot store item.");
-    }
+        else
+        {
+            Debug.Log("Old method, shouldn't be using");
+            foreach (var slot in chestSlots)
+            {
+                if (!slot.isFull)
+                {
+                    slot.AddItem(itemData);
+                    Debug.Log("Item stored in chest: " + itemData.itemName);
+                    return;
+                }
+            }
+            Debug.Log("Chest is full, cannot store item.");
+        }
+    } 
 
 
     //retrieve (from chest to player)
-    public void RetrieveItemToPlayer(ChestSlot chestSlot)
+    public void RetrieveItemToPlayer(ChestSlot chestSlot, int chestSlotIndex)
     {
         if (chestSlot.isFull && playerInventory.CanAddToPlayerInventory(chestSlot.itemData))
         {
-            playerInventory.AddItemToPlayerInventory(chestSlot.itemData);
-            chestSlot.ClearSlot();
-            Debug.Log("Item retrieved from chest: " + chestSlot.itemData.itemName);
+            // Find the first empty slot in the player inventory
+            for (int i = 0; i < playerInventory.itemSlot.Length; i++)
+            {
+                if (playerInventory.itemSlot[i].IsEmpty())
+                {
+                    // Move the item to the first available slot in the player inventory
+                    playerInventory.itemSlot[i].AddItem(chestSlot.itemData);
+                    chestSlot.ClearSlot();
+                    Debug.Log("Item retrieved from chest to player inventory slot " + i + ": " + chestSlot.itemData.itemName);
+                    return;
+                }
+            }
         }
         else
         {
