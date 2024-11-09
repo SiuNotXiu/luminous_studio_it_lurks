@@ -87,13 +87,18 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
-                //
+                #region equip 1300 mah casing
+                battery_bar_float.equip_1300_mah_casing();
+                //speed reduction not yet implement
+                #endregion
                 effectApplied = true;
                 break;
 
             case "20k Lumen Bulb":
+                #region equip 20k lumen bulb
                 flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial * 2;
-                battery_bar_float.battery_duration_multiplier += 0.5f;
+                battery_bar_float.equip_20k_lumen_bulb();
+                #endregion
                 effectApplied = true;
                 break;
 
@@ -110,13 +115,17 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
-                //
+                #region remove 1300 mah casing
+                battery_bar_float.remove_1300_mah_casing();
+                #endregion
                 effectApplied = false;
                 break;
 
             case "20k Lumen Bulb":
+                #region remove 20k lumen bulb
                 flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial;
-                battery_bar_float.battery_duration_multiplier -= 0.5f;
+                battery_bar_float.remove_20k_lumen_bulb();
+                #endregion
                 effectApplied = false;
                 break;
 

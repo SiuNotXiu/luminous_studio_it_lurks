@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TopdownMovement : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    public static float moveSpeed = 10f;
     public Rigidbody2D rb2d;
     
     private Vector2 moveInput;
+
+    [HideInInspector] public static float multiplier_1300_mah = 0.75f;
 
     // Start is called before the first frame update
     void Start()
@@ -36,4 +38,17 @@ public class TopdownMovement : MonoBehaviour
         moveSpeed = p_speed;
         
     }
+
+    #region perks equip
+    public static void equip_20k_lumen_bulb()
+    {
+        moveSpeed *= multiplier_1300_mah;
+    }
+    #endregion
+    #region perks remove
+    public static void remove_20k_lumen_bulb()
+    {
+        moveSpeed /= multiplier_1300_mah;
+    }
+    #endregion
 }
