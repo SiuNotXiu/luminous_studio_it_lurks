@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public Button button_c;
     public Button button_q;
 
+    public GameObject play;
     public GameObject tutorial;
     public GameObject option;
     public GameObject credit;
@@ -26,16 +27,13 @@ public class MainMenu : MonoBehaviour
         button_c.onClick.AddListener(Credit); // Credit
         button_q.onClick.AddListener(Quit); // Quit
 
-        Debug.Log("MainMenu initialized");
     }
 
     public void GameOn()
     {
-        button_g.interactable = true;
-        if (gamePopup != null)
-        {
-            gamePopup.SetActive(true); // Activate popup
-        }
+        
+        play.SetActive(true);
+        
     }
 
     public void Tutorial()
