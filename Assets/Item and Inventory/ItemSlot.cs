@@ -210,7 +210,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             // Add the item to the chest
             Debug.Log("Item data>>>>>>>:" + itemData);
             InventoryController.chestOut.StoreItemFromPlayer(itemData);
-            ClearSlot();
         }
         else
         {
