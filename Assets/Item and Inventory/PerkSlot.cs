@@ -17,6 +17,8 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField] private bool isBulbSlot; // true for Bulb - false for Battery
     [SerializeField] private Image itemImage;
 
+    private bool effectApplied = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +70,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         {
             if (inventoryController != null && !inventoryController.IsInventoryFull())
             {
-                inventoryController.AddItem(itemData); 
+                inventoryController.AddItem(itemData);
                 ClearSlot();
             }
             else
@@ -80,17 +82,19 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
 
     private void ApplyPerkEffects()
     {
-        if (itemData == null) return;
+        if (itemData == null || effectApplied) return;
 
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
                 //
+                effectApplied = true;
                 break;
 
             case "20k Lumen Bulb":
                 flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial * 2;
                 battery_bar_float.battery_duration_multiplier += 0.5f;
+                effectApplied = true;
                 break;
 
             default:
@@ -101,17 +105,19 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
 
     private void RemovePerkEffects()
     {
-        if (itemData == null) return;
+        if (itemData == null || !effectApplied) return;
 
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
                 //
+                effectApplied = false;
                 break;
 
             case "20k Lumen Bulb":
                 flashlight_fov_wall_mask.view_distance = flashlight_fov_wall_mask.view_distance_initial;
                 battery_bar_float.battery_duration_multiplier -= 0.5f;
+                effectApplied = false;
                 break;
 
             default:
