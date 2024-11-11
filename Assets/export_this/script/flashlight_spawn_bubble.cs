@@ -65,10 +65,10 @@ public class flashlight_spawn_bubble : MonoBehaviour
                 Vector2 size = object_zone_that_need_bubble.GetComponent<BoxCollider2D>().size;
                 Vector2 offset = object_zone_that_need_bubble.GetComponent<BoxCollider2D>().offset;
 
-                x_left = object_zone_that_need_bubble.transform.position.x + offset.x - (size.x * object_zone_that_need_bubble.transform.localScale.x) / 2;
+                x_left = object_zone_that_need_bubble.transform.position.x  + offset.x - (size.x * object_zone_that_need_bubble.transform.localScale.x) / 2;
                 x_right = object_zone_that_need_bubble.transform.position.x + offset.x + (size.x * object_zone_that_need_bubble.transform.localScale.x) / 2;
-                y_down = object_zone_that_need_bubble.transform.position.y + offset.y - (size.y * object_zone_that_need_bubble.transform.localScale.y) / 2;
-                y_up = object_zone_that_need_bubble.transform.position.y + offset.y + (size.y * object_zone_that_need_bubble.transform.localScale.y) / 2;
+                y_down = object_zone_that_need_bubble.transform.position.y  + offset.y - (size.y * object_zone_that_need_bubble.transform.localScale.y) / 2;
+                y_up = object_zone_that_need_bubble.transform.position.y    + offset.y + (size.y * object_zone_that_need_bubble.transform.localScale.y) / 2;
                 x_gap = 1f;
                 y_gap = 1f;
                 x_row = (int)((x_right - x_left) / x_gap);
