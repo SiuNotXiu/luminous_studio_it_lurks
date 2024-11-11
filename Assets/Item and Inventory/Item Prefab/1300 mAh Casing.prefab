@@ -95,7 +95,6 @@ MonoBehaviour:
   paper: {fileID: 0}
   upgrade: {fileID: 0}
   ScrapPaperId: 0
-  isPlayerInRange: 0
 --- !u!212 &5693357131881701266
 SpriteRenderer:
   m_ObjectHideFlags: 0
