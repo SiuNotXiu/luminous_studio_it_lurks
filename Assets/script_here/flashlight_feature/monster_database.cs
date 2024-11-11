@@ -40,8 +40,13 @@ public class monster_database : MonoBehaviour
 
     public bool GetFlashed()
     {
-        Debug.Log("Flash function work");
+        //Debug.Log("Flash function work");
         return flash;
+    }
+
+    public bool GetShine()
+    {
+        return flashed;
     }
 
     public void SetFlashed(bool p_flash)

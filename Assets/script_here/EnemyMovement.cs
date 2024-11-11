@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SocialPlatforms;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -14,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
         Fleeing
     }
 
-   
+    #region<PublicVariables>
     public float speed;
     public LayerMask worldMask;
     public float sightRange;
@@ -36,7 +39,9 @@ public class EnemyMovement : MonoBehaviour
     public float fleeTimer = 0f;
     public TopdownMovement player;
 
+    #endregion
 
+    #region<PrivateVariables>
     private Transform target;
     private List<Vector3> waypoints = new List<Vector3>();
     private Vector3 lastPlayerPosition;
@@ -47,6 +52,22 @@ public class EnemyMovement : MonoBehaviour
     private bool canMove = true;
     private float timeSinceLastAttack = 0f;
     private NavMeshAgent agent;
+    private bool inAtkArea = false;
+    #endregion
+
+    #region<Sfx>
+    [SerializeField] private AudioClip[] growlAudio;
+    [SerializeField] private AudioClip[] chaseAudio;
+    [SerializeField] private AudioClip[] stalkAudio;
+    [SerializeField] private AudioClip[] shineAudio;
+    [SerializeField] private AudioClip[] fleeAudio;
+
+    private bool isStalkAudioPlaying = false;
+    private bool isChaseAudioPlaying = false;
+    private bool isGrowlingAudioPlaying = false;
+    private bool isFleeAudioPlaying = false;
+    private bool isShineAudioPlaying = false;
+    #endregion
 
     void Start()
     {
@@ -63,6 +84,7 @@ public class EnemyMovement : MonoBehaviour
        // idleRangeTrigger.ExitedTrigger += OnIdleRangeTriggerExited;
 
         attackRangeTrigger.EnteredTrigger += OnAttackRangeTriggerEntered;
+        attackRangeTrigger.ExitedTrigger += OnAttackRangeTriggerExited;
         chaseRangeTrigger.EnteredTrigger += OnChaseRangeTriggerEntered;
     }
 
@@ -104,7 +126,10 @@ public class EnemyMovement : MonoBehaviour
                 break;
         }
 
-        
+        if(inAtkArea)
+        {
+            currentState = EnemyState.Attack;
+        }
     }
 
     private void IdleState()
@@ -119,6 +144,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void StalkingState()
     {
+        if (agent.isStopped)
+        {
+            agent.isStopped = false;
+        }
         speed = 3;
         agent.speed = speed;
         float distanceToPlayer = Vector2.Distance(transform.position, target.position);
@@ -190,10 +219,27 @@ public class EnemyMovement : MonoBehaviour
 
         lastPlayerPosition = currentPlayerPosition; // Update last known player position
         FleeingChecks();
+
+        if (!isStalkAudioPlaying)
+        {
+            StartCoroutine(PlayStalkingSound());
+            isStalkAudioPlaying = true;
+        }
+
+        if(!isGrowlingAudioPlaying)
+        {
+            StartCoroutine(PlayGrowlSound());
+            isGrowlingAudioPlaying = true;
+        }
+     
     }
 
     private void ChasingState()
     {
+        if (agent.isStopped)
+        {
+            agent.isStopped = false;
+        }
         // Update the chase timer for movement speed changes
         chaseTimer += Time.deltaTime;
         if (chaseTimer > chaseTime)
@@ -229,6 +275,12 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
+        if (!isChaseAudioPlaying)
+        {
+            StartCoroutine(PlayChaseSound());
+            isChaseAudioPlaying = true;
+        }
+
         FleeingChecks();
     }
 
@@ -249,7 +301,7 @@ public class EnemyMovement : MonoBehaviour
             speedBoosted = true;
         }
 
-        canMove = false;
+        agent.isStopped = true;
         chaseTimer = 0;
         speedBoostTimer += Time.deltaTime;
 
@@ -291,7 +343,14 @@ public class EnemyMovement : MonoBehaviour
                     fleeTimer = 0f;
                     gameObject.GetComponent<monster_database>().SetFlee(false);
                     gameObject.GetComponent<monster_database>().SetFlashed(false);
+                    isFleeAudioPlaying = false;
 
+                }
+
+                if (!isFleeAudioPlaying)
+                {
+                    SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, 1f);
+                    isFleeAudioPlaying = true;
                 }
 
             }
@@ -299,34 +358,38 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    #region<LineOfSightFunctions>
     private bool LineOfSight()
     {
 
         if (target == null)
         {
-            Debug.Log("raycast not working");
+           // Debug.Log("raycast not working");
             return false;
         }
         else
         {
-            Debug.Log("raycast is working");
+            //Debug.Log("raycast is working");
         }
-        Vector2 directionToPlayer = target.position - transform.position;
+
+        // Get the center of the BoxCollider2D
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        Vector2 startPosition = collider.bounds.center;
+
+        Vector2 directionToPlayer = target.position - (Vector3)startPosition;
 
         // Perform the raycast
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, sightRange,worldMask);
+        RaycastHit2D hit = Physics2D.Raycast(startPosition, directionToPlayer, sightRange, worldMask);
 
         // Check if the ray hits the player
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
-
-            Debug.DrawRay(transform.position, directionToPlayer.normalized * sightRange, Color.green);
+            Debug.DrawRay(startPosition, directionToPlayer.normalized * sightRange, Color.green);
             return true;
         }
         else
         {
-
-            Debug.DrawRay(transform.position, directionToPlayer.normalized * sightRange, Color.red);
+            Debug.DrawRay(startPosition, directionToPlayer.normalized * sightRange, Color.red);
             return false;
         }
     }
@@ -356,6 +419,8 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    #endregion
+
     private void FleeingChecks()
     {
         if (gameObject.GetComponent<monster_database>().GetFlashed() == true)
@@ -364,16 +429,36 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void FlashChecks()
+    {
+        if (gameObject.GetComponent<monster_database>().GetShine() == true)
+        {
+            if (!isShineAudioPlaying)
+            {
+                SoundEffectManager.instance.PlayRandomSoundFxClip(shineAudio, transform, 1f);
+                isShineAudioPlaying = true;
+            }
+            else
+            {
+                isShineAudioPlaying = false;
+            }
+        }
+       
+    }
+
+    #region<OntriggerEntered/Exit>
+
     private void OnIndleRangeTriggerEntered(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             target = collision.transform;
-            Debug.Log("It works");
+            
 
             if (currentState == EnemyState.Idle)
             {
                 currentState = EnemyState.Stalking;
+                Debug.Log("stalking");
             }
         }
     }
@@ -384,6 +469,17 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("Attacking");
             currentState = EnemyState.Attack;
+            inAtkArea = true;
+            Debug.Log("AttackArea" + inAtkArea);
+        }
+    }
+
+    private void OnAttackRangeTriggerExited(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {   
+            inAtkArea = false;
+            Debug.Log("AttackArea" + inAtkArea);
         }
     }
 
@@ -391,30 +487,43 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Attacking");
+            Debug.Log("Chasing");
             currentState = EnemyState.Chasing;
         }
     }
 
-    /*private void OnIdleRangeTriggerExited(Collider2D collision)
+    #endregion
+
+    #region<Coroutine>
+    private IEnumerator PlayStalkingSound()
     {
-        Debug.Log("OnIdleRangeTriggerExited called");
+        float rand = Random.Range(1f, 2f);
+        SoundEffectManager.instance.PlayRandomSoundFxClip(stalkAudio, transform, 1f);
+        yield return new WaitForSeconds(rand);
+        isStalkAudioPlaying = false;
+        
+       
+    }
 
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Player exited the idle range");
+    private IEnumerator PlayChaseSound()
+    {
+        float rand = Random.Range(0.3f, 0.5f);
+        SoundEffectManager.instance.PlayRandomSoundFxClip(chaseAudio, transform, 1f);
+        yield return new WaitForSeconds(rand);
+        isChaseAudioPlaying = false;
+    }
 
-            if (currentState == EnemyState.Fleeing && target != null)
-            {
-                gameObject.GetComponent<monster_database>().SetFlee(false);
-                gameObject.GetComponent<monster_database>().SetFlashed(false);
-                currentState = EnemyState.Stalking;
-            }
+    private IEnumerator PlayGrowlSound()
+    {
+        float rand = Random.Range(7f, 9f);
+        SoundEffectManager.instance.PlayRandomSoundFxClip(growlAudio, transform, 1f);
+        yield return new WaitForSeconds(rand);
+        isGrowlingAudioPlaying = false;
+    }
 
-            Debug.Log("Player exited idle range trigger, current state: " + currentState);
-        }
-    }*/
 
+
+    #endregion
 
     private void OnDrawGizmos()
     {

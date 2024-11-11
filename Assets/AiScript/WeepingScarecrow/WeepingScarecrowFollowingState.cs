@@ -21,6 +21,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 
             weepingScarecrow.StartCoroutine(UpdateTargetPosition(weepingScarecrow, agent));
             playSoundCoroutine = weepingScarecrow.StartCoroutine(PlaySoundEffect(weepingScarecrow));
+            SoundEffectManager.instance.PlayRandomSoundFxClip(weepingScarecrow.GetFlwSoundClips(), weepingScarecrow.transform, 1f);
             Debug.Log("Hi, I'm following");
         }
     }
@@ -67,7 +68,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
     {
         while (true)
         {
-            float rand = Random.Range(5f, 7f);
+            float rand = Random.Range(2f, 4f);
             yield return new WaitForSeconds(rand);
             SoundEffectManager.instance.PlayRandomSoundFxClip(weepingScarecrow.GetFlwSoundClips(), weepingScarecrow.transform, 1f);
         }
