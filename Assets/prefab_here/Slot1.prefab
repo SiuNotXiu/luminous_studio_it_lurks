@@ -39,8 +39,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 217.98077, y: -189.51923}
-  m_SizeDelta: {x: 155.9615, y: 139.0385}
+  m_AnchoredPosition: {x: 209.64862, y: -187.32654}
+  m_SizeDelta: {x: 139.2972, y: 134.6532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1140579746774296446
 CanvasRenderer:
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
   isFull: 0
+  slotIndex: 0
   itemSlot: {fileID: 714611747564924067}
   droppedItemPrefab: {fileID: 4904651877909844242, guid: 518c30e668b1bb4428827d0e2e28ec36, type: 3}
   playerTransform: {fileID: 0}
@@ -226,8 +227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -8.936}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: -7}
-  m_SizeDelta: {x: 190, y: 190}
+  m_AnchoredPosition: {x: 2, y: -0}
+  m_SizeDelta: {x: 139.8292, y: 141.9543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3450510586052968136
 CanvasRenderer:
