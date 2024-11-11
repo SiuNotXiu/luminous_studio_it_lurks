@@ -25,6 +25,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     //=====ITEM SLOT=====//
     [SerializeField] private Image itemImage;
     [SerializeField] private GameObject dropdownMenuPrefab;
+    private readonly float filledAlpha = 1f;     // item added (opaque)
+    private readonly float emptyAlpha = 0f;    // item remove (transparent)
+
     private GameObject activeDropdownMenu; //crearting dropdown
     private GameObject activeDropdownMenu_panel; //child
     public GameObject itemDescription;
@@ -42,9 +45,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     //for items reference
     private PerkSlot perksEquip; //to check can use better battery or not
     private HealthEffects playerHealth;
-
-    
-
     private void Update()
     {
 
@@ -65,6 +65,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         this.itemData = itemData;
         isFull = true;
         this.itemImage.sprite = itemData.itemSprite;
+
+        SetItemImageAlpha(filledAlpha);
     }
 
     public bool IsEmpty()
@@ -243,6 +245,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         itemData = null;
         isFull = false;
         itemImage.sprite = null;
+
+        SetItemImageAlpha(emptyAlpha);
     }
 
     private void FuseItem()
@@ -375,10 +379,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         itemData = null;
         isFull = false;
         itemImage.sprite = null;
+
+        SetItemImageAlpha(emptyAlpha);
     }
 
     public int GetSlotIndex()
     {
         return slotIndex;
+    }
+
+    private void SetItemImageAlpha(float alpha)
+    {
+        Color color = itemImage.color;
+        color.a = alpha;
+        itemImage.color = color;
     }
 }
