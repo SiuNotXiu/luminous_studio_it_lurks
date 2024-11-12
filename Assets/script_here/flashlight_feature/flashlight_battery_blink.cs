@@ -22,11 +22,11 @@ public class flashlight_battery_blink : MonoBehaviour
         //Debug.Log("checking blink");
         battery_percentage = battery_remaining / battery_max * 100;
 
-        if (battery_percentage == Mathf.Clamp(battery_percentage,   2.5f,   2.5f    + 1) ||
-            battery_percentage == Mathf.Clamp(battery_percentage,    5,      5       + 1) ||
-            battery_percentage == Mathf.Clamp(battery_percentage,    10,     10      + 1) ||
-            battery_percentage == Mathf.Clamp(battery_percentage,    30,     30      + 1) ||
-            battery_percentage == Mathf.Clamp(battery_percentage,    60,     60      + 1))
+        if (battery_percentage == Mathf.Clamp(battery_percentage,    2.5f,   2.5f    + 2) ||
+            battery_percentage == Mathf.Clamp(battery_percentage,    5,      5       + 2) ||
+            battery_percentage == Mathf.Clamp(battery_percentage,    10,     10      + 2) ||
+            battery_percentage == Mathf.Clamp(battery_percentage,    30,     30      + 2) ||
+            battery_percentage == Mathf.Clamp(battery_percentage,    60,     60      + 2))
         {
             /*if (gameObject.GetComponent<MeshRenderer>().material != material_none)
                 gameObject.GetComponent<MeshRenderer>().material = material_none;*/
