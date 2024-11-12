@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Bandage
   itemTag: PerksItem
-  itemSprite: {fileID: 21300000, guid: dd70501fa0895b041891af50bb8bf901, type: 3}
-  droppedSprite: {fileID: 21300000, guid: dd70501fa0895b041891af50bb8bf901, type: 3}
+  itemSprite: {fileID: 21300000, guid: 9a822728d122ff143b0d42cbfae7850f, type: 3}
+  droppedSprite: {fileID: 21300000, guid: 31f0b6085d377a045994923c3acbb844, type: 3}
   selectedSprite: {fileID: 0}
   isBulbCompatible: 0
   isBatteryCompatible: 0

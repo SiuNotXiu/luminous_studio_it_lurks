@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: 1300 mAh Casing
   itemTag: PerksItem
   itemSprite: {fileID: 21300000, guid: 84ad203ad15930548894c1f63c1ffb40, type: 3}
-  droppedSprite: {fileID: 21300000, guid: 84ad203ad15930548894c1f63c1ffb40, type: 3}
+  droppedSprite: {fileID: 21300000, guid: 69ec8b7a31705f8488739b6fd1c98796, type: 3}
   selectedSprite: {fileID: 0}
   isBulbCompatible: 0
   isBatteryCompatible: 1
