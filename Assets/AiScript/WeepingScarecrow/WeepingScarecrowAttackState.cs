@@ -1,39 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
 {
     private EnemyAttack atk;
+    private bool attacking = false;
     private NavMeshAgent agent;
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
+        Debug.Log("InAtkArea" + weepingScarecrow.GetInAtkArea());
+        atk = weepingScarecrow.GetComponent<EnemyAttack>();
         agent = weepingScarecrow.GetAgent();
         if (agent.isStopped == false) 
         {
-            atk = weepingScarecrow.GetComponent<EnemyAttack>();
-            atk.Attack();
+           
             agent.velocity = Vector3.zero;
             agent.isStopped = true;
-            weepingScarecrow.StartCoroutine(AttackDelay(weepingScarecrow));
+           
+
         }
-      
+  
+        Debug.Log("Hi im Atk State");
     }
 
     public override void UpdateState(WeepingScarecrowManager weepingScarecrow)
     {
-                
+
+        if (weepingScarecrow.GetInAtkArea() == true && attacking == false) 
+        {
+            atk.Attack();
+            attacking = true;
+            weepingScarecrow.StartCoroutine(AttackDelay());
+        }
+        else
+        {
+            weepingScarecrow.StopCoroutine(AttackDelay());
+        }
+
+        if (weepingScarecrow.GetInAtkArea() == false)
+        {
+            weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
+        }
+
     }
 
     public override void ExitState(WeepingScarecrowManager weepingScarecrow)
     {
         weepingScarecrow.StopAllCoroutines();
+        attacking = false;
     }
 
-    IEnumerator AttackDelay(WeepingScarecrowManager weepingScarecrow)
+    IEnumerator SwitchStateDelay(WeepingScarecrowManager weepingScarecrow)
     {
-        yield return new WaitForSeconds(2f);
+        Debug.Log("Coroutine Started");
+        yield return new WaitForSeconds(3f);
         weepingScarecrow.SwitchState(weepingScarecrow.followState);
+        weepingScarecrow.SetInAtkArea(false);
     }
+
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        attacking = false;
+    }
+
 }

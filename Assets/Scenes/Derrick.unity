@@ -535,7 +535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2766521153818071665, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3035412185471361213, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1699,12 +1699,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997167477901046659, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1842244664736007893, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: idleTrigger
       value: 
       objectReference: {fileID: 1298193005}
+    - target: {fileID: 2168068635798034221, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
+      propertyPath: m_Radius
+      value: 16.391851
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168068635798034221, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
+      propertyPath: m_Offset.x
+      value: -2.7705576
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168068635798034221, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
+      propertyPath: m_Offset.y
+      value: -3.5688932
+      objectReference: {fileID: 0}
     - target: {fileID: 2945918093115412467, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.6
@@ -1749,6 +1761,18 @@ PrefabInstance:
       propertyPath: _healtheffects
       value: 
       objectReference: {fileID: 1867807091}
+    - target: {fileID: 8008048189345170359, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
+      propertyPath: damageAudios.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008048189345170359, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
+      propertyPath: damageAudios.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 85bdefc5ad8a4cf44bbde76ca14aefe3, type: 3}
+    - target: {fileID: 8008048189345170359, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
+      propertyPath: damageAudios.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b9375518aba0ab4db3f7499aa060a9d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

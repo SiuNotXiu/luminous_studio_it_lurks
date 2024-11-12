@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     [SerializeField] private float timer = 0f;
     private float time = 5f;
     private bool flw = false;
+    private bool inAtkArea = false;
 
     #endregion
 
@@ -48,6 +50,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         idleTrigger.EnteredTrigger += OnIdleTriggerEntered;
         idleTrigger.ExitedTrigger += OnIdleTriggerExited;
         attackTrigger.EnteredTrigger += OnAtkTriggerEntered;
+        attackTrigger.ExitedTrigger += OnAtkTriggerExited;
         followTrigger.EnteredTrigger += OnFollowTriggerEntered;
 
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -59,6 +62,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
+      
     }
 
     public void SwitchState(WeepingScarecrowBaseState state)
@@ -85,7 +89,7 @@ public class WeepingScarecrowManager : MonoBehaviour
             target = null;
             flw = false;
             SwitchState(idleState);
-            Debug.Log("thiswork");
+            
         }
     }
 
@@ -93,7 +97,18 @@ public class WeepingScarecrowManager : MonoBehaviour
     {
         if (collision.CompareTag("Player") && target != null)
         {
+            inAtkArea = true;
             SwitchState(attackState);
+            
+        }
+    }
+
+    private void OnAtkTriggerExited(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && target != null)
+        { 
+            inAtkArea = false;
+            
         }
     }
 
@@ -127,6 +142,16 @@ public class WeepingScarecrowManager : MonoBehaviour
     public bool GetFlw()
     {
         return flw;
+    }
+
+    public bool GetInAtkArea()
+    {
+        return inAtkArea;
+    }
+
+    public void SetInAtkArea(bool _pInAtkArea)
+    {
+        inAtkArea = _pInAtkArea;
     }
 
     public AudioClip[] GetFlwSoundClips()
