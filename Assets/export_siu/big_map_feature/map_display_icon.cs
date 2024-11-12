@@ -22,7 +22,10 @@ public class map_display_icon : MonoBehaviour
     {
         if (script_trigger_map_ui == null)
         {
-            script_trigger_map_ui = GameObject.Find("canvas_big_map").GetComponent<trigger_map_ui>();
+            if (GameObject.Find("canvas_big_map") != null)
+            {
+                script_trigger_map_ui = GameObject.Find("canvas_big_map").GetComponent<trigger_map_ui>();
+            }
         }
         //material_current = transform.Find("big_map_icon").gameObject.GetComponent<SpriteRenderer>().material;
         if (material_map_icon_dissolve_appear != null)
