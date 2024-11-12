@@ -43,6 +43,7 @@ public class EnemyMovement : MonoBehaviour
 
     #region<PrivateVariables>
     private Transform target;
+    private SpriteRenderer sr;
     private List<Vector3> waypoints = new List<Vector3>();
     private Vector3 lastPlayerPosition;
     private EnemyState currentState = EnemyState.Idle;
@@ -53,6 +54,8 @@ public class EnemyMovement : MonoBehaviour
     private float timeSinceLastAttack = 0f;
     private NavMeshAgent agent;
     private bool inAtkArea = false;
+    private Animator anim;
+    private Vector2 previousPosition;
     #endregion
 
     #region<Sfx>
@@ -72,10 +75,13 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         lastPlayerPosition = transform.position;
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        sr = GetComponent<SpriteRenderer>();
         agent.updateUpAxis = false;
         agent.updateRotation = false;
         agent.speed = speed;
+        
     }
 
     private void Awake()
@@ -90,6 +96,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        FlipChecks();
 
         if (!canMove)
         {
@@ -144,6 +151,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void StalkingState()
     {
+        anim.SetBool("isWalking", true);
+        anim.SetBool("isRunning", false);
         if (agent.isStopped)
         {
             agent.isStopped = false;
@@ -236,6 +245,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void ChasingState()
     {
+        anim.SetBool("isRunning", true);
+        anim.SetBool("isWalking", false);
         if (agent.isStopped)
         {
             agent.isStopped = false;
@@ -286,11 +297,18 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackState()
     {
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", false);
         
+
         if (!attack)  
         {
             attack = true;
+            anim.SetBool("isAtking", true);  // Start the attack animation
             gameObject.GetComponent<EnemyAttack>().Attack();
+
+            StartCoroutine(EndAttackAfterAnimation());
+
         }
         
 
@@ -313,6 +331,7 @@ public class EnemyMovement : MonoBehaviour
             speedBoosted = false;
             currentState = EnemyState.Stalking;
             attack = false;
+            
         }
 
         FleeingChecks();
@@ -446,6 +465,26 @@ public class EnemyMovement : MonoBehaviour
        
     }
 
+    private void FlipChecks()
+    {
+        
+        float currentPosX = transform.position.x;
+        float previousPosX = previousPosition.x;
+
+        
+        if (currentPosX > previousPosX)
+        {
+            sr.flipX = true; 
+        }
+        else if (currentPosX < previousPosX)
+        {
+            sr.flipX = false; 
+        }
+
+        
+        previousPosition = transform.position;
+    }
+
     #region<OntriggerEntered/Exit>
 
     private void OnIndleRangeTriggerEntered(Collider2D collision)
@@ -521,8 +560,14 @@ public class EnemyMovement : MonoBehaviour
         isGrowlingAudioPlaying = false;
     }
 
+    private IEnumerator EndAttackAfterAnimation()
+    {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("isAtking", false); 
+    }
 
 
+    
     #endregion
 
     private void OnDrawGizmos()
