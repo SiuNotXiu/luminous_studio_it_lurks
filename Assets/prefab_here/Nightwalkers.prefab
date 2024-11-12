@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 315052036185282928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -0.46, z: 0}
+  m_LocalPosition: {x: 2.1, y: 3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65,9 +65,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.46921086, y: 0.3864088}
+  m_Offset: {x: -0.46921015, y: 17.075611}
   serializedVersion: 2
-  m_Radius: 1.7420285
+  m_Radius: 23.057926
 --- !u!114 &6814783872701949830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 2185217964418346519}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 0.27, z: 0}
+  m_LocalPosition: {x: 0.5, y: 6.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -225,9 +225,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.027388573, y: -0.093767166}
+  m_Offset: {x: 0.0273882, y: 13.090142}
   serializedVersion: 2
-  m_Radius: 4.785487
+  m_Radius: 35.650013
 --- !u!114 &4553243925226310059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,9 +305,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.7236311}
+  m_Offset: {x: 0, y: 23.951656}
   serializedVersion: 2
-  m_Radius: 8.63409
+  m_Radius: 49.70037
 --- !u!114 &6014270803356808712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,11 +331,12 @@ GameObject:
   - component: {fileID: 3035412185471361213}
   - component: {fileID: 7407456413002066286}
   - component: {fileID: 388977694933684988}
-  - component: {fileID: 5813085379830691728}
   - component: {fileID: 3744177220498758824}
   - component: {fileID: 162004682532734470}
-  - component: {fileID: -5529215569427422409}
   - component: {fileID: 3547470084883853217}
+  - component: {fileID: 2531694453090508065}
+  - component: {fileID: 4271547083133838083}
+  - component: {fileID: 8289902235034148156}
   m_Layer: 0
   m_Name: Nightwalkers
   m_TagString: Untagged
@@ -353,7 +354,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.97, y: -2.74, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.26042348, y: 0.26042348, z: 0.26042348}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6037032906271475065}
@@ -403,7 +404,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bdf36c6413d2d52498cf3ebaaa41db92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 48b101b584faa49459ae98e5296a8c65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -436,7 +437,49 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5813085379830691728
+--- !u!114 &3744177220498758824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766521153818071665}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246c84d81f95da749b2c5d3db0f567df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashed: 0
+  flashtimer: 0
+--- !u!114 &162004682532734470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766521153818071665}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f299fb9283f47c44905a1068eb49b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3547470084883853217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766521153818071665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3cfe8b67b4eb74d85b9bc66186f22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healtheffects: {fileID: 0}
+  damageAudios:
+  - {fileID: 8300000, guid: 85bdefc5ad8a4cf44bbde76ca14aefe3, type: 3}
+  - {fileID: 8300000, guid: 9b9375518aba0ab4db3f7499aa060a9d, type: 3}
+--- !u!114 &2531694453090508065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -453,10 +496,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   sightRange: 100
-  stalkingDistance: 7
+  stalkingDistance: 8.72
   waypointDistanceThreshold: 1
-  waypointReachThreshold: 1
-  waypointGizmoRadius: 0.3
+  waypointReachThreshold: 3
+  waypointGizmoRadius: 1
   idleRangeTrigger: {fileID: 6014270803356808712}
   attackRangeTrigger: {fileID: 6814783872701949830}
   chaseRangeTrigger: {fileID: 4553243925226310059}
@@ -467,37 +510,25 @@ MonoBehaviour:
   speedBoostTime: 2
   idleTimer: 0
   idleTime: 2
-  fleeTime: 0
-  fleeTimer: 5
+  fleeTime: 5
+  fleeTimer: 0
   player: {fileID: 0}
---- !u!114 &3744177220498758824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2766521153818071665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246c84d81f95da749b2c5d3db0f567df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashed: 0
-  flashtimer: 0
---- !u!114 &162004682532734470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2766521153818071665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f299fb9283f47c44905a1068eb49b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!58 &-5529215569427422409
-CircleCollider2D:
+  growlAudio:
+  - {fileID: 8300000, guid: 0237124dc24d432498d2835bbbdd5aac, type: 3}
+  - {fileID: 8300000, guid: 676730b12ac8e0d4eb36a3c0c42c37f9, type: 3}
+  chaseAudio:
+  - {fileID: 8300000, guid: 2f56711b5c8caa94ead05eac6fbbc28c, type: 3}
+  stalkAudio:
+  - {fileID: 8300000, guid: 2f56711b5c8caa94ead05eac6fbbc28c, type: 3}
+  shineAudio:
+  - {fileID: 8300000, guid: 6c4d7014372e283498aaa9dc638c8384, type: 3}
+  - {fileID: 8300000, guid: 74c8a03dce213f1468e61ec2f7c47b4b, type: 3}
+  fleeAudio:
+  - {fileID: 8300000, guid: 91cc4ffe920638245a50116ee3ec00ef, type: 3}
+  - {fileID: 8300000, guid: f5c1edd2549916d4791309a5dbe1ba22, type: 3}
+  - {fileID: 8300000, guid: 727795f3faa8bac4f9ae6fdb0a10cf33, type: 3}
+--- !u!61 &4271547083133838083
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -528,19 +559,37 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.2571764, y: 19.3679}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 30.000002, y: 40}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 2.3600001
---- !u!114 &3547470084883853217
-MonoBehaviour:
+  m_Size: {x: 10.429232, y: 38.7358}
+  m_EdgeRadius: 0
+--- !u!95 &8289902235034148156
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2766521153818071665}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d3cfe8b67b4eb74d85b9bc66186f22d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healtheffects: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 376988efc23b3a04ca7383c2adbf1c05, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
