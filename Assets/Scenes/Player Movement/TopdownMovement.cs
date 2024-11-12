@@ -8,11 +8,14 @@ public class TopdownMovement : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb2d;
     
     private Vector2 moveInput;
+    private bool facing_right = true;
 
     [HideInInspector] public static float multiplier_1300_mah = 0.75f;
 
     [HideInInspector] private Animator animator_mask;
     [HideInInspector] private Animator animator_normal;
+
+    [HideInInspector] private GameObject object_sprite_sheet_mask;
 
     private void OnValidate()
     {
@@ -35,6 +38,8 @@ public class TopdownMovement : MonoBehaviour
         {
             Debug.Log("not player but using topdownmovement script");
         }
+        if (object_sprite_sheet_mask == null)
+            object_sprite_sheet_mask = transform.Find("sprite_sheet_mask").gameObject;
     }
     void Start()
     {
@@ -52,13 +57,23 @@ public class TopdownMovement : MonoBehaviour
         rb2d.velocity = moveInput * moveSpeed;
         if (moveInput.x != 0)
         {
-            animator_mask.Play("walk_left");
-            animator_normal.Play("walk_left");
+            animator_mask.Play("walk_right");
+            animator_normal.Play("walk_right");
+            if (moveInput.x > 0)
+            {
+                facing_right = true;
+                object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (moveInput.x < 0)
+            {
+                facing_right = false;
+                object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
         }
         else
         {
-            animator_mask.Play("idle_left");
-            animator_normal.Play("idle_left");
+            animator_mask.Play("idle_right");
+            animator_normal.Play("idle_right");
         }
     }
 

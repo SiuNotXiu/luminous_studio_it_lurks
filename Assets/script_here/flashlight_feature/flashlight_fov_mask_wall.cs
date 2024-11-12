@@ -178,15 +178,18 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                                 monster_flashed[j].GetComponent<monster_database>().flashed = true;
                             }
                         }
-                        for (int j = 0; j < bubble_flashed.Count; j++)//everything being hit by the raycast
+                        else if (gameObject.name == "flashlight_mask")
                         {
-                            bubble_flashed[j].GetComponent<flashlight_dissolve_bubble>().dissolve_bubble();
-                            #region debug
-                            //Debug.Log("bubble count > " + bubble_flashed.Count);
-                            /*Debug.DrawLine(player_position,
-                                            bubble_flashed[j].transform.position,
-                                            Color.red, 0.1f);*/
-                            #endregion
+                            for (int j = 0; j < bubble_flashed.Count; j++)//everything being hit by the raycast
+                            {
+                                bubble_flashed[j].GetComponent<flashlight_dissolve_bubble>().dissolve_bubble();
+                                #region debug
+                                //Debug.Log("bubble count > " + bubble_flashed.Count);
+                                /*Debug.DrawLine(player_position,
+                                                bubble_flashed[j].transform.position,
+                                                Color.red, 0.1f);*/
+                                #endregion
+                            }
                         }
                         #endregion
                     }
@@ -214,6 +217,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                     //the tutorial is using -= but -= vertex arrangement is terbalik for me
                     angle += angle_increase;
                 }
+                //Debug.Log("mesh > " + mesh);
                 mesh.vertices = vertices;
                 mesh.uv = uv;
                 mesh.triangles = triangles;

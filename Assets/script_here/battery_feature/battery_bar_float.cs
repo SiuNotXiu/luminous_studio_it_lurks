@@ -7,9 +7,7 @@ public class battery_bar_float : MonoBehaviour
 {
     [SerializeField] public static float battery_remaining = 20.0f;
     [SerializeField] public float display_battery_remaining;
-    [HideInInspector] public static float battery_max;
-    [HideInInspector] public static float battery_max_normal = 20.0f;
-    [HideInInspector] public static float battery_max_1300_mah = 20.0f;
+    [HideInInspector] public static float battery_max = 20f;
     //the greater this battery_duration_multiplier is, the longer battery last
     [SerializeField] public Image battery_green;
 
@@ -23,10 +21,19 @@ public class battery_bar_float : MonoBehaviour
 
     [HideInInspector] private flashlight_battery_blink script_flashlight_battery_blink;
 
+    private void OnValidate()
+    {
+        if (battery_green == null)
+        {
+            if (GameObject.Find("Canvas") != null)
+            {
+                battery_green = GameObject.Find("Canvas").transform.Find("canvas_battery_bar").Find("green").gameObject.GetComponent<Image>();
+            }
+        }
+    }
     void Start()
     {
-        script_flashlight_battery_blink = transform.Find("flashlight_mask").GetComponent<flashlight_battery_blink>();
-        battery_max = battery_max_normal;
+        script_flashlight_battery_blink = transform.Find("sprite_sheet_mask").Find("arm_with_flashlight").Find("flashlight_mask").GetComponent<flashlight_battery_blink>();
     }
 
     void Update()
@@ -38,7 +45,7 @@ public class battery_bar_float : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))//temporary reload, later change to chermin use battery in journal
         {
-            reload_battery("normal");
+            reload_battery();
             battery_bar_display();
         }
     }
@@ -64,16 +71,9 @@ public class battery_bar_float : MonoBehaviour
         }
         #endregion
     }
-    public static void reload_battery(string type)
+    public static void reload_battery()
     {
-        if (type == "normal")
-        {
-            battery_remaining = battery_max_normal;
-        }
-        if (battery_remaining > battery_max)
-        {
-            battery_remaining = battery_max;
-        }
+        battery_remaining = battery_max;
     }
 
     #region perks equip

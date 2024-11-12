@@ -66,13 +66,13 @@ public class flashlight_dissolve_bubble : MonoBehaviour
             time_passed = duration_until_end;
             animation_coroutine = StartCoroutine(animation(true));
         }
-
         flashed = false;
     }
 
     public void dissolve_bubble()
     {
         flashed = true;
+        Invoke("flashed_to_true", 0.1f);
         if (dissolving == false)
         {
             //prevent multiple raycast calling this function repeatdly
@@ -139,5 +139,10 @@ public class flashlight_dissolve_bubble : MonoBehaviour
 
             yield return null; // Wait until the next frame
         }
+    }
+
+    void flashed_to_true()
+    {
+        flashed = true;
     }
 }

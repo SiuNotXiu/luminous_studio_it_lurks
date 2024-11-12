@@ -40,9 +40,9 @@ public class bubble_movement : MonoBehaviour
             y_down = object_zone_that_need_bubble.transform.position.y + offset.y - (size.y * object_zone_that_need_bubble.transform.localScale.y) / 2;
             y_up = object_zone_that_need_bubble.transform.position.y + offset.y + (size.y * object_zone_that_need_bubble.transform.localScale.y) / 2;
 
-            Debug.Log("x_left > " + x_left);
-            Debug.Log("x_right > " + x_right);
-            Debug.Log(gameObject.name + " > " + transform.position);
+            //Debug.Log("x_left > " + x_left);
+            //Debug.Log("x_right > " + x_right);
+            //Debug.Log(gameObject.name + " > " + transform.position);
             #region x movement
             if (transform.position.x < x_left)
             {
@@ -62,14 +62,14 @@ public class bubble_movement : MonoBehaviour
             #region y movement
             if (transform.position.y < y_down)
             {
-                Debug.Log(gameObject.name + " exit from down");
+                //Debug.Log(gameObject.name + " exit from down");
                 transform.position = new Vector3(transform.position.x,
                     transform.position.y + y_column * y_gap,
                     transform.position.z);
             }
             if (transform.position.y > y_up)
             {
-                Debug.Log(gameObject.name + " exit from up");
+                //Debug.Log(gameObject.name + " exit from up");
                 transform.position = new Vector3(transform.position.x,
                     transform.position.y - y_column * y_gap,
                     transform.position.z);
