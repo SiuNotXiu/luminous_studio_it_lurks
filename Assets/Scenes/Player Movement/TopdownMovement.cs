@@ -5,13 +5,37 @@ using UnityEngine;
 public class TopdownMovement : MonoBehaviour
 {
     public static float moveSpeed = 10f;
-    public Rigidbody2D rb2d;
+    [HideInInspector] public Rigidbody2D rb2d;
     
     private Vector2 moveInput;
 
     [HideInInspector] public static float multiplier_1300_mah = 0.75f;
 
-    // Start is called before the first frame update
+    [HideInInspector] private Animator animator_mask;
+    [HideInInspector] private Animator animator_normal;
+
+    private void OnValidate()
+    {
+        if (gameObject.name == "player_dont_change_name")
+        {
+            if (animator_mask == null)
+            {
+                if (transform.Find("sprite_sheet_mask").gameObject != null)
+                {
+                    animator_mask = transform.Find("sprite_sheet_mask").gameObject.GetComponent<Animator>();
+                    animator_normal = transform.Find("sprite_sheet_mask").transform.Find("sprite_sheet_normal").gameObject.GetComponent<Animator>();
+                }
+                else
+                {
+                    Debug.Log("cannot animator_mask find, maybe name changed");
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("not player but using topdownmovement script");
+        }
+    }
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -20,13 +44,22 @@ public class TopdownMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         moveInput.Normalize();
 
         rb2d.velocity = moveInput * moveSpeed;
+        if (moveInput.x != 0)
+        {
+            animator_mask.Play("walk_left");
+            animator_normal.Play("walk_left");
+        }
+        else
+        {
+            animator_mask.Play("idle_left");
+            animator_normal.Play("idle_left");
+        }
     }
 
     public float GetMoveSpeed()

@@ -1,28 +1,57 @@
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-    public class HealthEffects : MonoBehaviour
+public class HealthEffects : MonoBehaviour
+{
+    [HideInInspector] private GameObject object_player;
+    [HideInInspector] private GameObject object_sprite_sheet_mask;
+    [HideInInspector] private GameObject object_sprite_sheet_normal;
+    [HideInInspector] private Animator animator_mask;
+    [HideInInspector] private Animator animator_normal;
+
+    public float currentHp = 100f;
+    private float maxHp = 100f;
+
+    public Image redSplatterImage = null;
+    public Image hurtImage = null;
+    private float hurtTimer = 0.3f;
+
+    private void OnValidate()
     {
-        public float currentHp = 100f;
-        private float maxHp = 100f;
-
-        public Image redSplatterImage = null;
-        public Image hurtImage = null;
-        private float hurtTimer = 0.3f;
-
-        // Start is called before the first frame update
-       
-
-    
-        // Update is called once per frame
-        void UpdateHealth()
+        #region initialization
+        if (object_player == null)
         {
-            Color splatterAlpha = redSplatterImage.color;
-            splatterAlpha.a = 1 - (currentHp / maxHp);
-            redSplatterImage.color = splatterAlpha;
+            object_player = GameObject.Find("player_dont_change_name");
         }
+        if (object_sprite_sheet_mask == null)
+        {
+            if (object_player != null)
+            {
+                object_sprite_sheet_mask = object_player.transform.Find("sprite_sheet_mask").gameObject;
+                animator_mask = object_sprite_sheet_mask.GetComponent<Animator>();
+            }
+        }
+        if (object_sprite_sheet_normal == null)
+        {
+            if (object_player != null)
+            {
+                object_sprite_sheet_normal = object_player.transform.Find("sprite_sheet_normal").gameObject;
+                animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
+            }
+        }
+        #endregion
+    }
+
+
+    // Update is called once per frame
+    void UpdateHealth()
+    {
+        Color splatterAlpha = redSplatterImage.color;
+        splatterAlpha.a = 1 - (currentHp / maxHp);
+        redSplatterImage.color = splatterAlpha;
+    }
 
     IEnumerator HurtFlash()
     {
@@ -58,13 +87,19 @@
     }
 
     public void TakeDamage()
+    {
+        if (currentHp > 0) 
         {
-            if (currentHp >= 0) 
-            {
-                StartCoroutine(HurtFlash());
-                UpdateHealth();
-            }
+            StartCoroutine(HurtFlash());
+            UpdateHealth();
         }
+        if (currentHp <= 0)
+        {
+            currentHp = 0;
+            animator_mask.Play("death");
+            animator_normal.Play("death");
+        }
+    }
 
     public void Heal()
     {
@@ -87,7 +122,6 @@
             return false;
         }
     }
-
-    }
+}
 
 
