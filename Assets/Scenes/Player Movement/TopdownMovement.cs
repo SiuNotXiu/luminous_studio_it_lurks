@@ -49,10 +49,13 @@ public class TopdownMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        if(InventoryController.JournalOpen )
+        {
+            moveInput.x = Input.GetAxisRaw("Horizontal");
+            moveInput.y = Input.GetAxisRaw("Vertical");
 
-        moveInput.Normalize();
+            moveInput.Normalize();
+        }
 
         rb2d.velocity = moveInput * moveSpeed;
         if (moveInput.x != 0)

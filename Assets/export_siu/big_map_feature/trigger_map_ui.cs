@@ -10,8 +10,9 @@ public class trigger_map_ui : MonoBehaviour
     [HideInInspector] private Vector2 obmb_initial_scale;
     [HideInInspector] private big_map_scrolling script_bms;
 
-
     [SerializeField] private GameObject object_map_and_icon;
+
+    public static bool Map_Is_Open = false;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class trigger_map_ui : MonoBehaviour
     {
         if (big_map != null)
         {
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.M) && InventoryController.JournalOpen)
             {
                 if (big_map.activeInHierarchy == false)
                 {
@@ -34,6 +35,7 @@ public class trigger_map_ui : MonoBehaviour
                 }
                 else
                 {
+                    Map_Is_Open = false;
                     big_map.SetActive(false);
                     #region for mouse scrolling zoom map
                     object_big_map_background.transform.localScale = obmb_initial_scale;
@@ -53,6 +55,8 @@ public class trigger_map_ui : MonoBehaviour
 
     public void open_map()
     {
+        player_database.is_flashlight_on = !player_database.is_flashlight_on;
+        Map_Is_Open = true;
         big_map.SetActive(true);
     }
 }

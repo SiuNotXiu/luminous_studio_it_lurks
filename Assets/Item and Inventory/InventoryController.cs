@@ -56,7 +56,7 @@ public class InventoryController : MonoBehaviour
     {
         // Open Journal
         // Switching is use to switch the boarder
-        if (Input.GetButtonDown("Journal") && JournalOpen)
+        if (Input.GetButtonDown("Journal") && JournalOpen && !trigger_map_ui.Map_Is_Open)
         {
             Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
             OpenJournal();
@@ -65,7 +65,7 @@ public class InventoryController : MonoBehaviour
             Page1.SetActive(false);
             Page2.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) && !trigger_map_ui.Map_Is_Open)
         {
             if(Item.isPlayerInRange)
             {
@@ -73,7 +73,7 @@ public class InventoryController : MonoBehaviour
 
                 item.Item_Scrap_Check();
             }
-            else if (JournalOpen && chest_detect.isInRange)
+            else if (JournalOpen && chest_detect.isInRange && !trigger_map_ui.Map_Is_Open)
             {
                 chest_detect.OpenChest();
                 Debug.Log("is it gay?: " + chest_detect.isInRange);//true
@@ -112,6 +112,7 @@ public class InventoryController : MonoBehaviour
 
     private void OpenJournal()
     {
+        player_database.is_flashlight_on = !player_database.is_flashlight_on;
         //chest problem here in chest in
         Debug.Log("wwwwwwwww > " + chestIn);
         //Debug.Log("Opening Journal");
