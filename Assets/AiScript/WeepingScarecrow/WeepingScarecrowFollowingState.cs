@@ -8,12 +8,16 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 {
     private NavMeshAgent agent;
     private Coroutine playSoundCoroutine;
+    private Animator anim;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
         if (weepingScarecrow.GetTarget() != null)
         {
             agent = weepingScarecrow.GetAgent();
+            anim = weepingScarecrow.GetAnimator();
+
+            anim.SetBool("isRunning", true);
             if (agent.isStopped)
             {
                 agent.isStopped = false;
@@ -44,6 +48,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         {
             weepingScarecrow.StopCoroutine(playSoundCoroutine);
         }
+        anim.SetBool("isRunning", false);
     }
 
     private IEnumerator UpdateTargetPosition(WeepingScarecrowManager weepingScarecrow, NavMeshAgent agent)

@@ -5,20 +5,23 @@ using UnityEngine.AI;
 
 public class testing : MonoBehaviour
 {
-    public Transform target;
+    public static float moveSpeed = 10f;
+    [HideInInspector] public Rigidbody2D rb2d;
 
-    NavMeshAgent agent;
+    private Vector2 moveInput;
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        rb2d = GetComponent<Rigidbody2D>();
 
     }
 
     private void Update()
     {
-        agent.SetDestination(target.position);
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = Input.GetAxisRaw("Vertical");
+
+        moveInput.Normalize();
+        rb2d.velocity = moveInput * moveSpeed;
     }
 }
