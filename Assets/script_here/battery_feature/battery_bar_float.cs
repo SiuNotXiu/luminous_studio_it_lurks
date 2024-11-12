@@ -48,12 +48,14 @@ public class battery_bar_float : MonoBehaviour
         battery_remaining -= Time.deltaTime;    //constantly reduce the same one
 
         #region battery changed, check animation
-        script_flashlight_battery_blink.check_should_flashlight_blink(battery_remaining, battery_max);
+        if (script_flashlight_battery_blink != null)
+            script_flashlight_battery_blink.check_should_flashlight_blink(battery_remaining, battery_max);
 
         if (battery_remaining >= 0)
         {
             //visual
-            battery_green.fillAmount = battery_remaining / battery_max;
+            if (battery_green != null)
+                battery_green.fillAmount = battery_remaining / battery_max;
         }
         if (battery_remaining <= 0)//only need to check this if flashlight is on
         {
