@@ -9,6 +9,8 @@ public class CollectedScrapPaper : MonoBehaviour
     [SerializeField] private GameObject object_canvas_big_map;
     [SerializeField] private big_map_icon_reveal_manager script_big_map_icon_reveal_manager;
 
+    private float transparencyZero = 0f;
+    private float transparencyMax = 1f;
     public Image leftImage;
     public Image rightImage;
     public Sprite[] leftSprite;//journal sprite
@@ -22,6 +24,8 @@ public class CollectedScrapPaper : MonoBehaviour
     private int currentPageIndex = 0;            // Tracks the current page index
     private int currentMaxPage = 1;
     public bool[] unlockJournal;
+    private Color colorL;
+    private Color colorR;
 
     private void OnValidate()
     {
@@ -32,6 +36,14 @@ public class CollectedScrapPaper : MonoBehaviour
     }
     private void Start()
     {
+
+        colorL = leftImage.color;
+        colorR = rightImage.color;
+        colorL.a = transparencyZero;
+        colorR.a = transparencyZero;
+        leftImage.color = colorL;
+        rightImage.color = colorR;
+
         nextPageButton.onClick.AddListener(FlipToNextPage);
         previousPageButton.onClick.AddListener(FlipToPreviousPage);//shouldn't assign it on the button cuz it already assign it form here
         UpdateJournal();
@@ -43,7 +55,10 @@ public class CollectedScrapPaper : MonoBehaviour
         {
             Debug.Log("Id added: " + id);
             unlockJournal[id -1] = true;
-            script_big_map_icon_reveal_manager.call_this_after_scrap_paper_taken(unlockJournal);
+            if(script_big_map_icon_reveal_manager != null)
+            {
+                script_big_map_icon_reveal_manager.call_this_after_scrap_paper_taken(unlockJournal);
+            }
             collectedScrapIDs.Add(id);
             UpdateJournal();
         }
@@ -68,12 +83,20 @@ public class CollectedScrapPaper : MonoBehaviour
         if (collectedScrapIDs.Contains(currentPageIndex +1))
         {
             //display
+            colorL.a = transparencyMax;
+            colorR.a = transparencyMax;
+            leftImage.color = colorL;
+            rightImage.color = colorR;
             leftImage.sprite = leftSprite[currentPageIndex];
             rightImage.sprite = rightSprite[currentPageIndex];
         }
         else
         {
             //display blank
+            colorL.a = transparencyZero;
+            colorR.a = transparencyZero;
+            leftImage.color = colorL;
+            rightImage.color = colorR;
             leftImage.sprite = emptySprite;
             rightImage.sprite = emptySprite;
         }

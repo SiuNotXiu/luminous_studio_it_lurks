@@ -25,8 +25,23 @@ public class CollectedRnU : MonoBehaviour
     private bool showingUpgrades = false;
     private List<int> collectedUpgrade = new List<int>(); // collected scraps
 
+    private float transparencyZero = 0f;
+    private float transparencyMax = 1f;
+    private Color colorL;
+    private Color colorR;
+
+    //small record
+    //bulb = 1
+    //casing = 2
+
     private void Start()
     {
+        colorL = leftImage.color;
+        colorR = rightImage.color;
+        colorL.a = transparencyZero;
+        colorR.a = transparencyZero;
+        leftImage.color = colorL;
+        rightImage.color = colorR;
         nextPageButton.onClick.AddListener(FlipToNextPage);
         previousPageButton.onClick.AddListener(FlipToPreviousPage);
 
@@ -47,6 +62,10 @@ public class CollectedRnU : MonoBehaviour
         if (!showingUpgrades && currentRecipePage < leftRecipe.Length)
         {
             // Display recipe pages
+            colorL.a = transparencyMax;
+            colorR.a = transparencyMax;
+            leftImage.color = colorL;
+            rightImage.color = colorR;
             leftImage.sprite = leftRecipe[currentRecipePage];
             rightImage.sprite = rightRecipe[currentRecipePage];
         }
@@ -57,15 +76,21 @@ public class CollectedRnU : MonoBehaviour
             int rightIndex = leftIndex + 1;
 
             // Assign left image
+            colorL.a = transparencyMax;
+            leftImage.color = colorL;
             leftImage.sprite = upgrades[collectedUpgrade[leftIndex] - 1];
 
             // Assign right image, or empty if there’s no corresponding right-side upgrade
             if (rightIndex < collectedUpgrade.Count)
             {
+                colorR.a = transparencyMax;
+                rightImage.color = colorR;
                 rightImage.sprite = upgrades[collectedUpgrade[rightIndex] - 1];
             }
             else
             {
+                colorR.a = transparencyZero;
+                rightImage.color = colorR;
                 rightImage.sprite = emptySprite;
             }
         }
