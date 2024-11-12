@@ -30,7 +30,7 @@ public class trigger_map_ui : MonoBehaviour
             {
                 if (big_map.activeInHierarchy == false)
                 {
-                    big_map.SetActive(true);
+                    open_map();
                 }
                 else
                 {
@@ -40,7 +40,7 @@ public class trigger_map_ui : MonoBehaviour
                     script_bms.current_zoom_count = 0;
                     #endregion
                     #region for mouse drag map
-                    object_map_and_icon.transform.localPosition = new Vector2(0,0);
+                    object_map_and_icon.transform.localPosition = new Vector2(0, 0);
                     #endregion
                 }
             }
@@ -49,5 +49,10 @@ public class trigger_map_ui : MonoBehaviour
         {
             Debug.Log("big_map is null");
         }
+    }
+
+    public void open_map()
+    {
+        big_map.SetActive(true);
     }
 }

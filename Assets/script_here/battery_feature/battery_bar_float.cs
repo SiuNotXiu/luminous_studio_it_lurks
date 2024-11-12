@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class battery_bar_float : MonoBehaviour
 {
     [SerializeField] public static float battery_remaining = 20.0f;
+    [SerializeField] public float display_battery_remaining;
     [HideInInspector] public static float battery_max;
     [HideInInspector] public static float battery_max_normal = 20.0f;
     [HideInInspector] public static float battery_max_1300_mah = 20.0f;
@@ -30,31 +31,37 @@ public class battery_bar_float : MonoBehaviour
 
     void Update()
     {
+        display_battery_remaining = battery_remaining;
         if (player_database.is_flashlight_on == true)
         {
-            battery_remaining -= Time.deltaTime;    //constantly reduce the same one
-
-            #region battery changed, check animation
-            script_flashlight_battery_blink.check_should_flashlight_blink(battery_remaining, battery_max);
-
-            if (battery_remaining >= 0)
-            {
-                //visual
-                battery_green.fillAmount = battery_remaining / battery_max;
-            }
-            if (battery_remaining <= 0)//only need to check this if flashlight is on
-            {
-                battery_remaining = 0;
-                player_database.is_flashlight_on = false;
-            }
-            #endregion
+            battery_bar_display();
         }
         if (Input.GetKeyDown(KeyCode.R))//temporary reload, later change to chermin use battery in journal
         {
             reload_battery("normal");
+            battery_bar_display();
         }
     }
 
+    void battery_bar_display()
+    {
+        battery_remaining -= Time.deltaTime;    //constantly reduce the same one
+
+        #region battery changed, check animation
+        script_flashlight_battery_blink.check_should_flashlight_blink(battery_remaining, battery_max);
+
+        if (battery_remaining >= 0)
+        {
+            //visual
+            battery_green.fillAmount = battery_remaining / battery_max;
+        }
+        if (battery_remaining <= 0)//only need to check this if flashlight is on
+        {
+            battery_remaining = 0;
+            player_database.is_flashlight_on = false;
+        }
+        #endregion
+    }
     public static void reload_battery(string type)
     {
         if (type == "normal")

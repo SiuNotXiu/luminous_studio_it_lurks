@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: First Aid Kits
   itemTag: PerksItem
-  itemSprite: {fileID: 21300000, guid: dd70501fa0895b041891af50bb8bf901, type: 3}
-  droppedSprite: {fileID: 21300000, guid: dd70501fa0895b041891af50bb8bf901, type: 3}
+  itemSprite: {fileID: 21300000, guid: 12560bf9473bc8a4abb187bef63e04d3, type: 3}
+  droppedSprite: {fileID: 21300000, guid: db03ea061812cb747a7c69073b109e51, type: 3}
   selectedSprite: {fileID: 0}
   isBulbCompatible: 0
   isBatteryCompatible: 0

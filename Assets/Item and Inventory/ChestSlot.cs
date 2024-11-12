@@ -11,6 +11,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     //=====ITEM DATA=====//
     public ItemData itemData;
     public bool isFull;
+    private readonly float filledAlpha = 1f;     // item added (opaque)
+    private readonly float emptyAlpha = 0f;    // item remove (transparent)
     public RectTransform campSlot; // Reference to the camp slot RectTransform
     private GameObject clickedObject;
 
@@ -169,6 +171,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         itemData = null;
         isFull = false;
         itemImage.sprite = null;
+
+        SetItemImageAlpha(emptyAlpha);
     }
 
     public void HideDropdownMenu()
@@ -218,6 +222,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         this.itemData = newItem;
         isFull = true;
         this.itemImage.sprite = newItem.itemSprite;
+
+        SetItemImageAlpha(filledAlpha);
     }
 
 
@@ -234,4 +240,10 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     }
 
 
+    private void SetItemImageAlpha(float alpha)
+    {
+        Color color = itemImage.color;
+        color.a = alpha;
+        itemImage.color = color;
+    }
 }

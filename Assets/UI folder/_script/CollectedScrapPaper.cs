@@ -6,7 +6,8 @@ using Unity.Collections.LowLevel.Unsafe;
 
 public class CollectedScrapPaper : MonoBehaviour
 {
-    [SerializeField] big_map_icon_reveal_manager map;
+    [SerializeField] private GameObject object_canvas_big_map;
+    [SerializeField] private big_map_icon_reveal_manager script_big_map_icon_reveal_manager;
 
     public Image leftImage;
     public Image rightImage;
@@ -22,7 +23,13 @@ public class CollectedScrapPaper : MonoBehaviour
     private int currentMaxPage = 1;
     public bool[] unlockJournal;
 
-
+    private void OnValidate()
+    {
+        if (object_canvas_big_map == null)
+            object_canvas_big_map = GameObject.Find("canvas_big_map");
+        if (script_big_map_icon_reveal_manager == null && object_canvas_big_map != null)
+            script_big_map_icon_reveal_manager = object_canvas_big_map.GetComponent<big_map_icon_reveal_manager>();
+    }
     private void Start()
     {
         nextPageButton.onClick.AddListener(FlipToNextPage);
@@ -36,7 +43,7 @@ public class CollectedScrapPaper : MonoBehaviour
         {
             Debug.Log("Id added: " + id);
             unlockJournal[id -1] = true;
-            map.call_this_after_scrap_paper_taken(unlockJournal);
+            script_big_map_icon_reveal_manager.call_this_after_scrap_paper_taken(unlockJournal);
             collectedScrapIDs.Add(id);
             UpdateJournal();
         }

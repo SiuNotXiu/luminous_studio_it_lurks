@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6acce305e7c3fb4da695de4bc376efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  script_trigger_map_ui: {fileID: 0}
+  material_map_icon_dissolve_appear: {fileID: -876546973899608171, guid: 40d7f3684e6c89e4a97331067f406808, type: 3}
 --- !u!1 &7489729717431923736
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +99,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 40d7f3684e6c89e4a97331067f406808, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

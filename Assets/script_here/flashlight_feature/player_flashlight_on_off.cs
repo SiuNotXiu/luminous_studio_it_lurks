@@ -6,7 +6,7 @@ public class player_flashlight_on_off : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             player_database.is_flashlight_on = !player_database.is_flashlight_on;
         }
