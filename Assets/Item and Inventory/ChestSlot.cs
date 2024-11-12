@@ -232,6 +232,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         this.itemData = null;
         isFull = false;
         this.itemImage.sprite = null;
+
+        SetItemImageAlpha(emptyAlpha);
     }
 
     public bool IsEmpty()

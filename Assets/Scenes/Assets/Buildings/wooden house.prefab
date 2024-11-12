@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7980573651624903553}
   - component: {fileID: 4756013643754677305}
   - component: {fileID: 2331314465657698342}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wooden house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35.65, y: 12.72, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
