@@ -1277,7 +1277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3648571824174059145, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3683818842255498381, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1307,9 +1307,33 @@ PrefabInstance:
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 1815730037}
+    - target: {fileID: 4396453364089775533, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ff7203a0a518b0e4aa044d97ca74a953, type: 3}
     - target: {fileID: 4455381168256105402, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_Name
       value: Journal_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605219470563497397, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae76e3cd50b39be4290d3491334e3605, type: 3}
+    - target: {fileID: 5091103401267325862, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 564.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091103401267325862, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 735.2634
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091103401267325862, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.8342
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091103401267325862, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -367.6367
       objectReference: {fileID: 0}
     - target: {fileID: 5139668323024566981, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
@@ -1323,6 +1347,10 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1882465781}
+    - target: {fileID: 5463062505817954812, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5487800193212263585, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -1345,7 +1373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5526768075611084383, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -413.1126
+      value: -474
       objectReference: {fileID: 0}
     - target: {fileID: 5543902144142036102, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_Pivot.x
@@ -1441,7 +1469,7 @@ PrefabInstance:
       objectReference: {fileID: 1815730037}
     - target: {fileID: 5991435392257827039, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7052797625709910638, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_IsActive
@@ -1474,11 +1502,15 @@ PrefabInstance:
     - target: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: upgrades.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 24c9797df80554d40b17f5667824a7be, type: 3}
+      objectReference: {fileID: 21300000, guid: 29103553efbb5ce459c8bcc9b0195001, type: 3}
     - target: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: upgrades.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: e08514aa02079f341872b8ada17aded4, type: 3}
+    - target: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: rightRecipe.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ff7203a0a518b0e4aa044d97ca74a953, type: 3}
     - target: {fileID: 8288560371478662628, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
