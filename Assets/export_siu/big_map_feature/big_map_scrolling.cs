@@ -9,7 +9,7 @@ public class big_map_scrolling : MonoBehaviour
     //by mouse scrolling
     //scale recovery is in <trigger_map_ui>
 
-    [SerializeField] private GameObject object_map_and_icon;
+    [HideInInspector] private GameObject object_map_and_icon;
 
     [HideInInspector] private Vector2 obmb_initial_scale;
     [HideInInspector] private Vector2 obmb_zoom_in_scale;
@@ -21,6 +21,11 @@ public class big_map_scrolling : MonoBehaviour
     [SerializeField] private float max_zoom_in_count;
     [SerializeField] public float current_zoom_count = 0f;
 
+    private void OnValidate()
+    {
+        if (object_map_and_icon == null)
+            object_map_and_icon = transform.Find("big_map").Find("map_and_icon").gameObject;
+    }
     private void Start()
     {
         #region find_initial_scale
