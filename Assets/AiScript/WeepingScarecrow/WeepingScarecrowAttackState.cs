@@ -9,13 +9,13 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
     private EnemyAttack atk;
     private bool attacking = false;
     private NavMeshAgent agent;
-    private Animator anim;
+    //private Animator anim;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
         Debug.Log("InAtkArea" + weepingScarecrow.GetInAtkArea());
         atk = weepingScarecrow.GetComponent<EnemyAttack>();
-        anim = weepingScarecrow.GetAnimator();
+        //anim = weepingScarecrow.GetAnimator();
         agent = weepingScarecrow.GetAgent();
         if (agent.isStopped == false) 
         {
@@ -36,7 +36,7 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
         {
             atk.Attack();
             attacking = true;
-            anim.SetBool("isAttacking", true);
+            //anim.SetBool("isAttacking", true);
             weepingScarecrow.StartCoroutine(AttackDelay());
         }
         else

@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
 {
     private NavMeshAgent agent;
+    private monster_database md;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
@@ -23,7 +24,8 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
 
     public override void UpdateState(WeepingScarecrowManager weepingScarecrow)
     {
-        if (weepingScarecrow.GetFlashed() == false && weepingScarecrow.GetFlw() == true)  
+        md = weepingScarecrow.GetMd();
+        if (md.GetShine()==false && weepingScarecrow.GetFlw() == true)  
         {
             weepingScarecrow.SwitchState(weepingScarecrow.followState);
         }

@@ -8,16 +8,17 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 {
     private NavMeshAgent agent;
     private Coroutine playSoundCoroutine;
-    private Animator anim;
+   // private Animator anim;
+    private monster_database md;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
         if (weepingScarecrow.GetTarget() != null)
         {
             agent = weepingScarecrow.GetAgent();
-            anim = weepingScarecrow.GetAnimator();
+            //anim = weepingScarecrow.GetAnimator();
 
-            anim.SetBool("isRunning", true);
+            //anim.SetBool("isRunning", true);
             if (agent.isStopped)
             {
                 agent.isStopped = false;
@@ -32,11 +33,14 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 
     public override void UpdateState(WeepingScarecrowManager weepingScarecrow)
     {
+        md = weepingScarecrow.GetMd();
         if (weepingScarecrow.GetTarget() != null)
         {
-            if (weepingScarecrow.GetFlashed())
+            if (md.GetShine() == true) 
             {
-                weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
+                //weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
+                weepingScarecrow.SwitchState(weepingScarecrow.idleState);
+                Debug.Log("switching to idle");
             }
         }
       
@@ -48,7 +52,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         {
             weepingScarecrow.StopCoroutine(playSoundCoroutine);
         }
-        anim.SetBool("isRunning", false);
+        //anim.SetBool("isRunning", false);
     }
 
     private IEnumerator UpdateTargetPosition(WeepingScarecrowManager weepingScarecrow, NavMeshAgent agent)

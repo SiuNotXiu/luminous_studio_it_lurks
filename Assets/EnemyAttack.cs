@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public HealthEffects _healtheffects = null;
-    private float damage = 10f;
+    private float damage = 25f;
     [SerializeField] private AudioClip[] damageAudios;
     
 

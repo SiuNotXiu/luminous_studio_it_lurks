@@ -37,8 +37,8 @@ public class HealthEffects : MonoBehaviour
         {
             if (object_player != null)
             {
-                object_sprite_sheet_normal = object_player.transform.Find("sprite_sheet_normal").gameObject;
-                animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
+                //object_sprite_sheet_normal = object_player.transform.Find("sprite_sheet_normal").gameObject;
+                //animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
             }
         }
         #endregion
