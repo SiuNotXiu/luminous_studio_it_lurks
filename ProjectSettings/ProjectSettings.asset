@@ -739,7 +739,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -759,11 +765,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: d4061ece-ccbe-4d77-8249-0e45063a9cdd
+  cloudProjectId: d945e195-8003-49c9-b9d5-3ee9378e0491
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: luminous_studio_it_lurks
-  organizationId: anghengsiu123
+  organizationId: tfdragon1122
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
