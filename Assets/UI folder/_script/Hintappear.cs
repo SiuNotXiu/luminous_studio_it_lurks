@@ -10,6 +10,7 @@ public class Hintappear : MonoBehaviour
 
     public GameObject hint;
 
+    bool interactible = false;
     void Start()
     {
         hint.SetActive(false); 
@@ -17,9 +18,19 @@ public class Hintappear : MonoBehaviour
 
     private void Update()
     {
+        //hint.transform.localPosition = offset;
         if (hint.activeSelf)
         {
             Reposition(); // Reposition the hint image each frame
+        }
+
+        if (interactible)
+        {
+            hint.SetActive(true); // Show the hint when colliding with specified objects
+        }
+        else
+        {
+            hint.SetActive(false); // Show the hint when colliding with specified objects
         }
     }
 
@@ -38,17 +49,23 @@ public class Hintappear : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Debug.Log("Why appear?0");
         if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite") || collision.CompareTag("ScrapPaper"))
         {
-            hint.SetActive(true); // Show the hint when colliding with specified objects
+            Debug.Log(gameObject.name + " collided " + collision.gameObject.name + "collided" + this);
+            //hint.SetActive(true); // Show the hint when colliding with specified objects
+            interactible = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        interactible = false;
         if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite") || collision.CompareTag("ScrapPaper"))
         {
-            hint.SetActive(false); // Hide the hint when exiting the trigger
+            Debug.Log(gameObject.name + " collided " + collision.gameObject.name + "close the hint" + this);
+            //hint.SetActive(false); // Hide the hint when exiting the trigger
+            interactible = false;
         }
     }
 }

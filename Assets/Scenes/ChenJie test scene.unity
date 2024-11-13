@@ -175,7 +175,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 40d7f3684e6c89e4a97331067f406808, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1602,14 +1602,6 @@ PrefabInstance:
       propertyPath: upgrade
       value: 
       objectReference: {fileID: 1436578158}
-    - target: {fileID: 3094056811804241835, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
-      propertyPath: hint_appear
-      value: 
-      objectReference: {fileID: 1882465782}
-    - target: {fileID: 3094056811804241835, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
-      propertyPath: ScrapPaperId
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4647178866203849353, guid: 80fec207a043ade49aed12b88bd83f06, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.37
@@ -1864,7 +1856,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 40d7f3684e6c89e4a97331067f406808, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

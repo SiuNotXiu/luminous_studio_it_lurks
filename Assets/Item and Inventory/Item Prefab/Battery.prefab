@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8754129036431874238}
   m_Layer: 0
   m_Name: Battery
-  m_TagString: PerksItem
+  m_TagString: CraftItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,8 +94,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 663dddf2b347b79448535d7662164195, type: 2}
   paper: {fileID: 0}
   upgrade: {fileID: 0}
-  ScrapPaperId: 0
-  isPlayerInRange: 0
+  ScrapPaperId: 2
 --- !u!212 &8754129036431874238
 SpriteRenderer:
   m_ObjectHideFlags: 0

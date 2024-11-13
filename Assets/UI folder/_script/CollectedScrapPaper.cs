@@ -66,7 +66,7 @@ public class CollectedScrapPaper : MonoBehaviour
 
     public void UpdateJournal()
     {
-        Debug.Log("Scrap in");
+        //Debug.Log("Scrap in");
 
         if (collectedScrapIDs.Count >= 1)
         {

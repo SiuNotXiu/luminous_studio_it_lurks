@@ -46,14 +46,14 @@ public class bubble_movement : MonoBehaviour
             #region x movement
             if (transform.position.x < x_left)
             {
-                Debug.Log(gameObject.name + " exit from left");
+                //Debug.Log(gameObject.name + " exit from left");
                 transform.position = new Vector3(transform.position.x + x_row * x_gap,
                     transform.position.y,
                     transform.position.z);
             }
             if (transform.position.x > x_right)
             {
-                Debug.Log(gameObject.name + " exit from right");
+                //Debug.Log(gameObject.name + " exit from right");
                 transform.position = new Vector3(transform.position.x - x_row * x_gap,
                     transform.position.y,
                     transform.position.z);

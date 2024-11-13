@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Adrenaline
   m_EditorClassIdentifier: 
   itemName: Adrenaline
-  itemTag: PerksItem
+  itemTag: CraftItem
   itemSprite: {fileID: 21300000, guid: 26bf3fa3dd21e7e4eb37b2dfe6eb1512, type: 3}
   droppedSprite: {fileID: 21300000, guid: 5b838bd687ee75746af9f24803a96c6a, type: 3}
   selectedSprite: {fileID: 0}

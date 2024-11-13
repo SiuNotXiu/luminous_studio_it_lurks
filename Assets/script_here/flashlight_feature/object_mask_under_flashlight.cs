@@ -46,7 +46,7 @@ public class object_mask_under_flashlight : MonoBehaviour
         }
         else
         {
-            Debug.Log(gameObject.name + " don't have sprite renderer");
+            //Debug.Log(gameObject.name + " don't have sprite renderer");
         }
         /*if (gameObject.name.StartsWith("bubble"))
             GetComponent<SpriteRenderer>().material.renderQueue = 3002;

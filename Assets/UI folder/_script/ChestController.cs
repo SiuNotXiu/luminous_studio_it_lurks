@@ -28,7 +28,7 @@ public class ChestController : MonoBehaviour
             InventoryController.chestIn = gameObject.GetComponent<CampInsideItem>();
             InventoryController.chestOut = gameObject.GetComponent<ChestInventory>();
 
-            Debug.Log("Player is in the chest range of > " + gameObject.name);
+            //Debug.Log("Player is in the chest range of > " + gameObject.name);
         }
 
 
@@ -39,7 +39,7 @@ public class ChestController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = false;
-            Debug.Log("Player is not in the chest range");
+            //Debug.Log("Player is not in the chest range");
         }
     }
 
@@ -50,7 +50,7 @@ public class ChestController : MonoBehaviour
         if (!isOpen)
         {
             isOpen = true;
-            Debug.Log("Campfire loot is open");
+            //Debug.Log("Campfire loot is open");
             //animator.SetBool("isOpen", isOpen);
         }
 

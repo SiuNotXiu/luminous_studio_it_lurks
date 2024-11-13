@@ -90,13 +90,13 @@ public class SortingOrderController : MonoBehaviour
         if (collision.CompareTag("Player") && playerPos == null) 
         {
             playerPos = collision.transform;
-            Debug.Log("Player Position Updated"+playerPos.position);
+            //Debug.Log("Player Position Updated"+playerPos.position);
         }
 
         if (collision.CompareTag("Enemy") && monsterPos == null)
         {
             monsterPos = collision.transform;
-            Debug.Log("Monster Position Updated"+monsterPos.position);
+            //Debug.Log("Monster Position Updated"+monsterPos.position);
         }
     }
 

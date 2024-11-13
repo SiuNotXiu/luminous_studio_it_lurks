@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthEffects : MonoBehaviour
 {
@@ -96,8 +97,11 @@ public class HealthEffects : MonoBehaviour
         if (currentHp <= 0)
         {
             currentHp = 0;
-            animator_mask.Play("death");
-            animator_normal.Play("death");
+            //animator_mask.Play("death");
+            //animator_normal.Play("death");
+            SceneManager.LoadScene("EndOfDemo");
+           
+
         }
     }
 

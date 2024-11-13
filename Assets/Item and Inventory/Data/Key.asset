@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: 
   itemName: Key
-  itemTag: PerksItem
+  itemTag: CraftItem
   itemSprite: {fileID: 21300000, guid: f8b2a79f47f56844181b1982e39c0740, type: 3}
   droppedSprite: {fileID: 21300000, guid: 5711b2a103e257146b1c6bb08704314a, type: 3}
   selectedSprite: {fileID: 0}
