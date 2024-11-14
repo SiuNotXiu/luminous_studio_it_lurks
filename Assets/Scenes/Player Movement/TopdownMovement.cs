@@ -58,6 +58,7 @@ public class TopdownMovement : MonoBehaviour
         }
 
         rb2d.velocity = moveInput * moveSpeed;
+
         if (moveInput.x != 0)
         {
             animator_mask.Play("walk_right");
@@ -89,6 +90,16 @@ public class TopdownMovement : MonoBehaviour
         moveSpeed = p_speed;
         
     }
+
+    public void playerFacing()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = (mousePosition - transform.position).normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+
 
     #region perks equip
     public static void equip_20k_lumen_bulb()
