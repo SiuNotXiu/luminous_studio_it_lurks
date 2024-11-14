@@ -49,6 +49,7 @@ public class TopdownMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(InventoryController.JournalOpen )
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -58,24 +59,30 @@ public class TopdownMovement : MonoBehaviour
         }
 
         rb2d.velocity = moveInput * moveSpeed;
-
+        playerFacing();
         if (moveInput.x != 0)
         {
+            if ((facing_right && moveInput.x < 0) || (!facing_right && moveInput.x > 0))
+            {
+                // Moonwalk
+                animator_mask.SetFloat("Speed", -1f); // Play animation in reverse
+                animator_normal.SetFloat("Speed", -1f);
+            }
+            else
+            {
+                // Normal walk
+                animator_mask.SetFloat("Speed", 1f); // Play animation normally
+                animator_normal.SetFloat("Speed", 1f);
+            }
+
+            // Play the "walk_right" animation regardless of direction, speed will handle direction
             animator_mask.Play("walk_right");
             animator_normal.Play("walk_right");
-            if (moveInput.x > 0)
-            {
-                facing_right = true;
-                object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-            else if (moveInput.x < 0)
-            {
-                facing_right = false;
-                object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
         }
         else
         {
+            animator_mask.SetFloat("Speed", 1f); //reset speed in case it was set to -1
+            animator_normal.SetFloat("Speed", 1f);
             animator_mask.Play("idle_right");
             animator_normal.Play("idle_right");
         }
@@ -94,10 +101,16 @@ public class TopdownMovement : MonoBehaviour
     public void playerFacing()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 direction = (mousePosition - transform.position).normalized;
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        if (mousePosition.x < transform.position.x)
+        {
+            facing_right = false;
+            object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            facing_right = true;
+            object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
 
