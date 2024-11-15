@@ -16,6 +16,6 @@ MonoBehaviour:
   itemTag: CraftItem
   itemSprite: {fileID: 21300000, guid: 26bf3fa3dd21e7e4eb37b2dfe6eb1512, type: 3}
   droppedSprite: {fileID: 21300000, guid: 5b838bd687ee75746af9f24803a96c6a, type: 3}
-  selectedSprite: {fileID: 0}
+  selectedSprite: {fileID: 21300000, guid: b5082906e80c22a48b2c399be8c11075, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0

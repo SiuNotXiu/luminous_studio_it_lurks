@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 504420491106950751}
   - component: {fileID: 4601075996552669554}
   m_Layer: 0
-  m_Name: Medicine
+  m_Name: Bushcraft Medicine
   m_TagString: PerksItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 3d3a573158b8a974da153c7dbc66ad51, type: 2}
-  paper: {fileID: 0}
-  upgrade: {fileID: 0}
+  paper: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+  upgrade: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   ScrapPaperId: 0
 --- !u!212 &4601075996552669554
 SpriteRenderer:

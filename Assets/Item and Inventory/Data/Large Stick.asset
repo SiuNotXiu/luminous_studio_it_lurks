@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Large Stick
   itemTag: CraftItem
-  itemSprite: {fileID: 0}
-  droppedSprite: {fileID: 0}
-  selectedSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 090aa8bdec0bb5d459d920b35b236bff, type: 3}
+  droppedSprite: {fileID: 21300000, guid: d826f39899ae2604f9185a96c098b80f, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 3c6535ce669839645a6e0880f2fea140, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0

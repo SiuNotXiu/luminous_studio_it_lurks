@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 6826412af69083848a03be53770409df, type: 2}
-  paper: {fileID: 0}
-  upgrade: {fileID: 0}
+  paper: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+  upgrade: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   ScrapPaperId: 0
 --- !u!212 &7998188910796035014
 SpriteRenderer:

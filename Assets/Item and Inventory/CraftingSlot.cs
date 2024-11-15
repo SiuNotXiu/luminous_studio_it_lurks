@@ -14,6 +14,8 @@ public class CraftingSlot : MonoBehaviour, IPointerClickHandler
 
     //=====ITEM SLOT=====//
     [SerializeField] private Image itemImage;
+    private readonly float filledAlpha = 1f;     // item added (opaque)
+    private readonly float emptyAlpha = 0f;    // item remove (transparent)
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class CraftingSlot : MonoBehaviour, IPointerClickHandler
         this.itemData = newItemData;
         this.isFull = true;
         this.itemImage.sprite = newItemData.itemSprite;
+        SetItemImageAlpha(filledAlpha);
         Debug.Log("Item added to CraftingSlot: " + newItemData.itemName);
 
         inventoryController.OnCraftingSlotUpdated();
@@ -59,6 +62,8 @@ public class CraftingSlot : MonoBehaviour, IPointerClickHandler
         this.itemData = null;
         this.isFull = false;
         itemImage.sprite = null;
+
+        SetItemImageAlpha(emptyAlpha);
     }
 
     public bool HasItem()
@@ -91,5 +96,12 @@ public class CraftingSlot : MonoBehaviour, IPointerClickHandler
         {
             Debug.LogWarning("CraftingSlot clicked, but it is empty.");
         }
+    }
+
+    private void SetItemImageAlpha(float alpha)
+    {
+        Color color = itemImage.color;
+        color.a = alpha;
+        itemImage.color = color;
     }
 }

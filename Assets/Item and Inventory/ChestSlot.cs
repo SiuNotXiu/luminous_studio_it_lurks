@@ -13,8 +13,6 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     //=====ITEM DATA=====//
     public ItemData itemData;
     public bool isFull;
-    private readonly float filledAlpha = 1f;     // item added (opaque)
-    private readonly float emptyAlpha = 0f;    // item remove (transparent)
     public RectTransform campSlot; // Reference to the camp slot RectTransform
     private GameObject clickedObject;
 
@@ -26,6 +24,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     //=====ITEM SLOT=====//
     [SerializeField] private Image itemImage;
     [SerializeField] private GameObject dropdownMenuPrefab;
+    private readonly float filledAlpha = 1f;     // item added (opaque)
+    private readonly float emptyAlpha = 0f;    // item remove (transparent)
     private GameObject activeDropdownMenu; //crearting dropdown
     private GameObject activeDropdownMenu_panel; //child
     public GameObject itemDescription;

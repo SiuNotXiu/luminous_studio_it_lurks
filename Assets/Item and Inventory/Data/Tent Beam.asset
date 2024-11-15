@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Tent Beam
   itemTag: CraftItem
-  itemSprite: {fileID: 0}
-  droppedSprite: {fileID: 0}
-  selectedSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: ca6e74ad5f9e2d341814017a88d14cf6, type: 3}
+  droppedSprite: {fileID: 21300000, guid: 9c4dff9f91411e34c960da03d7841798, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 3a2847c029d05564786aba5412d11d44, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0

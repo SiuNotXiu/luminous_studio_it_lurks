@@ -16,6 +16,8 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
     //=====ITEM SLOT=====//
     [SerializeField] private bool isBulbSlot; // true for Bulb - false for Battery
     [SerializeField] private Image itemImage;
+    private readonly float filledAlpha = 1f;     // item added (opaque)
+    private readonly float emptyAlpha = 0f;    // item remove (transparent)
 
     private bool effectApplied = false;
 
@@ -36,6 +38,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
             itemData = newItemData;
             isFull = true;
             itemImage.sprite = newItemData.itemSprite;
+            SetItemImageAlpha(filledAlpha);
             ApplyPerkEffects();
         }
         else if (!isBulbSlot && newItemData.isBatteryCompatible)
@@ -43,6 +46,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
             itemData = newItemData;
             isFull = true;
             itemImage.sprite = newItemData.itemSprite;
+            SetItemImageAlpha(filledAlpha);
             ApplyPerkEffects();
         }
         else
@@ -57,6 +61,8 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         this.itemData = null;
         this.isFull = false;
         itemImage.sprite = null;
+
+        SetItemImageAlpha(emptyAlpha);
     }
 
     public bool IsEmpty()
@@ -134,5 +140,12 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
                 Debug.LogWarning("No effect yet: " + itemData.itemName);
                 break;
         }
+    }
+
+    private void SetItemImageAlpha(float alpha)
+    {
+        Color color = itemImage.color;
+        color.a = alpha;
+        itemImage.color = color;
     }
 }

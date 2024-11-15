@@ -16,6 +16,8 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
 
     //=====ITEM SLOT=====//
     [SerializeField] private Image resultImage;
+    private readonly float filledAlpha = 1f;     // item added (opaque)
+    private readonly float emptyAlpha = 0f;    // item remove (transparent)
 
     public event Action<ResultSlot> OnClicked;
 
@@ -76,6 +78,8 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
         this.resultImage.sprite = itemData.itemSprite;
         resultImage.enabled = true;
         isFull = true;
+
+        SetItemImageAlpha(filledAlpha);
     }
 
     public void ClearSlot()
@@ -84,6 +88,8 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
         this.resultImage.sprite = null;
         resultImage.enabled = false;
         isFull = false;
+
+        SetItemImageAlpha(emptyAlpha);
     }
 
     public bool IsFull()
@@ -118,5 +124,12 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
     public void ResetResultOnInventoryClose()
     {
         ClearSlot();
+    }
+
+    private void SetItemImageAlpha(float alpha)
+    {
+        Color color = resultImage.color;
+        color.a = alpha;
+        resultImage.color = color;
     }
 }

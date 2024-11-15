@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Stick
   itemTag: CraftItem
-  itemSprite: {fileID: 0}
-  droppedSprite: {fileID: 0}
-  selectedSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 1a076bafca9be884694652b7085b6af3, type: 3}
+  droppedSprite: {fileID: 21300000, guid: db7085f8746b3ca4bb241315359f608a, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 8303d930bf5ec094c8dc6c010f5d44c0, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0

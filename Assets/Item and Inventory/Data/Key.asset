@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Key
   itemTag: CraftItem
-  itemSprite: {fileID: 21300000, guid: f8b2a79f47f56844181b1982e39c0740, type: 3}
-  droppedSprite: {fileID: 21300000, guid: 5711b2a103e257146b1c6bb08704314a, type: 3}
-  selectedSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 907e5ff9b0b0a154a94e6b394c7816e6, type: 3}
+  droppedSprite: {fileID: 21300000, guid: e11ab230e6a0b8347b1c3a74d567f1b5, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 11c2d2973143c3349b5fb9dddae55664, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0

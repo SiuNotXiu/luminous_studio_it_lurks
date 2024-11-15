@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Tent Flysheet
   itemTag: CraftItem
-  itemSprite: {fileID: 0}
-  droppedSprite: {fileID: 0}
-  selectedSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 483bca41a2a069548ba206e44367581b, type: 3}
+  droppedSprite: {fileID: 21300000, guid: aef7c498b2ddac94a8fc41fa9cbebcc1, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 68b1a9c03180cad4b8706c834f243a55, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Large Branch
   itemTag: CraftItem
-  itemSprite: {fileID: 0}
-  droppedSprite: {fileID: 0}
-  selectedSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 08a4ccf28bb6e2845a2f5a595e815937, type: 3}
+  droppedSprite: {fileID: 21300000, guid: 37e09471860447c428e7a41d03b5db99, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 7f16bd7f196a0954186680e96f4796c5, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0
