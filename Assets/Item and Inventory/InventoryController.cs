@@ -91,7 +91,7 @@ public class InventoryController : MonoBehaviour
 
 
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen)
+        else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen && !trigger_map_ui.Map_Is_Open)
         {
  
             OpenJournal();
