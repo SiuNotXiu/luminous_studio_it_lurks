@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2141845703536008601}
   m_Layer: 0
   m_Name: First Aid Kit
-  m_TagString: Untagged
+  m_TagString: CraftItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

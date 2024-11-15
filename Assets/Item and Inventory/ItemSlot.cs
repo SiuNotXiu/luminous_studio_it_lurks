@@ -29,6 +29,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] private GameObject dropdownMenuPrefab;
     private readonly float filledAlpha = 1f;     // item added (opaque)
     private readonly float emptyAlpha = 0f;    // item remove (transparent)
+    private bool isSelected = false;
 
     private GameObject activeDropdownMenu; //crearting dropdown
     private GameObject activeDropdownMenu_panel; //child
@@ -47,6 +48,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     //for items reference
     private PerkSlot perksEquip; //to check can use better battery or not
     private HealthEffects playerHealth;
+    private bool isDropdownMenuActive = false;
+
     private void Update()
     {
 
@@ -57,6 +60,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             if (!IsPointerOverUIObject())
             {
                 HideDropdownMenu(); // Hide the menu if clicked outside
+                DeselectItem();
             }
         }
 
@@ -85,6 +89,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            if (isSelected)
+            {
+                DeselectItem();
+            }
+            else
+            {
+                SelectItem();
+            }
+
             OnItemClicked?.Invoke(this);
             Debug.Log("Left click on item: " + itemData.itemName);
             ShowDropdownMenu();
@@ -206,6 +219,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                     break;
             }
         }
+
+        isDropdownMenuActive = true;
+
+        SelectItem();
     }
 
     private void StoreItem(ItemSlot itemSlot)
@@ -324,6 +341,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 Debug.Log("Unknown usage: " + itemData.itemName);
                 break;
         }
+
+        DeselectItem();
         HideDropdownMenu();
     }
 
@@ -354,6 +373,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             Destroy(activeDropdownMenu);
             activeDropdownMenu = null;
         }
+
+        DeselectItem();
+        isDropdownMenuActive = false;
     }
 
     private bool IsPointerOverUIObject()
@@ -395,5 +417,24 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         Color color = itemImage.color;
         color.a = alpha;
         itemImage.color = color;
+    }
+    private void SelectItem()
+    {
+        if (!isDropdownMenuActive) return;
+
+        if (!isSelected)
+        {
+            isSelected = true;
+            itemImage.sprite = itemData.selectedSprite;
+        }
+    }
+
+    private void DeselectItem()
+    {
+        if (itemData != null && isSelected)
+        {
+            isSelected = false;
+            itemImage.sprite = itemData.itemSprite;
+        }
     }
 }

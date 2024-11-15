@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4367433810974622806}
   m_Layer: 0
   m_Name: DroppedItemPrefab
-  m_TagString: Untagged
+  m_TagString: CraftItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,4 +163,3 @@ MonoBehaviour:
   paper: {fileID: 0}
   upgrade: {fileID: 0}
   ScrapPaperId: 0
-  isPlayerInRange: 0

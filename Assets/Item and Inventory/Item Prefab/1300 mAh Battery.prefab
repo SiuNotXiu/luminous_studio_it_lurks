@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4518187524970165385}
   m_Layer: 0
   m_Name: 1300 mAh Battery
-  m_TagString: Untagged
+  m_TagString: CraftItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

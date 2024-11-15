@@ -26,6 +26,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     [SerializeField] private GameObject dropdownMenuPrefab;
     private readonly float filledAlpha = 1f;     // item added (opaque)
     private readonly float emptyAlpha = 0f;    // item remove (transparent)
+    private bool isSelected = false;
     private GameObject activeDropdownMenu; //crearting dropdown
     private GameObject activeDropdownMenu_panel; //child
     public GameObject itemDescription;
@@ -41,6 +42,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public GameObject P1;
     public GameObject P2;
 
+    private bool isDropdownMenuActive = false;
 
     //should have a detect tell player the campsite is full and and store anymore
     private void Update()
@@ -53,6 +55,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             if (!IsPointerOverUIObject())
             {
                 HideDropdownMenu(); // Hide the menu if clicked outside
+                DeselectItem();
             }
         }
 
@@ -67,6 +70,14 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
         if (eventData.button == PointerEventData.InputButton.Left) //only using left
         {
+            if (isSelected)
+            {
+                DeselectItem();
+            }
+            else
+            {
+                SelectItem();
+            }
             clickedObject = null;
             clickedObject = gameObject;
             OnItemClicked?.Invoke(this);
@@ -146,6 +157,10 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
         // Corrected listener
         buttonS.onClick.AddListener(() => StoreItem(itemData)); // Use itemData instead of itemdata
+
+        isDropdownMenuActive = true;
+
+        SelectItem();
     }
 
 
@@ -185,6 +200,10 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             Destroy(activeDropdownMenu);
             activeDropdownMenu = null;
         }
+
+        DeselectItem();
+
+        isDropdownMenuActive = false;
     }
 
     private bool IsPointerOverUIObject()
@@ -249,5 +268,18 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         Color color = itemImage.color;
         color.a = alpha;
         itemImage.color = color;
+    }
+
+    private void SelectItem()
+    {
+        if (!isDropdownMenuActive) return;
+        isSelected = true;
+        itemImage.sprite = itemData.selectedSprite;
+    }
+
+    private void DeselectItem()
+    {
+        isSelected = false;
+        itemImage.sprite = itemData.itemSprite;
     }
 }
