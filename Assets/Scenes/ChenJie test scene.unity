@@ -1415,6 +1415,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: datax
+      value: -110
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: datay
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 1815730037}
@@ -2366,6 +2374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 1882465779}
+  object_animation: {fileID: 0}
+  object_sprite_sheet_mask: {fileID: 0}
+  object_sprite_sheet_normal: {fileID: 0}
+  animator_mask: {fileID: 0}
+  animator_normal: {fileID: 0}
 --- !u!61 &1882465778
 BoxCollider2D:
   m_ObjectHideFlags: 0

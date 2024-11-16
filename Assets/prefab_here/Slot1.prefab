@@ -98,8 +98,8 @@ MonoBehaviour:
   itemSlot: {fileID: 714611747564924067}
   droppedItemPrefab: {fileID: 4904651877909844242, guid: 518c30e668b1bb4428827d0e2e28ec36, type: 3}
   playerTransform: {fileID: 0}
-  datax: -70
-  datay: -40
+  datax: -110
+  datay: -70
   dataIx: 0
   dataIy: 100
   itemImage: {fileID: 3870888290961356340}
