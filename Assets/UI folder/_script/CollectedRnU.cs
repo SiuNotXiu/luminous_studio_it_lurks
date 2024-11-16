@@ -7,6 +7,8 @@ public class CollectedRnU : MonoBehaviour
 {
     public Image leftImage;
     public Image rightImage;
+    public Image leftClip;
+    public Image rightClip;
 
     [Header("Recipe Sprites")]
     public Sprite[] leftRecipe;
@@ -27,8 +29,7 @@ public class CollectedRnU : MonoBehaviour
 
     private float transparencyZero = 0f;
     private float transparencyMax = 1f;
-    private Color colorL;
-    private Color colorR;
+
 
     //small record
     //bulb = 1
@@ -36,12 +37,10 @@ public class CollectedRnU : MonoBehaviour
 
     private void Start()
     {
-        colorL = leftImage.color;
-        colorR = rightImage.color;
-        colorL.a = transparencyZero;
-        colorR.a = transparencyZero;
-        leftImage.color = colorL;
-        rightImage.color = colorR;
+
+        SetTransparency(leftImage, leftClip, transparencyZero);
+        SetTransparency(rightImage, rightClip, transparencyZero);
+
         nextPageButton.onClick.AddListener(FlipToNextPage);
         previousPageButton.onClick.AddListener(FlipToPreviousPage);
 
@@ -62,10 +61,8 @@ public class CollectedRnU : MonoBehaviour
         if (!showingUpgrades && currentRecipePage < leftRecipe.Length)
         {
             // Display recipe pages
-            colorL.a = transparencyMax;
-            colorR.a = transparencyMax;
-            leftImage.color = colorL;
-            rightImage.color = colorR;
+            SetTransparency(leftImage, leftClip, transparencyMax);
+            SetTransparency(rightImage, rightClip, transparencyMax);
             leftImage.sprite = leftRecipe[currentRecipePage];
             rightImage.sprite = rightRecipe[currentRecipePage];
         }
@@ -76,21 +73,18 @@ public class CollectedRnU : MonoBehaviour
             int rightIndex = leftIndex + 1;
 
             // Assign left image
-            colorL.a = transparencyMax;
-            leftImage.color = colorL;
+            SetTransparency(leftImage, leftClip, transparencyMax);
             leftImage.sprite = upgrades[collectedUpgrade[leftIndex] - 1];
 
             // Assign right image, or empty if there’s no corresponding right-side upgrade
             if (rightIndex < collectedUpgrade.Count)
             {
-                colorR.a = transparencyMax;
-                rightImage.color = colorR;
+                SetTransparency(rightImage, rightClip, transparencyMax);
                 rightImage.sprite = upgrades[collectedUpgrade[rightIndex] - 1];
             }
             else
             {
-                colorR.a = transparencyZero;
-                rightImage.color = colorR;
+                SetTransparency(rightImage, rightClip, transparencyZero);
                 rightImage.sprite = emptySprite;
             }
         }
@@ -144,5 +138,15 @@ public class CollectedRnU : MonoBehaviour
         }
 
         UpdatePage();
+    }
+
+    private void SetTransparency(Image image, Image clip, float alpha)
+    {
+        Color imgColor = image.color;
+        Color clipColor = clip.color;
+        imgColor.a = alpha;
+        clipColor.a = alpha;
+        image.color = imgColor;
+        clip.color = clipColor;
     }
 }
