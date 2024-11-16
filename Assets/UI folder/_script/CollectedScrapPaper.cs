@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using Unity.Collections.LowLevel.Unsafe;
+using System.Linq;
 
 public class CollectedScrapPaper : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CollectedScrapPaper : MonoBehaviour
     private float transparencyMax = 1f;
     public Image leftImage;
     public Image rightImage;
+    public Image clipImage;
     public Sprite[] leftSprite;//journal sprite
     public Sprite[] rightSprite;
     public Sprite emptySprite; //blank
@@ -24,8 +26,6 @@ public class CollectedScrapPaper : MonoBehaviour
     private int currentPageIndex = 0;            // Tracks the current page index
     private int currentMaxPage = 1;
     public bool[] unlockJournal;
-    private Color colorL;
-    private Color colorR;
 
     private void OnValidate()
     {
@@ -36,13 +36,7 @@ public class CollectedScrapPaper : MonoBehaviour
     }
     private void Start()
     {
-
-        colorL = leftImage.color;
-        colorR = rightImage.color;
-        colorL.a = transparencyZero;
-        colorR.a = transparencyZero;
-        leftImage.color = colorL;
-        rightImage.color = colorR;
+        SetTransparency(leftImage, rightImage, clipImage, transparencyZero);
 
         nextPageButton.onClick.AddListener(FlipToNextPage);
         previousPageButton.onClick.AddListener(FlipToPreviousPage);//shouldn't assign it on the button cuz it already assign it form here
@@ -83,20 +77,14 @@ public class CollectedScrapPaper : MonoBehaviour
         if (collectedScrapIDs.Contains(currentPageIndex +1))
         {
             //display
-            colorL.a = transparencyMax;
-            colorR.a = transparencyMax;
-            leftImage.color = colorL;
-            rightImage.color = colorR;
+            SetTransparency(leftImage, rightImage, clipImage, transparencyMax);
             leftImage.sprite = leftSprite[currentPageIndex];
             rightImage.sprite = rightSprite[currentPageIndex];
         }
         else
         {
             //display blank
-            colorL.a = transparencyZero;
-            colorR.a = transparencyZero;
-            leftImage.color = colorL;
-            rightImage.color = colorR;
+            SetTransparency(leftImage, rightImage, clipImage, transparencyZero);
             leftImage.sprite = emptySprite;
             rightImage.sprite = emptySprite;
         }
@@ -107,16 +95,7 @@ public class CollectedScrapPaper : MonoBehaviour
 
     private int GetMaxValue(List<int> numbers)
     {
-        int maxValue = numbers[0]; 
-        for (int i = 1; i < numbers.Count; i++)
-        {
-            if (numbers[i] > maxValue)
-            {
-                maxValue = numbers[i]; // Update maxValue if current number is greater
-            }
-        }
-
-        return maxValue;
+        return numbers.Max();
     }
 
 
@@ -137,5 +116,18 @@ public class CollectedScrapPaper : MonoBehaviour
             currentPageIndex--;
             UpdateJournal();
         }
+    }
+
+    private void SetTransparency(Image image1, Image image2,Image clip, float alpha)
+    {
+        Color imgColor = image1.color;
+        Color imgColor2 = image2.color;
+        Color clipColor = clip.color;
+        imgColor.a = alpha;
+        imgColor2.a = alpha;
+        clipColor.a = alpha;
+        image1.color = imgColor;
+        image2.color = imgColor2;
+        clip.color = clipColor;
     }
 }
