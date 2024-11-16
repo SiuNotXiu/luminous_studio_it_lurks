@@ -114,7 +114,7 @@ public class InventoryController : MonoBehaviour
     {
         player_database.is_flashlight_on = false;
         //chest problem here in chest in
-        Debug.Log("wwwwwwwww > " + chestIn);
+        //Debug.Log("wwwwwwwww > " + chestIn);
         //Debug.Log("Opening Journal");
         JournalOpen = false;
         Journal.SetActive(true);
@@ -122,6 +122,7 @@ public class InventoryController : MonoBehaviour
         journal_display.ShowPanels();
         button_display.Show();
         button_display.ShowPanels();
+        
     }
 
     private void CloseJournal()
@@ -138,6 +139,7 @@ public class InventoryController : MonoBehaviour
             Destroy(dropdownMenuInstance);
             dropdownMenuInstance = null;
         }
+
         Description.SetActive(false);
         JournalOpen = true;
         button_display.HidePanels();
@@ -161,6 +163,7 @@ public class InventoryController : MonoBehaviour
 
         resultSlot.ResetResultOnInventoryClose();
     }
+
     // Function to set the dropdown menu instance
     public void SetDropdownMenuInstance(GameObject dropdown)
     {
