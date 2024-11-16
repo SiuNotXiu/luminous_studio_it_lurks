@@ -12,34 +12,26 @@ public class TopdownMovement : MonoBehaviour
 
     [HideInInspector] public static float multiplier_1300_mah = 0.75f;
 
-    [HideInInspector] private Animator animator_mask;
-    [HideInInspector] private Animator animator_normal;
+    [SerializeField] private GameObject object_animation;
+    [SerializeField] private GameObject object_sprite_sheet_mask;
+    [SerializeField] private GameObject object_sprite_sheet_normal;
 
-    [HideInInspector] private GameObject object_sprite_sheet_mask;
+    [SerializeField] private Animator animator_mask;
+    [SerializeField] private Animator animator_normal;
 
     private void OnValidate()
     {
-        if (gameObject.name == "player_dont_change_name")
-        {
-            if (animator_mask == null)
-            {
-                if (transform.Find("sprite_sheet_mask").gameObject != null)
-                {
-                    animator_mask = transform.Find("sprite_sheet_mask").gameObject.GetComponent<Animator>();
-                    animator_normal = transform.Find("sprite_sheet_mask").transform.Find("sprite_sheet_normal").gameObject.GetComponent<Animator>();
-                }
-                else
-                {
-                    Debug.Log("cannot animator_mask find, maybe name changed");
-                }
-            }
-        }
-        else
-        {
-            Debug.Log("not player but using topdownmovement script");
-        }
+        if (object_animation == null)
+            object_animation = transform.Find("animation").gameObject;
         if (object_sprite_sheet_mask == null)
-            object_sprite_sheet_mask = transform.Find("sprite_sheet_mask").gameObject;
+            object_sprite_sheet_mask    = transform.Find("animation").Find("sprite_sheet_mask").gameObject;
+        if (object_sprite_sheet_normal == null)
+            object_sprite_sheet_normal  = transform.Find("animation").Find("sprite_sheet_normal").gameObject;
+        if (animator_mask == null)
+        {
+            animator_mask = object_sprite_sheet_mask.GetComponent<Animator>();
+            animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
+        }
     }
     void Start()
     {
@@ -83,6 +75,7 @@ public class TopdownMovement : MonoBehaviour
         {
             animator_mask.SetFloat("Speed", 1f); //reset speed in case it was set to -1
             animator_normal.SetFloat("Speed", 1f);
+
             animator_mask.Play("idle_right");
             animator_normal.Play("idle_right");
         }
@@ -104,12 +97,12 @@ public class TopdownMovement : MonoBehaviour
         if (mousePosition.x < transform.position.x)
         {
             facing_right = false;
-            object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 180, 0);
+            object_animation.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else
         {
             facing_right = true;
-            object_sprite_sheet_mask.transform.rotation = Quaternion.Euler(0, 0, 0);
+            object_animation.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
