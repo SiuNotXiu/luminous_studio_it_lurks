@@ -5,9 +5,16 @@ using UnityEngine;
 public class camera_follow_cursor : MonoBehaviour
 {
     [HideInInspector] private GameObject object_player;
-    void Start()
+
+    private void OnValidate()
     {
-        object_player = GameObject.Find("player_dont_change_name");
+        if (object_player == null)
+        {
+            object_player = GameObject.Find("player_dont_change_name");
+        }
+        transform.position = new Vector3(object_player.transform.position.x,
+                                         object_player.transform.position.y,
+                                         object_player.transform.position.z - 100);
     }
 
     // Update is called once per frame

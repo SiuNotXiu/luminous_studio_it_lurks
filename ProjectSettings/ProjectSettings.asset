@@ -653,7 +653,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: LEVELPLAY_DEPENDENCIES_INSTALLED
+    Standalone: LEVELPLAY_DEPENDENCIES_INSTALLED;LEVELPLAY_DEPENDENCIES_INSTALLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
