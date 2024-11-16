@@ -91,12 +91,16 @@ public class battery_bar_float : MonoBehaviour
     {
         // y = 1 - e^(-kx)
         float x = battery_remaining_percentage;
-        float k = 5;
+        float k = 3;
         alpha = 1 - Mathf.Exp(-k * x);
         /*object_dim_filter.GetComponent<SpriteRenderer>().color = new Color(object_dim_filter.GetComponent<SpriteRenderer>().color.r,
             object_dim_filter.GetComponent<SpriteRenderer>().color.g,
             object_dim_filter.GetComponent<SpriteRenderer>().color.b,
             alpha);*/
+        if (alpha < 0)
+            alpha = 0;
+        if (alpha < 0.3f && alpha > 0)
+            alpha = 0.3f;
         object_dim_filter.GetComponent<SpriteRenderer>().material.SetFloat("_alpha", alpha);
     }
 
