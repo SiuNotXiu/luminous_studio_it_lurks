@@ -8,7 +8,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 {
     private NavMeshAgent agent;
     private Coroutine playSoundCoroutine;
-   // private Animator anim;
+    private Animator anim;
     private monster_database md;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
@@ -16,9 +16,9 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         if (weepingScarecrow.GetTarget() != null)
         {
             agent = weepingScarecrow.GetAgent();
-            //anim = weepingScarecrow.GetAnimator();
+            anim = weepingScarecrow.GetAnimator();
 
-            //anim.SetBool("isRunning", true);
+            anim.SetBool("isRunning", true);
             if (agent.isStopped)
             {
                 agent.isStopped = false;
@@ -52,7 +52,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         {
             weepingScarecrow.StopCoroutine(playSoundCoroutine);
         }
-        //anim.SetBool("isRunning", false);
+        anim.SetBool("isRunning", false);
     }
 
     private IEnumerator UpdateTargetPosition(WeepingScarecrowManager weepingScarecrow, NavMeshAgent agent)

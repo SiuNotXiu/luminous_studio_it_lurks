@@ -16,11 +16,6 @@ public class ShapeShifterManager : MonoBehaviour
     #endregion
 
     #region<Variables>
-    /*[SerializeField] private Sprite atkSprite;
-    [SerializeField] private Sprite shineSprite;
-    [SerializeField] private Sprite idleSprite;
-    private SpriteRenderer sr;*/
-
     [SerializeField] private bool shine = false;
     #endregion
 
@@ -68,21 +63,6 @@ public class ShapeShifterManager : MonoBehaviour
     {
         return shine;
     }
-
-   /* public Sprite GetAtkSprite()
-    {
-        return atkSprite;
-    }
-
-    public Sprite GetShineSprite()
-    {
-        return shineSprite;
-    }
-
-    public Sprite GetIdleSprite()
-    {
-        return idleSprite;
-    }*/
 
     public AudioClip[] GetAtkAudio()
     {

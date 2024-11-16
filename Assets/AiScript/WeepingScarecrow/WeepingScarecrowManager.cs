@@ -29,8 +29,9 @@ public class WeepingScarecrowManager : MonoBehaviour
     private float time = 5f;
     private bool flw = false;
     private bool inAtkArea = false;
-    //private Animator anim;
+    private Animator anim;
     private monster_database md;
+    private bool soundPlayed = false;
 
     #endregion
 
@@ -60,7 +61,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        //anim = gameObject.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
         md = gameObject.GetComponent<monster_database>();
     }
 
@@ -122,8 +123,12 @@ public class WeepingScarecrowManager : MonoBehaviour
     {
         if (flw == false && target != null) 
         {
-           // anim.SetBool("isActivate", true);
-            SoundEffectManager.instance.PlayRandomSoundFxClip(enterSoundClips, transform, 1f);
+            anim.SetBool("isActivate", true);
+            if (soundPlayed == false)
+            {
+                SoundEffectManager.instance.PlayRandomSoundFxClip(enterSoundClips, transform, 1f);
+                soundPlayed = true;
+            }
             StartCoroutine(FollowStateDelay());
         }
     
@@ -166,10 +171,10 @@ public class WeepingScarecrowManager : MonoBehaviour
         inAtkArea = _pInAtkArea;
     }
 
-   /* public Animator GetAnimator()
+    public Animator GetAnimator()
     {
         return anim;
-    }*/
+    }
 
     public AudioClip[] GetFlwSoundClips()
     {
@@ -186,6 +191,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         SwitchState(followState);
-        flw = true;
+   
+
     }
 }

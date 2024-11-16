@@ -7,15 +7,16 @@ using UnityEngine.AI;
 public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
 {
     private EnemyAttack atk;
+    private bool atkAnim = false;
     private bool attacking = false;
     private NavMeshAgent agent;
-    //private Animator anim;
+    private Animator anim;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
         Debug.Log("InAtkArea" + weepingScarecrow.GetInAtkArea());
         atk = weepingScarecrow.GetComponent<EnemyAttack>();
-        //anim = weepingScarecrow.GetAnimator();
+        anim = weepingScarecrow.GetAnimator();
         agent = weepingScarecrow.GetAgent();
         if (agent.isStopped == false) 
         {
@@ -36,7 +37,13 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
         {
             atk.Attack();
             attacking = true;
-            //anim.SetBool("isAttacking", true);
+
+            Debug.Log("before atk animation" + anim.GetBool("isAtking"));
+            anim.SetBool("isAtking", true);
+            weepingScarecrow.StartCoroutine(ResetAttackAnimationCoroutine());
+            anim.SetBool("isRunning", false);
+
+           
             weepingScarecrow.StartCoroutine(AttackDelay());
         }
         else
@@ -59,7 +66,7 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
 
     IEnumerator SwitchStateDelay(WeepingScarecrowManager weepingScarecrow)
     {
-        Debug.Log("Coroutine Started");
+        //Debug.Log("Coroutine Started");
         yield return new WaitForSeconds(3f);
         weepingScarecrow.SwitchState(weepingScarecrow.followState);
         weepingScarecrow.SetInAtkArea(false);
@@ -69,6 +76,13 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
     {
         yield return new WaitForSeconds(3f);
         attacking = false;
+    }
+
+    private IEnumerator ResetAttackAnimationCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("isAtking", false);
+        Debug.Log("should be false" + anim.GetBool("isAtking"));
     }
 
 }

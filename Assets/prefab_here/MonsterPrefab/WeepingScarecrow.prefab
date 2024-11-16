@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2864517366708728093}
   - component: {fileID: 8008048189345170359}
   - component: {fileID: 8591333248837230449}
+  - component: {fileID: 2330236559114282122}
   m_Layer: 0
   m_Name: WeepingScarecrow
   m_TagString: Enemy
@@ -165,7 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healtheffects: {fileID: 0}
-  damageAudios: []
+  damageAudios:
+  - {fileID: 8300000, guid: 85bdefc5ad8a4cf44bbde76ca14aefe3, type: 3}
+  - {fileID: 8300000, guid: 9b9375518aba0ab4db3f7499aa060a9d, type: 3}
 --- !u!50 &8591333248837230449
 Rigidbody2D:
   serializedVersion: 4
@@ -193,6 +196,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &2330236559114282122
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997167477901046659}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: afe2feb62a24d05498272e6c4e766830, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6252735796229743552
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,9 +294,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.1158087, y: -3.568895}
+  m_Offset: {x: -2.7705576, y: -3.5688932}
   serializedVersion: 2
-  m_Radius: 14.209347
+  m_Radius: 16.391851
 --- !u!1 &8105789408811572156
 GameObject:
   m_ObjectHideFlags: 0
