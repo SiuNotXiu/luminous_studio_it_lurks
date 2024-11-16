@@ -283,7 +283,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         itemImage.sprite = itemData.selectedSprite;
     }
 
-    private void DeselectItem()
+    public void DeselectItem()
     {
         isSelected = false;
         itemImage.sprite = itemData.itemSprite;
