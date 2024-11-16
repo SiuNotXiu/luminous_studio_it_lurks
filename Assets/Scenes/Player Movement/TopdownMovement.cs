@@ -52,9 +52,10 @@ public class TopdownMovement : MonoBehaviour
 
         rb2d.velocity = moveInput * moveSpeed;
         playerFacing();
-        if (moveInput.x != 0)
+        if (moveInput.x != 0 || moveInput.y != 0)
         {
-            if ((facing_right && moveInput.x < 0) || (!facing_right && moveInput.x > 0))
+            #region move backwards(mouse position) speed should be slower
+            /*if ((facing_right && moveInput.x < 0) || (!facing_right && moveInput.x > 0))
             {
                 // Moonwalk
                 animator_mask.SetFloat("Speed", -1f); // Play animation in reverse
@@ -65,7 +66,8 @@ public class TopdownMovement : MonoBehaviour
                 // Normal walk
                 animator_mask.SetFloat("Speed", 1f); // Play animation normally
                 animator_normal.SetFloat("Speed", 1f);
-            }
+            }*/
+            #endregion
 
             // Play the "walk_right" animation regardless of direction, speed will handle direction
             animator_mask.Play("walk_right");
