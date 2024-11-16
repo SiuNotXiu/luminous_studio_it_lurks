@@ -76,7 +76,7 @@ public class InventoryController : MonoBehaviour
             else if (JournalOpen && chest_detect.isInRange && !trigger_map_ui.Map_Is_Open)
             {
                 chest_detect.OpenChest();
-                Debug.Log("is it gay?: " + chest_detect.isInRange);//true
+                //Debug.Log("is it gay?: " + chest_detect.isInRange);//true
                 chestIn.AsssignToPlayerJournal();
                 Special_Bool_For_Inventory = true;
                 OpenJournal();

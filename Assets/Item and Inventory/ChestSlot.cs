@@ -17,8 +17,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     private GameObject clickedObject;
 
     //temporary data for calculation
-    public int datax;
-    public int datay;
+    private int datax = -110;
+    private int datay = -70;
     public int dataIy; //positioning description
 
     //=====ITEM SLOT=====//
@@ -208,22 +208,28 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     private bool IsPointerOverUIObject()
     {
-        // Check if the pointer is over a UI element, either the item slot or the dropdown menu
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = Input.mousePosition;
+        // Create a new PointerEventData to store the current pointer position
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        // Perform a raycast to check for UI elements
         var results = new System.Collections.Generic.List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
 
-
         foreach (RaycastResult result in results)
         {
-            // If the raycast hit the item slot or the dropdown menu, return true
-            if (result.gameObject == gameObject || result.gameObject == activeDropdownMenu)
+            // Check if the pointer is over the dropdown menu, item slot, or their children
+            if (result.gameObject == gameObject ||
+                result.gameObject == activeDropdownMenu ||
+                result.gameObject.transform.IsChildOf(activeDropdownMenu.transform))
             {
-                return true;
+                return true; // Pointer is over the relevant UI
             }
         }
-        return false;
+
+        return false; // Pointer is not over relevant UI
     }
 
     public void AddItem(ItemData newItem)

@@ -52,19 +52,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private void Update()
     {
-
         // Check if a click occurs outside the dropdown menu and item slot
         if (activeDropdownMenu != null && Input.GetMouseButtonDown(0))
         {
-            // Check if the pointer is over any UI element
             if (!IsPointerOverUIObject())
             {
-                HideDropdownMenu(); // Hide the menu if clicked outside
+                HideDropdownMenu(); // Hide the dropdown menu
                 DeselectItem();
             }
         }
-
     }
+
 
     public void AddItem(ItemData itemData)
     {
@@ -103,7 +101,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             ShowDropdownMenu();
         }
     }
-
+    #region show the item name
     public void OnPointerEnter(PointerEventData eventData)
     {
         //not need to create one just make it position to the item
@@ -137,7 +135,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         itemDescription.SetActive(false);
     }
-
+    #endregion
     private void ShowDropdownMenu()
     {
         Debug.Log("Dropdown Trigger");
@@ -152,8 +150,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         // Calculate the new position for the pop-up menu
         Vector3 popUpPosition = new Vector3(itemSlot.position.x + datax, itemSlot.position.y + datay);
-        // Set the position of the pop-up menu
-        activeDropdownMenu_panel.transform.position = popUpPosition;
+        activeDropdownMenu_panel.transform.position = popUpPosition; // Set the position of the pop-up menu
 
         //find the button
         Button buttonS = activeDropdownMenu.transform.Find("Panel/Store").GetComponent<Button>();
@@ -164,7 +161,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
 
-        Debug.Log("IDK CHEcking : " + InventoryController.chest_detect.isInRange);
+        //Debug.Log("IDK CHEcking : " + InventoryController.chest_detect.isInRange);
         if (InventoryController.chest_detect.isInRange)
         {
             buttonD.gameObject.SetActive(false);
@@ -380,22 +377,28 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private bool IsPointerOverUIObject()
     {
-        // Check if the pointer is over a UI element, either the item slot or the dropdown menu
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = Input.mousePosition;
+        // Create a new PointerEventData to store the current pointer position
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        // Perform a raycast to check for UI elements
         var results = new System.Collections.Generic.List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
 
-
         foreach (RaycastResult result in results)
         {
-            // If the raycast hit the item slot or the dropdown menu, return true
-            if (result.gameObject == gameObject || result.gameObject == activeDropdownMenu)
+            // Check if the pointer is over the dropdown menu, item slot, or their children
+            if (result.gameObject == gameObject ||
+                result.gameObject == activeDropdownMenu ||
+                result.gameObject.transform.IsChildOf(activeDropdownMenu.transform))
             {
-                return true;
+                return true; // Pointer is over the relevant UI
             }
         }
-        return false;
+
+        return false; // Pointer is not over relevant UI
     }
 
     public void ClearSlot()
@@ -429,7 +432,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
-    private void DeselectItem()
+    public void DeselectItem()
     {
         if (itemData != null && isSelected)
         {
