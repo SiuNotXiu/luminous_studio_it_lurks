@@ -1044,6 +1044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227be655ff02e394c8fc721dff04a240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  object_camera_main: {fileID: 0}
+  object_flashlight_dim_filter: {fileID: 0}
 --- !u!114 &8204026587469464300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,7 +2092,7 @@ Transform:
   m_GameObject: {fileID: 4587631557197129961}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -99.75}
+  m_LocalPosition: {x: 0, y: 0, z: -102}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2160,6 +2162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227be655ff02e394c8fc721dff04a240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  object_camera_main: {fileID: 0}
+  object_flashlight_dim_filter: {fileID: 0}
 --- !u!1 &4870959216237445537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,7 +2435,7 @@ Transform:
   m_GameObject: {fileID: 5530881587780331558}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -19}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2523,6 +2527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2242c331e0fb54ca3b909b8161380a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  object_flashlight_mask: {fileID: 2672124962277865707}
+  object_camera_main: {fileID: 0}
 --- !u!1 &5674632146471995292
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,6 +3077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b26dedcbcb2064e9c369c714fd80d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  object_flashlight_mask: {fileID: 0}
 --- !u!114 &40516562743674074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3825,6 +3832,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227be655ff02e394c8fc721dff04a240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  object_camera_main: {fileID: 0}
+  object_flashlight_dim_filter: {fileID: 0}
 --- !u!114 &444208489977875696
 MonoBehaviour:
   m_ObjectHideFlags: 0
