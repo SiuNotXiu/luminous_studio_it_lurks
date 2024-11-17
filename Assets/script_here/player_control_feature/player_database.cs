@@ -10,6 +10,6 @@ public class player_database : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("in_safe_zone > " + in_safe_zone);
+       // Debug.Log("in_safe_zone > " + in_safe_zone);
     }
 }

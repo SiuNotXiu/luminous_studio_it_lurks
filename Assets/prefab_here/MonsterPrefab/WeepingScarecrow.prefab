@@ -110,6 +110,7 @@ MonoBehaviour:
   followTrigger: {fileID: 1538488497822471785}
   flahsed: 0
   timer: 0
+  playerMovement: {fileID: 0}
   enterSoundClips:
   - {fileID: 8300000, guid: 3f2b1c91bfd77f34b8857974f0bff963, type: 3}
   - {fileID: 8300000, guid: 42cb26da7ecf6d24b89350a714e4b928, type: 3}
@@ -127,7 +128,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 997167477901046659}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 15.000001
+  m_Radius: 2.81
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

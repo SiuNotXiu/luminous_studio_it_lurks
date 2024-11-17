@@ -17,6 +17,8 @@ public class SortingOrderController : MonoBehaviour
     private float monsterY;
     private float treeY;
 
+    private float treeYOffset = 1.0f;
+
     #endregion
 
     #region<CustomTrigger>
@@ -37,9 +39,9 @@ public class SortingOrderController : MonoBehaviour
 
     private void Update()
     {
-        treeY = transform.position.y;
-        
-       
+        treeY = transform.position.y + treeYOffset;
+
+
 
         if (playerPos != null)
         {

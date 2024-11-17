@@ -19,6 +19,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     #endregion
 
     #region<Variables>
+    [SerializeField] private bool shine;
     [SerializeField] private bool flahsed;
     private Transform target;
     private NavMeshAgent agent;
@@ -71,6 +72,7 @@ public class WeepingScarecrowManager : MonoBehaviour
 
     private void Update()
     {
+        shine = md.GetShine();
         FlipChecks();
         currentState.UpdateState(this);
       
@@ -230,6 +232,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         SwitchState(followState);
+        flw = true;
    
 
     }
