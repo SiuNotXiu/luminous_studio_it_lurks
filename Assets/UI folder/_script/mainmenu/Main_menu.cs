@@ -3,6 +3,10 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public Animator animator;//for the main menu
+    public AudioSource audioMainMenu;
+
     public Button button_g;
     public Button button_t;
     public Button button_o;
@@ -31,6 +35,7 @@ public class MainMenu : MonoBehaviour
 
     public void GameOn()
     {
+        disableAnimator();
         playClick();
         play.SetActive(true);
         
@@ -38,6 +43,7 @@ public class MainMenu : MonoBehaviour
 
     public void Tutorial()
     {
+        disableAnimator();
         playClick();
         // Implement tutorial logic here
         tutorial.SetActive(true);
@@ -45,6 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public void Option()
     {
+        disableAnimator();
         playClick();
         // Implement option logic here
         option.SetActive(true);
@@ -52,6 +59,7 @@ public class MainMenu : MonoBehaviour
 
     public void Credit()
     {
+        disableAnimator();
         playClick();
         // Implement credit logic here
         credit.SetActive(true);
@@ -59,12 +67,18 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
+        disableAnimator();
         playClick();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+    }
+    private void disableAnimator()
+    {
+        animator.enabled = false;
+        audioMainMenu.enabled = false;
     }
 
     private void playClick()

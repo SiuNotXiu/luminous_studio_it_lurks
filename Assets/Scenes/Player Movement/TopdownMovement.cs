@@ -72,13 +72,11 @@ public class TopdownMovement : MonoBehaviour
         {
 
             // Play the "walk_right" animation regardless of direction, speed will handle direction
-            playWalk();
             animator_mask.Play("walk_right");
             animator_normal.Play("walk_right");
         }
         else
         {
-            playWalk();
             animator_mask.SetFloat("Speed", 1f); //reset speed in case it was set to -1
             animator_normal.SetFloat("Speed", 1f);
 

@@ -3652,6 +3652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1392485546}
+  audioMainMenu: {fileID: 1392485547}
   option: {fileID: 796880883}
   back: {fileID: 1872589007}
 --- !u!1 &857390851
@@ -4468,6 +4469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf62b950a358a54cafa1b68822cb9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1392485546}
+  audioMainMenu: {fileID: 1392485547}
   button_g: {fileID: 198652714}
   button_t: {fileID: 159527621}
   button_o: {fileID: 1767318071}
@@ -4785,6 +4788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1392485546}
+  audioMainMenu: {fileID: 1392485547}
   credit: {fileID: 1292585894}
   back: {fileID: 857390853}
 --- !u!1 &1319339610
@@ -5427,6 +5431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1392485546}
+  audioMainMenu: {fileID: 1392485547}
   tutorial: {fileID: 1438638652}
   back: {fileID: 1821175451}
   tutorialImage: {fileID: 340672377}
@@ -7259,7 +7264,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1872589005}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
