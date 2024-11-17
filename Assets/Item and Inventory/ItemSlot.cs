@@ -317,7 +317,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                     playerHealth.FullHeal();
                     RemoveItem();
                 }
-                else
+                else if (playerHealth.GetFullHealth())
                 {
                     Debug.Log("Player current health is max");
                 }
@@ -329,7 +329,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                     playerHealth.Heal();
                     RemoveItem();
                 }
-                else
+                else if (playerHealth.GetFullHealth())
+                {
+                    Debug.Log("Player current health is max");
+                }
+                break;
+
+            case "Bushcraft Medicine":
+                if (!playerHealth.GetFullHealth())
+                {
+                    playerHealth.Heal();
+                    RemoveItem();
+                }
+                else if (playerHealth.GetFullHealth())
                 {
                     Debug.Log("Player current health is max");
                 }
