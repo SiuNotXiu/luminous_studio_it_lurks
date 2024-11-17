@@ -139,6 +139,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                             if (raycast_hit_2d[j].collider.gameObject.name == "flashlight_trigger_area_dont_change_name")
                             {
                                 //monster found
+                                //Debug.Log("monster detected");
                                 monster_flashed.Add(raycast_hit_2d[j].collider.gameObject.transform.parent.gameObject);
                             }
                             if (raycast_hit_2d[j].collider.gameObject.GetComponent<flashlight_dissolve_bubble>() != null)
@@ -171,12 +172,14 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                         }
                         #endregion
                         #region which monster flashed confirmed, bubble alpha modification
-                        if (gameObject.name == "flashlight_got_monster_damage")
+                        for (int j = 0; j < monster_flashed.Count; j++)
                         {
-                            for (int j = 0; j < monster_flashed.Count; j++)
-                            {
-                                monster_flashed[j].GetComponent<monster_database>().flashed = true;
-                            }
+                            Debug.Log("monster_flashed > " + monster_flashed[j]);
+                            monster_flashed[j].GetComponent<monster_database>().flashed = true;
+                        }
+                        /*if (gameObject.name == "flashlight_got_monster_damage")
+                        {
+
                         }
                         else if (gameObject.name == "flashlight_mask")
                         {
@@ -185,12 +188,12 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                                 bubble_flashed[j].GetComponent<flashlight_dissolve_bubble>().dissolve_bubble();
                                 #region debug
                                 //Debug.Log("bubble count > " + bubble_flashed.Count);
-                                /*Debug.DrawLine(player_position,
+                                *//*Debug.DrawLine(player_position,
                                                 bubble_flashed[j].transform.position,
-                                                Color.red, 0.1f);*/
+                                                Color.red, 0.1f);*//*
                                 #endregion
                             }
-                        }
+                        }*/
                         #endregion
                     }
                     //ensure mask is between camera and
