@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AudioSFXUI : MonoBehaviour
 {
+    public static AudioSFXUI Instance;
+
     [Header("SFX Journal")]
     public AudioClip JournalOpenClose;
     public AudioClip PageTurn;
@@ -22,4 +24,11 @@ public class AudioSFXUI : MonoBehaviour
     public AudioClip Key_Pickup;
     public AudioClip MakeshiftCampsite_Place;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 }

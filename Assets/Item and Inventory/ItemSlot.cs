@@ -326,8 +326,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 break;
 
             case "Bandage":
-                playerHealth.Heal();
-                RemoveItem();
+                if (!playerHealth.GetFullHealth())
+                {
+                    playerHealth.Heal();
+                    RemoveItem();
+                }
+                else
+                {
+                    Debug.Log("Player current health is max");
+                }
                 break;
 
             case "Adrenaline":
@@ -435,6 +442,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public void DeselectItem()
     {
         if (itemData != null && isSelected)
+        {
+            isSelected = false;
+            itemImage.sprite = itemData.itemSprite;
+        }
+    }
+
+    public void ResetToDefaultSprite()
+    {
+        if (itemData != null)
         {
             isSelected = false;
             itemImage.sprite = itemData.itemSprite;

@@ -22,7 +22,12 @@ public class Option : MonoBehaviour
         if (option != null)
         {
             animator.enabled = true;
+            playClick();
             option.SetActive(false); 
         }
+    }
+    private void playClick()
+    {
+        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
     }
 }

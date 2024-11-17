@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioSFXEnvironment : MonoBehaviour
 {
+    public static AudioSFXEnvironment Instance;
     [Header("SFX Environment")]
     public AudioClip BasementAmbience;
     public AudioClip CampfireFireplace;
@@ -12,5 +13,13 @@ public class AudioSFXEnvironment : MonoBehaviour
     public AudioClip MainMenuAmbience;
     public AudioClip VillageAmbience;
 
-    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
+
 }

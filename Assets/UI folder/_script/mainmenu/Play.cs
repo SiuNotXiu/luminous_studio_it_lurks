@@ -33,6 +33,7 @@ public class Play : MonoBehaviour
     // Update is called once per frame
     private void previousStory()
     {
+        playClick();
         currentPage--;
         Story.sprite = StoryPage[currentPage];
 
@@ -41,6 +42,7 @@ public class Play : MonoBehaviour
     }
     private void nextStory()
     {
+        playClick();
         currentPage++;
         Story.sprite = StoryPage[currentPage];
 
@@ -49,7 +51,11 @@ public class Play : MonoBehaviour
     }
     private void skipStory()
     {
-        
+        playClick();
         skipPage.SetActive(true);
+    }
+    private void playClick()
+    {
+        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
     }
 }

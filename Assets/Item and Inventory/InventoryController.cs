@@ -113,6 +113,7 @@ public class InventoryController : MonoBehaviour
     private void OpenJournal()
     {
         player_database.is_flashlight_on = false;
+        ONFJournal();
         //chest problem here in chest in
         //Debug.Log("wwwwwwwww > " + chestIn);
         //Debug.Log("Opening Journal");
@@ -139,7 +140,7 @@ public class InventoryController : MonoBehaviour
             Destroy(dropdownMenuInstance);
             dropdownMenuInstance = null;
         }
-
+        ONFJournal();
         Description.SetActive(false);
         JournalOpen = true;
         button_display.HidePanels();
@@ -157,6 +158,11 @@ public class InventoryController : MonoBehaviour
             {
                 tempItems.Add(slot.RemoveItem());
             }
+        }
+
+        foreach (var itemSlot in itemSlot)
+        {
+            itemSlot.ResetToDefaultSprite();
         }
 
         ReturnTempItemsToInventory();
@@ -386,4 +392,17 @@ public class InventoryController : MonoBehaviour
         }
         Debug.Log("Player inventory is full.");
     }
+
+    #region Sound effect
+    private void ONFJournal()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.JournalOpenClose, 0.37f,0.7f);
+        }
+    }
+
+
+
+    #endregion
 }

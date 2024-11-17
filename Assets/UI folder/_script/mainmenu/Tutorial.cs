@@ -20,7 +20,6 @@ public class Tutorial : MonoBehaviour
     
     void Start()
     {
-        health();
 
         btn[0].onClick.AddListener(health);
         btn[1].onClick.AddListener(flashlight);
@@ -37,11 +36,13 @@ public class Tutorial : MonoBehaviour
         if (tutorial != null)
         {
             animator.enabled = true;
+            playClick();
             tutorial.SetActive(false); 
         }
     }
     public void health()
     {
+        playClick();
         resetInteractable();
         btn[0].interactable = false;
         description[0].gameObject.SetActive(true);
@@ -50,6 +51,7 @@ public class Tutorial : MonoBehaviour
 
     private void flashlight()
     {
+        playClick();
         resetInteractable();
         btn[1].interactable = false;
         description[1].gameObject.SetActive(true);
@@ -57,6 +59,7 @@ public class Tutorial : MonoBehaviour
 
     private void objective()
     {
+        playClick();
         resetInteractable();
         btn[2].interactable = false;
         description[2].gameObject.SetActive(true);
@@ -64,6 +67,7 @@ public class Tutorial : MonoBehaviour
 
     private void journal()
     {
+        playClick();
         resetInteractable();
         btn[3].interactable = false;
         description[3].gameObject.SetActive(true);
@@ -71,6 +75,7 @@ public class Tutorial : MonoBehaviour
 
     private void craftnFuse()
     {
+        playClick();
         resetInteractable();
         btn[4].interactable = false;
         description[4].gameObject.SetActive(true);
@@ -83,5 +88,9 @@ public class Tutorial : MonoBehaviour
             btn[i].interactable = true;
             description[i].gameObject.SetActive(false);
         }
+    }
+    private void playClick()
+    {
+        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
     }
 }

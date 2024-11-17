@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 372.71887, y: -80.52414}
-  m_SizeDelta: {x: 695.1147, y: 581.5507}
+  m_AnchoredPosition: {x: 352.51196, y: -80.52414}
+  m_SizeDelta: {x: 654.7009, y: 581.5507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &38856328
 MonoBehaviour:
@@ -180,13 +180,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- The journal is your primary interface for managing your items and inventory,
-    but also as your primary source of storytelling\r\n- To open your journal in-game,
-    press \u201CTAB\u201D at any time.\r\n- Click on any of the side tabs of the
-    journal will navigate to different sections of the journal.\r\n- Each section
-    of the journal has its own specific uses and purposes for you.\r\n- To leave
-    the journal, press -ESC-, -TAB-, or -BACKSPACE-.\r\n*Keep in mind while you have
-    your journal up, the game in the background will not pause."
+  m_text: '- The journal is your primary interface for managing your items and inventory,
+    but also as your primary source of storytelling
+
+    - To open your journal in-game,
+    press -TAB- at any time.
+
+    - Click on any of the side tabs of the journal
+    will navigate to different sections of the journal.
+
+    - Each section of the
+    journal has its own specific uses and purposes for you.
+
+    - To leave the journal,
+    press -ESC-, -TAB-, or -BACKSPACE-.
+
+    --Keep in mind while you have your journal
+    up, the game in the background will not pause.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
   m_sharedMaterial: {fileID: 1834401537940866953, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
@@ -2857,8 +2867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0.00012207031}
+  m_SizeDelta: {x: 40.9957, y: 40.9957}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &683886704
 MonoBehaviour:
@@ -3002,19 +3012,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720527187}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 452863970}
-        m_TargetAssemblyTypeName: Audio, Assembly-CSharp
-        m_MethodName: SetBackgroundMusic
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: ac3906f772875c74a922086fa01bf3be, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720527187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3204,7 +3202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &722180197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3221,8 +3219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 372.71887, y: -80.52414}
-  m_SizeDelta: {x: 695.1147, y: 581.5507}
+  m_AnchoredPosition: {x: 367.58, y: -80.52414}
+  m_SizeDelta: {x: 684.84, y: 581.5507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722180198
 MonoBehaviour:
@@ -3255,7 +3253,7 @@ MonoBehaviour:
 
     - To heal, open your inventory in
     your journal with -TAB-, click on a healing item, and click -USE- in the drop-down
-    menu.'
+    menu '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
   m_sharedMaterial: {fileID: 1834401537940866953, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
@@ -3444,6 +3442,18 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 15add60c13f0f6845b318a305e6d6dae, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 452863970}
+        m_TargetAssemblyTypeName: Audio, Assembly-CSharp
+        m_MethodName: JustForOnce
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: d91263d0ff44f9d468fa607391114ff4, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3840,7 +3850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &902875007
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3880,14 +3890,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- The flashlight is your primary tool for navigation.\r\n- To turn on
-    your flashlight, click the -Left Mouse Button- to turn it on or off.\r\n- The
-    flashlight uses batteries as its resource.\r\n- To replenish the flashlight,
+  m_text: '- The flashlight is your primary tool for navigation.
+
+    - To turn on
+    your flashlight, click the -Left Mouse Button- to turn it on or off.
+
+    - The
+    flashlight uses batteries as its resource.
+
+    - To replenish the flashlight,
     open your inventory in your journal with -TAB-, click on a battery, and click
-    -USE- in the drop-down menu.\r\n- Batteries for the flashlight are primarily
-    found in campsites and in certain areas\r\n- There is no battery bar. The only
-    way to tell if the battery is getting low is to see how dim the flashlight\u2019s
-    light is getting.\r\n"
+    -USE- in the drop-down menu.
+
+    - Batteries for the flashlight are primarily
+    found in campsites and in certain areas
+
+    - There is no battery bar. The only
+    way to tell if the battery is getting low is to see how dim the flashlight''s
+    light is getting.
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
   m_sharedMaterial: {fileID: 1834401537940866953, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
@@ -5165,6 +5187,7 @@ GameObject:
   - component: {fileID: 1392485545}
   - component: {fileID: 1392485544}
   - component: {fileID: 1392485546}
+  - component: {fileID: 1392485547}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -5251,6 +5274,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &1392485547
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392485542}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1f7e569f904665e45ab544fbfea81dad, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1438638652
 GameObject:
   m_ObjectHideFlags: 0
@@ -5679,8 +5798,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -11.498474, y: -0.81848145}
+  m_SizeDelta: {x: 22.9971, y: 44.3574}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1641559761
 GameObject:
@@ -6670,8 +6789,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 372.71887, y: -80.52414}
-  m_SizeDelta: {x: 695.1147, y: 581.5507}
+  m_AnchoredPosition: {x: 352.51, y: -80.52414}
+  m_SizeDelta: {x: 654.7, y: 581.5507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807218356
 MonoBehaviour:
@@ -6864,7 +6983,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1821175452}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -8651,6 +8770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 115951226053769861, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
+      propertyPath: UIHoverAndClick
+      value: 
+      objectReference: {fileID: 8300000, guid: d91263d0ff44f9d468fa607391114ff4, type: 3}
     - target: {fileID: 4006555533328258805, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 851.3684
