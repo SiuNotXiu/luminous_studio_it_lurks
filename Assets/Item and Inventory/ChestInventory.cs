@@ -107,6 +107,9 @@ public class ChestInventory : MonoBehaviour
             {
                 Debug.Log("Empty or invalid slot, skipping.");
             }
+
+            slot.ResetToDefaultSprite();
+
         }
     }
 

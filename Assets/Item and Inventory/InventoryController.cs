@@ -160,6 +160,11 @@ public class InventoryController : MonoBehaviour
             }
         }
 
+        foreach (var itemSlot in itemSlot)
+        {
+            itemSlot.ResetToDefaultSprite();
+        }
+
         ReturnTempItemsToInventory();
 
         resultSlot.ResetResultOnInventoryClose();

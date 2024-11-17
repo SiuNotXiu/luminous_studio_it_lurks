@@ -440,4 +440,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             itemImage.sprite = itemData.itemSprite;
         }
     }
+
+    public void ResetToDefaultSprite()
+    {
+        if (itemData != null)
+        {
+            isSelected = false;
+            itemImage.sprite = itemData.itemSprite;
+        }
+    }
 }
