@@ -8,6 +8,7 @@ public class player_flashlight_on_off : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if(InventoryController.JournalOpen)
             player_database.is_flashlight_on = !player_database.is_flashlight_on;
         }
     }
