@@ -38,7 +38,8 @@ public class Item : MonoBehaviour
         if (gameObject.CompareTag("ScrapPaper") && paper != null)
         {
             paper.CollectScrapPaper(ScrapPaperId);
-            Debug.Log("1");
+            //Debug.Log("1");
+            pickingScrap();
             Destroy(gameObject);
             /*                #region map icon activation
                             if (object_landmark[ScrapPaperId - 1] != null)
@@ -111,6 +112,14 @@ public class Item : MonoBehaviour
         if (Audio.Instance != null)
         {
             Audio.Instance.PlaySFX(AudioSFXUI.Instance.Item_Pickup);
+        }
+    }
+
+    private void pickingScrap()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.PencilWriting);
         }
     }
 

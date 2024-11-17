@@ -8770,10 +8770,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 115951226053769861, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
-      propertyPath: UIHoverAndClick
-      value: 
-      objectReference: {fileID: 8300000, guid: d91263d0ff44f9d468fa607391114ff4, type: 3}
     - target: {fileID: 4006555533328258805, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 851.3684
@@ -8817,10 +8813,6 @@ PrefabInstance:
     - target: {fileID: 7786296587503908847, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
       propertyPath: m_Name
       value: Audio
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379067813648600443, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
-      propertyPath: Loop
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2145,8 +2145,8 @@ MonoBehaviour:
   rightRecipe:
   - {fileID: 21300000, guid: 19356c1c2e69b5b4ca6113f44992bea9, type: 3}
   upgrades:
-  - {fileID: 21300000, guid: 29103553efbb5ce459c8bcc9b0195001, type: 3}
-  - {fileID: 21300000, guid: e08514aa02079f341872b8ada17aded4, type: 3}
+  - {fileID: 21300000, guid: 8cebad3fe5589ed4bbc86a29bcae9245, type: 3}
+  - {fileID: 21300000, guid: 77db08ccbf7eb4440a2270035a05dae0, type: 3}
   emptySprite: {fileID: 21300000, guid: 9e1973989bdd0ba41b2405f5bb0b21e3, type: 3}
   nextPageButton: {fileID: 5191597032368630215}
   previousPageButton: {fileID: 3061787878620267757}
