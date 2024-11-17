@@ -27,7 +27,9 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
         md = weepingScarecrow.GetMd();
         if (md.GetShine()==false && weepingScarecrow.GetFlw() == true)  
         {
+            
             weepingScarecrow.SwitchState(weepingScarecrow.followState);
+
         }
 
     }

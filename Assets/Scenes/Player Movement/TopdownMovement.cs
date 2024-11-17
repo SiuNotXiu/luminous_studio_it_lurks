@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TopdownMovement : MonoBehaviour
 {
-    public static float moveSpeed = 10f;
+    public static float moveSpeed = 6f;
     [HideInInspector] public Rigidbody2D rb2d;
-    
+    private float speedboost = 8f;
+    private float confield = 3f;
+    private float oriSpeed = 6f;
+
     private Vector2 moveInput;
     private bool facing_right = true;
 
@@ -91,6 +95,16 @@ public class TopdownMovement : MonoBehaviour
     {
         moveSpeed = p_speed;
         
+    }
+
+    public void ConfieldSpeed()
+    {
+        moveSpeed = confield;
+    }
+
+    public void OriginalSpeed()
+    {
+        moveSpeed = oriSpeed;
     }
 
     public void playerFacing()

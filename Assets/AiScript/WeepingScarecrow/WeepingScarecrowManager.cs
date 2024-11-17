@@ -32,6 +32,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     private Animator anim;
     private monster_database md;
     private bool soundPlayed = false;
+    [SerializeField]private TopdownMovement playerMovement;
 
     #endregion
 
@@ -63,6 +64,8 @@ public class WeepingScarecrowManager : MonoBehaviour
 
         anim = gameObject.GetComponent<Animator>();
         md = gameObject.GetComponent<monster_database>();
+
+        
     }
 
     private void Update()
@@ -85,6 +88,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             target = collision.transform;
+            playerMovement.ConfieldSpeed();
             
         }
     }
@@ -96,7 +100,8 @@ public class WeepingScarecrowManager : MonoBehaviour
             target = null;
             flw = false;
             SwitchState(idleState);
-            
+            playerMovement.OriginalSpeed();
+
         }
     }
 

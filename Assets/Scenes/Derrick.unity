@@ -1429,6 +1429,18 @@ PrefabInstance:
       propertyPath: _healtheffects
       value: 
       objectReference: {fileID: 1867807091}
+    - target: {fileID: 3986327069345849767, guid: bd84d2e74d7d3b04c9c7a1205bb6eae7, type: 3}
+      propertyPath: damageAudios.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986327069345849767, guid: bd84d2e74d7d3b04c9c7a1205bb6eae7, type: 3}
+      propertyPath: damageAudios.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 85bdefc5ad8a4cf44bbde76ca14aefe3, type: 3}
+    - target: {fileID: 3986327069345849767, guid: bd84d2e74d7d3b04c9c7a1205bb6eae7, type: 3}
+      propertyPath: damageAudios.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b9375518aba0ab4db3f7499aa060a9d, type: 3}
     - target: {fileID: 8237105477279087973, guid: bd84d2e74d7d3b04c9c7a1205bb6eae7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
