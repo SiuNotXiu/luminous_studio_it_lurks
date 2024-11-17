@@ -30,7 +30,7 @@ public class HealthEffects : MonoBehaviour
         {
             if (object_player != null)
             {
-                object_sprite_sheet_mask = object_player.transform.Find("sprite_sheet_mask").gameObject;
+                object_sprite_sheet_mask = object_player.transform.Find("animation").Find("sprite_sheet_mask").gameObject;
                 animator_mask = object_sprite_sheet_mask.GetComponent<Animator>();
             }
         }

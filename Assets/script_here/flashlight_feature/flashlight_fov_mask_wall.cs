@@ -94,7 +94,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
             {
                 //if fov changed, the calculation will follow up
                 ray_count = (int)fov * 2;
-                angle_increase = -fov / (float)ray_count;
+                angle_increase = -fov / (float)ray_count;//gap between each angle
 
                 Vector3[] vertices = new Vector3[ray_count + 1 + 1];
                 Vector2[] uv = new Vector2[vertices.Length];
@@ -223,10 +223,12 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                 mesh.triangles = triangles;
             }
         }
-        else
+        StartCoroutine(this_frame_calculated_shape_coroutine());
+        /*else
         {
+            //this only works if there's only 2 flashlight
             this_frame_calculated_shape = false;
-        }
+        }*/
     }
 
     #region update variables called by other script
@@ -240,6 +242,12 @@ public class flashlight_fov_wall_mask : MonoBehaviour
         angle = get_angle_from_vector_float(aim_direction) + fov / 2.0f;
     }
     #endregion
+
+    IEnumerator this_frame_calculated_shape_coroutine()
+    {
+        yield return null;
+        this_frame_calculated_shape = false;
+    }
 
     #region general functions
     Vector3 get_vector_from_angle(float angle_degree)
