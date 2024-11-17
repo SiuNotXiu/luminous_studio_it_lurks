@@ -39,14 +39,16 @@ public class battery_bar_float : MonoBehaviour
             script_flashlight_battery_blink = transform.Find("animation").Find("arm_with_flashlight").Find("flashlight_mask").GetComponent<flashlight_battery_blink>();
         if (object_dim_filter == null)
         {
-            object_dim_filter = transform.Find("black_square_solution").Find("black_square").Find("dim_filter").gameObject;
+            object_dim_filter = transform.Find("animation").Find("arm_with_flashlight").Find("flashlight_mask").Find("flashlight_dim_filter").gameObject;
         }
     }
-
+    private void Start()
+    {
+        change_dim_filter_alpha();
+    }
     void Update()
     {
         display_battery_remaining = battery_remaining;
-        battery_remaining_percentage = battery_remaining / battery_max;
         if (player_database.is_flashlight_on == true)
         {
             battery_bar_display();
@@ -63,6 +65,7 @@ public class battery_bar_float : MonoBehaviour
     void battery_bar_display()
     {
         battery_remaining -= Time.deltaTime;    //constantly reduce the same one
+        battery_remaining_percentage = battery_remaining / battery_max;
 
         #region battery changed, check animation
         if (script_flashlight_battery_blink != null)
@@ -92,16 +95,17 @@ public class battery_bar_float : MonoBehaviour
         // y = 1 - e^(-kx)
         float x = battery_remaining_percentage;
         float k = 3;
-        alpha = 1 - Mathf.Exp(-k * x);
+        alpha = Mathf.Exp(-k * x);
         /*object_dim_filter.GetComponent<SpriteRenderer>().color = new Color(object_dim_filter.GetComponent<SpriteRenderer>().color.r,
             object_dim_filter.GetComponent<SpriteRenderer>().color.g,
             object_dim_filter.GetComponent<SpriteRenderer>().color.b,
             alpha);*/
         if (alpha < 0)
             alpha = 0;
-        if (alpha < 0.3f && alpha > 0)
-            alpha = 0.3f;
-        object_dim_filter.GetComponent<SpriteRenderer>().material.SetFloat("_alpha", alpha);
+        /*if (alpha < 0.3f && alpha > 0)
+            alpha = 0.3f;*/
+        //object_dim_filter.GetComponent<SpriteRenderer>().material.SetFloat("_alpha", alpha);
+        object_dim_filter.GetComponent<MeshRenderer>().material.SetFloat("_alpha", alpha);
     }
 
     #region perks equip
