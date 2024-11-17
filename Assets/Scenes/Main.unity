@@ -20694,17 +20694,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 111136886}
     - target: {fileID: 2063283111479267537, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: playerBattery
+      value: 
+      objectReference: {fileID: 1337744416}
+    - target: {fileID: 2063283111479267537, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 926748806}
     - target: {fileID: 2063283111479267537, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1337744411}
     - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 111136886}
+    - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: playerBattery
+      value: 
+      objectReference: {fileID: 1337744416}
     - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -20712,7 +20720,7 @@ PrefabInstance:
     - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1337744411}
     - target: {fileID: 2307335439465522270, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -20722,17 +20730,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 111136886}
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: playerBattery
+      value: 
+      objectReference: {fileID: 1337744416}
+    - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 926748806}
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1337744411}
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: droppedItemPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4904651877909844242, guid: 518c30e668b1bb4428827d0e2e28ec36, type: 3}
     - target: {fileID: 3758260710429886559, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemImage
       value: 
@@ -20758,13 +20770,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 111136886}
     - target: {fileID: 5241129934072775646, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: playerBattery
+      value: 
+      objectReference: {fileID: 1337744416}
+    - target: {fileID: 5241129934072775646, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 926748806}
     - target: {fileID: 5241129934072775646, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1337744411}
     - target: {fileID: 5487800193212263585, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -20882,13 +20898,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 111136886}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: playerBattery
+      value: 
+      objectReference: {fileID: 1337744416}
+    - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 926748806}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1337744411}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: inventoryController
       value: 
@@ -20926,13 +20946,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 111136886}
     - target: {fileID: 8061769526057688673, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: playerBattery
+      value: 
+      objectReference: {fileID: 1337744416}
+    - target: {fileID: 8061769526057688673, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 926748806}
     - target: {fileID: 8061769526057688673, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1337744411}
     - target: {fileID: 8548313435283688896, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemImage
       value: 
@@ -31050,6 +31074,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e16ab55d7bb7d78488210ae86498e1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1337744411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4892453508253383033, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+  m_PrefabInstance: {fileID: 1351282089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1337744416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3306951296432945803, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+  m_PrefabInstance: {fileID: 1351282089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337744396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cab003410c296a48ab4780b775aabde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1339029312
