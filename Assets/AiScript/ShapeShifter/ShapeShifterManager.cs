@@ -13,10 +13,20 @@ public class ShapeShifterManager : MonoBehaviour
     #region<CustomTrigger>
     public CustomTrigger atkTrigger;
 
+    private void Awake()
+    {
+        atkTrigger.EnteredTrigger += OnAtkTriggerEntered;
+        atkTrigger.ExitedTrigger += OnAtkTriggerExited;
+    }
+
     #endregion
 
     #region<Variables>
     [SerializeField] private bool shine = false;
+    public bool inAtkArea { get; private set; } = false;
+    public Transform target { get; private set; }
+
+    public Rigidbody2D rb { get; private set; }
     #endregion
 
     #region<SFX>
@@ -31,10 +41,7 @@ public class ShapeShifterManager : MonoBehaviour
         currentState = idleState;
         currentState.EnterState(this);
     }
-    private void Awake()
-    {
-        atkTrigger.EnteredTrigger += OnAtkTriggerEntered;
-    }
+
 
     private void Update()
     {
@@ -54,9 +61,23 @@ public class ShapeShifterManager : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            inAtkArea = true;
+            target = collision.transform;
+            rb = collision.GetComponent<Rigidbody2D>();
+            Debug.Log("Assigned Rigidbody2D: " + rb);
             SwitchState(atkState);
+            
+            
         }
     }
+
+    private void OnAtkTriggerExited(Collider2D collision)
+    {
+        inAtkArea = false;
+        target = null;
+        
+    }
+
 
     #region<Setter/Getter>
     public bool GetShine()

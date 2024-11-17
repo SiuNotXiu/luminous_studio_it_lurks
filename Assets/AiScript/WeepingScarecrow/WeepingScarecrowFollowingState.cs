@@ -39,8 +39,10 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
             if (md.GetShine() == true) 
             {
                 //weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
+                anim.SetBool("isShine", true);
                 weepingScarecrow.SwitchState(weepingScarecrow.idleState);
                 Debug.Log("switching to idle");
+                
             }
         }
       

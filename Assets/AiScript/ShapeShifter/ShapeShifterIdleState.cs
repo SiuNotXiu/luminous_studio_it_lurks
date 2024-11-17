@@ -10,6 +10,7 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
     public override void EnterState(ShapeShifterManager shapeShifter)
     {
         sr = shapeShifter.GetComponent<SpriteRenderer>();
+        Debug.Log("Hi Im IDle");
     }
 
     public override void UpdateState(ShapeShifterManager shapeShifter)
@@ -36,7 +37,7 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
                 isPlayingSound = false;
             }
         }
-        Debug.Log("Shine" + shapeShifter.GetShine());
+        //Debug.Log("Shine" + shapeShifter.GetShine());
     }
 
     public override void ExitState(ShapeShifterManager shapeShifter)
