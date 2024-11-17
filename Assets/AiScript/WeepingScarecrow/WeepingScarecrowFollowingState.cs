@@ -10,6 +10,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
     private Coroutine playSoundCoroutine;
     private Animator anim;
     private monster_database md;
+    
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
@@ -36,7 +37,8 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         md = weepingScarecrow.GetMd();
         if (weepingScarecrow.GetTarget() != null)
         {
-            if (md.GetShine() == true) 
+            //Debug.Log("shiine" + weepingScarecrow.gameObject.GetComponent<monster_database>().GetShine());
+            if (weepingScarecrow.gameObject.GetComponent<monster_database>().canStop == true)  
             {
                 //weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
                 anim.SetBool("isShine", true);

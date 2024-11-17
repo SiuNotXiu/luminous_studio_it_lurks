@@ -174,7 +174,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                         #region which monster flashed confirmed, bubble alpha modification
                         for (int j = 0; j < monster_flashed.Count; j++)
                         {
-                            Debug.Log("monster_flashed > " + monster_flashed[j]);
+                            //Debug.Log("monster_flashed > " + monster_flashed[j]);
                             monster_flashed[j].GetComponent<monster_database>().flashed = true;
                         }
                         /*if (gameObject.name == "flashlight_got_monster_damage")
