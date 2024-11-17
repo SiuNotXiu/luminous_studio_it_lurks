@@ -41,13 +41,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     // Reference to the inventory manager that handles the inventory open/close state
     [SerializeField] private InventoryController inventoryC;
-    private battery_bar_float playerFlashlightBattery;
     public GameObject P1;
     public GameObject P2;
 
     //for items reference
     private PerkSlot perksEquip; //to check can use better battery or not
     [SerializeField] private HealthEffects playerHealth;
+    [SerializeField] private battery_bar_float playerBattery;
     private bool isDropdownMenuActive = false;
 
     private void Update()
@@ -293,15 +293,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         switch (itemData.itemName)
         {
             case "Battery":
-                if (battery_bar_float.battery_remaining == battery_bar_float.battery_max)
-                {
-                    Debug.Log("Battery max, item can't be used");
-                }
-                else
-                {
-                    battery_bar_float.battery_remaining = battery_bar_float.battery_max;
-                    RemoveItem();
-                }
+                battery_bar_float.reload_battery();
+                RemoveItem();
                 break;
 
             case "1300 mAh Battery":
@@ -348,12 +341,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 if (playerMovement != null)
                 {
                     playerMovement.UseAdrenaline();
-                    RemoveItem(); // Remove the item after use
+                    RemoveItem();
                 }
                 break;
 
             default:
-                Debug.Log("Unknown usage: " + itemData.itemName);
+                Debug.Log("Unknown usage...: " + itemData.itemName);
                 break;
         }
 
