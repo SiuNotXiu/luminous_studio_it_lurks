@@ -471,7 +471,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     #region Sound Effect
     private void playClick()
     {
-        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+        if (Audio.Instance != null)
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
     }
 
     #endregion

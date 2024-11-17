@@ -60,19 +60,25 @@ public class TopdownMovement : MonoBehaviour
 
             moveInput.Normalize();
         }
+        else
+        {
+            moveInput.x = 0f;
+            moveInput.y = 0f;
+        }
 
         rb2d.velocity = moveInput * moveSpeed;
         playerFacing();
         if (moveInput.x != 0 || moveInput.y != 0)
         {
-            
 
             // Play the "walk_right" animation regardless of direction, speed will handle direction
+            playWalk();
             animator_mask.Play("walk_right");
             animator_normal.Play("walk_right");
         }
         else
         {
+            playWalk();
             animator_mask.SetFloat("Speed", 1f); //reset speed in case it was set to -1
             animator_normal.SetFloat("Speed", 1f);
 
@@ -138,6 +144,15 @@ public class TopdownMovement : MonoBehaviour
         isBoostActive = false;
         speedBoostCoroutine = null;
     }
+
+    #region Sound Effect
+    private void playWalk()
+    {
+        if (Audio.Instance != null)
+            Audio.Instance.playWalking(AudioSFXPlayerBehave.Instance.GrassFootstep);
+    }
+
+    #endregion
 
 
 }

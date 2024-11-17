@@ -302,7 +302,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     #region Sound Effect
     private void playClick()
     {
-        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+        if (Audio.Instance != null)
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
     }
 
     #endregion
