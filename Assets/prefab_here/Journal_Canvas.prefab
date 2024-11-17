@@ -2113,7 +2113,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a615a35b40a259a46aa2fff3ca9b024b, type: 3}
   - {fileID: 21300000, guid: f6358fc4fa23f6e49af2fe9685da3195, type: 3}
   - {fileID: 21300000, guid: 6d15a8e69823a5747b51f9c6487b951e, type: 3}
-  - {fileID: 21300000, guid: cc2bc27451830254eb6076f4e67ba51c, type: 3}
+  - {fileID: 21300000, guid: dd09af204451ad24996db438eb8a6db9, type: 3}
   rightSprite:
   - {fileID: 21300000, guid: 719c7739cd9c26545a68d133236cbc61, type: 3}
   - {fileID: 21300000, guid: ba103a9851d0cc142a7e98e214e1c94e, type: 3}
@@ -2884,7 +2884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.19697402, b: 0.20754719, a: 1}
+  m_Color: {r: 0.20754719, g: 0.19697402, b: 0.20754719, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
