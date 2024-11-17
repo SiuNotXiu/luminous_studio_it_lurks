@@ -25,9 +25,11 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
     public override void UpdateState(WeepingScarecrowManager weepingScarecrow)
     {
         md = weepingScarecrow.GetMd();
+       // Debug.Log("Hi shine is:" + md.GetShine());
         if (md.GetShine()==false && weepingScarecrow.GetFlw() == true)  
         {
-            
+            Debug.Log("Hi shine is:" + md.GetShine());
+            Debug.Log("hi switching to follow");
             weepingScarecrow.SwitchState(weepingScarecrow.followState);
 
         }
