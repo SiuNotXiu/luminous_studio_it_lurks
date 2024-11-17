@@ -66,6 +66,7 @@ public class Item : MonoBehaviour
             {
                 upgrade.CollectedUpgrade(ScrapPaperId);
             }
+            picking();
             inventoryController.AddItem(itemData);
             Destroy(gameObject);
         }
@@ -103,5 +104,18 @@ public class Item : MonoBehaviour
             isPlayerInRange = false;
         }
     }
-    
+
+    #region Sound effect
+    private void picking()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.Item_Pickup);
+        }
+    }
+
+
+
+    #endregion
+
 }
