@@ -23,6 +23,13 @@ public class TopdownMovement : MonoBehaviour
     [SerializeField] private Animator animator_mask;
     [SerializeField] private Animator animator_normal;
 
+    //item boost (sorry gais our speed modifier will contra)
+    private bool isBoostActive = false; //to prevent stacking
+    private Coroutine speedBoostCoroutine;
+    private const float adrenalineMultiplier = 1.5f;
+    private const float adrenalineDuration = 5f;
+
+
     private void OnValidate()
     {
         if (object_animation == null)
@@ -58,20 +65,7 @@ public class TopdownMovement : MonoBehaviour
         playerFacing();
         if (moveInput.x != 0 || moveInput.y != 0)
         {
-            #region move backwards(mouse position) speed should be slower
-            /*if ((facing_right && moveInput.x < 0) || (!facing_right && moveInput.x > 0))
-            {
-                // Moonwalk
-                animator_mask.SetFloat("Speed", -1f); // Play animation in reverse
-                animator_normal.SetFloat("Speed", -1f);
-            }
-            else
-            {
-                // Normal walk
-                animator_mask.SetFloat("Speed", 1f); // Play animation normally
-                animator_normal.SetFloat("Speed", 1f);
-            }*/
-            #endregion
+            
 
             // Play the "walk_right" animation regardless of direction, speed will handle direction
             animator_mask.Play("walk_right");
@@ -122,17 +116,28 @@ public class TopdownMovement : MonoBehaviour
         }
     }
 
+    public void UseAdrenaline()
+    {
+        if (isBoostActive && speedBoostCoroutine != null)
+        {
+            StopCoroutine(speedBoostCoroutine); //reset timer if active
+        }
 
-    #region perks equip
-    public static void equip_20k_lumen_bulb()
-    {
-        moveSpeed *= multiplier_1300_mah;
+        speedBoostCoroutine = StartCoroutine(AdrenalineSpeedBoost());
     }
-    #endregion
-    #region perks remove
-    public static void remove_20k_lumen_bulb()
+
+    private IEnumerator AdrenalineSpeedBoost()
     {
-        moveSpeed /= multiplier_1300_mah;
+        isBoostActive = true;
+        float boostedSpeed = oriSpeed * adrenalineMultiplier;
+        moveSpeed = boostedSpeed;
+
+        yield return new WaitForSeconds(adrenalineDuration);
+
+        moveSpeed = oriSpeed;
+        isBoostActive = false;
+        speedBoostCoroutine = null;
     }
-    #endregion
+
+
 }

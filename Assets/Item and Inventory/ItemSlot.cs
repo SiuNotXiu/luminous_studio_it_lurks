@@ -47,7 +47,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     //for items reference
     private PerkSlot perksEquip; //to check can use better battery or not
-    private HealthEffects playerHealth;
+    [SerializeField] private HealthEffects playerHealth;
     private bool isDropdownMenuActive = false;
 
     private void Update()
@@ -339,6 +339,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
             case "Adrenaline":
                 //A syringe that makes the character move 1.5 times faster for 5 seconds
+                TopdownMovement playerMovement = playerTransform.GetComponent<TopdownMovement>();
+                if (playerMovement != null)
+                {
+                    playerMovement.UseAdrenaline();
+                    RemoveItem(); // Remove the item after use
+                }
                 break;
 
             default:
