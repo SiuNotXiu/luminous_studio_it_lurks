@@ -31390,6 +31390,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2476395673165732952, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: hint
+      value: 
+      objectReference: {fileID: 317176841}
+    - target: {fileID: 2476395673165732952, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: hintpanel
+      value: 
+      objectReference: {fileID: 1500092151}
+    - target: {fileID: 2476395673165732952, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2782268390461175073, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: battery_green
       value: 
