@@ -166,7 +166,8 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     private void StoreItem(ItemData item)
     {
-        Debug.Log("Store item: " + item.itemName);
+        playClick();
+        //Debug.Log("Store item: " + item.itemName);
         HideDropdownMenu();
 
         if (inventoryC.CanAddToPlayerInventory(item))
@@ -297,4 +298,13 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
             itemImage.sprite = itemData.itemSprite;
         }
     }
+
+    #region Sound Effect
+    private void playClick()
+    {
+        if (Audio.Instance != null)
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+    }
+
+    #endregion
 }

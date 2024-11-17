@@ -7,6 +7,7 @@ public class Option : MonoBehaviour
 {
     //also need to set change tutorial stuff
     public Animator animator;//for the main menu
+    public AudioSource audioMainMenu;
     public GameObject option; 
     public Button back; 
 
@@ -14,7 +15,6 @@ public class Option : MonoBehaviour
     void Start()
     {     
         back.onClick.AddListener(CloseTutorial);
-        animator.enabled = false;
     }
 
     private void CloseTutorial()
@@ -22,6 +22,7 @@ public class Option : MonoBehaviour
         if (option != null)
         {
             animator.enabled = true;
+            audioMainMenu.enabled = true;
             playClick();
             option.SetActive(false); 
         }

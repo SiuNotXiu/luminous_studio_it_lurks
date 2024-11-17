@@ -123,11 +123,17 @@ public class EnemyMovement : MonoBehaviour
                 break;
 
             case EnemyState.Chasing:
-                ChasingState();
+                if (player_database.in_safe_zone == false)
+                    ChasingState();
+                else
+                    StalkingState();
                 break;
 
             case EnemyState.Attack:
-                AttackState();
+                if (player_database.in_safe_zone == false)
+                    AttackState();
+                else
+                    StalkingState();
                 break;
 
             case EnemyState.Fleeing:

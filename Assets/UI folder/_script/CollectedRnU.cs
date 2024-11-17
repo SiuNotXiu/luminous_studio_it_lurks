@@ -113,7 +113,7 @@ public class CollectedRnU : MonoBehaviour
         {
             currentUpgradePage++;
         }
-
+        flipjournal();
         UpdatePage();
     }
 
@@ -136,7 +136,7 @@ public class CollectedRnU : MonoBehaviour
         {
             currentRecipePage--;
         }
-
+        flipjournal();
         UpdatePage();
     }
 
@@ -149,4 +149,17 @@ public class CollectedRnU : MonoBehaviour
         image.color = imgColor;
         clip.color = clipColor;
     }
+
+    #region Sound effect
+    private void flipjournal()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.PageTurn, 0.2f, 1.0f);
+        }
+    }
+
+
+
+    #endregion
 }

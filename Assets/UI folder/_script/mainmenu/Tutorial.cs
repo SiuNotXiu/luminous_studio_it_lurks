@@ -7,6 +7,8 @@ public class Tutorial : MonoBehaviour
 {
     //also need to set change tutorial stuff
     public Animator animator;//for the main menu
+    public AudioSource audioMainMenu;
+
     public GameObject tutorial; 
     public Button back;
     public Image tutorialImage;
@@ -28,7 +30,6 @@ public class Tutorial : MonoBehaviour
         btn[4].onClick.AddListener(craftnFuse);
 
         back.onClick.AddListener(CloseTutorial);
-        animator.enabled = false;
     }
 
     private void CloseTutorial()
@@ -36,6 +37,7 @@ public class Tutorial : MonoBehaviour
         if (tutorial != null)
         {
             animator.enabled = true;
+            audioMainMenu.enabled = true;
             playClick();
             tutorial.SetActive(false); 
         }
@@ -43,6 +45,7 @@ public class Tutorial : MonoBehaviour
     public void health()
     {
         playClick();
+
         resetInteractable();
         btn[0].interactable = false;
         description[0].gameObject.SetActive(true);
@@ -89,8 +92,13 @@ public class Tutorial : MonoBehaviour
             description[i].gameObject.SetActive(false);
         }
     }
+
+
+
     private void playClick()
     {
         Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
     }
+
+    
 }

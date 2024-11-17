@@ -5,5 +5,11 @@ using UnityEngine;
 
 public class player_database : MonoBehaviour
 {
-    [SerializeField] public static bool is_flashlight_on = false;
+    [HideInInspector] public static bool is_flashlight_on = false;
+    [HideInInspector] public static bool in_safe_zone = false;
+
+    private void Update()
+    {
+        Debug.Log("in_safe_zone > " + in_safe_zone);
+    }
 }

@@ -104,6 +104,7 @@ public class CollectedScrapPaper : MonoBehaviour
         Debug.Log("Flipping");
         if (currentPageIndex < currentMaxPage -1)
         {
+            flipjournal();
             currentPageIndex++;
             UpdateJournal();
         }
@@ -113,6 +114,7 @@ public class CollectedScrapPaper : MonoBehaviour
     {
         if (currentPageIndex > 0)
         {
+            flipjournal();
             currentPageIndex--;
             UpdateJournal();
         }
@@ -130,4 +132,17 @@ public class CollectedScrapPaper : MonoBehaviour
         image2.color = imgColor2;
         clip.color = clipColor;
     }
+
+    #region Sound effect
+    private void flipjournal()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.PageTurn, 0.2f, 1.0f);
+        }
+    }
+
+
+
+    #endregion
 }

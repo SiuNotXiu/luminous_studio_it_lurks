@@ -9,6 +9,7 @@ public class Audio : MonoBehaviour
     [Header("-----Audio Source-----")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource playerFootstepSource;
 
     [Header("-----Audio Clip-----")]
     public AudioClip BGM;
@@ -57,11 +58,11 @@ public class Audio : MonoBehaviour
             musicSource.Play();
         }
     }
-
-    public void JustForOnce(AudioClip clip)
+    public void playWalking(AudioClip clip)
     {
-        SFXSource.PlayOneShot(clip);
+        playerFootstepSource.PlayOneShot(clip);
     }
+
 
     public void PlaySFX(AudioClip clip, float startTime = 0f, float endTime = 0f)
     {
@@ -99,5 +100,9 @@ public class Audio : MonoBehaviour
 
         SFXSource.Stop(); // Stop playback
         SFXSource.clip = null; // Clear the clip
+    }
+    public void JustForOnce(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
     }
 }

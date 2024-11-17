@@ -29,6 +29,10 @@ public class object_mask_under_flashlight : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().material.renderQueue = 3002;
         }
+        else if (GetComponent<MeshRenderer>() != null)
+        {
+            GetComponent<MeshRenderer>().material.renderQueue = 3002;
+        }
         else
         {
             //Debug.Log(gameObject.name + " don't have sprite renderer");

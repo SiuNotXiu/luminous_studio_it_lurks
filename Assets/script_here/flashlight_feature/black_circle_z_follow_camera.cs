@@ -5,21 +5,32 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class black_circle_z_follow_camera : MonoBehaviour
 {
-    [HideInInspector] private GameObject object_camera_main;
+    [SerializeField] private GameObject object_flashlight_mask;
 
     // Update is called once per frame
     void OnValidate()
     {
-        object_camera_main = GameObject.Find("camera_main_dont_change_name");
-        if (object_camera_main != null)
+        modify_z_depth();
+    }
+
+    private void Update()
+    {
+        modify_z_depth();
+    }
+
+    void modify_z_depth()
+    {
+        if (object_flashlight_mask == null)
+            object_flashlight_mask = GameObject.Find("flashlight_mask");
+        if (object_flashlight_mask != null)
         {
             transform.position = new Vector3(transform.position.x,
-                transform.position.y,
-                object_camera_main.transform.position.z + 2);
+                                             transform.position.y,
+                                             object_flashlight_mask.transform.position.z + 2);
         }
         else
         {
-            Debug.Log("(can ignore) object_camera_main is null, cannot move the z depth of flashlight");
+            Debug.Log("(can ignore) object_flashlight_dim_filter is null, cannot move the z depth of flashlight");
         }
     }
 }

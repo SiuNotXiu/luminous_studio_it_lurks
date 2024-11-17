@@ -201,18 +201,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 case "Store":
                     Debug.Log("Store button work");
                     btn.onClick.AddListener(() => StoreItem(this));
+                    playClick();
                     break;
                 case "Craft":
                     btn.onClick.AddListener(() => CraftItem());
+                    playClick();
                     break;
                 case "Fuse":
                     btn.onClick.AddListener(() => FuseItem());
+                    playClick();
                     break;
                 case "Use":
                     btn.onClick.AddListener(() => UseItem());
+                    playClick();
                     break;
                 case "Drop":
                     btn.onClick.AddListener(() => DropItem());
+                    playClick();
                     break;
             }
         }
@@ -462,4 +467,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             itemImage.sprite = itemData.itemSprite;
         }
     }
+
+    #region Sound Effect
+    private void playClick()
+    {
+        if (Audio.Instance != null)
+            Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+    }
+
+    #endregion
 }
