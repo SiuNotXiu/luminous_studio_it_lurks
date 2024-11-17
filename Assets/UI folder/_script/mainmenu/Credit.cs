@@ -22,7 +22,12 @@ public class Credit : MonoBehaviour
         if (credit != null)
         {
             animator.enabled = true;
+            playClick();
             credit.SetActive(false); 
         }
+    }
+    private void playClick()
+    {
+        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
     }
 }

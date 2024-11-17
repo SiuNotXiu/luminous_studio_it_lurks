@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioSFXPlayerBehave : MonoBehaviour
 {
+    public static AudioSFXPlayerBehave Instance;
     [Header("SFX Player Behave")]
     [Header("--NightWalker")]
     public AudioClip ConcreteFootstep;
@@ -26,5 +27,13 @@ public class AudioSFXPlayerBehave : MonoBehaviour
     public AudioClip WoodFootstep1;
     public AudioClip WoodFootstep2;
     public AudioClip WoodFootstep3;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
 }

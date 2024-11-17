@@ -20,6 +20,13 @@ public class EnterGame : MonoBehaviour
     // Update is called once per frame
     private void changeScene(string scene)
     {
+        playClick();
+        Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.ForestAmbience);
         SceneManager.LoadScene(scene);
     }
+    private void playClick()
+    {
+        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+    }
+
 }

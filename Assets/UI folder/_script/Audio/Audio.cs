@@ -58,9 +58,46 @@ public class Audio : MonoBehaviour
         }
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void JustForOnce(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
 
+    public void PlaySFX(AudioClip clip, float startTime = 0f, float endTime = 0f)
+    {
+        if (clip == null)
+        {
+            Debug.LogWarning("Audio clip is null. Cannot play SFX.");
+            return;
+        }
+
+        if (startTime < 0f || startTime >= clip.length)
+        {
+            Debug.LogWarning("Start time is out of bounds for the provided clip.");
+            return;
+        }
+
+        if (endTime > 0f && endTime <= clip.length && endTime > startTime)
+        {
+            StartCoroutine(PlayClipWithEndTime(clip, startTime, endTime));
+        }
+        else
+        {
+            // Default behavior: Play the whole clip
+            SFXSource.PlayOneShot(clip);
+        }
+    }
+
+    private IEnumerator PlayClipWithEndTime(AudioClip clip, float startTime, float endTime)
+    {
+        SFXSource.clip = clip;
+        SFXSource.time = startTime; // Set start time
+        SFXSource.Play();
+
+        float duration = endTime - startTime;
+        yield return new WaitForSeconds(duration);
+
+        SFXSource.Stop(); // Stop playback
+        SFXSource.clip = null; // Clear the clip
     }
 }

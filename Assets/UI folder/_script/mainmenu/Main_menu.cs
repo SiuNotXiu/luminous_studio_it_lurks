@@ -31,35 +31,46 @@ public class MainMenu : MonoBehaviour
 
     public void GameOn()
     {
-        
+        playClick();
         play.SetActive(true);
         
     }
 
     public void Tutorial()
     {
+        playClick();
         // Implement tutorial logic here
         tutorial.SetActive(true);
     }
 
     public void Option()
     {
+        playClick();
         // Implement option logic here
         option.SetActive(true);
     }
 
     public void Credit()
     {
+        playClick();
         // Implement credit logic here
         credit.SetActive(true);
     }
 
     public void Quit()
     {
+        playClick();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
     }
+
+    private void playClick()
+    {
+        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+    }
+
+
 }

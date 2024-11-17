@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioSFXMonster : MonoBehaviour
 {
+    public static AudioSFXMonster Instance;
     [Header("SFX GettingHurt")]
     public AudioClip Hit;
     public AudioClip MissAttack;
@@ -34,4 +35,12 @@ public class AudioSFXMonster : MonoBehaviour
     public AudioClip Laugh1;
     public AudioClip Laugh2;
     public AudioClip Laugh3;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 }
