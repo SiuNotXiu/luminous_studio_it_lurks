@@ -7,8 +7,8 @@ public class flashlight_dim_z_depth : MonoBehaviour
     //this script is only used by flashlight dim
     //to ensure the filter always cover above flashlight_mask
 
-    [SerializeField] private static GameObject object_flashlight_mask;
-    [SerializeField] private static GameObject object_camera_main;
+    [SerializeField] private GameObject object_flashlight_mask;
+    [SerializeField] private GameObject object_camera_main;
 
     [HideInInspector] private float distance_mask_and_camera;
 

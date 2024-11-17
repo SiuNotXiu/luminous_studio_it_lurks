@@ -5,7 +5,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class black_circle_z_follow_camera : MonoBehaviour
 {
-    [HideInInspector] private static GameObject object_flashlight_mask;
+    [SerializeField] private GameObject object_flashlight_mask;
 
     // Update is called once per frame
     void OnValidate()

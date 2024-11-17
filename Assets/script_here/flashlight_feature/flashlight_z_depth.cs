@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class flashlight_z_depth : MonoBehaviour
 {
-    [HideInInspector] private static GameObject object_camera_main;
-    [HideInInspector] private static GameObject object_flashlight_dim_filter;
+    [SerializeField] private GameObject object_camera_main;
+    [SerializeField] private GameObject object_flashlight_dim_filter;
 
     private void OnValidate()
     {
@@ -44,6 +44,9 @@ public class flashlight_z_depth : MonoBehaviour
             else
             {
                 //other flashlight must cover dim filter
+                /*Debug.Log("object_camera_main.transform.position.z > " + object_camera_main.transform.position.z);
+                Debug.Log("object_flashlight_dim_filter.transform.position.z > " + object_flashlight_dim_filter.transform.position.z);
+                Debug.Log("position.z > " + (object_camera_main.transform.position.z + object_flashlight_dim_filter.transform.position.z) / 2);*/
                 transform.position = new Vector3(transform.position.x,
                                                  transform.position.y,
                                                  (object_camera_main.transform.position.z + object_flashlight_dim_filter.transform.position.z) / 2);
