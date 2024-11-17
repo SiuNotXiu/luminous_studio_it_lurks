@@ -18,7 +18,7 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
             agent.velocity = Vector3.zero;
         }
 
-        //Debug.Log("Hi im idle");
+        Debug.Log("Hi im idle");
         
     }
 
