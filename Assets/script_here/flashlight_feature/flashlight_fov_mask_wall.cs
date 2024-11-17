@@ -41,7 +41,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
         }
         else
         {
-            Debug.Log("(can ignore) object_camera_main is null, cannot move the z depth of flashlight");
+            //Debug.Log("(can ignore) object_camera_main is null, cannot move the z depth of flashlight");
         }
         #endregion
     }
