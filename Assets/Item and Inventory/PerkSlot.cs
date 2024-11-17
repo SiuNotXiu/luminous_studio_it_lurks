@@ -93,10 +93,12 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         switch (itemData.itemName)
         {
             case "1300 mAh Casing":
+
                 #region equip 1300 mah casing
-                battery_bar_float.equip_1300_mah_casing();
-                TopdownMovement.equip_20k_lumen_bulb();
+                //battery_bar_float.equip_1300_mah_casing();
+                //TopdownMovement.equip_20k_lumen_bulb();
                 #endregion
+
                 effectApplied = true;
                 break;
 
@@ -122,8 +124,8 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
         {
             case "1300 mAh Casing":
                 #region remove 1300 mah casing
-                battery_bar_float.remove_1300_mah_casing();
-                TopdownMovement.remove_20k_lumen_bulb();
+                //battery_bar_float.remove_1300_mah_casing();
+                //TopdownMovement.remove_20k_lumen_bulb();
                 #endregion
                 effectApplied = false;
                 break;
