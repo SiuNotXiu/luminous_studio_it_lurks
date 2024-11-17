@@ -26,7 +26,7 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
     {
         md = weepingScarecrow.GetMd();
        // Debug.Log("Hi shine is:" + md.GetShine());
-        if (md.GetShine()==false && weepingScarecrow.GetFlw() == true)  
+        if (weepingScarecrow.gameObject.GetComponent<monster_database>().canStop==false && weepingScarecrow.GetFlw() == true)  
         {
             Debug.Log("Hi shine is:" + md.GetShine());
             Debug.Log("hi switching to follow");

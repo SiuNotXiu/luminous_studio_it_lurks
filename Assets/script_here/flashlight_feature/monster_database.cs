@@ -10,9 +10,12 @@ public class monster_database : MonoBehaviour
     [SerializeField] public bool flashed = false;
 
     private bool flash = false;
-    public float flashtimer = 0;
-    private float flashtime = 2;
+    public float flashtimer = 0f;
+    private float flashtime = 2f;
+    private float looktimer = 0f;
+    private float looktime = 1f;
     private bool flee = false;
+    public bool canStop { get; private set; }
 
     private void Update()
     {
@@ -20,6 +23,7 @@ public class monster_database : MonoBehaviour
         {
             flash = true;
             flashtimer += Time.deltaTime;
+            looktimer += Time.deltaTime;
             if (flashtimer > flashtime)
             {
                 //die();
@@ -27,10 +31,20 @@ public class monster_database : MonoBehaviour
                 flashtimer = 0;
             }
 
+            if (looktimer > looktime)
+            {
+                canStop = true;
+            }
 
+
+        }
+        else
+        {
+            canStop = false;
         }
         //because flashlight works as lateUpdate()
         flashed = false;
+        
     }
 
     void die()
