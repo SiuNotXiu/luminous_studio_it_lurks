@@ -25,8 +25,9 @@ public class ShapeShifterManager : MonoBehaviour
     [SerializeField] private bool shine = false;
     public bool inAtkArea { get; private set; } = false;
     public Transform target { get; private set; }
-
     public Rigidbody2D rb { get; private set; }
+    private Vector2 previousPosition;
+    private SpriteRenderer sr;
     #endregion
 
     #region<SFX>
@@ -45,6 +46,7 @@ public class ShapeShifterManager : MonoBehaviour
 
     private void Update()
     {
+        FlipChecks();
         currentState.UpdateState(this);
     }
 
@@ -53,6 +55,26 @@ public class ShapeShifterManager : MonoBehaviour
         currentState.ExitState(this);
         currentState = state;
         state.EnterState(this);
+    }
+
+    private void FlipChecks()
+    {
+
+        float currentPosX = transform.position.x;
+        float previousPosX = previousPosition.x;
+
+
+        if (currentPosX > previousPosX)
+        {
+            sr.flipX = true;
+        }
+        else if (currentPosX < previousPosX)
+        {
+            sr.flipX = false;
+        }
+
+
+        previousPosition = transform.position;
     }
 
     #endregion

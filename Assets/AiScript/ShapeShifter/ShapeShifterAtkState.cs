@@ -6,7 +6,7 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
 {
     private EnemyAttack atk;
     private bool attacking = false;
-    private float knockbackForce = 30000f;
+    private float knockbackForce = 15f;
     private Rigidbody2D rb;
     public override void EnterState(ShapeShifterManager shapeShifter)
     {
@@ -19,7 +19,7 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
     {
         if (attacking == false && shapeShifter.inAtkArea==true)
         {
-            ApplyKnockback(shapeShifter);
+            shapeShifter.StartCoroutine(testing.instance.Knockback(1, knockbackForce, shapeShifter.transform));
 
             atk.Attack();
             SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetAtkAudio(), shapeShifter.transform, 1f);
@@ -30,8 +30,7 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
 
     public override void ExitState(ShapeShifterManager shapeShifter)
     {
-        shapeShifter.StopAllCoroutines();
-        attacking = false;
+       
     }
 
     private void ApplyKnockback(ShapeShifterManager shapeShifter)

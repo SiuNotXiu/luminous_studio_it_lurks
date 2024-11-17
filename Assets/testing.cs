@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class testing : MonoBehaviour
 {
     public static float moveSpeed = 10f;
+    public static testing instance;
     [HideInInspector] public Rigidbody2D rb2d;
 
     private Vector2 moveInput;
@@ -16,6 +17,10 @@ public class testing : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Update()
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -23,5 +28,19 @@ public class testing : MonoBehaviour
 
         moveInput.Normalize();
         rb2d.velocity = moveInput * moveSpeed;
+    }
+
+    public IEnumerator Knockback(float knockbackDuration,float knockbackPower,Transform obj)
+    {
+        float timer = 0;
+
+        while (knockbackDuration > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+            rb2d.AddForce(-direction * knockbackPower);
+        }
+
+        yield return 0;
     }
 }

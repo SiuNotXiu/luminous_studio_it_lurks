@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,6 +31,8 @@ public class WeepingScarecrowManager : MonoBehaviour
     private monster_database md;
     private bool soundPlayed = false;
     [SerializeField]private TopdownMovement playerMovement;
+    private SpriteRenderer sr;
+    private Vector2 previousPosition;
 
     #endregion
 
@@ -64,12 +64,14 @@ public class WeepingScarecrowManager : MonoBehaviour
 
         anim = gameObject.GetComponent<Animator>();
         md = gameObject.GetComponent<monster_database>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
 
         
     }
 
     private void Update()
     {
+        FlipChecks();
         currentState.UpdateState(this);
       
     }
@@ -79,6 +81,26 @@ public class WeepingScarecrowManager : MonoBehaviour
         currentState.ExitState(this);
         currentState = state;
         state.EnterState(this);
+    }
+
+    private void FlipChecks()
+    {
+
+        float currentPosX = transform.position.x;
+        float previousPosX = previousPosition.x;
+
+
+        if (currentPosX > previousPosX)
+        {
+            sr.flipX = true;
+        }
+        else if (currentPosX < previousPosX)
+        {
+            sr.flipX = false;
+        }
+
+
+        previousPosition = transform.position;
     }
     #endregion
 
@@ -99,15 +121,26 @@ public class WeepingScarecrowManager : MonoBehaviour
         {
             target = null;
             flw = false;
+            Debug.Log("istriggerexit");
             SwitchState(idleState);
             playerMovement.OriginalSpeed();
+
+            Debug.Log("isActivate" + anim.GetBool("isActivate"));
+            if (anim.GetBool("isActivate") == true)
+            {
+                Debug.Log("idleaniation");
+                anim.SetBool("isActivate", false);
+                anim.SetBool("isDeactivate", true);
+                StartCoroutine(Deactivate());
+            }
+           
 
         }
     }
 
     private void OnAtkTriggerEntered(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && target != null)
+        if (collision.CompareTag("Player") && target != null && anim.GetBool("isActivate") == true) 
         {
             inAtkArea = true;
             SwitchState(attackState);
@@ -192,6 +225,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     }
     #endregion
 
+    #region<Coroutine>
     private IEnumerator FollowStateDelay()
     {
         yield return new WaitForSeconds(4f);
@@ -199,4 +233,12 @@ public class WeepingScarecrowManager : MonoBehaviour
    
 
     }
+
+    private IEnumerator Deactivate()
+    {
+        yield return new WaitForSeconds(0.2f);
+        anim.SetBool("isDeactivate", false);
+    }
+
+    #endregion
 }
