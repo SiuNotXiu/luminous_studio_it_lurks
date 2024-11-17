@@ -11,49 +11,73 @@ public class Play : MonoBehaviour
 
     public GameObject skipPage;
 
-    public Image Story;
-    public Sprite[] StoryPage;
+    public GameObject[] StoryPage;
 
     private int currentPage = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < StoryPage.Length; i++)
+        {
+            StoryPage[i].SetActive(false);
+        }
         //setting
         currentPage = 0;
-        Story.sprite = StoryPage[currentPage];
+        StoryPage[currentPage].SetActive(true);
 
-        back.onClick.AddListener(previousStory);
-        next.onClick.AddListener(nextStory);
-        skip.onClick.AddListener(skipStory);
+        back.onClick.AddListener(PreviousStory);
+        next.onClick.AddListener(NextStory);
+        skip.onClick.AddListener(SkipStory);
         back.interactable = currentPage > 0;
         next.interactable = currentPage < StoryPage.Length -1;
+
     }
 
     // Update is called once per frame
-    private void previousStory()
+    private void PreviousStory()
     {
+        if (currentPage <= 0) return;
+
         playClick();
+        StoryPage[currentPage].SetActive(false);
         currentPage--;
-        Story.sprite = StoryPage[currentPage];
+        StoryPage[currentPage].SetActive(true);
 
-        back.interactable = currentPage > 0;
-        next.interactable = currentPage < StoryPage.Length - 1;
+        UpdateButtonInteractability();
     }
-    private void nextStory()
+
+    private void NextStory()
     {
-        playClick();
-        currentPage++;
-        Story.sprite = StoryPage[currentPage];
+        if (currentPage >= StoryPage.Length - 1) return;
 
-        back.interactable = currentPage > 0;
-        next.interactable = currentPage < StoryPage.Length - 1;
+        playClick();
+        StoryPage[currentPage].SetActive(false);
+        currentPage++;
+        StoryPage[currentPage].SetActive(true);
+
+        UpdateButtonInteractability();
     }
-    private void skipStory()
+
+    private void SkipStory()
     {
         playClick();
         skipPage.SetActive(true);
+
+        // Optionally deactivate all story pages if skip ends the sequence
+        foreach (var page in StoryPage)
+        {
+            page.SetActive(false);
+        }
     }
+
+    private void UpdateButtonInteractability()
+    {
+        back.interactable = currentPage > 0;
+        next.interactable = currentPage < StoryPage.Length - 1;
+    }
+
+
     private void playClick()
     {
         Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
