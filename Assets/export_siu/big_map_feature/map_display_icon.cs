@@ -9,11 +9,11 @@ public class map_display_icon : MonoBehaviour
     //same to the material map_icon_dissolve_appear
 
     [SerializeField] private trigger_map_ui script_trigger_map_ui;
-    [HideInInspector] private GameObject object_big_map_icon;
+    [SerializeField] private GameObject object_big_map_icon;
     [HideInInspector] private bool hasTriggered = false;
 
     [SerializeField] private Material material_map_icon_dissolve_appear;
-    [HideInInspector] private static Material material;
+    [SerializeField] private static Material material;
     [HideInInspector] private Material material_current;
     [HideInInspector] private float dissolved_time = 0f;
     [HideInInspector] private float dissolved_duration = 0.9f;
