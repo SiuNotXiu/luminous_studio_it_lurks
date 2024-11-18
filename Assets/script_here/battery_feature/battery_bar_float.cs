@@ -12,7 +12,12 @@ public class battery_bar_float : MonoBehaviour
     [HideInInspector] public static float battery_max = 20f;
     //the greater this battery_duration_multiplier is, the longer battery last
     [SerializeField] public Image battery_green;
-
+    public enum which_battery_used
+    {
+        battery_normal,
+        battery_1300_mah
+    }
+    [HideInInspector] public static which_battery_used previous_battery = which_battery_used.battery_normal;
     #region perks 1300mah
     [HideInInspector] public static bool using_1300_mah_casing = false;
     [HideInInspector] public static float multiplier_1300_mah = 1.5f;
@@ -51,22 +56,25 @@ public class battery_bar_float : MonoBehaviour
         display_battery_remaining = battery_remaining;
         if (player_database.is_flashlight_on == true)
         {
+            flashlight_on_battery_consumption();
             battery_bar_display();
             change_dim_filter_alpha();
         }
         if (Input.GetKeyDown(KeyCode.R))//temporary reload, later change to chermin use battery in journal
         {
-            reload_battery();
+            reload_battery(which_battery_used.battery_normal);
             battery_bar_display();
             change_dim_filter_alpha();
         }
     }
 
-    void battery_bar_display()
+    void flashlight_on_battery_consumption()
     {
         battery_remaining -= Time.deltaTime;    //constantly reduce the same one
         battery_remaining_percentage = battery_remaining / battery_max;
-
+    }
+    void battery_bar_display()
+    {
         #region battery changed, check animation
         if (script_flashlight_battery_blink != null)
             script_flashlight_battery_blink.check_should_flashlight_blink(battery_remaining, battery_max);
@@ -85,9 +93,31 @@ public class battery_bar_float : MonoBehaviour
         #endregion
     }
     
-    public static void reload_battery()
+    public static void reload_battery(which_battery_used which_battery)
     {
-        battery_remaining = battery_max;
+        if (which_battery == which_battery_used.battery_normal)
+        {
+            if (previous_battery == which_battery_used.battery_1300_mah)
+            {
+                //just now also using 1300
+                //which means just now already multiplied the battery_max
+                previous_battery = which_battery_used.battery_normal;//1300(previous) to normal(current)
+                battery_max /= multiplier_1300_mah;
+            }
+            battery_remaining = battery_max;
+        }
+        else if (which_battery == which_battery_used.battery_1300_mah)
+        {
+            //already confirm that only 1300 use success will reach here
+            if (previous_battery == which_battery_used.battery_normal)
+            {
+                //just now also using 1300
+                //which means just now already multiplied the battery_max
+                previous_battery = which_battery_used.battery_1300_mah;//1300(current) to normal(previous)
+                battery_max *= multiplier_1300_mah;
+            }
+            battery_remaining = battery_max;
+        }
     }
     
     void change_dim_filter_alpha()
@@ -113,7 +143,7 @@ public class battery_bar_float : MonoBehaviour
     {
         using_1300_mah_casing = true;
         //longer duration battery
-        battery_max *= multiplier_1300_mah;//20 multiply 1.5
+        //battery_max *= multiplier_1300_mah;//20 multiply 1.5
     }
     public static void equip_20k_lumen_bulb()
     {

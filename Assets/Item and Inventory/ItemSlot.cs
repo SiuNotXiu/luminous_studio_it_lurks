@@ -293,7 +293,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         switch (itemData.itemName)
         {
             case "Battery":
-                battery_bar_float.reload_battery();
+                battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_normal);
                 RemoveItem();
                 break;
 
@@ -301,8 +301,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
                 if (perksEquip.batteryCaseCheck == true)
                 {
-                    // playerFlashlightBattery.battery_max *= 2.5f; (see other code have this implementation or not)
-                    battery_bar_float.battery_remaining = battery_bar_float.battery_max;
+                    battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_1300_mah);
                     RemoveItem();
                 }
                 else
