@@ -95,7 +95,7 @@ public class PerkSlot : MonoBehaviour, IPointerClickHandler
             case "1300 mAh Casing":
 
                 #region equip 1300 mah casing
-                //battery_bar_float.equip_1300_mah_casing();
+                battery_bar_float.equip_1300_mah_casing();
                 //TopdownMovement.equip_20k_lumen_bulb();
                 #endregion
 

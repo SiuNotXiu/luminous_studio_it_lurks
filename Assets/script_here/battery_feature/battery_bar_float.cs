@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class battery_bar_float : MonoBehaviour
 {
-    [HideInInspector] public static float battery_remaining = 20.0f;
+    [HideInInspector] public static float battery_remaining = 40.0f;
     [SerializeField] public float display_battery_remaining;
     [SerializeField] public float battery_remaining_percentage = 1.0f;
     [SerializeField] public float alpha;
-    [HideInInspector] public static float battery_max = 20f;
+    [HideInInspector] public static float battery_max = 40f;
     //the greater this battery_duration_multiplier is, the longer battery last
     [SerializeField] public Image battery_green;
     public enum which_battery_used
@@ -19,7 +19,7 @@ public class battery_bar_float : MonoBehaviour
     }
     [HideInInspector] public static which_battery_used previous_battery = which_battery_used.battery_normal;
     #region perks 1300mah
-    [HideInInspector] public static bool using_1300_mah_casing = false;
+    [SerializeField] public static bool using_1300_mah_casing = false;
     [HideInInspector] public static float multiplier_1300_mah = 1.5f;
     #endregion
     #region perks 20k lumen bulb
@@ -53,6 +53,8 @@ public class battery_bar_float : MonoBehaviour
     }
     void Update()
     {
+        //Debug.Log("battery_remaining > " + battery_remaining);
+        //Debug.Log("battery_max > " + battery_max);
         display_battery_remaining = battery_remaining;
         if (player_database.is_flashlight_on == true)
         {
@@ -93,31 +95,43 @@ public class battery_bar_float : MonoBehaviour
         #endregion
     }
     
-    public static void reload_battery(which_battery_used which_battery)
+    public static bool reload_battery(which_battery_used which_battery)
     {
         if (which_battery == which_battery_used.battery_normal)
         {
+            Debug.Log("normal");
             if (previous_battery == which_battery_used.battery_1300_mah)
             {
                 //just now also using 1300
                 //which means just now already multiplied the battery_max
                 previous_battery = which_battery_used.battery_normal;//1300(previous) to normal(current)
-                battery_max /= multiplier_1300_mah;
+                battery_max = battery_max * multiplier_1300_mah;
             }
             battery_remaining = battery_max;
+            return true;
         }
         else if (which_battery == which_battery_used.battery_1300_mah)
         {
             //already confirm that only 1300 use success will reach here
-            if (previous_battery == which_battery_used.battery_normal)
+            Debug.Log("1300");
+            Debug.Log("using_1300_mah_casing > " + using_1300_mah_casing);
+            if (using_1300_mah_casing == true)
             {
-                //just now also using 1300
-                //which means just now already multiplied the battery_max
-                previous_battery = which_battery_used.battery_1300_mah;//1300(current) to normal(previous)
-                battery_max *= multiplier_1300_mah;
+                if (previous_battery == which_battery_used.battery_normal)
+                {
+                    //just now also using 1300
+                    //which means just now already multiplied the battery_max
+                    Debug.Log("updating battery max");
+                    previous_battery = which_battery_used.battery_1300_mah;//1300(current) to normal(previous)
+                    battery_max *= multiplier_1300_mah;
+                }
+                battery_remaining = battery_max;
+                return true;
             }
-            battery_remaining = battery_max;
+            return false;
         }
+        else
+            return false;
     }
     
     void change_dim_filter_alpha()
