@@ -51,6 +51,12 @@ public class HealthEffects : MonoBehaviour
     {
         Color splatterAlpha = redSplatterImage.color;
         splatterAlpha.a = 1 - (currentHp / maxHp);
+
+        if (currentHp >= maxHp)
+        {
+            splatterAlpha.a = 0;
+        }
+
         redSplatterImage.color = splatterAlpha;
     }
 
@@ -107,12 +113,14 @@ public class HealthEffects : MonoBehaviour
 
     public void Heal()
     {
-        currentHp += 10f;
+        currentHp += 25f;
+        UpdateHealth();
     }
 
     public void FullHeal()
     {
         currentHp = maxHp;
+        UpdateHealth();
     }
 
     public bool GetFullHealth()

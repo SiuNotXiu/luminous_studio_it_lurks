@@ -310,7 +310,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 }
                 break;
 
-            case "First Aid Kit":
+            case "First Aid Kits":
                 if (!playerHealth.GetFullHealth())
                 {
                     playerHealth.FullHeal();
