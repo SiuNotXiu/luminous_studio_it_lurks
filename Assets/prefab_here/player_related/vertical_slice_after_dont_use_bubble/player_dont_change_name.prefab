@@ -1215,6 +1215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9419783c6333349418ecbc94f993f1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  object_sprite_sheet_mask: {fileID: 4024299743228286275}
+  object_sprite_sheet_normal: {fileID: 8843931153559371084}
+  object_arm_with_flashlight: {fileID: 1355096678728110433}
+  bones_head_mask: {fileID: 2366789079372240365}
+  bones_head_normal: {fileID: 809898941621360331}
+  object_flashlight_mask: {fileID: 2672124962277865707}
 --- !u!114 &3306951296432945803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,6 +1237,7 @@ MonoBehaviour:
   battery_remaining_percentage: 1
   alpha: 0
   battery_green: {fileID: 0}
+  script_flashlight_battery_blink: {fileID: 8204026587469464300}
   object_dim_filter: {fileID: 5530881587780331558}
 --- !u!114 &5643038490840259057
 MonoBehaviour:
@@ -2092,7 +2099,7 @@ Transform:
   m_GameObject: {fileID: 4587631557197129961}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -99.5}
+  m_LocalPosition: {x: 0, y: 0, z: -102}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []

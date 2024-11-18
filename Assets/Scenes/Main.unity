@@ -31375,6 +31375,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 892978932016875752, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: bones_head_mask.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 892978932016875752, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: bones_head_normal.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1255777409396387161, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: object_camera_main
       value: 

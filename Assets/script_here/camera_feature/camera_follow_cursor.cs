@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class camera_follow_cursor : MonoBehaviour
 {
-    [HideInInspector] private GameObject object_player;
+    [SerializeField] private GameObject object_player;
 
     private void OnValidate()
     {

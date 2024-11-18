@@ -7,14 +7,14 @@ public class player_flashlight_direction : MonoBehaviour
     //this script is used by player
     [Tooltip("gameobject will find")]
     //bones
-    [HideInInspector] private GameObject object_sprite_sheet_mask;
-    [HideInInspector] private GameObject object_sprite_sheet_normal;
-    [HideInInspector] private GameObject object_arm_with_flashlight;
-    [HideInInspector] private GameObject bones_head_mask;
-    [HideInInspector] private GameObject bones_head_normal;
+    [SerializeField] private GameObject object_sprite_sheet_mask;
+    [SerializeField] private GameObject object_sprite_sheet_normal;
+    [SerializeField] private GameObject object_arm_with_flashlight;
+    [SerializeField] private GameObject bones_head_mask;
+    [SerializeField] private GameObject bones_head_normal;
 
     //directional
-    [HideInInspector] private GameObject object_flashlight_mask;
+    [SerializeField] private GameObject object_flashlight_mask;
 
     [HideInInspector] private Vector3 mouse_position;
     [HideInInspector] private Vector3 aim_direction;

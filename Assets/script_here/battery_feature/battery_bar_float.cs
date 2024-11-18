@@ -21,7 +21,7 @@ public class battery_bar_float : MonoBehaviour
     [HideInInspector] public static float multiplier_20k_lumen_bulb = 1.0f / 1.5f;
     #endregion
 
-    [HideInInspector] private flashlight_battery_blink script_flashlight_battery_blink;
+    [SerializeField] private flashlight_battery_blink script_flashlight_battery_blink;
 
     //dimmer visuals
     [SerializeField] private GameObject object_dim_filter;
