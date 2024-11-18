@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class HealthEffects : MonoBehaviour
 {
-    [HideInInspector] private GameObject object_player;
-    [HideInInspector] private GameObject object_sprite_sheet_mask;
-    [HideInInspector] private GameObject object_sprite_sheet_normal;
-    [HideInInspector] private Animator animator_mask;
-    [HideInInspector] private Animator animator_normal;
+    [SerializeField] private GameObject object_player;
+    [SerializeField] private GameObject object_sprite_sheet_mask;
+    [SerializeField] private GameObject object_sprite_sheet_normal;
+    [SerializeField] private Animator animator_mask;
+    [SerializeField] private Animator animator_normal;
 
     public float currentHp = 100f;
     private float maxHp = 100f;
