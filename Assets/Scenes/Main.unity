@@ -2538,7 +2538,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &68390194
@@ -11888,7 +11888,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &506013664 stripped
@@ -12487,63 +12487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &536680901
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20.485546
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.082492
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_Name
-      value: Campfire (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
 --- !u!1001 &539452502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21841,7 +21784,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &911604713 stripped
@@ -31506,6 +31449,10 @@ PrefabInstance:
       propertyPath: battery_green
       value: 
       objectReference: {fileID: 536454895}
+    - target: {fileID: 3978640085505741010, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9607843
+      objectReference: {fileID: 0}
     - target: {fileID: 4442421001740666286, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.748699
@@ -35539,7 +35486,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1527469392
@@ -35948,7 +35895,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1539176150 stripped
@@ -37372,6 +37319,119 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1046253330269229996, guid: 0ce69723b4ebcca4c9d5a0a5db1f30e2, type: 3}
   m_PrefabInstance: {fileID: 827560115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1625274854
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1892511627463725442, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 368046676}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 2047149072}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 840064397}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 749314264}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1533881091}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 314039748}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 2065031462}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1716577440}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1064654505}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 541761248}
+    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: chestSlots.Array.data[9]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Name
+      value: Campfire1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
 --- !u!4 &1627185330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 643710205592044852, guid: 09fd6ff66274e844ea805fedb1feefe6, type: 3}
@@ -43829,7 +43889,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1869506305 stripped
@@ -50038,6 +50098,7 @@ SceneRoots:
   - {fileID: 845741453}
   - {fileID: 317176845}
   - {fileID: 429969117}
+  - {fileID: 1625274854}
   - {fileID: 926748810}
   - {fileID: 735344355}
   - {fileID: 1945759638}
@@ -50060,4 +50121,3 @@ SceneRoots:
   - {fileID: 1351282089}
   - {fileID: 873218094}
   - {fileID: 1619923974}
-  - {fileID: 536680901}
