@@ -71,6 +71,11 @@ public class Audio : MonoBehaviour
             Debug.LogWarning("Audio clip is null. Cannot play SFX.");
             return;
         }
+        else if (clip == AudioSFXUI.Instance.UIHoverAndClick)//setting for specific audio
+        {
+            startTime = 0.075f;
+            endTime = 0.21f;
+        }
 
         if (startTime < 0f || startTime >= clip.length)
         {
