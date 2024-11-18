@@ -99,7 +99,7 @@ public class battery_bar_float : MonoBehaviour
     {
         if (which_battery == which_battery_used.battery_normal)
         {
-            Debug.Log("normal");
+            //Debug.Log("normal");
             if (previous_battery == which_battery_used.battery_1300_mah)
             {
                 //just now also using 1300
@@ -113,15 +113,15 @@ public class battery_bar_float : MonoBehaviour
         else if (which_battery == which_battery_used.battery_1300_mah)
         {
             //already confirm that only 1300 use success will reach here
-            Debug.Log("1300");
-            Debug.Log("using_1300_mah_casing > " + using_1300_mah_casing);
+            //Debug.Log("1300");
+            //Debug.Log("using_1300_mah_casing > " + using_1300_mah_casing);
             if (using_1300_mah_casing == true)
             {
                 if (previous_battery == which_battery_used.battery_normal)
                 {
                     //just now also using 1300
                     //which means just now already multiplied the battery_max
-                    Debug.Log("updating battery max");
+                    //Debug.Log("updating battery max");
                     previous_battery = which_battery_used.battery_1300_mah;//1300(current) to normal(previous)
                     battery_max *= multiplier_1300_mah;
                 }

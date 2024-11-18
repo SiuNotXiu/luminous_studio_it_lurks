@@ -299,15 +299,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
             case "1300 mAh Battery":
                 //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
-                if (perksEquip.batteryCaseCheck == true)
-                {
-                    battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_1300_mah);
+                if (battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_1300_mah) == true)
                     RemoveItem();
-                }
-                else
-                {
-                    Debug.Log("Battery Case not found, item can't be used");
-                }
                 break;
 
             case "First Aid Kits":
