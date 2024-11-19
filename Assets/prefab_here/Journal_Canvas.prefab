@@ -2080,8 +2080,8 @@ MonoBehaviour:
   - {fileID: 5385804994130996754}
   - {fileID: 1953390216832950872}
   resultSlot: {fileID: 572288558167040462}
-  bulbUpgradeSlot: {fileID: 3593211571303542266}
-  batteryUpgradeSlot: {fileID: 6450154640605804117}
+  bulbUpgradeSlot: {fileID: 6585486645054180519}
+  batteryUpgradeSlot: {fileID: 99392019451814001}
   Page1: {fileID: 6890377010699348840}
   Page2: {fileID: 8505915161493363642}
   button_Pg1: {fileID: 1857306695772031024}
@@ -2145,8 +2145,8 @@ MonoBehaviour:
   rightRecipe:
   - {fileID: 21300000, guid: 19356c1c2e69b5b4ca6113f44992bea9, type: 3}
   upgrades:
-  - {fileID: 21300000, guid: 8cebad3fe5589ed4bbc86a29bcae9245, type: 3}
-  - {fileID: 21300000, guid: 77db08ccbf7eb4440a2270035a05dae0, type: 3}
+  - {fileID: 21300000, guid: f6401526588adff46bf5107a730100ec, type: 3}
+  - {fileID: 21300000, guid: a074de272ee104742912b774187d250d, type: 3}
   emptySprite: {fileID: 21300000, guid: 9e1973989bdd0ba41b2405f5bb0b21e3, type: 3}
   nextPageButton: {fileID: 5191597032368630215}
   previousPageButton: {fileID: 3061787878620267757}
@@ -3618,7 +3618,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2348775627943575281}
   - component: {fileID: 8058945583205089480}
-  - component: {fileID: 9192759938348956992}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -3699,19 +3698,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &9192759938348956992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8717549607651075587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45aabde54a670b2489e876809e8923df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 8058945583205089480}
 --- !u!1001 &19245282729866182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3847,6 +3833,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6450154640605804117}
+    - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 99392019451814001}
   m_SourcePrefab: {fileID: 100100000, guid: b22471986cc6b4d429049124311f5b86, type: 3}
 --- !u!224 &294363473471694736 stripped
 RectTransform:
@@ -3859,6 +3848,23 @@ GameObject:
   m_PrefabInstance: {fileID: 19245282729866182}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6450154640605804117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3120899842852566355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb11a186b98b4d4bbad82e3ffdd5771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  isFull: 0
+  batteryCaseCheck: 0
+  isBulbSlot: 0
+  itemImage: {fileID: 7963985940538567316}
+--- !u!114 &99392019451814001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5190,13 +5196,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2952566248179258117, guid: dceaea26ba6ed9e439e3e82bf07882e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2358293715363586740}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1043484506577531220, guid: dceaea26ba6ed9e439e3e82bf07882e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2682877863115698823}
   m_SourcePrefab: {fileID: 100100000, guid: dceaea26ba6ed9e439e3e82bf07882e4, type: 3}
 --- !u!1 &1916013048895428701 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1043484506577531220, guid: dceaea26ba6ed9e439e3e82bf07882e4, type: 3}
   m_PrefabInstance: {fileID: 1507641642994215177}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2682877863115698823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916013048895428701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45aabde54a670b2489e876809e8923df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainSlider: {fileID: 8058945583205089480}
+  BGMSlider: {fileID: 0}
+  SFXSlider: {fileID: 0}
 --- !u!224 &4329550569661921804 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2952566248179258117, guid: dceaea26ba6ed9e439e3e82bf07882e4, type: 3}
@@ -7738,6 +7762,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3593211571303542266}
+    - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6585486645054180519}
   m_SourcePrefab: {fileID: 100100000, guid: b22471986cc6b4d429049124311f5b86, type: 3}
 --- !u!114 &115818909531921068 stripped
 MonoBehaviour:
@@ -7756,6 +7783,23 @@ GameObject:
   m_PrefabInstance: {fileID: 8023977269298643966}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &3593211571303542266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4922736160979109227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb11a186b98b4d4bbad82e3ffdd5771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  isFull: 0
+  batteryCaseCheck: 0
+  isBulbSlot: 1
+  itemImage: {fileID: 115818909531921068}
+--- !u!114 &6585486645054180519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

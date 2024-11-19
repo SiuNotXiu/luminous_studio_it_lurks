@@ -46,7 +46,7 @@ public class HealthEffects : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+
     void UpdateHealth()
     {
         Color splatterAlpha = redSplatterImage.color;
@@ -105,7 +105,9 @@ public class HealthEffects : MonoBehaviour
             currentHp = 0;
             //animator_mask.Play("death");
             //animator_normal.Play("death");
+            ResetBGM();
             SceneManager.LoadScene("EndOfDemo");
+
            
 
         }
@@ -134,6 +136,18 @@ public class HealthEffects : MonoBehaviour
             return false;
         }
     }
+
+    #region Sound
+    private void ResetBGM()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.SetBackgroundMusic(null);
+        }
+    }
+
+
+    #endregion
 }
 
 

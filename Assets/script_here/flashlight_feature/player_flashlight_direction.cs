@@ -22,14 +22,14 @@ public class player_flashlight_direction : MonoBehaviour
     //offset based on editor
     [SerializeField] private float arm_initial_offset = 0.0f;
 
-    //[SerializeField] private float z;
-    //[SerializeField] private float output_z;
-    void OnValidate()
+    private void Start()
     {
-        //script_fov_mask = gameObject.transform.Find("flashlight_mask_dont_change_name").gameObject.GetComponent<flashlight_fov_wall_mask>();
-        
+        #region initialize game object
         if (object_sprite_sheet_mask == null)
             object_sprite_sheet_mask = transform.Find("animation").Find("sprite_sheet_mask").gameObject;
+        if (object_sprite_sheet_mask == null)
+            Debug.Log("object_sprite_sheet_mask == null");
+
         if (object_sprite_sheet_normal == null)
             object_sprite_sheet_normal = transform.Find("animation").Find("sprite_sheet_normal").gameObject;
         if (object_arm_with_flashlight == null)
@@ -42,10 +42,8 @@ public class player_flashlight_direction : MonoBehaviour
 
         if (object_flashlight_mask == null)
             object_flashlight_mask = object_arm_with_flashlight.transform.Find("flashlight_mask").gameObject;
-    }
+        #endregion
 
-    private void Start()
-    {
         arm_initial_offset = object_arm_with_flashlight.transform.position.z - object_sprite_sheet_mask.transform.position.z;
     }
     void Update()
