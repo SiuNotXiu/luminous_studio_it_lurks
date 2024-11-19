@@ -30,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
     public CustomTrigger idleRangeTrigger;
     public CustomTrigger attackRangeTrigger;
     public CustomTrigger chaseRangeTrigger;
+    public CustomTrigger hitBoxTrigger;
     public float postAttackDelay = 3f;
     public float chaseTimer = 0f;
     public float chaseTime = 10f;
@@ -58,6 +59,7 @@ public class EnemyMovement : MonoBehaviour
     private bool inAtkArea = false;
     private Animator anim;
     private Vector2 previousPosition;
+    private bool hitBox = false;
     #endregion
 
     #region<Sfx>
@@ -94,6 +96,7 @@ public class EnemyMovement : MonoBehaviour
         attackRangeTrigger.EnteredTrigger += OnAttackRangeTriggerEntered;
         attackRangeTrigger.ExitedTrigger += OnAttackRangeTriggerExited;
         chaseRangeTrigger.EnteredTrigger += OnChaseRangeTriggerEntered;
+        hitBoxTrigger.EnteredTrigger += OnHitBoxTriggerEntered;
     }
 
     void Update()
@@ -167,7 +170,10 @@ public class EnemyMovement : MonoBehaviour
         }
         speed = 3;
         agent.speed = speed;
-        float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        Vector2 centerPosition = collider.bounds.center;
+
+        float distanceToPlayer = Vector2.Distance(centerPosition, target.position);
         float closeEnoughThreshold = 0.1f;
 
         // If the enemy is too close to the player, move away (flee)
@@ -312,8 +318,9 @@ public class EnemyMovement : MonoBehaviour
         if (!attack)  
         {
             attack = true;
-            anim.SetBool("isAtking", true);  // Start the attack animation
-            gameObject.GetComponent<EnemyAttack>().Attack();
+            anim.SetBool("isAtking", true);
+            
+            
 
             StartCoroutine(EndAttackAfterAnimation());
 
@@ -322,8 +329,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (!speedBoosted)
         {
-            originalSpeed = player.GetMoveSpeed();
-            player.ChangeSpeed(originalSpeed + 8);
+           /// originalSpeed = player.GetMoveSpeed();
+           // player.ChangeSpeed(originalSpeed + 8);
             speedBoosted = true;
         }
 
@@ -334,11 +341,12 @@ public class EnemyMovement : MonoBehaviour
 
         if (speedBoostTimer >= 2)
         {
-            player.ChangeSpeed(originalSpeed);
+            //player.ChangeSpeed(originalSpeed);
             speedBoostTimer = 0;
             speedBoosted = false;
             currentState = EnemyState.Stalking;
             attack = false;
+            hitBox = false;
             
         }
 
@@ -539,6 +547,16 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void OnHitBoxTriggerEntered(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && hitBox == false) 
+        {
+            hitBox = true;
+            gameObject.GetComponent<EnemyAttack>().Attack();
+            Debug.Log("hitbox");
+        }
+    }
+
     #endregion
 
     #region<Coroutine>
@@ -586,7 +604,9 @@ public class EnemyMovement : MonoBehaviour
             Gizmos.DrawSphere(waypoint, waypointGizmoRadius);
         }
 
+        // Draw stalking range
         Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, stalkingDistance);
+        Vector3 stalkingCenter = GetComponent<BoxCollider2D>().bounds.center; // Use the actual stalking center
+        Gizmos.DrawWireSphere(stalkingCenter, stalkingDistance);
     }
 }
