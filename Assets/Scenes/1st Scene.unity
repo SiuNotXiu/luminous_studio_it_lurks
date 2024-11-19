@@ -7775,6 +7775,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027689772}
   m_CullTransparentMesh: 1
+--- !u!82 &1037563542 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7175894948681575906, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
+  m_PrefabInstance: {fileID: 7561329044905459785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054805479
 GameObject:
   m_ObjectHideFlags: 0
@@ -16808,6 +16813,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4008868997921974985, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
+      propertyPath: playerFlashlight
+      value: 
+      objectReference: {fileID: 1037563542}
     - target: {fileID: 7786296587503908847, guid: 65b93447b4981a341ba5bcdd3aefcbe9, type: 3}
       propertyPath: m_Name
       value: Audio

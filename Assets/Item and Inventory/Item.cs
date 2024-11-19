@@ -113,11 +113,11 @@ public class Item : MonoBehaviour
         {
             if (itemData.name == "Ginseng" || itemData.name == "Yarrow")
             {
-                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Item_Pickup);
+                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Herb_Stick_Pickup, 0.3f, 0.9f);
             }
             else
             {
-                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Herb_Stick_Pickup,0.3f,0.9f);
+                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Item_Pickup);
             }
         }
     }
