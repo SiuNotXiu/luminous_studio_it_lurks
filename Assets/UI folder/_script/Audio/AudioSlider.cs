@@ -2,18 +2,31 @@ using UnityEngine;
 using UnityEngine.UI;
 public class AudioSlider : MonoBehaviour
 {
-    public Slider volumeSlider;
+    public Slider MainSlider;
+    public Slider BGMSlider;
+    public Slider SFXSlider;
 
     // Start is called before the first frame update
     void Start()
     {
-        volumeSlider.onValueChanged.AddListener(valueChangebySlider);
-        volumeSlider.value = Audio.Instance.mainVolume;
+        MainSlider.onValueChanged.AddListener(ChangeValueMain);
+        BGMSlider.onValueChanged.AddListener(ChangeValueBGM);
+        SFXSlider.onValueChanged.AddListener(ChangeValueSFX);
+        MainSlider.value = Audio.Instance.mainVolume;
+        BGMSlider.value = Audio.Instance.bgmVolume;
+        SFXSlider.value = Audio.Instance.sfxVolume;
     }
 
-    void valueChangebySlider(float value)
+    void ChangeValueMain(float value)
     {
-        Audio.Instance.SetVolume(value);
+        Audio.Instance.SetMasterVolume(value);
     }
-
+    void ChangeValueBGM(float value)
+    {
+        Audio.Instance.SetBGMVolume(value);
+    }
+    void ChangeValueSFX(float value)
+    {
+        Audio.Instance.SetSFXVolume(value);
+    }
 }

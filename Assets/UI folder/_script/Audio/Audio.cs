@@ -17,7 +17,9 @@ public class Audio : MonoBehaviour
 
 
     public static Audio Instance;
-    public float mainVolume = 0.5f;
+    public float mainVolume = 1.0f;
+    public float bgmVolume = 0.5f; 
+    public float sfxVolume = 0.5f;    
 
     private void Awake()
     {
@@ -34,7 +36,10 @@ public class Audio : MonoBehaviour
             }
             // Load saved volume
             mainVolume = PlayerPrefs.GetFloat("MainVolume", mainVolume);
-            AudioListener.volume = mainVolume;//Apply
+            bgmVolume = PlayerPrefs.GetFloat("BGMVolume", bgmVolume);
+            sfxVolume = PlayerPrefs.GetFloat("SFXVolume", sfxVolume);
+
+            ApplyVolumeSettings();
 
         }
         else
@@ -43,12 +48,26 @@ public class Audio : MonoBehaviour
         }
     }
 
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
         mainVolume = Mathf.Clamp01(volume);
-        AudioListener.volume = mainVolume;
-        PlayerPrefs.SetFloat("MainVolume", mainVolume); //Save
+        PlayerPrefs.SetFloat("MasterVolume", mainVolume);
+        ApplyVolumeSettings();
     }
+    public void SetBGMVolume(float volume)
+    {
+        bgmVolume = Mathf.Clamp01(volume);
+        PlayerPrefs.SetFloat("BGMVolume", bgmVolume);
+        ApplyVolumeSettings();
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = Mathf.Clamp01(volume);
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+        ApplyVolumeSettings();
+    }
+
     public void SetBackgroundMusic(AudioClip newBackgroundClip)//set BGM
     {
         // Only switch if it's a new clip
@@ -58,6 +77,14 @@ public class Audio : MonoBehaviour
             musicSource.Play();
         }
     }
+
+    private void ApplyVolumeSettings()
+    {
+        musicSource.volume = bgmVolume * mainVolume;
+        SFXSource.volume = sfxVolume * mainVolume;
+        playerFootstepSource.volume = sfxVolume * mainVolume;
+    }
+
     public void playWalking(AudioClip clip)
     {
         playerFootstepSource.PlayOneShot(clip);
