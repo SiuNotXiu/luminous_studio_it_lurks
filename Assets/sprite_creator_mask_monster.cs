@@ -14,10 +14,10 @@ public class sprite_creator_mask_monster : MonoBehaviour
     {
         if (material != null && spriteRenderer != null)
         {
-            // Generate a Texture2D from the material color and alpha
-            Texture2D texture = GenerateTextureFromMaterial(material, textureSize, textureSize);
+            // Generate the Texture2D from material RGBA
+            Texture2D texture = GenerateTextureFromMaterialRGBA(material, textureSize, textureSize);
 
-            // Convert the Texture2D to a Sprite
+            // Create a Sprite from the Texture2D
             Sprite sprite = Sprite.Create(
                 texture,
                 new Rect(0, 0, texture.width, texture.height),
@@ -25,7 +25,7 @@ public class sprite_creator_mask_monster : MonoBehaviour
             );
 
             // Assign the sprite to the SpriteRenderer
-            spriteRenderer.sprite = sprite;
+            //spriteRenderer.sprite = sprite;
             spriteMask.sprite = sprite;
         }
         else
@@ -34,15 +34,22 @@ public class sprite_creator_mask_monster : MonoBehaviour
         }
     }
 
-    private Texture2D GenerateTextureFromMaterial(Material material, int width, int height)
+    private Texture2D GenerateTextureFromMaterialRGBA(Material material, int width, int height)
     {
-        // Retrieve the color from the material
+        // Check if the material has a _Color property
+        if (!material.HasProperty("_Color"))
+        {
+            Debug.LogError("The material does not have a '_Color' property.");
+            return null;
+        }
+
+        // Get the RGBA color from the material
         Color materialColor = material.GetColor("_Color");
 
-        // Create a Texture2D
+        // Create a new Texture2D
         Texture2D texture = new Texture2D(width, height, TextureFormat.ARGB32, false);
 
-        // Fill the texture with the material's color and alpha
+        // Fill the texture with the material's RGBA color
         Color[] pixels = new Color[width * height];
         for (int i = 0; i < pixels.Length; i++)
         {
