@@ -112,8 +112,11 @@ public class InventoryController : MonoBehaviour
 
     private void OpenJournal()
     {
-        player_database.is_flashlight_on = false;
-        flashlightSFX();
+        if(player_database.is_flashlight_on)
+        {
+            player_database.is_flashlight_on = false;
+            flashlightSFX();
+        }
         ONFJournal();
         //chest problem here in chest in
         //Debug.Log("wwwwwwwww > " + chestIn);

@@ -91,7 +91,11 @@ public class Audio : MonoBehaviour
 
     public void playerBehave(AudioClip clip)
     {
-       playerFlashlight.PlayOneShot(clip);
+        //doesnt contain end time
+        playerFlashlight.clip = clip;
+        playerFlashlight.time = 0.2f;
+        playerFlashlight.Play();
+
     }
 
 

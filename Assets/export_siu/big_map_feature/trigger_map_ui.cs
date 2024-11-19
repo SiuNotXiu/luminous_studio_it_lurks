@@ -55,8 +55,11 @@ public class trigger_map_ui : MonoBehaviour
 
     public void open_map()
     {
-        player_database.is_flashlight_on = false;
-        flashlightSFX();
+        if (player_database.is_flashlight_on)
+        {
+            player_database.is_flashlight_on = false;
+            flashlightSFX();
+        }
         Map_Is_Open = true;
         big_map.SetActive(true);
     }
