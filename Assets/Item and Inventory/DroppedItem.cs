@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    public Sprite droppedItemSprite;
     public Item item;
     public bool isPlayerInRange = false;
     private InventoryController inventoryController;
 
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         item = GetComponent<Item>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        if (spriteRenderer == null)
-        {
-            Debug.LogWarning(" No spriteRenderer?");
-        }
         if (item == null)
         {
             Debug.LogWarning("Item script not found?");
-        }    
+        }
+        if (spriteRenderer == null)
+        {
+            Debug.LogWarning("Sprite of child missing?");
+        }
     }
 
     private void Start()
@@ -50,8 +52,13 @@ public class DroppedItem : MonoBehaviour
         if (data != null)
         {
             item.SetItemData(data);
-            spriteRenderer.sprite = data.droppedSprite;
+            droppedItemSprite = data.droppedSprite;
             gameObject.name = data.itemName;
+
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.sprite = droppedItemSprite;
+            }
         }
     }
 
