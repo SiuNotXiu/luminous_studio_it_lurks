@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class object_mask_under_flashlight : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class object_mask_under_flashlight : MonoBehaviour
         else if (GetComponent<MeshRenderer>() != null)
         {
             GetComponent<MeshRenderer>().material.renderQueue = 3002;
+        }
+        else if (GetComponent<TilemapRenderer>() != null)
+        {
+            GetComponent<TilemapRenderer>().material.renderQueue = 3002;
         }
         else
         {
