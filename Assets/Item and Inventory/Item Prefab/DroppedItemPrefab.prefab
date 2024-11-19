@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1207128100559590303}
   - component: {fileID: 3777076224333747944}
   - component: {fileID: 7783792809626520985}
+  - component: {fileID: -1348901436699712627}
   m_Layer: 0
   m_Name: DroppedItemPrefab
   m_TagString: CraftItem
@@ -111,6 +112,18 @@ MonoBehaviour:
   droppedItemSprite: {fileID: 0}
   item: {fileID: 0}
   isPlayerInRange: 0
+--- !u!114 &-1348901436699712627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904651877909844242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70932c47a6a182a4b83aaac0bfb382e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8427925642744302294
 GameObject:
   m_ObjectHideFlags: 0
