@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5971088880571504170}
   - component: {fileID: 4697582356094790479}
   - component: {fileID: 2900986870174514580}
-  - component: {fileID: 5693357131881701266}
   - component: {fileID: -3368823615298916252}
+  - component: {fileID: 5693357131881701266}
   m_Layer: 0
   m_Name: 1300 mAh Casing
   m_TagString: PerksItem
@@ -96,6 +96,18 @@ MonoBehaviour:
   paper: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   upgrade: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   ScrapPaperId: 0
+--- !u!114 &-3368823615298916252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004500108859251577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70932c47a6a182a4b83aaac0bfb382e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &5693357131881701266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -148,15 +160,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3368823615298916252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4004500108859251577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70932c47a6a182a4b83aaac0bfb382e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
