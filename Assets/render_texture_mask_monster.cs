@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class render_texture_mask_monster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //this script is used by camera_mask_for_monster_in_range
+    //to output render texture for a mask
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private List<GameObject> object_shape_for_mask;
+    [SerializeField] private RenderTexture mask_for_monster_in_range;
+    [HideInInspector] private List<int> record_layer;
+    [HideInInspector] private int layer_mask_for_monster_in_range;
+
+    private void Start()
     {
-        
+        layer_mask_for_monster_in_range = LayerMask.NameToLayer("mask_for_monster_in_range");
+    }
+    private void LateUpdate()
+    {
+        //set to specific layer
+        foreach (var shape in object_shape_for_mask)
+        {
+            record_layer.Add(shape.layer);
+            shape.layer = layer_mask_for_monster_in_range;
+        }
+
+        //take a photo
+        gameObject.GetComponent<Camera>().Render();
+
+        //go back to original layer that they belongs to
+        for (int i = 0; i < object_shape_for_mask.Count; i++)
+        {
+            object_shape_for_mask[i].layer = record_layer[i];
+        }
+        record_layer.Clear();
     }
 }
