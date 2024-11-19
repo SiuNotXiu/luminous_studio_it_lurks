@@ -9,7 +9,7 @@ public class Audio : MonoBehaviour
     [Header("-----Audio Source-----")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
-    [SerializeField] AudioSource playerFootstepSource;
+    [SerializeField] AudioSource playerFlashlight;
 
     [Header("-----Audio Clip-----")]
     public AudioClip BGM;
@@ -81,12 +81,17 @@ public class Audio : MonoBehaviour
     {
         musicSource.volume = bgmVolume * mainVolume;
         SFXSource.volume = sfxVolume * mainVolume;
-        playerFootstepSource.volume = sfxVolume * mainVolume;
+        playerFlashlight.volume = sfxVolume * mainVolume;
     }
 
     public void playWalking(AudioClip clip)
     {
-        playerFootstepSource.PlayOneShot(clip);
+        playerFlashlight.PlayOneShot(clip);
+    }
+
+    public void playerBehave(AudioClip clip)
+    {
+       playerFlashlight.PlayOneShot(clip);
     }
 
 

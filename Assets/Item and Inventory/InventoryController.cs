@@ -113,6 +113,7 @@ public class InventoryController : MonoBehaviour
     private void OpenJournal()
     {
         player_database.is_flashlight_on = false;
+        flashlightSFX();
         ONFJournal();
         //chest problem here in chest in
         //Debug.Log("wwwwwwwww > " + chestIn);
@@ -401,7 +402,13 @@ public class InventoryController : MonoBehaviour
             Audio.Instance.PlaySFX(AudioSFXUI.Instance.JournalOpenClose, 0.37f,0.7f);
         }
     }
-
+    private void flashlightSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.playerBehave(AudioSFXPlayerBehave.Instance.Flashlight);
+        }
+    }
 
 
     #endregion

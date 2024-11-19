@@ -111,7 +111,14 @@ public class Item : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.PlaySFX(AudioSFXUI.Instance.Item_Pickup);
+            if (itemData.name == "Ginseng" || itemData.name == "Yarrow")
+            {
+                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Item_Pickup);
+            }
+            else
+            {
+                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Herb_Stick_Pickup,0.3f,0.9f);
+            }
         }
     }
 

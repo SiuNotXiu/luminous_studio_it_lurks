@@ -10,8 +10,19 @@ public class player_flashlight_on_off : MonoBehaviour
         {
             if(InventoryController.JournalOpen && !trigger_map_ui.Map_Is_Open)
             player_database.is_flashlight_on = !player_database.is_flashlight_on;
+            flashlightSFX();
             
             
         }
     }
+
+    #region flashlightONOFf
+    private void flashlightSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.playerBehave(AudioSFXPlayerBehave.Instance.Flashlight);
+        }
+    }
+    #endregion
 }
