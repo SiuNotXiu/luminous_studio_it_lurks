@@ -19,6 +19,9 @@ public class player_flashlight_direction : MonoBehaviour
     [HideInInspector] private Vector3 mouse_position;
     [HideInInspector] private Vector3 aim_direction;
 
+    //offset based on editor
+    [SerializeField] private float arm_initial_offset = 0.0f;
+
     //[SerializeField] private float z;
     //[SerializeField] private float output_z;
     void OnValidate()
@@ -41,6 +44,10 @@ public class player_flashlight_direction : MonoBehaviour
             object_flashlight_mask = object_arm_with_flashlight.transform.Find("flashlight_mask").gameObject;
     }
 
+    private void Start()
+    {
+        arm_initial_offset = object_arm_with_flashlight.transform.position.z - object_sprite_sheet_mask.transform.position.z;
+    }
     void Update()
     {
         mouse_position = get_mouse_position();
@@ -67,7 +74,7 @@ public class player_flashlight_direction : MonoBehaviour
             //ensure can see arm
             object_arm_with_flashlight.transform.position = new Vector3(object_arm_with_flashlight.transform.position.x,
                                                                         object_arm_with_flashlight.transform.position.y,
-                                                                        object_sprite_sheet_mask.transform.position.z - 1f);
+                                                                        object_sprite_sheet_mask.transform.position.z + arm_initial_offset);
             object_flashlight_mask.GetComponent<flashlight_z_depth>().modify_z_depth();
         }
         else
@@ -82,7 +89,7 @@ public class player_flashlight_direction : MonoBehaviour
             //ensure can see arm
             object_arm_with_flashlight.transform.position = new Vector3(object_arm_with_flashlight.transform.position.x,
                                                                         object_arm_with_flashlight.transform.position.y,
-                                                                        object_sprite_sheet_mask.transform.position.z - 1f);
+                                                                        object_sprite_sheet_mask.transform.position.z + arm_initial_offset);
             object_flashlight_mask.GetComponent<flashlight_z_depth>().modify_z_depth();
         }
     }
