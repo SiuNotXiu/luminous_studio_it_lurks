@@ -147,7 +147,9 @@ public class TopdownMovement : MonoBehaviour
     private void playWalk()
     {
         if (Audio.Instance != null)
+        {
             //Audio.Instance.playWalking(AudioSFXPlayerBehave.Instance.GrassFootstep);
+        }
     }
 
     #endregion
