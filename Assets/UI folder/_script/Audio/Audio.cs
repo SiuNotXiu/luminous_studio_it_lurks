@@ -35,7 +35,7 @@ public class Audio : MonoBehaviour
                 musicSource.clip = BGM;
                 musicSource.Play();
             }
-            //somethings like void start
+            //something like void start
             mainVolume = 1.0f;
             bgmVolume = 0.5f;
             sfxVolume = 0.5f;

@@ -33,6 +33,11 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        audioMainMenu.volume = Audio.Instance.bgmVolume * Audio.Instance.mainVolume;
+    }
+
     public void GameOn()
     {
         disableAnimator();
