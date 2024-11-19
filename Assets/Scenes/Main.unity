@@ -31408,7 +31408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3053268947322556729, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -179.98
+      value: -197.8
       objectReference: {fileID: 0}
     - target: {fileID: 3213456693937878106, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: object_camera_main
@@ -31486,6 +31486,10 @@ PrefabInstance:
       propertyPath: object_flashlight_mask
       value: 
       objectReference: {fileID: 1466018915}
+    - target: {fileID: 5689223808702081322, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5777125112393791391, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: m_Name
       value: player_dont_change_name
@@ -31516,7 +31520,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6463277531317306593, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008949740869757408, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8681446751065694773, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: m_IsTrigger
