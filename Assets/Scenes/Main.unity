@@ -10197,11 +10197,11 @@ PrefabInstance:
       objectReference: {fileID: 2052794538}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.5
+      value: 99.19
       objectReference: {fileID: 0}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.68
+      value: 123.98
       objectReference: {fileID: 0}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12382,11 +12382,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8652989610006749220, guid: 0c1df9988f42ae24cb98fdd172fad94f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.8
+      value: 52.7
       objectReference: {fileID: 0}
     - target: {fileID: 8652989610006749220, guid: 0c1df9988f42ae24cb98fdd172fad94f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7
+      value: 7.3
       objectReference: {fileID: 0}
     - target: {fileID: 8652989610006749220, guid: 0c1df9988f42ae24cb98fdd172fad94f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37552,10 +37552,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1892511627463725442, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: JournalP1
       value: 
@@ -37564,10 +37560,6 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 2047149072}
-    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: chestSlots.Array.size
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: chestSlots.Array.data[0]
       value: 
@@ -37604,21 +37596,17 @@ PrefabInstance:
       propertyPath: chestSlots.Array.data[8]
       value: 
       objectReference: {fileID: 541761248}
-    - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
-      propertyPath: chestSlots.Array.data[9]
-      value: 
-      objectReference: {fileID: 2052794538}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.55
+      value: -14.44
       objectReference: {fileID: 0}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.6
+      value: 92.58
       objectReference: {fileID: 0}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4193640871054755863, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_LocalRotation.w
