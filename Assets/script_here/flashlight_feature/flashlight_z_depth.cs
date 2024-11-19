@@ -7,20 +7,18 @@ public class flashlight_z_depth : MonoBehaviour
     [SerializeField] private GameObject object_camera_main;
     [SerializeField] private GameObject object_flashlight_dim_filter;
 
-    private void OnValidate()
-    {
-        if (object_flashlight_dim_filter == null)
-        {
-            object_flashlight_dim_filter = GameObject.Find("flashlight_dim_filter");
-        }
-        if (object_camera_main == null)
-        {
-            object_camera_main = GameObject.Find("camera_main_dont_change_name");
-        }
-        modify_z_depth();
-    }
     private void Start()
     {
+        if (object_flashlight_dim_filter == null)
+            object_flashlight_dim_filter = GameObject.Find("flashlight_dim_filter");
+        if (object_flashlight_dim_filter == null)
+            Debug.Log("object_flashlight_dim_filter == null");
+
+        if (object_camera_main == null)
+            object_camera_main = GameObject.Find("camera_main_dont_change_name");
+        if (object_camera_main == null)
+            Debug.Log("object_camera_main == null");
+
         modify_z_depth();
     }
     private void Update()
