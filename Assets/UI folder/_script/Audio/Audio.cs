@@ -21,6 +21,7 @@ public class Audio : MonoBehaviour
     public float bgmVolume = 0.5f; 
     public float sfxVolume = 0.5f;    
 
+    
     private void Awake()
     {
         //PlayerPrefs.DeleteAll(); //for developers
@@ -34,10 +35,11 @@ public class Audio : MonoBehaviour
                 musicSource.clip = BGM;
                 musicSource.Play();
             }
-            // Load saved volume
-            mainVolume = PlayerPrefs.GetFloat("MainVolume", mainVolume);
-            bgmVolume = PlayerPrefs.GetFloat("BGMVolume", bgmVolume);
-            sfxVolume = PlayerPrefs.GetFloat("SFXVolume", sfxVolume);
+            //somethings like void start
+            mainVolume = 1.0f;
+            bgmVolume = 0.5f;
+            sfxVolume = 0.5f;
+
 
             ApplyVolumeSettings();
 
@@ -51,20 +53,17 @@ public class Audio : MonoBehaviour
     public void SetMasterVolume(float volume)
     {
         mainVolume = Mathf.Clamp01(volume);
-        PlayerPrefs.SetFloat("MasterVolume", mainVolume);
         ApplyVolumeSettings();
     }
     public void SetBGMVolume(float volume)
     {
         bgmVolume = Mathf.Clamp01(volume);
-        PlayerPrefs.SetFloat("BGMVolume", bgmVolume);
         ApplyVolumeSettings();
     }
 
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
-        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
         ApplyVolumeSettings();
     }
 
