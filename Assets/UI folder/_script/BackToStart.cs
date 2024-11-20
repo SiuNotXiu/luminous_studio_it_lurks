@@ -17,6 +17,19 @@ public class BackToStart : MonoBehaviour
 
     private void Back()
     {
+        ResetBGM();
         SceneManager.LoadScene("1st Scene");
     }
+
+    #region Sound
+    private void ResetBGM()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.SetBackgroundMusic(null);
+        }
+    }
+
+
+    #endregion
 }
