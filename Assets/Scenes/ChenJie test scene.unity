@@ -1331,10 +1331,6 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1882465781}
-    - target: {fileID: 3648571824174059145, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3758260710429886559, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -1455,14 +1451,6 @@ PrefabInstance:
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 1815730037}
-    - target: {fileID: 5991435392257827039, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7052797625709910638, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7694574135704081524, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -1475,14 +1463,6 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1882465781}
-    - target: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: upgrades.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 2099462abbbc52c4085f9128ecbdbf01, type: 3}
-    - target: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: upgrades.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 04fa6bad4b921084c996ded516a2a1e6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
