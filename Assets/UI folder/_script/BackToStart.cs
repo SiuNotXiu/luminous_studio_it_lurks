@@ -18,6 +18,7 @@ public class BackToStart : MonoBehaviour
     private void Back()
     {
         ResetBGM();
+        InventoryController.JournalOpen = true;//true is close
         SceneManager.LoadScene("1st Scene");
     }
 
