@@ -14,6 +14,8 @@ public class render_texture_mask_monster : MonoBehaviour
 
     private void Start()
     {
+        mask_for_monster_in_range.width = Screen.width;
+        mask_for_monster_in_range.height = Screen.height;
         layer_mask_for_monster_in_range = LayerMask.NameToLayer("mask_for_monster_in_range");
         GetComponent<Camera>().targetTexture = mask_for_monster_in_range;
     }
