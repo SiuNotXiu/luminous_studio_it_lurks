@@ -843,6 +843,54 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 39
       objectReference: {fileID: 0}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 368046676}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestItem
+      value: 
+      objectReference: {fileID: 29112462}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 2047149072}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 840064397}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 749314264}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1533881091}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 314039748}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 2065031462}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1716577440}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1064654505}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 541761248}
     - target: {fileID: 4193640871054755863, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
       propertyPath: m_LocalPosition.x
       value: 127.69
@@ -1024,6 +1072,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4324418369572416509, guid: 7b3ef463d4774ac4db16764638df2581, type: 3}
   m_PrefabInstance: {fileID: 1305556625}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &29112462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674443295624880104, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+  m_PrefabInstance: {fileID: 25797657}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1586ed436291c6439a8a9fe878093df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &30238516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8652989610006749220, guid: 0c1df9988f42ae24cb98fdd172fad94f, type: 3}
@@ -5925,6 +5984,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7052797625709910638, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   m_PrefabInstance: {fileID: 868751975}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &150659947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674443295624880104, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+  m_PrefabInstance: {fileID: 2000675419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1586ed436291c6439a8a9fe878093df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &150908921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7414,6 +7484,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09fd6ff66274e844ea805fedb1feefe6, type: 3}
+--- !u!114 &192725183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674443295624880104, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+  m_PrefabInstance: {fileID: 1705855763}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1586ed436291c6439a8a9fe878093df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &194754158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4517266908263580652, guid: c87ca25be781da349b01927cccc042d5, type: 3}
@@ -28287,6 +28368,50 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -2.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 368046676}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 2047149072}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 840064397}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 749314264}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1533881091}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 314039748}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 2065031462}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1716577440}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1064654505}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 541761248}
     - target: {fileID: 4193640871054755863, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
       propertyPath: m_LocalPosition.x
       value: 160.64
@@ -28824,6 +28949,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6757693281929559715, guid: a9b086b637834a442a1e0ae4892e5301, type: 3}
   m_PrefabInstance: {fileID: 354727913}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &741635409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674443295624880104, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+  m_PrefabInstance: {fileID: 1908172680}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1586ed436291c6439a8a9fe878093df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &741977221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4517266908263580652, guid: 335d7e3dde3ec3a49b5b2fbc739cd362, type: 3}
@@ -28986,6 +29122,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c87ca25be781da349b01927cccc042d5, type: 3}
+--- !u!114 &750577840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2674443295624880104, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+  m_PrefabInstance: {fileID: 1742579877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1586ed436291c6439a8a9fe878093df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &751468538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63331,6 +63478,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 368046676}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestItem
+      value: 
+      objectReference: {fileID: 192725183}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 2047149072}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 840064397}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 749314264}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1533881091}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 314039748}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 2065031462}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1716577440}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1064654505}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 541761248}
     - target: {fileID: 4193640871054755863, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.43
@@ -64522,6 +64717,54 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -32.8
       objectReference: {fileID: 0}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 368046676}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestItem
+      value: 
+      objectReference: {fileID: 750577840}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 2047149072}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 840064397}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 749314264}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1533881091}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 314039748}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 2065031462}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1716577440}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1064654505}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 541761248}
     - target: {fileID: 4193640871054755863, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.67
@@ -71850,6 +72093,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 368046676}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestItem
+      value: 
+      objectReference: {fileID: 741635409}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 2047149072}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 840064397}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 749314264}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1533881091}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 314039748}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 2065031462}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1716577440}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1064654505}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 541761248}
     - target: {fileID: 4193640871054755863, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.28
@@ -77048,6 +77339,54 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -29.9
       objectReference: {fileID: 0}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: JournalP1
+      value: 
+      objectReference: {fileID: 368046676}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestItem
+      value: 
+      objectReference: {fileID: 150659947}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 2047149072}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052794538}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 840064397}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 749314264}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1533881091}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 314039748}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 2065031462}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 1716577440}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 1064654505}
+    - target: {fileID: 3335159774276895905, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
+      propertyPath: chestSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 541761248}
     - target: {fileID: 4193640871054755863, guid: 5686db1dde2e1a14199cb28e3254d359, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.2

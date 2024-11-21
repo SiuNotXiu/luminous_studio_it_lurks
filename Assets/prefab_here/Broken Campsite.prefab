@@ -271,8 +271,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  JournalP1: {fileID: 0}
-  playerInventory: {fileID: 0}
+  JournalP1: {fileID: 3073720125559571428, guid: cd6cedaf20175b94d8964291c3376525, type: 3}
+  playerInventory: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   chestItem: {fileID: 2674443295624880104}
 --- !u!70 &8607046030507806788
 CapsuleCollider2D:
