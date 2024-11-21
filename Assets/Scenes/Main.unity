@@ -15040,6 +15040,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3301490691949590126, guid: dc8713ad1335db74283d67476367f73a, type: 3}
   m_PrefabInstance: {fileID: 2121141920}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &389214795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3306951296432945803, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+  m_PrefabInstance: {fileID: 2121141920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389214788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cab003410c296a48ab4780b775aabde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &389214799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4892453508253383033, guid: dc8713ad1335db74283d67476367f73a, type: 3}
+  m_PrefabInstance: {fileID: 2121141920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &390722524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34377,7 +34393,7 @@ PrefabInstance:
     - target: {fileID: 2063283111479267537, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerBattery
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214795}
     - target: {fileID: 2063283111479267537, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34385,7 +34401,7 @@ PrefabInstance:
     - target: {fileID: 2063283111479267537, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214799}
     - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerHealth
       value: 
@@ -34393,7 +34409,7 @@ PrefabInstance:
     - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerBattery
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214795}
     - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34401,7 +34417,7 @@ PrefabInstance:
     - target: {fileID: 2081150180949438556, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214799}
     - target: {fileID: 2307335439465522270, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34413,7 +34429,7 @@ PrefabInstance:
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerBattery
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214795}
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34421,7 +34437,7 @@ PrefabInstance:
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214799}
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: droppedItemPrefab
       value: 
@@ -34453,7 +34469,7 @@ PrefabInstance:
     - target: {fileID: 5241129934072775646, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerBattery
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214795}
     - target: {fileID: 5241129934072775646, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34461,7 +34477,7 @@ PrefabInstance:
     - target: {fileID: 5241129934072775646, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214799}
     - target: {fileID: 5487800193212263585, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34581,7 +34597,7 @@ PrefabInstance:
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerBattery
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214795}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34589,7 +34605,7 @@ PrefabInstance:
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214799}
     - target: {fileID: 5784041784639840250, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: inventoryController
       value: 
@@ -34629,7 +34645,7 @@ PrefabInstance:
     - target: {fileID: 8061769526057688673, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerBattery
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214795}
     - target: {fileID: 8061769526057688673, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -34637,7 +34653,7 @@ PrefabInstance:
     - target: {fileID: 8061769526057688673, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389214799}
     - target: {fileID: 8548313435283688896, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemImage
       value: 
@@ -87471,7 +87487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5773933959985760524, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5968436064574450676, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: orthographic size
