@@ -138,7 +138,7 @@ public class CollectedScrapPaper : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.PlaySFX(AudioSFXUI.Instance.PageTurn, 0.2f, 1.0f);
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.RandomNoiseForPageTurn(), Audio.Instance.SFXSource, 0.2f, 1.0f);
         }
     }
 

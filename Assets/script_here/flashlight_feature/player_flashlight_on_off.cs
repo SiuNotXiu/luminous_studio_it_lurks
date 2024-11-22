@@ -22,7 +22,7 @@ public class player_flashlight_on_off : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.playerBehave(AudioSFXPlayerBehave.Instance.Flashlight);
+            Audio.Instance.PlayClipWithSource(AudioSFXPlayerBehave.Instance.Flashlight, Audio.Instance.playerFlashlight);
         }
     }
     #endregion

@@ -469,7 +469,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void playClick()
     {
         if (Audio.Instance != null)
-            Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
+        }
     }
 
     #endregion
