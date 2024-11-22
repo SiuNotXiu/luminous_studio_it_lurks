@@ -310,6 +310,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "First Aid Kits":
                 if (!playerHealth.GetFullHealth())
                 {
+                    playHealingSFX();
                     playerHealth.FullHeal();
                     RemoveItem();
                 }
@@ -322,6 +323,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "Bandage":
                 if (!playerHealth.GetFullHealth())
                 {
+                    playHealingSFX();
                     playerHealth.Heal();
                     RemoveItem();
                 }
@@ -334,6 +336,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "Bushcraft Medicine":
                 if (!playerHealth.GetFullHealth())
                 {
+                    playHealingSFX();
                     playerHealth.Heal();
                     RemoveItem();
                 }
@@ -345,6 +348,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
             case "Adrenaline":
                 //A syringe that makes the character move 1.5 times faster for 5 seconds
+                playAdrenalineSFX();
                 TopdownMovement playerMovement = playerTransform.GetComponent<TopdownMovement>();
                 if (playerMovement != null)
                 {
@@ -376,7 +380,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             droppedItemScript.Initialize(itemData);
         }
-
+        playDroppingSFX();
         ClearSlot();
         HideDropdownMenu();
     }
@@ -482,6 +486,27 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         if (Audio.Instance != null)
         {
             Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.RandomNoiseForBatteryRefill(), Audio.Instance.SFXSource);
+        }
+    }
+    private void playHealingSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Healing, Audio.Instance.SFXSource);
+        }
+    }
+    private void playAdrenalineSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Adrenaline, Audio.Instance.SFXSource);
+        }
+    }
+    private void playDroppingSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Item_Drop, Audio.Instance.SFXSource);
         }
     }
 
