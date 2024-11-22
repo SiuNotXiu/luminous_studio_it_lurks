@@ -15,6 +15,7 @@ public class AudioSFXPlayerBehave : MonoBehaviour
 
     public AudioClip Flashlight;
     public AudioClip FlashlightFlicker;
+    public AudioClip FlashlightFlicker2;
 
     public AudioClip GrassFootstep;
     public AudioClip GrassFootstep2;
@@ -42,6 +43,15 @@ public class AudioSFXPlayerBehave : MonoBehaviour
     {
         AudioClip[] randomNoises = { GrassFootstep, GrassFootstep2, GrassFootstep3, GrassFootstep4 };
         AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+
+        //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
+    }
+
+    public AudioClip RandomNoiseForFlashlightFlicker()
+    {
+        AudioClip[] randomNoises = { FlashlightFlicker, FlashlightFlicker2 };
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+        return randomClip;
 
         //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
     }

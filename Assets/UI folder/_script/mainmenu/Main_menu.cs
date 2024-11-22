@@ -36,6 +36,10 @@ public class MainMenu : MonoBehaviour
     private void Update()
     {
         audioMainMenu.volume = Audio.Instance.bgmVolume * Audio.Instance.mainVolume;
+        if(!audioMainMenu.isActiveAndEnabled )
+        {
+            audioMainMenu.clip = AudioSFXPlayerBehave.Instance.RandomNoiseForFlashlightFlicker();
+        }
     }
 
     public void GameOn()
