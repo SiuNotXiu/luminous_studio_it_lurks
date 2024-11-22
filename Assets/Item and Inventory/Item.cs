@@ -21,7 +21,7 @@ public class Item : MonoBehaviour
 
 
     private InventoryController inventoryController;
-    public int ScrapPaperId;//start from 1 ,, it also use for unlock upgrade paper
+    public int ScrapPaperId;//start from 1 ,it also use for unlock upgrade paper
     public static bool isPlayerInRange = false;
 
     [HideInInspector] private GameObject[] object_landmark;

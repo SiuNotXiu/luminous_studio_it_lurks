@@ -294,13 +294,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             case "Battery":
                 battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_normal);
+                RefillBatterySFX();
                 RemoveItem();
                 break;
 
             case "1300 mAh Battery":
                 //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
                 if (battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_1300_mah) == true)
+                {
+                    RefillBatterySFX();
                     RemoveItem();
+                }
                 break;
 
             case "First Aid Kits":
@@ -471,6 +475,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         if (Audio.Instance != null)
         {
             Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
+        }
+    }
+    private void RefillBatterySFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.RandomNoiseForBatteryRefill(), Audio.Instance.SFXSource);
         }
     }
 

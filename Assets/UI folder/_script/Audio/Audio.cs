@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class Audio : MonoBehaviour
@@ -8,6 +9,7 @@ public class Audio : MonoBehaviour
 
     [Header("-----Audio Source-----")]
     [SerializeField] AudioSource musicSource; //for playing bgm
+    [SerializeField] AudioSource RandomSFXForBGM; //for playing random spooky bgm
     [SerializeField] public AudioSource SFXSource; //for playing sfx
     [SerializeField] public AudioSource playerFlashlight; //forplaying player flashlight
 
@@ -80,6 +82,7 @@ public class Audio : MonoBehaviour
     private void ApplyVolumeSettings()
     {
         musicSource.volume = bgmVolume * mainVolume;
+        RandomSFXForBGM.volume = bgmVolume * mainVolume;
         SFXSource.volume = sfxVolume * mainVolume;
         playerFlashlight.volume = sfxVolume * mainVolume;
     }
@@ -135,6 +138,17 @@ public class Audio : MonoBehaviour
 
         source.Stop();
         source.clip = null;
+    }
+
+    private IEnumerator ForBGMSFX(AudioClip clip)
+    {
+        RandomSFXForBGM.clip = clip;
+
+        yield return new WaitForSeconds(120f); //wait for 2 minute
+
+        //cuz the environment audio is at specific place so it should have a condition
+        //need consider if game end still will promt the sound or not
+        //need to use main to set this
     }
 
 

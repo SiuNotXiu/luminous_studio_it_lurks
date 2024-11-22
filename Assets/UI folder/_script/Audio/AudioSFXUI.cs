@@ -53,4 +53,12 @@ public class AudioSFXUI : MonoBehaviour
 
         //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
     }
+    public AudioClip RandomNoiseForBatteryRefill()
+    {
+        AudioClip[] randomNoises = { BatteryRefill, BatteryRefill2};
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+        return randomClip;
+
+    }
+
 }
