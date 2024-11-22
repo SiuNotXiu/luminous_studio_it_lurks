@@ -6,12 +6,13 @@ public class AudioSFXEnvironment : MonoBehaviour
 {
     public static AudioSFXEnvironment Instance;
     [Header("SFX Environment")]
+    public AudioClip Ambience;
     public AudioClip BasementAmbience;
     public AudioClip CampfireFireplace;
     public AudioClip CornfieldAmbience;
-    public AudioClip ForestAmbience;
-    public AudioClip MainMenuAmbience;
-    public AudioClip VillageAmbience;
+    public AudioClip EnvironmentRandomNoise;
+    public AudioClip EnvironmentRandomNoise2;
+    public AudioClip StoryBriefAmbience;
 
     private void Awake()
     {
@@ -20,6 +21,21 @@ public class AudioSFXEnvironment : MonoBehaviour
             Instance = this;
         }
     }
+
+    public void RandomNoiseForEnvironment()
+    {
+        AudioClip[] randomNoises = { EnvironmentRandomNoise, EnvironmentRandomNoise2 };
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+
+        Audio.Instance.SetBackgroundMusic(randomClip);
+    }
+
+    public void EnterGame()
+    {
+        Audio.Instance.SetBackgroundMusic(Ambience);
+    }
+
+
 
 
 }

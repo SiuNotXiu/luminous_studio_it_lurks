@@ -44,20 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781a13bf90df16b478c36f1cc844ebbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConcreteFootstep: {fileID: 8300000, guid: de14340a4032ddc41b5e60c82d8c203b, type: 3}
   CornfieldFootstep: {fileID: 8300000, guid: a29065b8b9be9c244afdfefe8ef39764, type: 3}
   CornfieldFootstep2: {fileID: 8300000, guid: 6d1293e90b1da844ab973562a86016ec, type: 3}
   CornfieldFootstep3: {fileID: 8300000, guid: a995aa7ac64fb704f8ae9e64bff8d9a7, type: 3}
   CornfieldFootstep4: {fileID: 8300000, guid: 858a0e495c78fb948ac37c699b2c96ea, type: 3}
-  DirtFootstep: {fileID: 8300000, guid: 3c7844eb16421d048a657932ddf9b080, type: 3}
   Flashlight: {fileID: 8300000, guid: e46190d614fec7f4a8563b110d6d93f5, type: 3}
   FlashlightFlicker: {fileID: 8300000, guid: 1f7e569f904665e45ab544fbfea81dad, type: 3}
   GrassFootstep: {fileID: 8300000, guid: d48aa74939f10894eb88797acef3e913, type: 3}
   GrassFootstep2: {fileID: 8300000, guid: df43e86d1f53ddc4f9ad4d24e3490b2f, type: 3}
+  GrassFootstep3: {fileID: 8300000, guid: 3e306029e8080d54faa9403751ebf51e, type: 3}
+  GrassFootstep4: {fileID: 8300000, guid: 48be9efbff01c1440a88ac1739189b89, type: 3}
   HeartBeat: {fileID: 8300000, guid: 6f7073a7c30b92f4ba84b46e21487541, type: 3}
-  WoodFootstep1: {fileID: 8300000, guid: b89804e5efe71f74981d84ad8c136f33, type: 3}
-  WoodFootstep2: {fileID: 8300000, guid: b1e41a8dd20b0ba4caf449ebda9add98, type: 3}
-  WoodFootstep3: {fileID: 8300000, guid: 5ba3f6862ede80d4480d892901d9829f, type: 3}
 --- !u!1 &3319881848976579373
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,12 +355,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea97fd4128a0b849adda2e6aa954dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ambience: {fileID: 8300000, guid: 68458d3f20711c641905d4582e978739, type: 3}
   BasementAmbience: {fileID: 8300000, guid: 01262516e84e99d479c367e08d968fb4, type: 3}
   CampfireFireplace: {fileID: 8300000, guid: ab7c22f556860aa47848e2d6cfe050f3, type: 3}
   CornfieldAmbience: {fileID: 8300000, guid: b336001b83226d64094975f92d2ab2da, type: 3}
-  ForestAmbience: {fileID: 8300000, guid: ac3906f772875c74a922086fa01bf3be, type: 3}
-  MainMenuAmbience: {fileID: 8300000, guid: 15add60c13f0f6845b318a305e6d6dae, type: 3}
-  VillageAmbience: {fileID: 8300000, guid: 5007ecaf8eeb23e4eb1ee5f93a99c994, type: 3}
+  EnvironmentRandomNoise: {fileID: 8300000, guid: ee081dbcaf40cf54c818374c45b6f318, type: 3}
+  EnvironmentRandomNoise2: {fileID: 8300000, guid: c0c41010ac2e9614ea045c457ff9358d, type: 3}
+  StoryBriefAmbience: {fileID: 8300000, guid: 013db0dab1d5f4243844d9a056b2fd42, type: 3}
 --- !u!1 &5729243335223030502
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,28 +406,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b527ee7e32db6424ebc8476f626ddf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hit: {fileID: 8300000, guid: 85bdefc5ad8a4cf44bbde76ca14aefe3, type: 3}
-  MissAttack: {fileID: 8300000, guid: 7c725888c905e4f46bb7b89159734eca, type: 3}
-  Running: {fileID: 8300000, guid: a781850625ee7074d9fd20fbb2a34886, type: 3}
-  Walking: {fileID: 8300000, guid: 2f56711b5c8caa94ead05eac6fbbc28c, type: 3}
-  Anger1: {fileID: 8300000, guid: 6c4d7014372e283498aaa9dc638c8384, type: 3}
-  Anger2: {fileID: 8300000, guid: 74c8a03dce213f1468e61ec2f7c47b4b, type: 3}
-  Growl1: {fileID: 8300000, guid: 0237124dc24d432498d2835bbbdd5aac, type: 3}
-  Growl2: {fileID: 8300000, guid: 676730b12ac8e0d4eb36a3c0c42c37f9, type: 3}
-  Whimper1: {fileID: 8300000, guid: 91cc4ffe920638245a50116ee3ec00ef, type: 3}
-  Whimper2: {fileID: 8300000, guid: f5c1edd2549916d4791309a5dbe1ba22, type: 3}
-  Whimper3: {fileID: 8300000, guid: 727795f3faa8bac4f9ae6fdb0a10cf33, type: 3}
-  Rustling1: {fileID: 8300000, guid: 50979319cfbf18a4894d04b044d7bff2, type: 3}
-  Rustling2: {fileID: 8300000, guid: aea4182cdb14e7b4bad22bc5ecb8bfe1, type: 3}
-  Rustling3: {fileID: 8300000, guid: 8b02100176d28dd4a9f889e69548e31c, type: 3}
-  Activation1: {fileID: 8300000, guid: 42cb26da7ecf6d24b89350a714e4b928, type: 3}
-  Activation2: {fileID: 8300000, guid: 3f2b1c91bfd77f34b8857974f0bff963, type: 3}
-  Breathing1: {fileID: 8300000, guid: b6bd534163ee27d41be29e44eb4aabee, type: 3}
-  Breathing2: {fileID: 8300000, guid: b76fe5f58617f21498a06bc3271112f8, type: 3}
-  Breathing3: {fileID: 8300000, guid: d7323f75f6116a543a4bd18b11c6a4b3, type: 3}
-  Laugh1: {fileID: 8300000, guid: f4e822f6c09f09945aeca83a1ae118d8, type: 3}
-  Laugh2: {fileID: 8300000, guid: 078a9bc94e980c447af5cc85d9a4d6ba, type: 3}
-  Laugh3: {fileID: 8300000, guid: 0703123085a74c24c96a8e487c7b4288, type: 3}
+  Hit: {fileID: 8300000, guid: bf4af9c7748269348b00418c1fcb8424, type: 3}
+  Hit2: {fileID: 8300000, guid: 69f522fbc19e8d6458beb6ed76e91be0, type: 3}
+  Hit3: {fileID: 8300000, guid: 1139f04af2d490d4ca9fd3692679a8dd, type: 3}
+  Running: {fileID: 8300000, guid: 91f748c48f523d04bbc36ce5edfd2501, type: 3}
+  Walking: {fileID: 8300000, guid: 41326f54cac28f54594f722c3f48990f, type: 3}
+  Anger: {fileID: 8300000, guid: f5f3e86930701444caacea420a55f663, type: 3}
+  Growl: {fileID: 8300000, guid: 337ff12fe3fcdb749aab6f970124da1b, type: 3}
+  Whimper1: {fileID: 8300000, guid: a203856f48062e1409b4f23f6f0df59a, type: 3}
+  Whimper2: {fileID: 8300000, guid: 310812179a09668429e1a6611090e4ee, type: 3}
+  Whimper3: {fileID: 8300000, guid: b263bde673bb7cb49bfbce18ab9159ff, type: 3}
+  Whimper4: {fileID: 8300000, guid: 2d7a249457ab885419554cf713812cee, type: 3}
+  Rustling: {fileID: 8300000, guid: 94a48119beecf4a469ad7fac5264f237, type: 3}
+  Activation1: {fileID: 8300000, guid: b13d8a30539a743489155c2b9aaff109, type: 3}
+  Activation2: {fileID: 8300000, guid: 559a70eb5fdf9df47970e57c3325b181, type: 3}
+  Breathing1: {fileID: 8300000, guid: 02e914b97d3068c499a18952d3815221, type: 3}
+  Breathing2: {fileID: 8300000, guid: 07efd24faacb41a42a8548134fa16d15, type: 3}
+  Breathing3: {fileID: 8300000, guid: f10d74060c4f70d47955a2f00315852f, type: 3}
+  Laugh1: {fileID: 8300000, guid: 21c9a1e791290f34bb6564d4a195eb75, type: 3}
+  Laugh2: {fileID: 8300000, guid: db1f8d9ba2651f840a6c7c6689be9b5f, type: 3}
 --- !u!1 &6069975003273364829
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,19 +469,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20c530a019d9e64ea9abfa20af8b4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JournalOpenClose: {fileID: 8300000, guid: 824baf9dcce0bd4448337b0bfe3b6846, type: 3}
-  PageTurn: {fileID: 8300000, guid: 8323c754d1d6e5e4f98e28d9c3348ee2, type: 3}
-  PencilWriting: {fileID: 8300000, guid: d259b38ebd57db24fb1caed52b53ef60, type: 3}
-  UIHoverAndClick: {fileID: 8300000, guid: d91263d0ff44f9d468fa607391114ff4, type: 3}
-  Adrenaline: {fileID: 8300000, guid: c5da3238c5acfd544a5dbde26241ba92, type: 3}
-  DoorClose: {fileID: 8300000, guid: e88b1bccc3e2ade49b1f72ea3350b95c, type: 3}
-  DoorOpen: {fileID: 8300000, guid: eca3ea2b04f1e284f9fe3e66257afed3, type: 3}
-  DoorLocked: {fileID: 8300000, guid: 40f0c5c58caa73b449af27352424913e, type: 3}
-  Healing: {fileID: 8300000, guid: 3565bfc70c189d7439e2bfc57018e8a3, type: 3}
-  Herb_Stick_Pickup: {fileID: 8300000, guid: 93f4aae519752f64bad9e86e0a465b72, type: 3}
-  Item_Pickup: {fileID: 8300000, guid: 3634572a558657f4ebf38f97df137e5b, type: 3}
-  Key_Pickup: {fileID: 8300000, guid: 4dc5d0a86411b434ea40e8315bc87cbf, type: 3}
-  MakeshiftCampsite_Place: {fileID: 8300000, guid: b325f074b5474254f834a41e9a0c2572, type: 3}
+  JournalOpenClose: {fileID: 8300000, guid: 7380155b0d1dae34da432d8dbf8b8201, type: 3}
+  PageTurn: {fileID: 8300000, guid: affd7b4a6d28c9043813af26d6ba9344, type: 3}
+  PageTurn2: {fileID: 8300000, guid: c7a686a260ec3774898b7c04cabca01c, type: 3}
+  PageTurn3: {fileID: 8300000, guid: 2d6761a57608db140853841bd0240d35, type: 3}
+  PageTurn4: {fileID: 8300000, guid: 4876a9e45eefccb4e828a96aa3df301c, type: 3}
+  PencilWriting: {fileID: 8300000, guid: f276835812453a04a936ee0ca0a02059, type: 3}
+  StoryBriefEnd: {fileID: 8300000, guid: 5477f69f304989b49a1bd5fceeb8a1eb, type: 3}
+  StoryBriefNext: {fileID: 8300000, guid: e526d1b859eeef24c851a091e65fdcc8, type: 3}
+  StoryBriefPlay: {fileID: 8300000, guid: f7f77fed380b2694db627452845be9f2, type: 3}
+  UIHoverAndClick: {fileID: 8300000, guid: 0b5e4eb46bed8d94f89cab23642e6c9a, type: 3}
+  Adrenaline: {fileID: 8300000, guid: 90f73d78226f10b4883ad90e75995cb2, type: 3}
+  BatteryRefill: {fileID: 8300000, guid: 3e29c1a86e716ed438e5df45d273634f, type: 3}
+  BatteryRefill2: {fileID: 8300000, guid: e9529725566f5d84ab7810ae5c9cbff3, type: 3}
+  CampsiteCraft: {fileID: 8300000, guid: 41d4c4c7cb0b41241938a71f8e4fe4ae, type: 3}
+  DoorClose: {fileID: 8300000, guid: c2272fed3926b1f4ba9ddec6499491b5, type: 3}
+  DoorLocked: {fileID: 8300000, guid: 372aa2ab6d93c254e8653f1e33a481aa, type: 3}
+  DoorOpen: {fileID: 8300000, guid: 86278412d14dabb418923bc7c81710f4, type: 3}
+  GateOpen: {fileID: 8300000, guid: f11313ef7675d3a49bf7842f6cd5f01e, type: 3}
+  Healing: {fileID: 8300000, guid: 0e7c51655b5c98a47881e15880e229b2, type: 3}
+  Herb_Stick_Pickup: {fileID: 8300000, guid: 247127829848a3a4c9e92d0943dd05d0, type: 3}
+  Item_Drop: {fileID: 8300000, guid: 686cecc64877d374ca877f38e70cde11, type: 3}
+  Item_Pickup: {fileID: 8300000, guid: 1fa4410529ae8c942877e680a306276f, type: 3}
+  Key_Pickup: {fileID: 8300000, guid: 58cec9faa18cdf3479e1fa885f59d605, type: 3}
+  MakeshiftCampsite_Place: {fileID: 8300000, guid: 6729aee8d4899f3418b34d1b2caabd6b, type: 3}
+  MedicineCraft: {fileID: 8300000, guid: 76d88e39005dc0d48aa18db81d771107, type: 3}
+  OptionalScrapPaperPickup: {fileID: 8300000, guid: 85da6ca0825775343983b3279da7504f, type: 3}
 --- !u!1 &7786296587503908847
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,10 +548,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 8379067813648600443}
   SFXSource: {fileID: 8120963387335005540}
-  playerFootstepSource: {fileID: 7175894948681575906}
+  playerFlashlight: {fileID: 7175894948681575906}
   BGM: {fileID: 0}
   InGameMusic: {fileID: 0}
   mainVolume: 0.5
+  bgmVolume: 0.5
+  sfxVolume: 0.5
 --- !u!1 &8855068994425874498
 GameObject:
   m_ObjectHideFlags: 0
