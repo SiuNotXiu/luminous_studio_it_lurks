@@ -1,0 +1,1 @@
+Environment Random Noise: Plays every 2 minutes regardless of the player's locations

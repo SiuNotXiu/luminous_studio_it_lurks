@@ -7,26 +7,22 @@ public class AudioSFXPlayerBehave : MonoBehaviour
     public static AudioSFXPlayerBehave Instance;
     [Header("SFX Player Behave")]
     [Header("--NightWalker")]
-    public AudioClip ConcreteFootstep;
 
     public AudioClip CornfieldFootstep;
     public AudioClip CornfieldFootstep2;
     public AudioClip CornfieldFootstep3;
     public AudioClip CornfieldFootstep4;
 
-    public AudioClip DirtFootstep;
-
     public AudioClip Flashlight;
     public AudioClip FlashlightFlicker;
+    public AudioClip FlashlightFlicker2;
 
     public AudioClip GrassFootstep;
     public AudioClip GrassFootstep2;
+    public AudioClip GrassFootstep3;
+    public AudioClip GrassFootstep4;
 
     public AudioClip HeartBeat;
-
-    public AudioClip WoodFootstep1;
-    public AudioClip WoodFootstep2;
-    public AudioClip WoodFootstep3;
 
     private void Awake()
     {
@@ -36,4 +32,27 @@ public class AudioSFXPlayerBehave : MonoBehaviour
         }
     }
 
+    public void RandomNoiseForCornfieldFootstep()
+    {
+        AudioClip[] randomNoises = { CornfieldFootstep, CornfieldFootstep2, CornfieldFootstep3, CornfieldFootstep4 };
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+
+        //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
+    }
+    public void RandomNoiseForGrassFootstep()
+    {
+        AudioClip[] randomNoises = { GrassFootstep, GrassFootstep2, GrassFootstep3, GrassFootstep4 };
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+
+        //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
+    }
+
+    public AudioClip RandomNoiseForFlashlightFlicker()
+    {
+        AudioClip[] randomNoises = { FlashlightFlicker, FlashlightFlicker2 };
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+        return randomClip;
+
+        //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
+    }
 }

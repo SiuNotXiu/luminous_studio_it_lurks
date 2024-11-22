@@ -1,0 +1,2 @@
+Activation Sound:        Plays on top of the Weeping Scarecrow when the player activates it by getting too close
+Rustling Noise:          When the Weeping Scarecrow is moving

@@ -113,11 +113,11 @@ public class Item : MonoBehaviour
         {
             if (itemData.name == "Ginseng" || itemData.name == "Yarrow")
             {
-                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Herb_Stick_Pickup, 0.3f, 0.9f);
+                Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Herb_Stick_Pickup, Audio.Instance.SFXSource, 0.3f, 0.9f);
             }
             else
             {
-                Audio.Instance.PlaySFX(AudioSFXUI.Instance.Item_Pickup);
+                Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Item_Pickup, Audio.Instance.SFXSource);
             }
         }
     }
@@ -126,7 +126,7 @@ public class Item : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.PlaySFX(AudioSFXUI.Instance.PencilWriting);
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.PencilWriting, Audio.Instance.SFXSource);
         }
     }
 

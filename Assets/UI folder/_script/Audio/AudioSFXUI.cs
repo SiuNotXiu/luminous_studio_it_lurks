@@ -9,20 +9,33 @@ public class AudioSFXUI : MonoBehaviour
     [Header("SFX Journal")]
     public AudioClip JournalOpenClose;
     public AudioClip PageTurn;
+    public AudioClip PageTurn2;
+    public AudioClip PageTurn3;
+    public AudioClip PageTurn4;
     public AudioClip PencilWriting;
+    public AudioClip StoryBriefEnd;
+    public AudioClip StoryBriefNext;
+    public AudioClip StoryBriefPlay;
     public AudioClip UIHoverAndClick;
 
 
     [Header("SFX Item")]
     public AudioClip Adrenaline;
+    public AudioClip BatteryRefill;
+    public AudioClip BatteryRefill2;
+    public AudioClip CampsiteCraft;
     public AudioClip DoorClose;
-    public AudioClip DoorOpen;
     public AudioClip DoorLocked;
+    public AudioClip DoorOpen;
+    public AudioClip GateOpen;
     public AudioClip Healing;
     public AudioClip Herb_Stick_Pickup;
+    public AudioClip Item_Drop;
     public AudioClip Item_Pickup;
     public AudioClip Key_Pickup;
     public AudioClip MakeshiftCampsite_Place;
+    public AudioClip MedicineCraft;
+    public AudioClip OptionalScrapPaperPickup;
 
     private void Awake()
     {
@@ -30,5 +43,14 @@ public class AudioSFXUI : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    public AudioClip RandomNoiseForPageTurn()
+    {
+        AudioClip[] randomNoises = { PageTurn, PageTurn2, PageTurn3, PageTurn4 };
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+        return randomClip;
+
+        //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
     }
 }

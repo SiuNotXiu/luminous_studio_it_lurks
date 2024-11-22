@@ -402,14 +402,14 @@ public class InventoryController : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.PlaySFX(AudioSFXUI.Instance.JournalOpenClose, 0.37f,0.7f);
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.JournalOpenClose, Audio.Instance.SFXSource, 0.37f,0.7f);
         }
     }
     private void flashlightSFX()
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.playerBehave(AudioSFXPlayerBehave.Instance.Flashlight);
+            Audio.Instance.PlayClipWithSource(AudioSFXPlayerBehave.Instance.Flashlight, Audio.Instance.playerFlashlight);
         }
     }
 

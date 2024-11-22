@@ -7,9 +7,9 @@ public class Audio : MonoBehaviour
 {
 
     [Header("-----Audio Source-----")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
-    [SerializeField] AudioSource playerFlashlight;
+    [SerializeField] AudioSource musicSource; //for playing bgm
+    [SerializeField] public AudioSource SFXSource; //for playing sfx
+    [SerializeField] public AudioSource playerFlashlight; //forplaying player flashlight
 
     [Header("-----Audio Clip-----")]
     public AudioClip BGM;
@@ -91,51 +91,7 @@ public class Audio : MonoBehaviour
 
 
     //for sfx
-    public void PlaySFX(AudioClip clip, float startTime = 0f, float endTime = 0f)
-    {
-        if (clip == null)
-        {
-            //Debug.LogWarning("Audio clip is null. Cannot play SFX.");
-            return;
-        }
-        else if (clip == AudioSFXUI.Instance.UIHoverAndClick)//setting for specific audio
-        {
-            startTime = 0.075f;
-            endTime = 0.21f;
-        }
-
-        if (startTime < 0f || startTime >= clip.length)
-        {
-            Debug.LogWarning("Start time is out of bounds for the provided clip.");
-            return;
-        }
-
-        if (endTime > 0f && endTime <= clip.length && endTime > startTime)
-        {
-            StartCoroutine(PlayClipWithEndTime(clip, startTime, endTime));
-        }
-        else
-        {
-            // Default behavior: Play the whole clip
-            SFXSource.PlayOneShot(clip);
-        }
-    }
-
-    private IEnumerator PlayClipWithEndTime(AudioClip clip, float startTime, float endTime)
-    {
-        SFXSource.clip = clip;
-        SFXSource.time = startTime; // Set start time
-        SFXSource.Play();
-
-        float duration = endTime - startTime;
-        yield return new WaitForSeconds(duration);
-
-        SFXSource.Stop(); // Stop playback
-        SFXSource.clip = null; // Clear the clip
-    }
-
-    //for player
-    public void playerBehave(AudioClip clip, float startTime = 0f, float endTime = 0f)
+    public void PlayClipWithSource(AudioClip clip, AudioSource source, float startTime = 0f, float endTime = 0f)
     {
         if (clip == null)
         {
@@ -147,35 +103,38 @@ public class Audio : MonoBehaviour
             startTime = 0.2f;
             endTime = 0.6f;
         }
+        else if (clip == AudioSFXUI.Instance.UIHoverAndClick)//setting for specific audio
+        {
+            startTime = 0.075f;
+            endTime = 0.21f;
+        }
 
         if (startTime < 0f || startTime >= clip.length)
         {
-            Debug.LogWarning("Start time is out of bounds for the provided clip.");
+            //Debug.LogWarning("Start time is out of bounds for the provided clip.");
             return;
         }
 
         if (endTime > 0f && endTime <= clip.length && endTime > startTime)
         {
-            StartCoroutine(PlayClipWithEndTime2(clip, startTime, endTime));
+            StartCoroutine(PlayClipWithEndTime(clip, source, startTime, endTime));
         }
         else
         {
-            // Default behavior: Play the whole clip
-            playerFlashlight.PlayOneShot(clip);
+            source.PlayOneShot(clip);
         }
     }
 
-    private IEnumerator PlayClipWithEndTime2(AudioClip clip, float startTime, float endTime)
+    private IEnumerator PlayClipWithEndTime(AudioClip clip, AudioSource source, float startTime, float endTime)
     {
-        playerFlashlight.clip = clip;
-        playerFlashlight.time = startTime; // Set start time
-        playerFlashlight.Play();
+        source.clip = clip;
+        source.time = startTime;
+        source.Play();
 
-        float duration = endTime - startTime;
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(endTime - startTime);
 
-        playerFlashlight.Stop(); // Stop playback
-        playerFlashlight.clip = null; // Clear the clip
+        source.Stop();
+        source.clip = null;
     }
 
 

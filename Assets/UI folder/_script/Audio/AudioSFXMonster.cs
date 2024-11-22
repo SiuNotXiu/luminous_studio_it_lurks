@@ -7,24 +7,22 @@ public class AudioSFXMonster : MonoBehaviour
     public static AudioSFXMonster Instance;
     [Header("SFX GettingHurt")]
     public AudioClip Hit;
-    public AudioClip MissAttack;
+    public AudioClip Hit2;
+    public AudioClip Hit3;
 
     [Header("SFX Monster")]
     [Header("--NightWalker")]
     public AudioClip Running;
     public AudioClip Walking;
-    public AudioClip Anger1;
-    public AudioClip Anger2;
-    public AudioClip Growl1;
-    public AudioClip Growl2;
+    public AudioClip Anger;
+    public AudioClip Growl;
     public AudioClip Whimper1;
     public AudioClip Whimper2;
     public AudioClip Whimper3;
+    public AudioClip Whimper4;
 
     [Header("--WeepingScarecrow")]
-    public AudioClip Rustling1;
-    public AudioClip Rustling2;
-    public AudioClip Rustling3;
+    public AudioClip Rustling;
     public AudioClip Activation1;
     public AudioClip Activation2;
 
@@ -34,7 +32,6 @@ public class AudioSFXMonster : MonoBehaviour
     public AudioClip Breathing3;
     public AudioClip Laugh1;
     public AudioClip Laugh2;
-    public AudioClip Laugh3;
 
     private void Awake()
     {

@@ -21,12 +21,12 @@ public class EnterGame : MonoBehaviour
     private void changeScene(string scene)
     {
         playClick();
-        Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.ForestAmbience);
+        AudioSFXEnvironment.Instance.EnterGame();
         SceneManager.LoadScene(scene);
     }
     private void playClick()
     {
-        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+        Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
     }
 
 }

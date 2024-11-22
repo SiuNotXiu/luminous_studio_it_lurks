@@ -1,0 +1,34 @@
+UI Hover & Click:               When the player hovers over or clicked on the various UI menu in the game
+                                Applies for both the main menu and the journal
+Story Brief Play:               Once the player clicks play, the screen fades to black. After 3 seconds of silence in the darkness, play this sfx
+Story Brief Next:               Plays at the start of the fade in of the 2nd story brief screen
+Story Brief End:                Plays at the start of the fade out of the 2nd story brief
+Pencil Writing:                 When the player picks up a Story Scrap Paper
+Optional Scrap Paper Pickup:    When the player picks up an optional scrap paper
+Book Open Closed:               When the book opens or closed
+Page Turn:                      When turning the page in the journal or switching tabs within the journal
+Herb & Stick Pickup:            When the player picks up a herb, stick, large sticks, or branches on the floor
+Item Pickup:                    When the player picks up craftable and non-craftable items on the floor (not including herbs, stick, large sticks, branches, and keys)
+Item Drop:                      When the player drops any item onto the ground
+Key Pickup:                     When the player picks up a key on the floor
+Door Locked:                    When the player interacts with the basement door (without collecting all the scrap papers and the key)
+Door Open:                      When the player interacts with the basement door successfully
+Door Close:                     Plays when the player loads into the basement scene
+Gate Open:                      When the player opens a gate
+Makeshift Campsite Place:       When the player places down a makeshift campsite
+Healing:                        When the player is using a healing item
+Adrenaline:                     When the player uses an adrenaline
+Battery Refill:                 When the player puts in a new battery
+Medicine Craft:                 When the player crafts a Bushcraft Medicine
+Campsite Craft:                 When the player crafts a Makeshift Campsite
+
+
+--Credits--
+UI Hover & Click:               https://pixabay.com/sound-effects/ui-click-43196/
+Story Brief Play:               https://pixabay.com/sound-effects/tape-cassette-insert-172758/
+Story Brief Next:               https://pixabay.com/sound-effects/cassette-eject-172757/
+Pencil Writing:                 https://pixabay.com/sound-effects/pencil-writing-32447/
+Optional Scrap Paper Pickup:    https://pixabay.com/sound-effects/paper-rustling-97867/
+Book Open Closed & Page Turn:   https://pixabay.com/sound-effects/book-page-turn-104314/
+Key Pickup:                     https://mixkit.co/free-sound-effects/key/
+Adrenaline:                     https://pixabay.com/sound-effects/syringe-35662/

@@ -1,0 +1,1 @@
+Hit: When the monster connects an attack onto the player
