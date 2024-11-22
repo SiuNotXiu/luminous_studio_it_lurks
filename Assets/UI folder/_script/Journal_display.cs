@@ -27,12 +27,6 @@ public class Journal_display : MonoBehaviour
         }
     }
 
-    public void PlayerPressedE()
-    {
-        Page1.SetActive(true);
-        Page2.SetActive(false);
-    }
-
     public void Show()
     {
         gameObject.SetActive(true);

@@ -44,4 +44,13 @@ public class AudioSFXUI : MonoBehaviour
             Instance = this;
         }
     }
+
+    public AudioClip RandomNoiseForPageTurn()
+    {
+        AudioClip[] randomNoises = { PageTurn, PageTurn2, PageTurn3, PageTurn4 };
+        AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+        return randomClip;
+
+        //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
+    }
 }

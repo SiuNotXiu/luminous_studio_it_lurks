@@ -26,7 +26,7 @@ public class EnterGame : MonoBehaviour
     }
     private void playClick()
     {
-        Audio.Instance.PlaySFX(AudioSFXUI.Instance.UIHoverAndClick);
+        Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
     }
 
 }
