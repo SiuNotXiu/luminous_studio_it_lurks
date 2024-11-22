@@ -474,8 +474,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 102}
-  m_LocalScale: {x: 15.6, y: 15.6, z: 15.6}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8266466602411543593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -520,7 +520,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54735cd3d3884734db65beca81bfd3b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1825,7 +1825,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1850,11 +1850,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.85
+  orthographic size: 5.4
   m_Depth: -3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 9343
+    m_Bits: 8319
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: e8608d492aa94f24c80ae21e1593a11c, type: 2}
   m_TargetDisplay: 0
@@ -2875,7 +2875,6 @@ GameObject:
   - component: {fileID: 5968436064574450676}
   - component: {fileID: 3747667990972451075}
   - component: {fileID: 8720058826498741010}
-  - component: {fileID: 7094203600274729482}
   m_Layer: 0
   m_Name: camera_mask_for_monster_in_range
   m_TagString: Untagged
@@ -2934,13 +2933,13 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.85
+  orthographic size: 5.4
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 2048
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 7854e75c99ac98c45ab653c630c6ee49, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -3002,22 +3001,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &7094203600274729482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6005876902904641989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a6be9eb76a9d44aaea6f009672ae66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  object_shape_for_mask:
-  - {fileID: 5530881587780331558}
-  - {fileID: 6659668939817466238}
-  mask_for_monster_in_range: {fileID: 8400000, guid: 7854e75c99ac98c45ab653c630c6ee49, type: 2}
 --- !u!1 &6022536843213643722
 GameObject:
   m_ObjectHideFlags: 0
