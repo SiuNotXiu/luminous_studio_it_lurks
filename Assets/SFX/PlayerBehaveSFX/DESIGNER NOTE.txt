@@ -1,0 +1,8 @@
+Dirt Footstep:      When player is walking on dirt/dirt road
+Grass Footstep:     When player is walking on grass
+Cornfield Footstep: When the player is walking in cornfield
+Concrete Footstep:  When the player is walking on concrete/stone
+Wood Footstep:      When the player is walking on wooden floors
+Flashlight:         When the player turns on/off their flashlight
+Flashlight Flicker: When the player's flashlight is about to die
+Heartbeat:          When the player is one hit away from dying

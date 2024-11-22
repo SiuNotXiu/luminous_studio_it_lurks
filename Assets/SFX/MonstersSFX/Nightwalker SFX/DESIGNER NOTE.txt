@@ -1,0 +1,6 @@
+Growls:           When the monster is nearby/attacking
+Angry Growls:     When you flash the monster
+Whimpers:         The monster fleeing when you continue to flash it
+Walking:          When the monster is stalking
+Running:          When the monster is chasing/running away
+

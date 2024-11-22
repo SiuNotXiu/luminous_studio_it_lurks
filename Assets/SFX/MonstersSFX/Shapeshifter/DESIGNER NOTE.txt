@@ -1,0 +1,2 @@
+Laughing:          Plays after connecting a successful attack and when morphing back to its disguise form
+Breathing:         Plays when its eyes are popping out during its disguise form
