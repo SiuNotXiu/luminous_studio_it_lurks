@@ -87149,7 +87149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6342407987601567175, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 8319
+      value: 8575
       objectReference: {fileID: 0}
     - target: {fileID: 6956946075455410794, guid: dc8713ad1335db74283d67476367f73a, type: 3}
       propertyPath: object_camera_main
