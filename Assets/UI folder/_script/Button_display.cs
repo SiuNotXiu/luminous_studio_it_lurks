@@ -64,6 +64,6 @@ public class Button_display : MonoBehaviour
     private void playClick()
     {
         if(Audio.Instance != null)
-        Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
+        Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.RandomNoiseForPageTurn(), Audio.Instance.SFXSource);
     }
 }

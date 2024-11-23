@@ -104,6 +104,7 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
         {
             if (isFull && resultItemData != null)
             {
+                playCrafting();
                 OnClicked?.Invoke(this);
                 inventoryController.AddCraftedItemToInventory(resultItemData);
 
@@ -132,4 +133,15 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
         color.a = alpha;
         resultImage.color = color;
     }
+
+    #region Sound Effect
+    private void playCrafting()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.MedicineCraft, Audio.Instance.SFXSource);
+        }
+    }
+    #endregion
+
 }

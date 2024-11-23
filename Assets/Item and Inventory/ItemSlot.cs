@@ -294,18 +294,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             case "Battery":
                 battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_normal);
+                RefillBatterySFX();
                 RemoveItem();
                 break;
 
             case "1300 mAh Battery":
                 //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
                 if (battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_1300_mah) == true)
+                {
+                    RefillBatterySFX();
                     RemoveItem();
+                }
                 break;
 
             case "First Aid Kits":
                 if (!playerHealth.GetFullHealth())
                 {
+                    playHealingSFX();
                     playerHealth.FullHeal();
                     RemoveItem();
                 }
@@ -318,6 +323,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "Bandage":
                 if (!playerHealth.GetFullHealth())
                 {
+                    playHealingSFX();
                     playerHealth.Heal();
                     RemoveItem();
                 }
@@ -330,6 +336,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "Bushcraft Medicine":
                 if (!playerHealth.GetFullHealth())
                 {
+                    playHealingSFX();
                     playerHealth.Heal();
                     RemoveItem();
                 }
@@ -341,6 +348,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
             case "Adrenaline":
                 //A syringe that makes the character move 1.5 times faster for 5 seconds
+                playAdrenalineSFX();
                 TopdownMovement playerMovement = playerTransform.GetComponent<TopdownMovement>();
                 if (playerMovement != null)
                 {
@@ -372,7 +380,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             droppedItemScript.Initialize(itemData);
         }
-
+        playDroppingSFX();
         ClearSlot();
         HideDropdownMenu();
     }
@@ -471,6 +479,34 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         if (Audio.Instance != null)
         {
             Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
+        }
+    }
+    private void RefillBatterySFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.RandomNoiseForBatteryRefill(), Audio.Instance.SFXSource);
+        }
+    }
+    private void playHealingSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Healing, Audio.Instance.SFXSource);
+        }
+    }
+    private void playAdrenalineSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Adrenaline, Audio.Instance.SFXSource);
+        }
+    }
+    private void playDroppingSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Item_Drop, Audio.Instance.SFXSource);
         }
     }
 
