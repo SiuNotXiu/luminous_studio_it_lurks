@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8008048189345170359}
   - component: {fileID: 8591333248837230449}
   - component: {fileID: 2330236559114282122}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: WeepingScarecrow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -39,6 +39,7 @@ Transform:
   - {fileID: 3160934140861185863}
   - {fileID: 9128442833394722560}
   - {fileID: 5394618181610078190}
+  - {fileID: 3971383187356030472}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9029817470055951911
@@ -108,16 +109,15 @@ MonoBehaviour:
   idleTrigger: {fileID: 0}
   attackTrigger: {fileID: 8628428291590148676}
   followTrigger: {fileID: 1538488497822471785}
+  shine: 0
   flahsed: 0
   timer: 0
   playerMovement: {fileID: 0}
   enterSoundClips:
-  - {fileID: 8300000, guid: 3f2b1c91bfd77f34b8857974f0bff963, type: 3}
-  - {fileID: 8300000, guid: 42cb26da7ecf6d24b89350a714e4b928, type: 3}
+  - {fileID: 8300000, guid: b13d8a30539a743489155c2b9aaff109, type: 3}
+  - {fileID: 8300000, guid: 559a70eb5fdf9df47970e57c3325b181, type: 3}
   flwSoundClips:
-  - {fileID: 8300000, guid: aea4182cdb14e7b4bad22bc5ecb8bfe1, type: 3}
-  - {fileID: 8300000, guid: 50979319cfbf18a4894d04b044d7bff2, type: 3}
-  - {fileID: 8300000, guid: 8b02100176d28dd4a9f889e69548e31c, type: 3}
+  - {fileID: 8300000, guid: 94a48119beecf4a469ad7fac5264f237, type: 3}
   atkSoundClips: []
 --- !u!195 &8143701498953472332
 NavMeshAgent:
@@ -127,7 +127,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997167477901046659}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: 1479372276
   m_Radius: 2.81
   m_Speed: 3.5
   m_Acceleration: 8
@@ -315,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9128442833394722560
 Transform:
   m_ObjectHideFlags: 0
@@ -459,3 +459,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca02f67d6da79ae47b15f4982ec29873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8352677181296176495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3971383187356030472}
+  - component: {fileID: 1387597474293640095}
+  m_Layer: 7
+  m_Name: flashlight_trigger_area_dont_change_name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3971383187356030472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352677181296176495}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2945918093115412467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1387597474293640095
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352677181296176495}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.5508423, y: 12.49661}
+  m_Size: {x: 8.76236, y: 25.993223}
+  m_Direction: 0

@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 673972250946543938}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.19, z: 0}
+  m_LocalPosition: {x: 2.48, y: 21, z: 0}
   m_LocalScale: {x: 1.66254, y: 1.6828899, z: 3.26}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -156,9 +156,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.58}
-      - {x: -0.5, y: -0.3}
-      - {x: 0.5, y: -0.3}
+    - - {x: -1.0909727, y: 11.0998535}
+      - {x: -9.652977, y: -11.916142}
+      - {x: 8.951509, y: -11.224444}
   m_UseDelaunayMesh: 0
 --- !u!1 &2185217964418346519
 GameObject:
@@ -200,7 +200,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2185217964418346519}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -225,9 +225,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0519427, y: 11.009229}
+  m_Offset: {x: 1.0519409, y: 10.902805}
   serializedVersion: 2
-  m_Radius: 31.906378
+  m_Radius: 40.528164
 --- !u!114 &4553243925226310059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,18 +332,17 @@ GameObject:
   - component: {fileID: 7407456413002066286}
   - component: {fileID: 388977694933684988}
   - component: {fileID: 3744177220498758824}
-  - component: {fileID: 162004682532734470}
   - component: {fileID: 3547470084883853217}
   - component: {fileID: 2531694453090508065}
   - component: {fileID: 4271547083133838083}
   - component: {fileID: 8289902235034148156}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Nightwalkers
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3035412185471361213
 Transform:
   m_ObjectHideFlags: 0
@@ -354,7 +353,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.97, y: -2.74, z: 0}
-  m_LocalScale: {x: 0.26042348, y: 0.26042348, z: 0.26042348}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.11269546}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6037032906271475065}
@@ -404,7 +403,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 48b101b584faa49459ae98e5296a8c65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -424,7 +423,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2766521153818071665}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -334000983
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
@@ -445,25 +444,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2766521153818071665}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 246c84d81f95da749b2c5d3db0f567df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   flashed: 0
   flashtimer: 0
---- !u!114 &162004682532734470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2766521153818071665}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f299fb9283f47c44905a1068eb49b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3547470084883853217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +502,10 @@ MonoBehaviour:
   fleeTime: 5
   fleeTimer: 0
   player: {fileID: 0}
+  cornfieldRange: 0
+  cornfieldMask:
+    serializedVersion: 2
+    m_Bits: 0
   growlAudio:
   - {fileID: 8300000, guid: 0237124dc24d432498d2835bbbdd5aac, type: 3}
   - {fileID: 8300000, guid: 676730b12ac8e0d4eb36a3c0c42c37f9, type: 3}
@@ -672,6 +663,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.4876273, y: 3.1800597}
-  m_Size: {x: 5.475253, y: 17.61838}
+  m_Offset: {x: 5.225254, y: 11.989201}
+  m_Size: {x: 0.0001001358, y: 0.0001001358}
   m_Direction: 0

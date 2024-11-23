@@ -9,6 +9,7 @@ TagManager:
   - PerksItem
   - Campsite
   - ScrapPaper
+  - Cornfield
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 #if UNITY_EDITOR
 using UnityEditor.Experimental.GraphView;
@@ -7,6 +8,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -59,7 +61,12 @@ public class EnemyMovement : MonoBehaviour
     private bool inAtkArea = false;
     private Animator anim;
     private Vector2 previousPosition;
-    private bool hitBox = false;
+    [SerializeField] private float cornfieldRange;
+    [SerializeField] LayerMask cornfieldMask;
+    private bool hitBox = false;  
+    private bool cornfield = false;
+    private bool cornfieldRangeCheck = false;
+    [SerializeField]private CustomTrigger cornfieldTrigger;
     #endregion
 
     #region<Sfx>
@@ -86,6 +93,7 @@ public class EnemyMovement : MonoBehaviour
         agent.updateRotation = false;
         agent.speed = speed;
         
+        
     }
 
     private void Awake()
@@ -95,6 +103,8 @@ public class EnemyMovement : MonoBehaviour
 
         attackRangeTrigger.EnteredTrigger += OnAttackRangeTriggerEntered;
         attackRangeTrigger.ExitedTrigger += OnAttackRangeTriggerExited;
+        cornfieldTrigger.EnteredTrigger += OnCornFieldTriggerEntered;
+        cornfieldTrigger.ExitedTrigger += OnCornFieldTriggerExited;
         chaseRangeTrigger.EnteredTrigger += OnChaseRangeTriggerEntered;
         hitBoxTrigger.EnteredTrigger += OnHitBoxTriggerEntered;
     }
@@ -114,6 +124,12 @@ public class EnemyMovement : MonoBehaviour
                 timeSinceLastAttack = 0f;
             }
         }
+
+        if (cornfieldRangeCheck)
+        {
+            CornfieldRangeCheck();
+        }
+
 
         switch (currentState)
         {
@@ -148,15 +164,22 @@ public class EnemyMovement : MonoBehaviour
         {
             currentState = EnemyState.Attack;
         }
+
+       
+     
     }
 
     private void IdleState()
     {
-        if (target != null && LineOfSight())
+        if (agent.isStopped == false)
+        {
+            agent.isStopped = true;
+        }
+
+        if (target != null && cornfield == false) 
         {
             currentState = EnemyState.Stalking;
         }
-
 
     }
 
@@ -266,14 +289,19 @@ public class EnemyMovement : MonoBehaviour
             agent.isStopped = false;
         }
         // Update the chase timer for movement speed changes
-        chaseTimer += Time.deltaTime;
-        if (chaseTimer > chaseTime)
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+        if (distanceToPlayer < 5f) // Close range, move slower
         {
-            speed = 7;
+            speed = 5f;
         }
-        else
+        else if (distanceToPlayer >= 5f && distanceToPlayer <= 20f) // Mid range, normal speed
         {
-            speed = 3;
+            speed = 8f;
+        }
+        else if (distanceToPlayer > 20f) // Far range, move faster
+        {
+            speed = 15f;
         }
         agent.speed = speed;
 
@@ -361,6 +389,12 @@ public class EnemyMovement : MonoBehaviour
             agent.SetDestination(transform.position);
             if(gameObject.GetComponent<monster_database>().GetFlee()==true)
             {
+                if (!isFleeAudioPlaying)
+                {
+                    SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, 1f);
+                    isFleeAudioPlaying = true;
+                }
+
                 speed = 7;
                 agent.speed = speed;
                 // Calculate the direction away from the player
@@ -382,11 +416,7 @@ public class EnemyMovement : MonoBehaviour
 
                 }
 
-                if (!isFleeAudioPlaying)
-                {
-                    SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, 1f);
-                    isFleeAudioPlaying = true;
-                }
+              
 
             }
 
@@ -501,6 +531,39 @@ public class EnemyMovement : MonoBehaviour
         previousPosition = transform.position;
     }
 
+    private void CornfieldRangeCheck()
+    {
+        //Debug.Log("cornfield ray");
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        Vector2 StartPos = collider.bounds.center;
+        Vector2 Direction = (target.position - transform.position).normalized;
+
+        RaycastHit2D Hit = Physics2D.Raycast(StartPos, Direction, cornfieldRange, cornfieldMask);
+
+        if (cornfield == false)
+        {
+            if (Hit.collider != null && Hit.collider.CompareTag("Cornfield"))
+            {
+                Debug.DrawRay(StartPos, Direction * cornfieldRange, Color.black); // Debug visualization for hit
+                currentState = EnemyState.Idle;
+                cornfield = true;
+                anim.SetBool("isWalking", false);
+                anim.SetBool("isRunning", false);
+
+
+            }
+            else
+            {
+                Debug.DrawRay(StartPos, Direction * cornfieldRange, Color.red);
+            }
+        }
+
+       
+
+      
+
+    }
+
     #region<OntriggerEntered/Exit>
 
     private void OnIndleRangeTriggerEntered(Collider2D collision)
@@ -508,9 +571,9 @@ public class EnemyMovement : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             target = collision.transform;
-            
 
-            if (currentState == EnemyState.Idle)
+
+            if (currentState == EnemyState.Idle && cornfield == false) 
             {
                 currentState = EnemyState.Stalking;
                 Debug.Log("stalking");
@@ -540,10 +603,30 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnChaseRangeTriggerEntered(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && cornfield == false) 
         {
             Debug.Log("Chasing");
             currentState = EnemyState.Chasing;
+        }
+    }
+
+    private void OnCornFieldTriggerEntered(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && target != null) 
+        {
+            cornfieldRangeCheck = true;
+            Debug.Log("cornfieldRangeCheck");
+        }
+       
+    }
+
+    private void OnCornFieldTriggerExited(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            cornfieldRangeCheck = false;
+            cornfield = false;
+            Debug.Log("Cornfield false");
         }
     }
 
