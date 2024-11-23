@@ -71,12 +71,8 @@ public class Audio : MonoBehaviour
 
     public void SetBackgroundMusic(AudioClip newBackgroundClip)//set BGM
     {
-        // Only switch if it's a new clip
-        if (musicSource.clip != newBackgroundClip)
-        {
-            musicSource.clip = newBackgroundClip;
-            musicSource.Play();
-        }
+        musicSource.clip = newBackgroundClip;
+        musicSource.Play();
     }
 
     private void ApplyVolumeSettings()

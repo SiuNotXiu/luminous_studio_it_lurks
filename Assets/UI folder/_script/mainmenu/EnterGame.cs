@@ -10,19 +10,17 @@ public class EnterGame : MonoBehaviour
     public GameObject previousScene;
     public string sceneToLoad;
 
-    // Start is called before the first frame update
     void Start()
     {
         previousScene.SetActive(false);
         gameScene.onClick.AddListener(() => changeScene(sceneToLoad));
     }
 
-    // Update is called once per frame
     private void changeScene(string scene)
     {
         playClick();
         AudioSFXEnvironment.Instance.EnterGame();
-        SceneManager.LoadScene(scene);
+        StartCoroutine(ScreenLoader.Instance.LoadLevel(scene,true));
     }
     private void playClick()
     {
