@@ -402,7 +402,8 @@ public class InventoryController : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.JournalOpenClose, Audio.Instance.SFXSource, 0.37f,0.7f);
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.JournalOpenClose, Audio.Instance.SFXSource);
+            //should be custormise the start sound 0.37f end 0.7f
         }
     }
     private void flashlightSFX()

@@ -106,11 +106,7 @@ public class Audio : MonoBehaviour
             startTime = 0.2f;
             endTime = 0.6f;
         }
-        else if (clip == AudioSFXUI.Instance.UIHoverAndClick)//setting for specific audio
-        {
-            startTime = 0.075f;
-            endTime = 0.21f;
-        }
+
 
         if (startTime < 0f || startTime >= clip.length)
         {

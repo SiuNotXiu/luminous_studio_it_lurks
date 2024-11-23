@@ -623,7 +623,7 @@ MonoBehaviour:
   Key_Pickup: {fileID: 8300000, guid: 58cec9faa18cdf3479e1fa885f59d605, type: 3}
   MakeshiftCampsite_Place: {fileID: 8300000, guid: 6729aee8d4899f3418b34d1b2caabd6b, type: 3}
   MedicineCraft: {fileID: 8300000, guid: 76d88e39005dc0d48aa18db81d771107, type: 3}
-  OptionalScrapPaperPickup: {fileID: 8300000, guid: 85da6ca0825775343983b3279da7504f, type: 3}
+  OptionalScrapPaperPickup: {fileID: 8300000, guid: 89f1f385677b59e449dfd43ac2db5955, type: 3}
 --- !u!1 &7786296587503908847
 GameObject:
   m_ObjectHideFlags: 0
