@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,9 @@ public class ScreenLoader : MonoBehaviour
     public static ScreenLoader Instance;
     public Animator transition;
     public float transitionTime = 3f;
+
+    private GameObject p1;
+    private GameObject p2;
     private void Awake()
     {
         // Implement singleton pattern
@@ -19,6 +23,28 @@ public class ScreenLoader : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+
+    private void Start()
+    {
+        p1 = GameObject.Find("1st appear");
+        p2 = FindInactiveObjectByName("2nd appear");
+
+    }
+    public void ButtonCall()
+    {
+        StartCoroutine(FunctionCall());
+    }
+
+    public IEnumerator FunctionCall()
+    {
+        p1.SetActive(false);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        p2.SetActive(true);
+        Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.Ambience);
+        transition.SetTrigger("End");
     }
 
     public IEnumerator LoadLevel(string screen, bool IsGameScene, GameObject appear = null, GameObject disable = null)
@@ -62,5 +88,18 @@ public class ScreenLoader : MonoBehaviour
         }
 
         
+    }
+
+    private GameObject FindInactiveObjectByName(string name)
+    {
+        Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
+        foreach (Transform t in allTransforms)
+        {
+            if (t.name == name)
+            {
+                return t.gameObject;
+            }
+        }
+        return null;
     }
 }

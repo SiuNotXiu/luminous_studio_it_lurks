@@ -13,16 +13,17 @@ public class MainMenu : MonoBehaviour
     public Button button_c;
     public Button button_q;
 
+    [Header("Main Menu")]
     public GameObject play;
     public GameObject tutorial;
     public GameObject option;
     public GameObject credit;
+    public GameObject quit;
+
     public GameObject main_menu;
 
 
 
-
-    public GameObject gamePopup; // Assign your popup GameObject here
 
     private void Start()
     {
@@ -42,7 +43,7 @@ public class MainMenu : MonoBehaviour
             audioMainMenu.clip = AudioSFXPlayerBehave.Instance.RandomNoiseForFlashlightFlicker();
         }
     }
-
+    #region Main Menu
     public void GameOn()
     {
         disableAnimator();
@@ -55,7 +56,6 @@ public class MainMenu : MonoBehaviour
     {
         disableAnimator();
         playClick();
-        // Implement tutorial logic here
         tutorial.SetActive(true);
     }
 
@@ -63,7 +63,6 @@ public class MainMenu : MonoBehaviour
     {
         disableAnimator();
         playClick();
-        // Implement option logic here
         option.SetActive(true);
     }
 
@@ -71,7 +70,6 @@ public class MainMenu : MonoBehaviour
     {
         disableAnimator();
         playClick();
-        // Implement credit logic here
         credit.SetActive(true);
     }
 
@@ -79,12 +77,10 @@ public class MainMenu : MonoBehaviour
     {
         disableAnimator();
         playClick();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        quit.SetActive(true);
     }
+    #endregion
+
     private void disableAnimator()
     {
         animator.enabled = false;
