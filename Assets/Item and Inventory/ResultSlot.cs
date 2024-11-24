@@ -33,7 +33,12 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
         {
             // example recipe: combine "ItemA" and "ItemB" to get "ResultItem"
             { "ginseng+yarrow", "Bushcraft Medicine" },
-            { "yarrow+ginseng", "Bushcraft Medicine" }
+            { "yarrow+ginseng", "Bushcraft Medicine" },
+            { "stick+stick", "Large Stick" },
+            { "large stick+large stick", "Tent Beam" },
+            { "large branch+large branch", "Tent Flysheet" },
+            { "tent beam+tent flysheet", "Makeshift Camp" },
+            { "tent flysheet+tent beam", "Makeshift Camp" }
         };
     }
 
