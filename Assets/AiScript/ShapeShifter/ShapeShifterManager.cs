@@ -26,6 +26,8 @@ public class ShapeShifterManager : MonoBehaviour
     public bool inAtkArea { get; private set; } = false;
     public Transform target { get; private set; }
     public Rigidbody2D rb { get; private set; }
+
+    public Animator anim;
    
     #endregion
 

@@ -7,6 +7,7 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
 {
     private SpriteRenderer sr;
     private bool isPlayingSound = false;
+    private bool isShineDurationCheck = false;
     public override void EnterState(ShapeShifterManager shapeShifter)
     {
         sr = shapeShifter.GetComponent<SpriteRenderer>();
@@ -23,26 +24,35 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
                 isPlayingSound = true;
                 shapeShifter.StartCoroutine(PlaySoundEffect(shapeShifter));
                 SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetShineAudio(), shapeShifter.transform, 1f);
+                shapeShifter.anim.SetBool("Flash", true);
             }
-            sr.color = Color.red;
+
+            if (isShineDurationCheck == false)
+            {
+                shapeShifter.StartCoroutine(ShineDuration(shapeShifter));
+            }
         }
         else
         {
-            // sr.sprite = shapeShifter.GetIdleSprite();
-            sr.color = Color.white;
+            
             if (isPlayingSound)
             {
                 shapeShifter.StopCoroutine(PlaySoundEffect(shapeShifter));
                 shapeShifter.StopAllCoroutines();
                 isPlayingSound = false;
             }
+            shapeShifter.anim.SetBool("KeepFlashing", false);
+            shapeShifter.anim.SetBool("Flash", false);
         }
-        //Debug.Log("Shine" + shapeShifter.GetShine());
+        
     }
 
     public override void ExitState(ShapeShifterManager shapeShifter)
     {
-        
+        shapeShifter.StopAllCoroutines();
+        isPlayingSound = false;
+        shapeShifter.anim.SetBool("KeepFlashing", false);
+        shapeShifter.anim.SetBool("Flash", false);
     }
 
     private IEnumerator PlaySoundEffect(ShapeShifterManager shapeShifter)
@@ -53,6 +63,12 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
             yield return new WaitForSeconds(rand);
             SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetShineAudio(), shapeShifter.transform, 1f);
         }
+    }
+
+    private IEnumerator ShineDuration(ShapeShifterManager shapeShifter)
+    {
+        yield return new WaitForSeconds(2f);
+        shapeShifter.anim.SetBool("KeepFlashing", true);
     }
 
 }
