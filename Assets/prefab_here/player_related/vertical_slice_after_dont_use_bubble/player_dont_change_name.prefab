@@ -88,8 +88,8 @@ Transform:
   m_GameObject: {fileID: 511977253278403810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.01, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4859497355077012704}
@@ -623,7 +623,7 @@ Transform:
   m_GameObject: {fileID: 1865799364642269464}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0000076293945, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1533,7 +1533,7 @@ Transform:
   m_GameObject: {fileID: 3733407224755349546}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.31000236, y: -6.0700006, z: -989.9}
+  m_LocalPosition: {x: -0.31000426, y: -6.0699997, z: -659.89996}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1690,7 +1690,7 @@ Transform:
   m_GameObject: {fileID: 3987614305617511345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.0000076293945, y: 0, z: -6.666626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1911,7 +1911,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9527873, g: 1, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.9527873, g: 1, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1940,7 +1940,7 @@ Camera:
   m_Depth: -3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8575
+    m_Bits: 74111
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: e8608d492aa94f24c80ae21e1593a11c, type: 2}
   m_TargetDisplay: 0
@@ -2109,7 +2109,7 @@ Transform:
   m_GameObject: {fileID: 4520899091983352248}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.0000076293945, y: 0, z: -6.666626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2620,6 +2620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9109965327220019704}
   - component: {fileID: 7876511222214555993}
+  - component: {fileID: 1167480497340494773}
   m_Layer: 11
   m_Name: black_circle_for_mask_monster_in_range
   m_TagString: Untagged
@@ -2637,7 +2638,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -198}
-  m_LocalScale: {x: 7.85, y: 7.85, z: 7.85}
+  m_LocalScale: {x: 7.85, y: 7.85, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1029069864035136093}
@@ -2694,6 +2695,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1167480497340494773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944276980000617991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47b9a19e43c59c4ba10490a5f0b298a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  object_flashlight_mask_for_monster_in_range: {fileID: 0}
 --- !u!1 &6006119330510455737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,7 +2787,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3411,8 +3425,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6497631474678664747}
   - {fileID: 4017798611783786926}
