@@ -2065,6 +2065,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 698936e86cce96c48a5a7a9e2dcec991, type: 2}
   - {fileID: 11400000, guid: 3d3a573158b8a974da153c7dbc66ad51, type: 2}
   - {fileID: 11400000, guid: d35017d043b27c04984367b368c47a29, type: 2}
+  - {fileID: 11400000, guid: 7aa7c03b98b365c489c63e1ad2f06e3b, type: 2}
+  - {fileID: 11400000, guid: 5a9e6413ff8c34543a439ff80f032b26, type: 2}
+  - {fileID: 11400000, guid: 6c7ae56d0605a2a4d9e81b2a720060cc, type: 2}
+  - {fileID: 11400000, guid: fe4616b77e204564a8643185ac9989f3, type: 2}
+  - {fileID: 11400000, guid: 395eb66cb7c52dc43b21bcac6fc545d1, type: 2}
+  - {fileID: 11400000, guid: fef0049f96ac0b4419755604ceb3d497, type: 2}
   journal_display: {fileID: 7317870468275218620}
   button_display: {fileID: 7337347575539058557}
   Journal: {fileID: 7052797625709910638}

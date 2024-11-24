@@ -1481,34 +1481,6 @@ PrefabInstance:
       propertyPath: Description
       value: 
       objectReference: {fileID: 1815730037}
-    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: itemDataArray.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: itemDataArray.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7aa7c03b98b365c489c63e1ad2f06e3b, type: 2}
-    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: itemDataArray.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5a9e6413ff8c34543a439ff80f032b26, type: 2}
-    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: itemDataArray.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6c7ae56d0605a2a4d9e81b2a720060cc, type: 2}
-    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: itemDataArray.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: fe4616b77e204564a8643185ac9989f3, type: 2}
-    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: itemDataArray.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 395eb66cb7c52dc43b21bcac6fc545d1, type: 2}
-    - target: {fileID: 5517201104822184155, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: itemDataArray.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: fef0049f96ac0b4419755604ceb3d497, type: 2}
     - target: {fileID: 5543902144142036102, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1601,10 +1573,6 @@ PrefabInstance:
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 1815730037}
-    - target: {fileID: 7052797625709910638, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7694574135704081524, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
