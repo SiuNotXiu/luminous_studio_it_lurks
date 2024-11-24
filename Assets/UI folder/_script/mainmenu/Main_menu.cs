@@ -46,8 +46,9 @@ public class MainMenu : MonoBehaviour
     {
         disableAnimator();
         playClick();
-        play.SetActive(true);
-        
+        playStoryBGM(); 
+        StartCoroutine(ScreenLoader.Instance.LoadLevel("Main", false, play)); //here got set play active to true
+
     }
 
     public void Tutorial()
@@ -90,10 +91,16 @@ public class MainMenu : MonoBehaviour
         audioMainMenu.enabled = false;
     }
 
+    #region Sound
     private void playClick()
     {
         Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
     }
+    private void playStoryBGM()
+    {
+        Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.StoryBriefAmbience);
+    }
 
+    #endregion
 
 }

@@ -1,82 +1,136 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Play : MonoBehaviour
 {
-    public Button back;
+    public Image nextImage;
+    public Image skipImage;
+
     public Button next;
     public Button skip;
 
+    public TextMeshProUGUI smallWord;
     public GameObject skipPage;
 
     public GameObject[] StoryPage;
 
     private int currentPage = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < StoryPage.Length; i++)
+        //deactivate all story pages initially
+        foreach (var page in StoryPage)
         {
-            StoryPage[i].SetActive(false);
+            page.SetActive(false);
         }
-        //setting
+
         currentPage = 0;
         StoryPage[currentPage].SetActive(true);
 
-        back.onClick.AddListener(PreviousStory);
         next.onClick.AddListener(NextStory);
         skip.onClick.AddListener(SkipStory);
-        back.interactable = currentPage > 0;
-        next.interactable = currentPage < StoryPage.Length -1;
 
-    }
+        // Disable next button and fade in after delay
+        next.interactable = false;
+        StartCoroutine(ButtonPrompt(10f, next, nextImage));
 
-    // Update is called once per frame
-    private void PreviousStory()
-    {
-        if (currentPage <= 0) return;
-
-        playClick();
-        StoryPage[currentPage].SetActive(false);
-        currentPage--;
-        StoryPage[currentPage].SetActive(true);
-
-        UpdateButtonInteractability();
+        // Initialize skip button's opacity
+        SetImageAlpha(skipImage, 0f);
     }
 
     private void NextStory()
     {
-        if (currentPage >= StoryPage.Length - 1) return;
-
         playClick();
         StoryPage[currentPage].SetActive(false);
         currentPage++;
-        StoryPage[currentPage].SetActive(true);
 
-        UpdateButtonInteractability();
+        if (currentPage < StoryPage.Length)
+        {
+            StoryPage[currentPage].SetActive(true);
+        }
+
+        next.interactable = false;
+        SetImageAlpha(nextImage, 0f);
+        StartCoroutine(TextPrompt(10f, smallWord));
+        StartCoroutine(ButtonPrompt(15f, skip, skipImage));
     }
 
     private void SkipStory()
     {
         playClick();
-        skipPage.SetActive(true);
+        SetImageAlpha(skipImage, 0f);
+        StartCoroutine(ScreenLoader.Instance.LoadLevel("Main", false, skipPage)); //here got set skip active to true
 
-        // Optionally deactivate all story pages if skip ends the sequence
+        // Deactivate all story pages
         foreach (var page in StoryPage)
         {
             page.SetActive(false);
         }
     }
 
-    private void UpdateButtonInteractability()
+    private IEnumerator ButtonPrompt(float delay, Button button, Image image)
     {
-        back.interactable = currentPage > 0;
-        next.interactable = currentPage < StoryPage.Length - 1;
+        yield return new WaitForSeconds(delay);
+
+        button.interactable = true;
+        yield return StartCoroutine(FadeInImage(image, 1f));
     }
 
+    private IEnumerator TextPrompt(float delay, TextMeshProUGUI text)
+    {
+        yield return new WaitForSeconds(delay);
+
+        yield return StartCoroutine(FadeInText(text, 1f));
+    }
+
+    private IEnumerator FadeInImage(Image image, float duration)
+    {
+        float elapsedTime = 0f;
+        Color color = image.color;
+
+        while (elapsedTime < duration)
+        {
+            color.a = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+            image.color = color;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        SetImageAlpha(image, 1f);
+    }
+
+    private IEnumerator FadeInText(TextMeshProUGUI text, float duration)
+    {
+        float elapsedTime = 0f;
+        Color color = text.color;
+
+        while (elapsedTime < duration)
+        {
+            color.a = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+            text.color = color;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure final opacity is 1f
+        SetTextAlpha(text, 1f);
+    }
+
+    private void SetImageAlpha(Image image, float alpha)
+    {
+        Color color = image.color;
+        color.a = alpha;
+        image.color = color;
+    }
+
+    private void SetTextAlpha(TextMeshProUGUI text, float alpha)
+    {
+        Color color = text.color;
+        color.a = alpha;
+        text.color = color;
+    }
 
     private void playClick()
     {
