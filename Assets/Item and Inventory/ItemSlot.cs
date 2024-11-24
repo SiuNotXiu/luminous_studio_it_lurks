@@ -162,7 +162,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
 
         //Debug.Log("IDK CHEcking : " + InventoryController.chest_detect.isInRange);
-        if (InventoryController.chest_detect.isInRange)
+        if (InventoryController.chest_detect.isInRange || this.itemData.itemName == "Makeshift Camp")
         {
             buttonD.gameObject.SetActive(false);
         }
