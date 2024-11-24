@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7eef690e6afd1a42929ae6328a64fbf, type: 3}
   m_Name: Large Stick
   m_EditorClassIdentifier: 
+  defaultScale: {x: 0.12, y: 0.12, z: 1}
   itemName: Large Stick
   itemTag: CraftItem
   itemSprite: {fileID: 21300000, guid: 090aa8bdec0bb5d459d920b35b236bff, type: 3}
