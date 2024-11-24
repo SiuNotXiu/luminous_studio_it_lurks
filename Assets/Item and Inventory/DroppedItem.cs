@@ -59,6 +59,8 @@ public class DroppedItem : MonoBehaviour
             {
                 spriteRenderer.sprite = droppedItemSprite;
             }
+
+            transform.localScale = data.defaultScale;
         }
     }
 

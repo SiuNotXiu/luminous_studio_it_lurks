@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewItemData", menuName = "Inventory/ItemData")]
 public class ItemData : ScriptableObject
 {
+    public Vector3 defaultScale = Vector3.one;
     public string itemName;
     public string itemTag;
     public Sprite itemSprite;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomChildActivator : MonoBehaviour
 {
-    [SerializeField] private int activeChildCount = 20; 
+    [SerializeField] private int activeChildCount;
     private List<Transform> children = new List<Transform>();
     private bool hasRandomized = false;
 

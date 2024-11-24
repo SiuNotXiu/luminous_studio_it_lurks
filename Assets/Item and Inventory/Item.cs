@@ -12,6 +12,7 @@ public class Item : MonoBehaviour
     [SerializeField] private CollectedScrapPaper paper;
     [SerializeField] private CollectedRnU upgrade;
 
+    public Vector3 DefaultScale => itemData != null ? itemData.defaultScale : Vector3.one;
     public ItemData ItemData => itemData;
     public string ItemName => itemData != null ? itemData.itemName : "";
     public string ItemTag => itemData != null ? itemData.itemTag : "";
@@ -85,6 +86,11 @@ public class Item : MonoBehaviour
         if (spriteRenderer != null && itemData != null)
         {
             spriteRenderer.sprite = itemData.itemSprite;
+        }
+
+        if (data != null)
+        {
+            transform.localScale = data.defaultScale;
         }
     }
 
