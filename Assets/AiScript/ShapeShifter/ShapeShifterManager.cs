@@ -17,6 +17,7 @@ public class ShapeShifterManager : MonoBehaviour
     {
         atkTrigger.EnteredTrigger += OnAtkTriggerEntered;
         atkTrigger.ExitedTrigger += OnAtkTriggerExited;
+        anim = gameObject.GetComponent<Animator>();
     }
 
     #endregion

@@ -19,9 +19,11 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
     {
         if (attacking == false && shapeShifter.inAtkArea==true)
         {
-            shapeShifter.StartCoroutine(testing.instance.Knockback(1, knockbackForce, shapeShifter.transform));
+            //shapeShifter.StartCoroutine(testing.instance.Knockback(1, knockbackForce, shapeShifter.transform));
 
             atk.Attack();
+            shapeShifter.anim.SetBool("Atk", true);
+            shapeShifter.StartCoroutine(ResetAtkAnimation(shapeShifter));
             SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetAtkAudio(), shapeShifter.transform, 1f);
             attacking = true;
             shapeShifter.StartCoroutine(AtkCd(shapeShifter));
@@ -69,5 +71,11 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
     {
         yield return new WaitForSeconds(3f);
         attacking = false;
+    }
+
+    IEnumerator ResetAtkAnimation(ShapeShifterManager shapeShifter)
+    {
+        yield return new WaitForSeconds(0.1f);
+        shapeShifter.anim.SetBool("Atk", false);
     }
 }

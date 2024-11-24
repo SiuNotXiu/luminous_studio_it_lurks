@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5076692588903651552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.7, y: 5.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,9 +77,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2940477, y: 15.951515}
+  m_Offset: {x: 1.2940454, y: -1.4442289}
   serializedVersion: 2
-  m_Radius: 28.682028
+  m_Radius: 11.28621
 --- !u!1 &8314615757749398049
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,15 +92,15 @@ GameObject:
   - component: {fileID: 8518744417330581933}
   - component: {fileID: 4460892184201054403}
   - component: {fileID: 3986327069345849767}
-  - component: {fileID: 2439782770477745576}
   - component: {fileID: 8555775034425917561}
+  - component: {fileID: 139076692766300057}
   m_Layer: 0
   m_Name: ShapeShifter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8237105477279087973
 Transform:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.34, y: -5.19, z: -1}
-  m_LocalScale: {x: 0.23314266, y: 0.2334569, z: 0.24172385}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 909198424243313092}
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 48b101b584faa49459ae98e5296a8c65, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6e6438115634324d9de860e3ffbe6a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -183,14 +183,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkTrigger: {fileID: 3856276162414330421}
   shine: 0
+  anim: {fileID: 0}
   shineAudio:
-  - {fileID: 8300000, guid: b6bd534163ee27d41be29e44eb4aabee, type: 3}
-  - {fileID: 8300000, guid: b76fe5f58617f21498a06bc3271112f8, type: 3}
-  - {fileID: 8300000, guid: d7323f75f6116a543a4bd18b11c6a4b3, type: 3}
+  - {fileID: 8300000, guid: 02e914b97d3068c499a18952d3815221, type: 3}
+  - {fileID: 8300000, guid: 07efd24faacb41a42a8548134fa16d15, type: 3}
+  - {fileID: 8300000, guid: f10d74060c4f70d47955a2f00315852f, type: 3}
   atkAudio:
-  - {fileID: 8300000, guid: 0703123085a74c24c96a8e487c7b4288, type: 3}
-  - {fileID: 8300000, guid: f4e822f6c09f09945aeca83a1ae118d8, type: 3}
-  - {fileID: 8300000, guid: 078a9bc94e980c447af5cc85d9a4d6ba, type: 3}
+  - {fileID: 8300000, guid: 21c9a1e791290f34bb6564d4a195eb75, type: 3}
+  - {fileID: 8300000, guid: db1f8d9ba2651f840a6c7c6689be9b5f, type: 3}
 --- !u!114 &3986327069345849767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,42 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healtheffects: {fileID: 0}
-  damageAudios: []
---- !u!58 &2439782770477745576
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8314615757749398049}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 20.000002}
-  serializedVersion: 2
-  m_Radius: 20.000002
+  damageAudios:
+  - {fileID: 8300000, guid: bf4af9c7748269348b00418c1fcb8424, type: 3}
+  - {fileID: 8300000, guid: 69f522fbc19e8d6458beb6ed76e91be0, type: 3}
 --- !u!50 &8555775034425917561
 Rigidbody2D:
   serializedVersion: 4
@@ -267,3 +234,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &139076692766300057
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314615757749398049}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0964afd1a90fdf49a18b5027a597156, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
