@@ -7,7 +7,7 @@ public class ScreenLoader : MonoBehaviour
 {
     public static ScreenLoader Instance;
     public Animator transition;
-    public float transitionTime = 1f;
+    public float transitionTime = 3f;
     private void Awake()
     {
         // Implement singleton pattern
@@ -25,10 +25,23 @@ public class ScreenLoader : MonoBehaviour
     {
         //play animation
         transition.SetTrigger("Start");
+        if(screen == "Premise")
+        {
+            Audio.Instance.SetBackgroundMusic(AudioSFXUI.Instance.StoryBriefPlay);
+            yield return new WaitForSeconds(10.128f);
+        }
+        else
+        {
+            //wait
+            yield return new WaitForSeconds(transitionTime);
+        }
 
-        //wait
-        yield return new WaitForSeconds(transitionTime);
         transition.SetTrigger("End");
+        if (screen == "Premise")
+        {
+            Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.StoryBriefAmbience);
+
+        }
         if (IsGameScene)
         {
             //Debug.Log("play scene");

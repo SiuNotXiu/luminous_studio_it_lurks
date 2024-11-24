@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject tutorial;
     public GameObject option;
     public GameObject credit;
+    public GameObject main_menu;
 
 
 
@@ -46,8 +47,7 @@ public class MainMenu : MonoBehaviour
     {
         disableAnimator();
         playClick();
-        playStoryBGM(); 
-        StartCoroutine(ScreenLoader.Instance.LoadLevel("Main", false, play)); //here got set play active to true
+        StartCoroutine(ScreenLoader.Instance.LoadLevel("Premise", false, play, main_menu)); //here got set play active to true,also audio include
 
     }
 
@@ -98,7 +98,7 @@ public class MainMenu : MonoBehaviour
     }
     private void playStoryBGM()
     {
-        Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.StoryBriefAmbience);
+        //Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.StoryBriefAmbience);
     }
 
     #endregion

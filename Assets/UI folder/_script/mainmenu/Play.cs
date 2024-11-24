@@ -34,6 +34,7 @@ public class Play : MonoBehaviour
 
         // Disable next button and fade in after delay
         next.interactable = false;
+        skip.interactable = false;
         StartCoroutine(ButtonPrompt(10f, next, nextImage));
 
         // Initialize skip button's opacity
@@ -59,7 +60,7 @@ public class Play : MonoBehaviour
 
     private void SkipStory()
     {
-        playClick();
+        continueSFX();
         SetImageAlpha(skipImage, 0f);
         StartCoroutine(ScreenLoader.Instance.LoadLevel("Main", false, skipPage)); //here got set skip active to true
 
@@ -132,8 +133,15 @@ public class Play : MonoBehaviour
         text.color = color;
     }
 
+    #region Sound
     private void playClick()
     {
-        Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
+        Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.StoryBriefNext, Audio.Instance.SFXSource);
     }
+    private void continueSFX()
+    {
+        Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.StoryBriefEnd, Audio.Instance.SFXSource);
+    }
+
+    #endregion
 }
