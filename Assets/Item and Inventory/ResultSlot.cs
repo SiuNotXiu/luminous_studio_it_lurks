@@ -36,7 +36,7 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
             { "yarrow+ginseng", "Bushcraft Medicine" },
             { "stick+stick", "Large Stick" },
             { "large stick+large stick", "Tent Beam" },
-            { "large branch+large branch", "Tent Flysheet" },
+            { "branch+branch", "Tent Flysheet" },
             { "tent beam+tent flysheet", "Makeshift Camp" },
             { "tent flysheet+tent beam", "Makeshift Camp" }
         };

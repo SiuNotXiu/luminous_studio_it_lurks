@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Makeshift Camp
   itemTag: CraftItem
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: c1c708e193d2249469c044956a2f42c0, type: 3}
   droppedSprite: {fileID: 0}
-  selectedSprite: {fileID: 0}
+  selectedSprite: {fileID: 21300000, guid: 57ca1ae388c6d0046875273b55431c3c, type: 3}
   isBulbCompatible: 0
   isBatteryCompatible: 0
