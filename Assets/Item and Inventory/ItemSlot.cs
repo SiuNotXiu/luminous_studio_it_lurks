@@ -81,6 +81,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         return !isFull;
     }
 
+    #region DropdownMenu Interface
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!isFull)
@@ -229,7 +230,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         SelectItem();
     }
-
+#endregion
     private void StoreItem(ItemSlot itemSlot)
     {
         Debug.Log("Store item: " + itemSlot.itemData.itemName);
@@ -288,6 +289,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         HideDropdownMenu();
     }
 
+    #region Using Item Function
     private void UseItem()
     {
         if (itemData == null) return;
@@ -374,6 +376,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         HideDropdownMenu();
     }
 
+    #endregion
+
     private void DropItem()
     {
         if (itemData == null) return;
@@ -432,6 +436,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         return false; // Pointer is not over relevant UI
     }
 
+    #region General Slot Behavior
     public void ClearSlot()
     {
         itemData = null;
@@ -481,6 +486,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    #endregion
     private void SpawnCampsite()
     {
         if (campsitePrefab != null && playerTransform != null)

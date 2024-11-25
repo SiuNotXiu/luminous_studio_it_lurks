@@ -7,11 +7,11 @@ public class Gate : MonoBehaviour
     [SerializeField] private InventoryController inventoryController; 
     [SerializeField] private string gateID; 
 
-    private bool isPlayerInRange = false;
+    private bool isPlayerInGate = false;
 
     private void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E)) 
+        if (isPlayerInGate && Input.GetKeyDown(KeyCode.E)) 
         {
             TryUnlockGate();
         }
@@ -29,16 +29,14 @@ public class Gate : MonoBehaviour
         }
         else
         {
-            Debug.Log("You need the correct key to unlock this gate!");
+            Debug.Log("Missing key bro?");
         }
     }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerInRange = true; 
+            isPlayerInGate = true;
             Debug.Log($"Player entered range of gate {gateID}");
         }
     }
@@ -47,8 +45,9 @@ public class Gate : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerInRange = false; 
+            isPlayerInGate = false;
             Debug.Log($"Player exited range of gate {gateID}");
         }
     }
 }
+
