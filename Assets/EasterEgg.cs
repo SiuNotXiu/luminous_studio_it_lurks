@@ -9,6 +9,7 @@ public class EasterEgg : MonoBehaviour
     public static EasterEgg Instance;
     public static bool closingEgg = true;
     [Header("Easter Egg")]
+    public GameObject panel; 
     public GameObject[] Egg;
     private bool spacebarPressed = false;
     private Coroutine spacebarCoroutine;
@@ -47,7 +48,7 @@ public class EasterEgg : MonoBehaviour
         {
             Egg[1].SetActive(true);
         }
-
+        panel.SetActive(true);
         closingEgg = false;
         spacebarPressed = false; 
         spacebarCoroutine = StartCoroutine(WaitForSpaceBar()); 
@@ -59,6 +60,7 @@ public class EasterEgg : MonoBehaviour
         {
             egg.SetActive(false);
         }
+        panel.SetActive(false);
         closingEgg = true;
         spacebarPressed = false;
     }
