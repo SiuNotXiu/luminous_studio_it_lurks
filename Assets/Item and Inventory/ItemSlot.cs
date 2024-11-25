@@ -481,6 +481,49 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    private void SpawnCampsite()
+    {
+        if (campsitePrefab != null && playerTransform != null)
+        {
+            Vector3 playerLocalPosition = playerTransform.position + new Vector3(0, -0.5f, 0);
+            GameObject campsite = Instantiate(campsitePrefab, playerLocalPosition, Quaternion.identity);
+            //Debug.Log("Player made campsite at: " + playerLocalPosition);
+
+            ChestInventory campsiteChest = campsite.GetComponentInChildren<ChestInventory>();
+            if (campsiteChest != null)
+            {
+                // find canvas
+                GameObject journalCanvas = GameObject.Find("Journal_Canvas");
+                if (journalCanvas != null)
+                {
+                    ChestSlot[] dynamicSlots = journalCanvas.GetComponentsInChildren<ChestSlot>();
+                    if (dynamicSlots != null && dynamicSlots.Length > 0)
+                    {
+                        // find existing slots
+                        campsiteChest.InitializeChestSlots(dynamicSlots);
+                        //Debug.Log("Slots assigned to (new) campsite chest.");
+                    }
+                    else
+                    {
+                        //Debug.LogError("No slots found in Journal_Canvas?");
+                    }
+                }
+                else
+                {
+                    //Debug.LogError("Journal_Canvas missing?");
+                }
+            }
+            else
+            {
+                //Debug.LogError("No ChestInventory found in the campsite prefab.");
+            }
+        }
+        else
+        {
+            //Debug.LogError("Campsite prefab or player transform missing?");
+        }
+    }
+
     #region Sound Effect
     private void playClick()
     {
@@ -520,46 +563,5 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
     #endregion
 
-    private void SpawnCampsite()
-    {
-        if (campsitePrefab != null && playerTransform != null)
-        {
-            Vector3 playerLocalPosition = playerTransform.position + new Vector3(0, -0.5f, 0);
-            GameObject campsite = Instantiate(campsitePrefab, playerLocalPosition, Quaternion.identity);
-            Debug.Log("Player made campsite at: " + playerLocalPosition);
 
-            ChestInventory campsiteChest = campsite.GetComponentInChildren<ChestInventory>();
-            if (campsiteChest != null)
-            {
-                // find canvas
-                GameObject journalCanvas = GameObject.Find("Journal_Canvas");
-                if (journalCanvas != null)
-                {
-                    ChestSlot[] dynamicSlots = journalCanvas.GetComponentsInChildren<ChestSlot>();
-                    if (dynamicSlots != null && dynamicSlots.Length > 0)
-                    {
-                        // find existing slots
-                        campsiteChest.InitializeChestSlots(dynamicSlots);
-                        Debug.Log("Slots assigned to (new) campsite chest.");
-                    }
-                    else
-                    {
-                        Debug.LogError("No slots found in Journal_Canvas?");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Journal_Canvas missing?");
-                }
-            }
-            else
-            {
-                Debug.LogError("No ChestInventory found in the campsite prefab.");
-            }
-        }
-        else
-        {
-            Debug.LogError("Campsite prefab or player transform missing?");
-        }
-    }
 }

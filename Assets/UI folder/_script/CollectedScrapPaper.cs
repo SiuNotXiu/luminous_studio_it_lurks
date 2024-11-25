@@ -9,6 +9,7 @@ public class CollectedScrapPaper : MonoBehaviour
 {
     [SerializeField] private GameObject object_canvas_big_map;
     [SerializeField] private big_map_icon_reveal_manager script_big_map_icon_reveal_manager;
+    [SerializeField] private InventoryController journal;
 
     private float transparencyZero = 0f;
     private float transparencyMax = 1f;
@@ -47,18 +48,17 @@ public class CollectedScrapPaper : MonoBehaviour
     {
         if (!collectedScrapIDs.Contains(id))
         {
+            collectedScrapIDs.Add(id);
+            UpdateJournal(id);
             Debug.Log("Id added: " + id);
             unlockJournal[id -1] = true;
-            if(script_big_map_icon_reveal_manager != null)
-            {
-                script_big_map_icon_reveal_manager.call_this_after_scrap_paper_taken(unlockJournal);
-            }
-            collectedScrapIDs.Add(id);
-            UpdateJournal();
+            journal.OpenJournal(id);
+            StartCoroutine(WaitingForJournalClose());
+            
         }
     }
 
-    public void UpdateJournal()
+    public void UpdateJournal(int page = -1)
     {
         //Debug.Log("Scrap in");
 
@@ -77,6 +77,10 @@ public class CollectedScrapPaper : MonoBehaviour
         if (collectedScrapIDs.Contains(currentPageIndex +1))
         {
             //display
+            if(page != -1)
+            {
+                currentPageIndex = page - 1;
+            }
             SetTransparency(leftImage, rightImage, clipImage, transparencyMax);
             leftImage.sprite = leftSprite[currentPageIndex];
             rightImage.sprite = rightSprite[currentPageIndex];
@@ -132,6 +136,25 @@ public class CollectedScrapPaper : MonoBehaviour
         image2.color = imgColor2;
         clip.color = clipColor;
     }
+
+    private IEnumerator WaitingForJournalClose()
+    {
+        while (!InventoryController.JournalOpen)
+        {
+            yield return null;
+        }
+        if (script_big_map_icon_reveal_manager != null)
+        {
+            script_big_map_icon_reveal_manager.call_this_after_scrap_paper_taken(unlockJournal);
+        }
+        else
+        {
+            Debug.LogWarning("Big map icon reveal manager is missing!");
+        }
+    }
+
+
+
 
     #region Sound effect
     private void flipjournal()

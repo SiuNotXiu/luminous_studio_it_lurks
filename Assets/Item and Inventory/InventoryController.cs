@@ -34,6 +34,7 @@ public class InventoryController : MonoBehaviour
     public GameObject Page1;
     public GameObject Page2;
     public GameObject button_Pg1;
+    public GameObject story;
     public GameObject setting;
     public GameObject journal_p1n2;
 
@@ -58,7 +59,7 @@ public class InventoryController : MonoBehaviour
         // Switching is use to switch the boarder
         if (Input.GetButtonDown("Journal") && JournalOpen && !trigger_map_ui.Map_Is_Open)
         {
-            Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
+            //Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
             OpenJournal();
             Switching2();
             button_Pg1.SetActive(false);
@@ -103,14 +104,14 @@ public class InventoryController : MonoBehaviour
         // Close Journal with Escape or the same Journal button or backspace
         else if ((Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
         {
-            Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
+            //Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
 
             CloseJournal();
         }
     }
 
 
-    private void OpenJournal()
+    public void OpenJournal(int scrappaper = 0)
     {
         if(player_database.is_flashlight_on)
         {
@@ -118,6 +119,7 @@ public class InventoryController : MonoBehaviour
             flashlightSFX();
         }
         ONFJournal();
+        
         //chest problem here in chest in
         //Debug.Log("wwwwwwwww > " + chestIn);
         //Debug.Log("Opening Journal");
@@ -127,10 +129,14 @@ public class InventoryController : MonoBehaviour
         journal_display.ShowPanels();
         button_display.Show();
         button_display.ShowPanels();
-        
+        if (scrappaper != 0)
+        {
+            story.SetActive(true);
+        }
+
     }
 
-    private void CloseJournal()
+    public void CloseJournal()
     {
 
         if(Special_Bool_For_Inventory)//for chest inventory

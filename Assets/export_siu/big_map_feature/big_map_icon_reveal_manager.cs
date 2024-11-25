@@ -6,7 +6,8 @@ public class big_map_icon_reveal_manager : MonoBehaviour
 {
     [SerializeField] private GameObject[] object_landmark_with_scrap_paper;
 
-    public void call_this_after_scrap_paper_taken(bool[] scrap_paper_revealed)//any script can trigger this event
+    //chenjie: maybe here need to consider what kind id of paper appear what kind icon
+    public void call_this_after_scrap_paper_taken(bool[] scrap_paper_revealed)//any script can trigger this event 
     {
         for (int i = 0; i < scrap_paper_revealed.Length; i++)
         {
