@@ -8,7 +8,7 @@ public class player_flashlight_on_off : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(InventoryController.JournalOpen && !trigger_map_ui.Map_Is_Open)
+            if(InventoryController.JournalOpen && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
             {
                 player_database.is_flashlight_on = !player_database.is_flashlight_on;
                 flashlightSFX();

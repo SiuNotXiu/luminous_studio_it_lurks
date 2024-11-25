@@ -2068,9 +2068,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7aa7c03b98b365c489c63e1ad2f06e3b, type: 2}
   - {fileID: 11400000, guid: 5a9e6413ff8c34543a439ff80f032b26, type: 2}
   - {fileID: 11400000, guid: 6c7ae56d0605a2a4d9e81b2a720060cc, type: 2}
+  - {fileID: 11400000, guid: fef0049f96ac0b4419755604ceb3d497, type: 2}
   - {fileID: 11400000, guid: fe4616b77e204564a8643185ac9989f3, type: 2}
   - {fileID: 11400000, guid: 395eb66cb7c52dc43b21bcac6fc545d1, type: 2}
-  - {fileID: 11400000, guid: fef0049f96ac0b4419755604ceb3d497, type: 2}
   journal_display: {fileID: 7317870468275218620}
   button_display: {fileID: 7337347575539058557}
   Journal: {fileID: 7052797625709910638}
@@ -2086,11 +2086,12 @@ MonoBehaviour:
   - {fileID: 5385804994130996754}
   - {fileID: 1953390216832950872}
   resultSlot: {fileID: 572288558167040462}
-  bulbUpgradeSlot: {fileID: 6585486645054180519}
-  batteryUpgradeSlot: {fileID: 99392019451814001}
+  bulbUpgradeSlot: {fileID: 7159391020510080802}
+  batteryUpgradeSlot: {fileID: 4628604480067799481}
   Page1: {fileID: 6890377010699348840}
   Page2: {fileID: 8505915161493363642}
   button_Pg1: {fileID: 1857306695772031024}
+  story: {fileID: 8860540758587693446}
   setting: {fileID: 1916013048895428701}
   journal_p1n2: {fileID: 3648571824174059145}
   Boarder: {fileID: 3945661519974322145}
@@ -2111,6 +2112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   object_canvas_big_map: {fileID: 0}
   script_big_map_icon_reveal_manager: {fileID: 0}
+  journal: {fileID: 5517201104822184155}
   leftImage: {fileID: 3743157465946304314}
   rightImage: {fileID: 3261138795084080805}
   clipImage: {fileID: 3830662966462542969}
@@ -3842,6 +3844,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
       insertIndex: -1
       addedObject: {fileID: 99392019451814001}
+    - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4628604480067799481}
   m_SourcePrefab: {fileID: 100100000, guid: b22471986cc6b4d429049124311f5b86, type: 3}
 --- !u!224 &294363473471694736 stripped
 RectTransform:
@@ -3871,6 +3876,23 @@ MonoBehaviour:
   isBulbSlot: 0
   itemImage: {fileID: 7963985940538567316}
 --- !u!114 &99392019451814001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3120899842852566355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb11a186b98b4d4bbad82e3ffdd5771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  isFull: 0
+  batteryCaseCheck: 0
+  isBulbSlot: 0
+  itemImage: {fileID: 7963985940538567316}
+--- !u!114 &4628604480067799481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4154,6 +4176,10 @@ PrefabInstance:
       propertyPath: inventoryC
       value: 
       objectReference: {fileID: 5517201104822184155}
+    - target: {fileID: 1907050789138779918, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
+      propertyPath: campsitePrefab
+      value: 
+      objectReference: {fileID: 4589644062399634978, guid: 3e1f6a582cfd93a498dee8c70e885e89, type: 3}
     - target: {fileID: 5785225879370755713, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
       propertyPath: m_SizeDelta.x
       value: 147.6551
@@ -4299,6 +4325,10 @@ PrefabInstance:
       propertyPath: inventoryC
       value: 
       objectReference: {fileID: 5517201104822184155}
+    - target: {fileID: 1907050789138779918, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
+      propertyPath: campsitePrefab
+      value: 
+      objectReference: {fileID: 4589644062399634978, guid: 3e1f6a582cfd93a498dee8c70e885e89, type: 3}
     - target: {fileID: 5785225879370755713, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
       propertyPath: m_SizeDelta.x
       value: 147.6551
@@ -5771,6 +5801,10 @@ PrefabInstance:
       propertyPath: inventoryC
       value: 
       objectReference: {fileID: 5517201104822184155}
+    - target: {fileID: 1907050789138779918, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
+      propertyPath: campsitePrefab
+      value: 
+      objectReference: {fileID: 4589644062399634978, guid: 3e1f6a582cfd93a498dee8c70e885e89, type: 3}
     - target: {fileID: 5785225879370755713, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
       propertyPath: m_SizeDelta.x
       value: 147.6551
@@ -6508,6 +6542,10 @@ PrefabInstance:
       propertyPath: inventoryC
       value: 
       objectReference: {fileID: 5517201104822184155}
+    - target: {fileID: 1907050789138779918, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
+      propertyPath: campsitePrefab
+      value: 
+      objectReference: {fileID: 4589644062399634978, guid: 3e1f6a582cfd93a498dee8c70e885e89, type: 3}
     - target: {fileID: 5785225879370755713, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
       propertyPath: m_SizeDelta.x
       value: 147.6551
@@ -7771,6 +7809,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6585486645054180519}
+    - targetCorrespondingSourceObject: {fileID: 3101843955302237845, guid: b22471986cc6b4d429049124311f5b86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7159391020510080802}
   m_SourcePrefab: {fileID: 100100000, guid: b22471986cc6b4d429049124311f5b86, type: 3}
 --- !u!114 &115818909531921068 stripped
 MonoBehaviour:
@@ -7806,6 +7847,23 @@ MonoBehaviour:
   isBulbSlot: 1
   itemImage: {fileID: 115818909531921068}
 --- !u!114 &6585486645054180519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4922736160979109227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb11a186b98b4d4bbad82e3ffdd5771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  isFull: 0
+  batteryCaseCheck: 0
+  isBulbSlot: 1
+  itemImage: {fileID: 115818909531921068}
+--- !u!114 &7159391020510080802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9334,6 +9392,10 @@ PrefabInstance:
       propertyPath: inventoryC
       value: 
       objectReference: {fileID: 5517201104822184155}
+    - target: {fileID: 1907050789138779918, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
+      propertyPath: campsitePrefab
+      value: 
+      objectReference: {fileID: 4589644062399634978, guid: 3e1f6a582cfd93a498dee8c70e885e89, type: 3}
     - target: {fileID: 5785225879370755713, guid: 28657e7f21d2c5c41822c430bc02ab82, type: 3}
       propertyPath: m_SizeDelta.x
       value: 147.6551
@@ -9596,6 +9658,10 @@ PrefabInstance:
       propertyPath: inventoryC
       value: 
       objectReference: {fileID: 5517201104822184155}
+    - target: {fileID: 3210599251917103945, guid: 25ea849a21ccee94db78047954b5b7cc, type: 3}
+      propertyPath: campsitePrefab
+      value: 
+      objectReference: {fileID: 4589644062399634978, guid: 3e1f6a582cfd93a498dee8c70e885e89, type: 3}
     - target: {fileID: 3210599251917103945, guid: 25ea849a21ccee94db78047954b5b7cc, type: 3}
       propertyPath: inventoryManager
       value: 

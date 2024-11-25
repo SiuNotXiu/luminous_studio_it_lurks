@@ -3352,8 +3352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 3310593797559893994}
-  hintpanel: {fileID: 0}
-  offset: {x: 0, y: 1.5, z: 0}
   hint: {fileID: 0}
 --- !u!81 &4321855077670051574
 AudioListener:

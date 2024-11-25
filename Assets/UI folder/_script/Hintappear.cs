@@ -5,67 +5,65 @@ using UnityEngine;
 public class Hintappear : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform; 
-    public RectTransform hintpanel;      
-    public Vector3 offset = new Vector3(0, 1.5f, 0); // Adjust this offset to position above the head
+    //public RectTransform hintpanel;      
+    //public Vector3 offset = new Vector3(0, 1.5f, 0); // Adjust this offset to position above the head
 
     public GameObject hint;
 
     bool interactible = false;
+
+    private readonly HashSet<string> interactibleTags = new HashSet<string>
+    {
+        "CraftItem", "PerksItem", "Campsite", "ScrapPaper", "EasterEgg"
+    };
     void Start()
     {
-        hint.SetActive(false); 
+        if (hint != null)
+            hint.SetActive(false);
     }
 
     private void Update()
     {
-        //hint.transform.localPosition = offset;
-        if (hint.activeSelf)
+        if (hint != null)
         {
-            Reposition(); // Reposition the hint image each frame
+            hint.SetActive(interactible); 
+
+            //if (interactible)
+                //Reposition(); 
         }
-
-        if (interactible)
-        {
-            hint.SetActive(true); // Show the hint when colliding with specified objects
-        }
-        else
-        {
-            hint.SetActive(false); // Show the hint when colliding with specified objects
-        }
-    }
-
-    private void Reposition()
-    {
-        // Calculate the world position for the hint image
-        Vector3 hintPosition = playerTransform.position + offset;
-
-        // Convert the world position to screen space
-        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, hintPosition);
-
-        // Set the image position to the calculated screen point
-        hintpanel.position = screenPoint;
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Why appear?0");
-        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite") || collision.CompareTag("ScrapPaper"))
+        if (interactibleTags.Contains(collision.tag))
         {
-            Debug.Log(gameObject.name + " collided " + collision.gameObject.name + "collided" + this);
-            //hint.SetActive(true); // Show the hint when colliding with specified objects
+            //Debug.Log($"{gameObject.name} started interacting with {collision.gameObject.name}");
             interactible = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        interactible = false;
-        if (collision.CompareTag("CraftItem") || collision.CompareTag("PerksItem") || collision.CompareTag("Campsite") || collision.CompareTag("ScrapPaper"))
+        if (interactibleTags.Contains(collision.tag))
         {
-            Debug.Log(gameObject.name + " collided " + collision.gameObject.name + "close the hint" + this);
-            //hint.SetActive(false); // Hide the hint when exiting the trigger
+            //Debug.Log($"{gameObject.name} stopped interacting with {collision.gameObject.name}");
             interactible = false;
         }
     }
+
+    #region deleted code
+    /*    private void Reposition()
+        {
+            if (playerTransform == null || hintpanel == null) return;
+
+            // Calculate the world position for the hint image
+            Vector3 hintPosition = playerTransform.position + offset;
+
+            // Convert the world position to screen space
+            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, hintPosition);
+
+            // Set the hint panel position to the calculated screen point
+            hintpanel.position = screenPoint;
+        }*/
+    #endregion
 }

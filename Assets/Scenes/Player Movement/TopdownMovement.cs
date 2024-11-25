@@ -53,7 +53,7 @@ public class TopdownMovement : MonoBehaviour
     void Update()
     {
 
-        if(InventoryController.JournalOpen )
+        if(InventoryController.JournalOpen && EasterEgg.closingEgg)
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.y = Input.GetAxisRaw("Vertical");

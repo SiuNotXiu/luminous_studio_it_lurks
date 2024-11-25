@@ -27,7 +27,7 @@ public class trigger_map_ui : MonoBehaviour
     {
         if (big_map != null)
         {
-            if (Input.GetKeyDown(KeyCode.M) && InventoryController.JournalOpen)
+            if (Input.GetKeyDown(KeyCode.M) && InventoryController.JournalOpen && EasterEgg.closingEgg)
             {
                 if (big_map.activeInHierarchy == false)
                 {

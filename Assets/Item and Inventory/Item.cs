@@ -9,8 +9,7 @@ using static UnityEditor.Progress;
 public class Item : MonoBehaviour
 {
     [SerializeField] private ItemData itemData; // find item properties with scriptableobjects
-    [SerializeField] private CollectedScrapPaper paper;
-    [SerializeField] private CollectedRnU upgrade;
+
 
     public Vector3 DefaultScale => itemData != null ? itemData.defaultScale : Vector3.one;
     public ItemData ItemData => itemData;
@@ -20,8 +19,11 @@ public class Item : MonoBehaviour
     public Sprite DroppedSprite => itemData != null ? itemData.droppedSprite : null;
     public Sprite SelectedSprite => itemData != null ? itemData.selectedSprite : null;
 
-
+    //assign the script
     private InventoryController inventoryController;
+    private CollectedScrapPaper paper;
+    private CollectedRnU upgrade;
+
     public int ScrapPaperId;//start from 1 ,it also use for unlock upgrade paper
     public static bool isPlayerInRange = false;
 
@@ -30,14 +32,17 @@ public class Item : MonoBehaviour
     void Start()
     {
         inventoryController = GameObject.Find("Journal_Canvas")?.GetComponent<InventoryController>();
+        paper = GameObject.Find("Journal_Canvas")?.GetComponent<CollectedScrapPaper>();
+        upgrade = GameObject.Find("Journal_Canvas")?.GetComponent<CollectedRnU>();
     }
 
 
     public void Item_Scrap_Check()
     {
-        Debug.Log("Sick brooooooo");
+        //Debug.Log("Sick brooooooo");
         if (gameObject.CompareTag("ScrapPaper") && paper != null)
         {
+
             paper.CollectScrapPaper(ScrapPaperId);
             //Debug.Log("1");
             pickingScrap();
@@ -60,6 +65,12 @@ public class Item : MonoBehaviour
                             }
                             #endregion*/
 
+        }
+        else if(gameObject.CompareTag("EasterEgg"))
+        {
+            //Debug.Log("EEg apply");
+            EasterEgg.Instance.OpenEasterEgg(ScrapPaperId);
+            pickingScrap();
         }
         else if (!inventoryController.IsInventoryFull() && itemData != null)
         {

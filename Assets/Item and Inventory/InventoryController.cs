@@ -57,7 +57,7 @@ public class InventoryController : MonoBehaviour
     {
         // Open Journal
         // Switching is use to switch the boarder
-        if (Input.GetButtonDown("Journal") && JournalOpen && !trigger_map_ui.Map_Is_Open)
+        if (Input.GetButtonDown("Journal") && JournalOpen && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
         {
             //Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
             OpenJournal();
@@ -66,7 +66,7 @@ public class InventoryController : MonoBehaviour
             Page1.SetActive(false);
             Page2.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.E) && !trigger_map_ui.Map_Is_Open)
+        else if (Input.GetKeyDown(KeyCode.E) && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
         {
             if(Item.isPlayerInRange)
             {
@@ -74,7 +74,7 @@ public class InventoryController : MonoBehaviour
 
                 item.Item_Scrap_Check();
             }
-            else if (JournalOpen && chest_detect.isInRange && !trigger_map_ui.Map_Is_Open)
+            else if (JournalOpen && chest_detect.isInRange && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
             {
                 chest_detect.OpenChest();
                 //Debug.Log("is it gay?: " + chest_detect.isInRange);//true
@@ -92,7 +92,7 @@ public class InventoryController : MonoBehaviour
 
 
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen && !trigger_map_ui.Map_Is_Open)
+        else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
         {
  
             OpenJournal();
