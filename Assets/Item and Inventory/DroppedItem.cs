@@ -60,6 +60,14 @@ public class DroppedItem : MonoBehaviour
                 spriteRenderer.sprite = droppedItemSprite;
             }
 
+            foreach (SpriteRenderer childSpriteRenderer in GetComponentsInChildren<SpriteRenderer>())
+            {
+                if (childSpriteRenderer != spriteRenderer)
+                {
+                    childSpriteRenderer.sprite = droppedItemSprite;
+                }
+            }
+
             transform.localScale = data.defaultScale;
         }
     }

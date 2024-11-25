@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7783792809626520985}
   - component: {fileID: -1348901436699712627}
   - component: {fileID: -4114556831951188631}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: DroppedItemPrefab
   m_TagString: CraftItem
   m_Icon: {fileID: 0}
@@ -95,8 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
-  paper: {fileID: 0}
-  upgrade: {fileID: 0}
   ScrapPaperId: 0
 --- !u!114 &7783792809626520985
 MonoBehaviour:
