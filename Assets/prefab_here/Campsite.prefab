@@ -372,6 +372,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea935fbde0a789243bec8d0334e631c0, type: 2}
   chestIn: {fileID: 3335159774276895905}
   brokeCampsite: 0
+  MakeshiftCampsite: 0
   itemDataStroing:
   - {fileID: 0}
   - {fileID: 0}

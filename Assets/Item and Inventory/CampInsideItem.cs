@@ -10,12 +10,16 @@ public class CampInsideItem : MonoBehaviour
     [SerializeField] private ItemData[] itemData;
     [SerializeField] ChestInventory chestIn;
     public bool brokeCampsite;
+    public bool MakeshiftCampsite;
     private int luckynum;
     public ItemData[] itemDataStroing = new ItemData[9];
 
     private void Start()
     {
-        AssignRandomItems();
+        if(MakeshiftCampsite == false)
+        {
+            AssignRandomItems();
+        }
     }
 
 
