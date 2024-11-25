@@ -1012,8 +1012,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
-  paper: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-  upgrade: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   ScrapPaperId: 0
 --- !u!1001 &511303230
 PrefabInstance:
@@ -2468,7 +2466,7 @@ Transform:
   m_GameObject: {fileID: 1192639328}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.11, y: -1.65, z: 0.011417443}
+  m_LocalPosition: {x: 1.07, y: -1.65, z: 0.011417443}
   m_LocalScale: {x: 5, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3880,8 +3878,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1655129223}
-  hintpanel: {fileID: 2060659148}
-  offset: {x: 0, y: 1.5, z: 0}
   hint: {fileID: 2060659144}
 --- !u!114 &1655129225
 MonoBehaviour:
