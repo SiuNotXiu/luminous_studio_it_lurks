@@ -54,8 +54,8 @@ public class Play : MonoBehaviour
 
         next.interactable = false;
         SetImageAlpha(nextImage, 0f);
-        StartCoroutine(TextPrompt(10f, smallWord));
-        StartCoroutine(ButtonPrompt(15f, skip, skipImage));
+        StartCoroutine(TextPrompt(14.29f, smallWord)); //unity 10sec = designer 7 sec, therefore unity 14.29f = designer 10sec
+        StartCoroutine(ButtonPrompt(20f, skip, skipImage));
     }
 
     private void SkipStory()
