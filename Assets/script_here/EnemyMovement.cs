@@ -293,15 +293,15 @@ public class EnemyMovement : MonoBehaviour
 
         if (distanceToPlayer < 5f) // Close range, move slower
         {
-            speed = 5f;
+            speed = 9f;
         }
         else if (distanceToPlayer >= 5f && distanceToPlayer <= 20f) // Mid range, normal speed
         {
-            speed = 8f;
+            speed = 13f;
         }
         else if (distanceToPlayer > 20f) // Far range, move faster
         {
-            speed = 15f;
+            speed = 20f;
         }
         agent.speed = speed;
 
@@ -339,6 +339,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackState()
     {
+        
         anim.SetBool("isWalking", false);
         anim.SetBool("isRunning", false);
         
@@ -383,10 +384,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void FleeingState()
     {
-
+        Debug.Log("fleingstat");
         if (target != null)
         {
+         
             agent.SetDestination(transform.position);
+
             if(gameObject.GetComponent<monster_database>().GetFlee()==true)
             {
                 if (!isFleeAudioPlaying)
@@ -416,9 +419,22 @@ public class EnemyMovement : MonoBehaviour
 
                 }
 
-              
+
 
             }
+            else
+            {
+                if (agent.isStopped == false)
+                {
+                    agent.isStopped = true;
+                }
+
+                if(gameObject.GetComponent<monster_database>().GetFlashed() == false)
+                {
+                    currentState = EnemyState.Chasing;
+                }
+            }
+           
 
         }
     }
@@ -488,10 +504,15 @@ public class EnemyMovement : MonoBehaviour
 
     private void FleeingChecks()
     {
-        if (gameObject.GetComponent<monster_database>().GetFlashed() == true)
+        if (gameObject.GetComponent<monster_database>().GetFlee() == true)
         {
-            currentState = EnemyState.Fleeing;
+           
+            
+                currentState = EnemyState.Fleeing;
+            
+
         }
+        
     }
 
     private void FlashChecks()

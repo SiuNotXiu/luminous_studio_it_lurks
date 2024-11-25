@@ -17,7 +17,7 @@ public class SortingOrderController : MonoBehaviour
     private float monsterY;
     private float treeY;
 
-    private float treeYOffset = 1.0f;
+    private float treeYOffset = 1.44f;
 
     #endregion
 
