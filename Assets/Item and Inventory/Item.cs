@@ -9,6 +9,7 @@ using static UnityEditor.Progress;
 public class Item : MonoBehaviour
 {
     [SerializeField] private ItemData itemData; // find item properties with scriptableobjects
+    [SerializeField] private string gateID;
 
 
     public Vector3 DefaultScale => itemData != null ? itemData.defaultScale : Vector3.one;
@@ -84,6 +85,12 @@ public class Item : MonoBehaviour
             }
             picking();
             inventoryController.AddItem(itemData);
+
+            if (IsKey())
+            {
+                Debug.Log($"Picked up key for gateID: {gateID}");
+            }
+
             Destroy(gameObject);
         }
         else
@@ -108,6 +115,15 @@ public class Item : MonoBehaviour
         }
     }
 
+    public bool IsKey()
+    {
+        return itemData != null && itemData.isKey;
+    }
+
+    public string GetGateID()
+    {
+        return itemData != null ? itemData.gateID : string.Empty;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

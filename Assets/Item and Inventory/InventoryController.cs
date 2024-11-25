@@ -68,7 +68,7 @@ public class InventoryController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E) && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
         {
-            if(Item.isPlayerInRange)
+            if (Item.isPlayerInRange)
             {
                 //Debug.Log("In range>>>>>>>>: " + Item.isPlayerInRange);
 
@@ -92,9 +92,9 @@ public class InventoryController : MonoBehaviour
 
 
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && JournalOpen && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
+        else if (Input.GetKeyDown(KeyCode.Escape) && JournalOpen && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
         {
- 
+
             OpenJournal();
             button_Pg1.SetActive(false);
             journal_p1n2.SetActive(false);
@@ -113,13 +113,13 @@ public class InventoryController : MonoBehaviour
 
     public void OpenJournal(int scrappaper = 0)
     {
-        if(player_database.is_flashlight_on)
+        if (player_database.is_flashlight_on)
         {
             player_database.is_flashlight_on = false;
             flashlightSFX();
         }
         ONFJournal();
-        
+
         //chest problem here in chest in
         //Debug.Log("wwwwwwwww > " + chestIn);
         //Debug.Log("Opening Journal");
@@ -139,10 +139,10 @@ public class InventoryController : MonoBehaviour
     public void CloseJournal()
     {
 
-        if(Special_Bool_For_Inventory)//for chest inventory
+        if (Special_Bool_For_Inventory)//for chest inventory
         {
             chestOut.ClosingChest();
-            Special_Bool_For_Inventory= false;
+            Special_Bool_For_Inventory = false;
         }
 
         if (dropdownMenuInstance != null)// Destroy dropdown menu instance if it exists
@@ -186,7 +186,7 @@ public class InventoryController : MonoBehaviour
         dropdownMenuInstance = dropdown;
     }
 
-
+    #region Craftings
     public void AddItem(ItemData itemData)
     {
         if (IsInventoryFull())
@@ -319,7 +319,7 @@ public class InventoryController : MonoBehaviour
         }
         tempItems.Clear();
     }
-
+    #endregion 
     public void Switching1()
     {
         Boarder.sprite = PageSprite[0];
@@ -347,6 +347,7 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    #region Chest
     public void RemoveItemFromPlayerInventory(ItemData itemData, int slotIndex = -1)
     {
         if (slotIndex >= 0 && slotIndex < itemSlot.Length)
@@ -402,6 +403,7 @@ public class InventoryController : MonoBehaviour
         }
         Debug.Log("Player inventory is full.");
     }
+    #endregion
 
     #region Sound effect
     private void ONFJournal()
@@ -422,4 +424,17 @@ public class InventoryController : MonoBehaviour
 
 
     #endregion
+
+    public ItemData GetKeyDataForGate(string gateID)
+    {
+        foreach (ItemSlot slot in itemSlot)
+        {
+            if (slot.isFull && slot.itemData != null && slot.itemData.isKey && slot.itemData.gateID == gateID)
+            {
+                return slot.itemData; 
+            }
+        }
+        Debug.Log("Key missing xd clown");
+        return null; //key not found
+    }
 }

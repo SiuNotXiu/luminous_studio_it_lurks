@@ -15,5 +15,7 @@ public class ItemData : ScriptableObject
     public bool isBulbCompatible;
     public bool isBatteryCompatible;
 
-
+    [Header("For keys lol dashaB")]
+    public bool isKey;
+    public string gateID;
 }

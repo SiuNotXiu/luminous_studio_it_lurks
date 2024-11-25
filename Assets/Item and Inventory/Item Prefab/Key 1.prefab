@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4345680126620300071}
   - component: {fileID: -7650515494389260511}
   m_Layer: 0
-  m_Name: Key
+  m_Name: Key 1
   m_TagString: CraftItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,8 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: fee5646b1fddb8f47ada08c9af9dc481, type: 2}
-  paper: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-  upgrade: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+  gateID: 1
   ScrapPaperId: 0
 --- !u!114 &4345680126620300071
 MonoBehaviour:
