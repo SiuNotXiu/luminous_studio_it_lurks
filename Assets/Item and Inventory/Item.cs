@@ -70,7 +70,10 @@ public class Item : MonoBehaviour
         {
             //Debug.Log("EEg apply");
             EasterEgg.Instance.OpenEasterEgg(ScrapPaperId);
-            pickingScrap();
+            if(ScrapPaperId == 520)
+            {
+                pickingEeg();
+            }
         }
         else if (!inventoryController.IsInventoryFull() && itemData != null)
         {
@@ -128,7 +131,7 @@ public class Item : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            if (itemData.name == "Ginseng" || itemData.name == "Yarrow")
+            if (itemData.name == "Ginseng" || itemData.name == "Yarrow" || itemData.name == "Stick")
             {
                 Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Herb_Stick_Pickup, Audio.Instance.SFXSource, 0.3f, 0.9f);
             }
@@ -147,6 +150,13 @@ public class Item : MonoBehaviour
         }
     }
 
+    private void pickingEeg()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.OptionalScrapPaperPickup, Audio.Instance.SFXSource);
+        }
+    }
 
 
     #endregion

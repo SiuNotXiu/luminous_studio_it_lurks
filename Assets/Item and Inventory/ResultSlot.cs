@@ -109,7 +109,14 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
         {
             if (isFull && resultItemData != null)
             {
-                playCrafting();
+                if (resultItemData.itemName == "Bushcraft Medicine")
+                {
+                    playCrafting();
+                }
+                else
+                {
+                    playCrafting2();//other then yarrow + ginseng sfx
+                }
                 OnClicked?.Invoke(this);
                 inventoryController.AddCraftedItemToInventory(resultItemData);
 
@@ -147,6 +154,14 @@ public class ResultSlot : MonoBehaviour, IPointerClickHandler
             Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.MedicineCraft, Audio.Instance.SFXSource);
         }
     }
+    private void playCrafting2()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.CampsiteCraft, Audio.Instance.SFXSource);
+        }
+    }
+
     #endregion
 
 }
