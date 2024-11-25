@@ -932,8 +932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
-  paper: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
-  upgrade: {fileID: 8161503836806916658, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
   ScrapPaperId: 0
 --- !u!1 &798836379 stripped
 GameObject:
@@ -1445,6 +1443,10 @@ PrefabInstance:
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 1815730037}
+    - target: {fileID: 2801929743018003899, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: script_big_map_icon_reveal_manager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2911413407483978794, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -1573,6 +1575,10 @@ PrefabInstance:
       propertyPath: itemDescription
       value: 
       objectReference: {fileID: 1815730037}
+    - target: {fileID: 7052797625709910638, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7694574135704081524, guid: 75d36906898b09e40b500bbeabd782aa, type: 3}
       propertyPath: itemDescription
       value: 
@@ -2864,8 +2870,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1882465781}
-  hintpanel: {fileID: 1302417613}
-  offset: {x: 0, y: 1.5, z: 0}
   hint: {fileID: 1302417612}
 --- !u!1001 &1924729828
 PrefabInstance:

@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class EasterEgg : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class EasterEgg : MonoBehaviour
     [Header("Easter Egg")]
     public GameObject[] Egg;
     private bool spacebarPressed = false;
+    private Coroutine spacebarCoroutine;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class EasterEgg : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void OpenEasterEgg(int egg)
     {
         if (player_database.is_flashlight_on)
@@ -29,6 +32,12 @@ public class EasterEgg : MonoBehaviour
             player_database.is_flashlight_on = false;
             flashlightSFX();
         }
+
+        if (spacebarCoroutine != null)
+        {
+            StopCoroutine(spacebarCoroutine);  
+        }
+
         if (egg == 520)
         {
             Debug.Log("already active");
@@ -38,29 +47,33 @@ public class EasterEgg : MonoBehaviour
         {
             Egg[1].SetActive(true);
         }
+
         closingEgg = false;
-        StartCoroutine(WaitForSpaceBar());
+        spacebarPressed = false; 
+        spacebarCoroutine = StartCoroutine(WaitForSpaceBar()); 
     }
 
     private void CloseEasterEgg()
     {
-        foreach(var egg in Egg)
-        { 
+        foreach (var egg in Egg)
+        {
             egg.SetActive(false);
         }
         closingEgg = true;
-
+        spacebarPressed = false;
     }
 
     private IEnumerator WaitForSpaceBar()
     {
-        while(!spacebarPressed)
+        while (!spacebarPressed)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                spacebarPressed = true;  
+                spacebarPressed = true;
                 CloseEasterEgg();
+                yield break;
             }
+
             yield return null;
         }
     }
@@ -74,5 +87,4 @@ public class EasterEgg : MonoBehaviour
         }
     }
     #endregion
-
 }
