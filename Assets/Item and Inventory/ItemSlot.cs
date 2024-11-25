@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.CompilerServices;
+
 #if UNITY_EDITOR
 using static UnityEditor.Progress;
 #endif
@@ -49,6 +51,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] private HealthEffects playerHealth;
     [SerializeField] private battery_bar_float playerBattery;
     private bool isDropdownMenuActive = false;
+    [SerializeField] private GameObject campsitePrefab;
 
     private void Update()
     {
@@ -114,7 +117,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             //positioning the item pop up description
             itemDescription.SetActive(true);
             itemDescription_panel = itemDescription.transform.Find("Panel").gameObject;
-            Vector3 itemdescriptionPosition =  new Vector3(itemSlot.position.x + dataIx, itemSlot.position.y + dataIy);
+            Vector3 itemdescriptionPosition = new Vector3(itemSlot.position.x + dataIx, itemSlot.position.y + dataIy);
             itemDescription_panel.transform.position = itemdescriptionPosition;
 
             //Find the button text and change the text to the item data
@@ -357,6 +360,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 }
                 break;
 
+            case "Makeshift Camp":
+                SpawnCampsite();
+                RemoveItem();
+                break;
+
             default:
                 Debug.Log("Unknown usage...: " + itemData.itemName);
                 break;
@@ -495,6 +503,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Healing, Audio.Instance.SFXSource);
         }
     }
+
     private void playAdrenalineSFX()
     {
         if (Audio.Instance != null)
@@ -509,6 +518,48 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Item_Drop, Audio.Instance.SFXSource);
         }
     }
-
     #endregion
+
+    private void SpawnCampsite()
+    {
+        if (campsitePrefab != null && playerTransform != null)
+        {
+            Vector3 playerLocalPosition = playerTransform.position + new Vector3(0, -0.5f, 0);
+            GameObject campsite = Instantiate(campsitePrefab, playerLocalPosition, Quaternion.identity);
+            Debug.Log("Player made campsite at: " + playerLocalPosition);
+
+            ChestInventory campsiteChest = campsite.GetComponentInChildren<ChestInventory>();
+            if (campsiteChest != null)
+            {
+                // find canvas
+                GameObject journalCanvas = GameObject.Find("Journal_Canvas");
+                if (journalCanvas != null)
+                {
+                    ChestSlot[] dynamicSlots = journalCanvas.GetComponentsInChildren<ChestSlot>();
+                    if (dynamicSlots != null && dynamicSlots.Length > 0)
+                    {
+                        // find existing slots
+                        campsiteChest.InitializeChestSlots(dynamicSlots);
+                        Debug.Log("Slots assigned to (new) campsite chest.");
+                    }
+                    else
+                    {
+                        Debug.LogError("No slots found in Journal_Canvas?");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Journal_Canvas missing?");
+                }
+            }
+            else
+            {
+                Debug.LogError("No ChestInventory found in the campsite prefab.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Campsite prefab or player transform missing?");
+        }
+    }
 }

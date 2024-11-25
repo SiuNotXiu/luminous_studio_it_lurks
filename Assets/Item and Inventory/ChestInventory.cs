@@ -9,9 +9,9 @@ public class ChestInventory : MonoBehaviour
 {
     public ChestSlot[] chestSlots = new ChestSlot[9];
     public GameObject JournalP1;
+   
     [SerializeField] public InventoryController playerInventory;
     [SerializeField] CampInsideItem chestItem;
-
 
     //store (from player to chest)
     public void StoreItemFromPlayer(ItemData itemData, int slotIndex)
@@ -123,5 +123,11 @@ public class ChestInventory : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void InitializeChestSlots(ChestSlot[] slots)
+    {
+        chestSlots = slots;
+        Debug.Log("Chest slots assigned dynamically.");
     }
 }
