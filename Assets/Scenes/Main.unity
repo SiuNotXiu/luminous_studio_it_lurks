@@ -4962,7 +4962,7 @@ GameObject:
   - component: {fileID: 87976822}
   - component: {fileID: 87976824}
   - component: {fileID: 87976823}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villageFence5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5905,7 +5905,7 @@ GameObject:
   - component: {fileID: 103147964}
   - component: {fileID: 103147966}
   - component: {fileID: 103147965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villageFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6162,11 +6162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6757693281929559715, guid: a9b086b637834a442a1e0ae4892e5301, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 127.95
+      value: 129.18
       objectReference: {fileID: 0}
     - target: {fileID: 6757693281929559715, guid: a9b086b637834a442a1e0ae4892e5301, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.9
+      value: 20.26
       objectReference: {fileID: 0}
     - target: {fileID: 6757693281929559715, guid: a9b086b637834a442a1e0ae4892e5301, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21914,7 +21914,7 @@ Transform:
   m_GameObject: {fileID: 469142470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.1, y: -10.6, z: 0}
+  m_LocalPosition: {x: 14.64, y: -9.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37283,7 +37283,7 @@ GameObject:
   - component: {fileID: 791973961}
   - component: {fileID: 791973963}
   - component: {fileID: 791973962}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villageFence3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45391,11 +45391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4324418369572416509, guid: 7b3ef463d4774ac4db16764638df2581, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.5
+      value: 38.55
       objectReference: {fileID: 0}
     - target: {fileID: 4324418369572416509, guid: 7b3ef463d4774ac4db16764638df2581, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.4
+      value: -21.47
       objectReference: {fileID: 0}
     - target: {fileID: 4324418369572416509, guid: 7b3ef463d4774ac4db16764638df2581, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47344,7 +47344,7 @@ Transform:
   m_GameObject: {fileID: 1014932791}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.7, y: -10.2, z: 0}
+  m_LocalPosition: {x: 32.4, y: -10.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50974,7 +50974,7 @@ GameObject:
   - component: {fileID: 1099229577}
   - component: {fileID: 1099229579}
   - component: {fileID: 1099229578}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villageFence4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86166,7 +86166,7 @@ GameObject:
   - component: {fileID: 1882607884}
   - component: {fileID: 1882607886}
   - component: {fileID: 1882607885}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villageFence2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
