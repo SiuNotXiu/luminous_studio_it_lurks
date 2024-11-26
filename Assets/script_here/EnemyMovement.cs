@@ -32,7 +32,6 @@ public class EnemyMovement : MonoBehaviour
     public CustomTrigger idleRangeTrigger;
     public CustomTrigger attackRangeTrigger;
     public CustomTrigger chaseRangeTrigger;
-    public CustomTrigger hitBoxTrigger;
     public float postAttackDelay = 3f;
     public float chaseTimer = 0f;
     public float chaseTime = 10f;
@@ -63,10 +62,11 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 previousPosition;
     [SerializeField] private float cornfieldRange;
     [SerializeField] LayerMask cornfieldMask;
-    private bool hitBox = false;  
     private bool cornfield = false;
     private bool cornfieldRangeCheck = false;
     [SerializeField]private CustomTrigger cornfieldTrigger;
+    [SerializeField] private float verticalThreshold = 2f; // Adjust as per your gameplay needs
+    private float attackRange = 5f;
     #endregion
 
     #region<Sfx>
@@ -106,7 +106,7 @@ public class EnemyMovement : MonoBehaviour
         cornfieldTrigger.EnteredTrigger += OnCornFieldTriggerEntered;
         cornfieldTrigger.ExitedTrigger += OnCornFieldTriggerExited;
         chaseRangeTrigger.EnteredTrigger += OnChaseRangeTriggerEntered;
-        hitBoxTrigger.EnteredTrigger += OnHitBoxTriggerEntered;
+      
     }
 
     void Update()
@@ -321,7 +321,7 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             waypoints.Clear();
-            // Move towards the player only if movement is allowed
+            
             if (canMove)
             {
                 agent.SetDestination(target.position);
@@ -339,7 +339,14 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackState()
     {
-        
+        if (target.position.x > transform.position.x)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
         anim.SetBool("isWalking", false);
         anim.SetBool("isRunning", false);
         
@@ -375,7 +382,7 @@ public class EnemyMovement : MonoBehaviour
             speedBoosted = false;
             currentState = EnemyState.Stalking;
             attack = false;
-            hitBox = false;
+            
             
         }
 
@@ -406,7 +413,7 @@ public class EnemyMovement : MonoBehaviour
                 // Set a destination in the flee direction
                 Vector3 fleePosition = transform.position + (Vector3)fleeDirection;
 
-                // Use NavMeshAgent to flee away from the player
+                
                 agent.SetDestination(fleePosition);
                 fleeTimer += Time.deltaTime;
                 if (fleeTimer >= fleeTime)
@@ -541,7 +548,7 @@ public class EnemyMovement : MonoBehaviour
         
         if (currentPosX > previousPosX)
         {
-            sr.flipX = true; 
+            sr.flipX = true;    
         }
         else if (currentPosX < previousPosX)
         {
@@ -582,6 +589,43 @@ public class EnemyMovement : MonoBehaviour
        
 
       
+
+    }
+
+    private void AtkChecks()
+    {
+        // Get the BoxCollider2D component
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+
+        // Use the bounds.center to get the world-space center of the collider
+        Vector2 enemyCenterPosition = collider.bounds.center;
+
+        // Player's position
+        Vector2 playerPosition = target.position;
+
+        // Calculate the vertical and horizontal distances
+        float verticalDistance = Mathf.Abs(playerPosition.y - enemyCenterPosition.y);
+        float horizontalDistance = Mathf.Abs(playerPosition.x - enemyCenterPosition.x);
+
+        // Check vertical distance first
+        if (verticalDistance < verticalThreshold)
+        {
+            // Check if the horizontal distance is within attack range
+            if (horizontalDistance <= attackRange)
+            {
+                // Conditions met; allow attack
+                gameObject.GetComponent<EnemyAttack>().Attack();
+                Debug.Log("Conditions met: Attacking the player!");
+            }
+            else
+            {
+                Debug.Log("Player is too far horizontally to attack.");
+            }
+        }
+        else
+        {
+            Debug.Log("Player is above or below the enemy, attack not allowed.");
+        }
 
     }
 
@@ -651,15 +695,6 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnHitBoxTriggerEntered(Collider2D collision)
-    {
-        if (collision.CompareTag("Player") && hitBox == false) 
-        {
-            hitBox = true;
-            gameObject.GetComponent<EnemyAttack>().Attack();
-            Debug.Log("hitbox");
-        }
-    }
 
     #endregion
 
@@ -697,7 +732,13 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
+
+    #endregion
+
+    #region<PlaySfx>
+
     
+
     #endregion
 
     private void OnDrawGizmos()
@@ -712,6 +753,26 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.color = Color.black;
         Vector3 stalkingCenter = GetComponent<BoxCollider2D>().bounds.center; // Use the actual stalking center
         Gizmos.DrawWireSphere(stalkingCenter, stalkingDistance);
+
+        if (target != null)
+        {
+            Gizmos.color = Color.green; // Color for thresholds
+            Vector3 position = GetComponent<BoxCollider2D>().bounds.center;
+
+            // Upper threshold
+            Gizmos.DrawLine(position, position + Vector3.up * verticalThreshold);
+
+            // Lower threshold
+            Gizmos.DrawLine(position, position + Vector3.down * verticalThreshold);
+
+            // Visual connection to the target
+            Gizmos.color = Color.yellow; // Line to player for reference
+            Gizmos.DrawLine(position, target.position);
+
+            Gizmos.color = Color.red;
+            float halfVerticalThreshold = verticalThreshold / 2f;
+            float halfAttackRange = attackRange / 2f;
+        }
     }
 
     #region Sound
