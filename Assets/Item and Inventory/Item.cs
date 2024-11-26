@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
     public static bool isPlayerInRange = false;
 
     [HideInInspector] private GameObject[] object_landmark;
-    // Start is called before the first frame update
+
     void Start()
     {
         inventoryController = GameObject.Find("Journal_Canvas")?.GetComponent<InventoryController>();
