@@ -714,7 +714,7 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.DrawWireSphere(stalkingCenter, stalkingDistance);
     }
 
-    #region
+    #region Sound
     float Volume()
     {
         float volumeControl;
