@@ -394,7 +394,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 /*if (!isFleeAudioPlaying)
                 {
-                    SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, 1f);
+                    SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, Volume());
                     isFleeAudioPlaying = true;
                 }*/
 
@@ -521,7 +521,7 @@ public class EnemyMovement : MonoBehaviour
         {
             if (!isShineAudioPlaying)
             {
-                SoundEffectManager.instance.PlayRandomSoundFxClip(shineAudio, transform, 1f);
+                SoundEffectManager.instance.PlayRandomSoundFxClip(shineAudio, transform, Volume());
                 isShineAudioPlaying = true;
             }
             else
@@ -667,7 +667,7 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator PlayStalkingSound()
     {
         float rand = Random.Range(1f, 2f);
-        SoundEffectManager.instance.PlayRandomSoundFxClip(stalkAudio, transform, 1f);
+        SoundEffectManager.instance.PlayRandomSoundFxClip(stalkAudio, transform, Volume());
         yield return new WaitForSeconds(rand);
         isStalkAudioPlaying = false;
         
@@ -677,7 +677,7 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator PlayChaseSound()
     {
         float rand = Random.Range(0.3f, 0.5f);
-        SoundEffectManager.instance.PlayRandomSoundFxClip(chaseAudio, transform, 1f);
+        SoundEffectManager.instance.PlayRandomSoundFxClip(chaseAudio, transform, Volume());
         yield return new WaitForSeconds(rand);
         isChaseAudioPlaying = false;
     }
@@ -685,7 +685,7 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator PlayGrowlSound()
     {
         float rand = Random.Range(7f, 9f);
-        SoundEffectManager.instance.PlayRandomSoundFxClip(growlAudio, transform, 1f);
+        SoundEffectManager.instance.PlayRandomSoundFxClip(growlAudio, transform, Volume());
         yield return new WaitForSeconds(rand);
         isGrowlingAudioPlaying = false;
     }
@@ -737,4 +737,21 @@ public class EnemyMovement : MonoBehaviour
         Vector3 stalkingCenter = GetComponent<BoxCollider2D>().bounds.center; // Use the actual stalking center
         Gizmos.DrawWireSphere(stalkingCenter, stalkingDistance);
     }
+
+    #region Sound
+    float Volume()
+    {
+        float volumeControl;
+        if(Audio.Instance !=null)
+        {
+            volumeControl = Audio.Instance.SFXSource.volume;
+           
+        }
+        else
+        {
+            volumeControl = 1f;
+        }
+        return volumeControl;
+    }
+    #endregion
 }

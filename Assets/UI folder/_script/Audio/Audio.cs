@@ -87,6 +87,7 @@ public class Audio : MonoBehaviour
 
     public void SpecialForWalking(AudioClip clip)
     {
+        Debug.Log("Music in");
         playerFlashlight.clip = clip;
         playerWalking.Play();
     }
