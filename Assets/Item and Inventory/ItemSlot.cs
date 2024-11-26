@@ -205,23 +205,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 case "Store":
                     Debug.Log("Store button work");
                     btn.onClick.AddListener(() => StoreItem(this));
-                    playClick();
+                    PlaySFX("Click");
                     break;
                 case "Craft":
                     btn.onClick.AddListener(() => CraftItem());
-                    playClick();
+                    PlaySFX("Click");
                     break;
                 case "Fuse":
                     btn.onClick.AddListener(() => FuseItem());
-                    playClick();
+                    PlaySFX("Click");
                     break;
                 case "Use":
                     btn.onClick.AddListener(() => UseItem());
-                    playClick();
+                    PlaySFX("Click");
                     break;
                 case "Drop":
                     btn.onClick.AddListener(() => DropItem());
-                    playClick();
+                    PlaySFX("Click");
                     break;
             }
         }
@@ -299,7 +299,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             case "Battery":
                 battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_normal);
-                RefillBatterySFX();
+                PlaySFX("BatteryRefill");
                 RemoveItem();
                 break;
 
@@ -307,7 +307,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 //Batteries that have a battery life of 2.5 times longer than normal batteries. Requires an upgrade in order to use it
                 if (battery_bar_float.reload_battery(battery_bar_float.which_battery_used.battery_1300_mah) == true)
                 {
-                    RefillBatterySFX();
+                    PlaySFX("BatteryRefill");
                     RemoveItem();
                 }
                 break;
@@ -315,7 +315,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "First Aid Kits":
                 if (!playerHealth.GetFullHealth())
                 {
-                    playHealingSFX();
+                    PlaySFX("Healing");
                     playerHealth.FullHeal();
                     RemoveItem();
                 }
@@ -328,7 +328,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "Bandage":
                 if (!playerHealth.GetFullHealth())
                 {
-                    playHealingSFX();
+                    PlaySFX("Healing");
                     playerHealth.Heal();
                     RemoveItem();
                 }
@@ -341,7 +341,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             case "Bushcraft Medicine":
                 if (!playerHealth.GetFullHealth())
                 {
-                    playHealingSFX();
+                    PlaySFX("Healing");
                     playerHealth.Heal();
                     RemoveItem();
                 }
@@ -353,7 +353,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
             case "Adrenaline":
                 //A syringe that makes the character move 1.5 times faster for 5 seconds
-                playAdrenalineSFX();
+                PlaySFX("Adrenaline");
                 TopdownMovement playerMovement = playerTransform.GetComponent<TopdownMovement>();
                 if (playerMovement != null)
                 {
@@ -392,7 +392,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             droppedItemScript.Initialize(itemData);
         }
-        playDroppingSFX();
+        if(itemData.name == "Tent Beam" || itemData.name == "Tent Flysheet" )
+        {
+            PlaySFX("Drop2");
+        }
+        else
+        {
+            PlaySFX("Drop1");
+        }
+
         ClearSlot();
         HideDropdownMenu();
     }
@@ -531,42 +539,44 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
 
     #region Sound Effect
-    private void playClick()
+
+    private void PlaySFX(string sfxName)
     {
         if (Audio.Instance != null)
         {
-            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.UIHoverAndClick, Audio.Instance.SFXSource);
-        }
-    }
-    private void RefillBatterySFX()
-    {
-        if (Audio.Instance != null)
-        {
-            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.RandomNoiseForBatteryRefill(), Audio.Instance.SFXSource);
-        }
-    }
-    private void playHealingSFX()
-    {
-        if (Audio.Instance != null)
-        {
-            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Healing, Audio.Instance.SFXSource);
+            AudioClip clip = null;
+
+            switch (sfxName)
+            {
+                case "Click":
+                    clip = AudioSFXUI.Instance.UIHoverAndClick;
+                    break;
+                case "BatteryRefill":
+                    clip = AudioSFXUI.Instance.RandomNoiseForBatteryRefill();
+                    break;
+                case "Healing":
+                    clip = AudioSFXUI.Instance.Healing;
+                    break;
+                case "Adrenaline":
+                    clip = AudioSFXUI.Instance.Adrenaline;
+                    break;
+                case "Drop1":
+                    clip = AudioSFXUI.Instance.Item_Drop;
+                    break;
+                case "Drop2":
+                    clip = AudioSFXUI.Instance.MakeshiftCampsite_Place;
+                    break;
+                default:
+                    Debug.LogWarning($"Unrecognized sound effect name: {sfxName}");
+                    return;
+            }
+
+            // Play the selected audio clip
+            Audio.Instance.PlayClipWithSource(clip, Audio.Instance.SFXSource);
         }
     }
 
-    private void playAdrenalineSFX()
-    {
-        if (Audio.Instance != null)
-        {
-            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Adrenaline, Audio.Instance.SFXSource);
-        }
-    }
-    private void playDroppingSFX()
-    {
-        if (Audio.Instance != null)
-        {
-            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Item_Drop, Audio.Instance.SFXSource);
-        }
-    }
+
     #endregion
 
 
