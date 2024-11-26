@@ -14,6 +14,9 @@ public class CampInsideItem : MonoBehaviour
     private int luckynum;
     public ItemData[] itemDataStroing = new ItemData[9];
 
+
+    //sequence
+    //1: battery, 2: first aid kit, 3:bandage, 4: adrenaline
     private void Start()
     {
         if(MakeshiftCampsite == false)
@@ -66,14 +69,17 @@ public class CampInsideItem : MonoBehaviour
         if(brokeCampsite)
         {
             luckynum = Random.Range(2, 4);//2~3
-            ItemData randomItem = itemData[4];//bandage
+            ItemData randomItem = itemData[2];//bandage
             itemDataStroing[0] = randomItem;
         }
         else
         {
             luckynum = Random.Range(4, 6);//4~5
-            ItemData randomItem = itemData[3];//medkit
-            itemDataStroing[0] = randomItem;  
+            ItemData randomItem = itemData[1];//medkit
+            ItemData randomItem2 = itemData[0];//battery
+            itemDataStroing[0] = randomItem;
+            itemDataStroing[1] = randomItem2;
+
         }
 
         for (int i = 1; i < luckynum; i++) //-1 is to let the cmapsite got fixed specific item
@@ -81,7 +87,21 @@ public class CampInsideItem : MonoBehaviour
             // Select a random item from the itemData array
             int randomIndex = Random.Range(0, itemData.Length);
             ItemData randomItem = itemData[randomIndex];
-            itemDataStroing[i] = randomItem;
+            if(brokeCampsite)
+            {
+                itemDataStroing[i] = randomItem;
+            }
+            else
+            {
+                if(i==1)//prevent the second item already assign being change
+                {
+                    continue;
+                }
+                else
+                {
+                    itemDataStroing[i] = randomItem;
+                }
+            }
 
         }
 
