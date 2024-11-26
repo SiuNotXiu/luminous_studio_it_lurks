@@ -112,7 +112,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             target = collision.transform;
-            //playerMovement.ConfieldSpeed();
+            playerMovement.ConfieldSpeed();
             
         }
     }

@@ -2278,6 +2278,10 @@ PrefabInstance:
       propertyPath: idleTrigger
       value: 
       objectReference: {fileID: 1298193005}
+    - target: {fileID: 1842244664736007893, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
+      propertyPath: flwSoundClips
+      value: 
+      objectReference: {fileID: 8300000, guid: 94a48119beecf4a469ad7fac5264f237, type: 3}
     - target: {fileID: 2945918093115412467, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.8
