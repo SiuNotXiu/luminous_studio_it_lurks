@@ -16,17 +16,15 @@ public class AudioAnimation : MonoBehaviour
     {
         // Check if the specified animation is playing
         bool isAnimationPlaying = animator.GetCurrentAnimatorStateInfo(0).IsName(animationStateName);
-        if(isAnimationPlaying)
+/*        if(isAnimationPlaying)
         {
             Debug.Log("it true");
         }
         else
         {
             Debug.Log("it false");
-        }
+        }*/
 
-        
-        
         
         if (isAnimationPlaying && !isPlayingAudio)
         {
