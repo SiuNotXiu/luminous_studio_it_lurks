@@ -59,6 +59,7 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private bool inAtkArea = false;
     private Animator anim;
+    private Animator anim_monochrome;
     private Vector2 previousPosition;
     [SerializeField] private float cornfieldRange;
     [SerializeField] LayerMask cornfieldMask;
@@ -87,6 +88,7 @@ public class EnemyMovement : MonoBehaviour
     {
         lastPlayerPosition = transform.position;
         anim = GetComponent<Animator>();
+        anim_monochrome = transform.Find("monochrome").GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         sr = GetComponent<SpriteRenderer>();
         agent.updateUpAxis = false;
@@ -185,8 +187,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void StalkingState()
     {
-        anim.SetBool("isWalking", true);
-        anim.SetBool("isRunning", false);
+        anim.SetBool("isWalking", true);    anim_monochrome.SetBool("isWalking", true);
+        anim.SetBool("isRunning", false);   anim_monochrome.SetBool("isRunning", false);
         if (agent.isStopped)
         {
             agent.isStopped = false;
@@ -282,8 +284,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void ChasingState()
     {
-        anim.SetBool("isRunning", true);
-        anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", true);    anim_monochrome.SetBool("isRunning", true);
+        anim.SetBool("isWalking", false);   anim_monochrome.SetBool("isWalking", false);
         if (agent.isStopped)
         {
             agent.isStopped = false;
@@ -347,16 +349,16 @@ public class EnemyMovement : MonoBehaviour
         {
             sr.flipX = false;
         }
-        anim.SetBool("isWalking", false);
-        anim.SetBool("isRunning", false);
-        
+        anim.SetBool("isWalking", false);   anim.SetBool("isWalking", false);
+        anim.SetBool("isRunning", false);   anim.SetBool("isRunning", false);
+
 
         if (!attack)  
         {
             attack = true;
-            anim.SetBool("isAtking", true);
-            
-            
+            anim.SetBool("isAtking", true); anim.SetBool("isAtking", true);
+
+
 
             StartCoroutine(EndAttackAfterAnimation());
 
@@ -575,8 +577,8 @@ public class EnemyMovement : MonoBehaviour
                 Debug.DrawRay(StartPos, Direction * cornfieldRange, Color.black); // Debug visualization for hit
                 currentState = EnemyState.Idle;
                 cornfield = true;
-                anim.SetBool("isWalking", false);
-                anim.SetBool("isRunning", false);
+                anim.SetBool("isWalking", false);   anim_monochrome.SetBool("isWalking", false);
+                anim.SetBool("isRunning", false);   anim_monochrome.SetBool("isRunning", false);
 
 
             }
@@ -728,7 +730,7 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator EndAttackAfterAnimation()
     {
         yield return new WaitForSeconds(0.1f);
-        anim.SetBool("isAtking", false); 
+        anim.SetBool("isAtking", false);    anim_monochrome.SetBool("isAtking", false);
     }
 
 

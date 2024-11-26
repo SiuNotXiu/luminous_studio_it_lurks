@@ -9,7 +9,11 @@ public class monster_z_depth : MonoBehaviour
 
     private void OnValidate()
     {
-        /*if (object_flashlight_mask == null)
+    }
+
+    private void LateUpdate()
+    {
+        if (object_flashlight_mask == null)
             GameObject.Find("flashlight_mask");
         if (object_camera_picture_for_monster == null)
             GameObject.Find("camera_picture_for_monster");
@@ -18,15 +22,11 @@ public class monster_z_depth : MonoBehaviour
             transform.position = new Vector3(transform.position.x,
                 transform.position.y,
                 object_flashlight_mask.transform.position.z + 1);
+            object_camera_picture_for_monster.GetComponent<Camera>().Render();
         }
         else
         {
             Debug.Log("z layer is still wrong");
-        }*/
-    }
-
-    private void Start()
-    {
-        
+        }
     }
 }
