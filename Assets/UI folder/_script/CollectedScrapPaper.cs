@@ -49,6 +49,7 @@ public class CollectedScrapPaper : MonoBehaviour
         if (!collectedScrapIDs.Contains(id))
         {
             collectedScrapIDs.Add(id);
+            currentPageIndex = id - 1;
             UpdateJournal(id);
             Debug.Log("Id added: " + id);
             unlockJournal[id -1] = true;
@@ -60,42 +61,43 @@ public class CollectedScrapPaper : MonoBehaviour
 
     public void UpdateJournal(int page = -1)
     {
-        //Debug.Log("Scrap in");
-
-        if (collectedScrapIDs.Count >= 1)
+        if (collectedScrapIDs.Count > 0)
         {
-            currentMaxPage = GetMaxValue(collectedScrapIDs);
+            currentMaxPage = GetMaxValue(collectedScrapIDs); 
+        }
+
+        
+        if (page != -1)
+        {
+            currentPageIndex = Mathf.Clamp(page - 1, 0, currentMaxPage - 1);
         }
         else
         {
-            //the sprite for theleft right should be blank//i think no need?
+            currentPageIndex = Mathf.Clamp(currentPageIndex, 0, currentMaxPage - 1);
         }
 
-        currentPageIndex = Mathf.Clamp(currentPageIndex, 0, currentMaxPage);
         
-
-        if (collectedScrapIDs.Contains(currentPageIndex +1))
+        if (collectedScrapIDs.Contains(currentPageIndex + 1))
         {
-            //display
-            if(page != -1)
-            {
-                currentPageIndex = page - 1;
-            }
+            
             SetTransparency(leftImage, rightImage, clipImage, transparencyMax);
             leftImage.sprite = leftSprite[currentPageIndex];
             rightImage.sprite = rightSprite[currentPageIndex];
         }
         else
         {
-            //display blank
+            
             SetTransparency(leftImage, rightImage, clipImage, transparencyZero);
             leftImage.sprite = emptySprite;
             rightImage.sprite = emptySprite;
         }
 
         previousPageButton.interactable = currentPageIndex > 0;
-        nextPageButton.interactable = currentPageIndex < currentMaxPage - 1 ;
+        nextPageButton.interactable = currentPageIndex < currentMaxPage - 1;
+
+        Debug.Log($"Updated Journal - Current Page: {currentPageIndex + 1}, Max Page: {currentMaxPage}, Collected IDs: {string.Join(", ", collectedScrapIDs)}");
     }
+
 
     private int GetMaxValue(List<int> numbers)
     {
