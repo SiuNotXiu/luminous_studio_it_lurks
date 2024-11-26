@@ -11,7 +11,8 @@ public class Audio : MonoBehaviour
     [SerializeField] AudioSource musicSource; //for playing bgm
     [SerializeField] AudioSource RandomSFXForBGM; //for playing random spooky bgm
     [SerializeField] public AudioSource SFXSource; //for playing sfx
-    [SerializeField] public AudioSource playerFlashlight; //forplaying player flashlight
+    [SerializeField] public AudioSource playerFlashlight; //for playing player flashlight
+    [SerializeField] public AudioSource playerWalking; //for playing player walking
 
     [Header("-----Audio Clip-----")]
     public AudioClip BGM;
@@ -81,11 +82,13 @@ public class Audio : MonoBehaviour
         RandomSFXForBGM.volume = bgmVolume * mainVolume;
         SFXSource.volume = sfxVolume * mainVolume;
         playerFlashlight.volume = sfxVolume * mainVolume;
+        playerWalking.volume = sfxVolume * mainVolume;
     }
 
-    public void playWalking(AudioClip clip)
+    public void SpecialForWalking(AudioClip clip)
     {
-        playerFlashlight.PlayOneShot(clip);
+        playerFlashlight.clip = clip;
+        playerWalking.Play();
     }
 
 

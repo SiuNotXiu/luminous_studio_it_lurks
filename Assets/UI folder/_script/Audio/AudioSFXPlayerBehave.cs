@@ -32,18 +32,18 @@ public class AudioSFXPlayerBehave : MonoBehaviour
         }
     }
 
-    public void RandomNoiseForCornfieldFootstep()
+    public AudioClip RandomNoiseForCornfieldFootstep()
     {
         AudioClip[] randomNoises = { CornfieldFootstep, CornfieldFootstep2, CornfieldFootstep3, CornfieldFootstep4 };
         AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
-
-        //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
+        return randomClip;
+       
     }
-    public void RandomNoiseForGrassFootstep()
+    public AudioClip RandomNoiseForGrassFootstep()
     {
         AudioClip[] randomNoises = { GrassFootstep, GrassFootstep2, GrassFootstep3, GrassFootstep4 };
         AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
-
+        return randomClip;
         //Audio.Instance.SetBackgroundMusic(randomClip); (this should be diff)
     }
 
