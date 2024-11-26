@@ -266,7 +266,7 @@ public class EnemyMovement : MonoBehaviour
         lastPlayerPosition = currentPlayerPosition; // Update last known player position
         FleeingChecks();
 
-        /*if (!isStalkAudioPlaying)
+        if (!isStalkAudioPlaying)
         {
             StartCoroutine(PlayStalkingSound());
             isStalkAudioPlaying = true;
@@ -275,8 +275,8 @@ public class EnemyMovement : MonoBehaviour
         if(!isGrowlingAudioPlaying)
         {
             StartCoroutine(PlayGrowlSound());
-            isGrowlingAudioPlaying = true;  
-        }*/
+            isGrowlingAudioPlaying = true;
+        }
      
     }
 
@@ -328,11 +328,11 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-       /* if (!isChaseAudioPlaying)
+        if (!isChaseAudioPlaying)
         {
             StartCoroutine(PlayChaseSound());
             isChaseAudioPlaying = true;
-        }*/
+        }
 
         FleeingChecks();
     }
@@ -392,11 +392,11 @@ public class EnemyMovement : MonoBehaviour
 
             if(gameObject.GetComponent<monster_database>().GetFlee()==true)
             {
-                /*if (!isFleeAudioPlaying)
+                if (!isFleeAudioPlaying)
                 {
                     SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, Volume());
                     isFleeAudioPlaying = true;
-                }*/
+                }
 
                 speed = 7;
                 agent.speed = speed;
@@ -697,31 +697,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-
-    #endregion
-
-    #region<Play SFX>
-
-    private void PlayGrowlSfx()
-    {
-        SoundEffectManager.instance.PlayRandomSoundFxClip(growlAudio, transform, 1f);
-    }
-
-    private void PlayWalkSfx()
-    {
-        SoundEffectManager.instance.PlayRandomSoundFxClip(stalkAudio, transform, 1f);
-    }
-
-    private void PlayShineSfx()
-    {
-        SoundEffectManager.instance.PlayRandomSoundFxClip(shineAudio, transform, 1f);
-    }
-
-    private void PlayFleeSfx()
-    {
-        SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, 1f);
-    }
-
+    
     #endregion
 
     private void OnDrawGizmos()
