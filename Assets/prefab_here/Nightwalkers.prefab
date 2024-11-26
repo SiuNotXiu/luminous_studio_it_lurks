@@ -157,8 +157,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -1.0909727, y: 11.0998535}
-      - {x: -9.652977, y: -11.916142}
-      - {x: 8.951509, y: -11.224444}
+      - {x: -5.0126724, y: -1.27736}
+      - {x: 5.0991817, y: -1.1911125}
   m_UseDelaunayMesh: 0
 --- !u!1 &2185217964418346519
 GameObject:
@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 2531694453090508065}
   - component: {fileID: 4271547083133838083}
   - component: {fileID: 8289902235034148156}
+  - component: {fileID: 2466639407404520490}
   m_Layer: 13
   m_Name: Nightwalkers
   m_TagString: Enemy
@@ -465,8 +466,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healtheffects: {fileID: 0}
   damageAudios:
-  - {fileID: 8300000, guid: 85bdefc5ad8a4cf44bbde76ca14aefe3, type: 3}
-  - {fileID: 8300000, guid: 9b9375518aba0ab4db3f7499aa060a9d, type: 3}
+  - {fileID: 8300000, guid: bf4af9c7748269348b00418c1fcb8424, type: 3}
+  - {fileID: 8300000, guid: 69f522fbc19e8d6458beb6ed76e91be0, type: 3}
+  - {fileID: 8300000, guid: 1139f04af2d490d4ca9fd3692679a8dd, type: 3}
 --- !u!114 &2531694453090508065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,24 +504,24 @@ MonoBehaviour:
   fleeTime: 5
   fleeTimer: 0
   player: {fileID: 0}
-  cornfieldRange: 0
+  cornfieldRange: 10
   cornfieldMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
+  cornfieldTrigger: {fileID: 0}
   growlAudio:
-  - {fileID: 8300000, guid: 0237124dc24d432498d2835bbbdd5aac, type: 3}
-  - {fileID: 8300000, guid: 676730b12ac8e0d4eb36a3c0c42c37f9, type: 3}
+  - {fileID: 8300000, guid: 337ff12fe3fcdb749aab6f970124da1b, type: 3}
   chaseAudio:
-  - {fileID: 8300000, guid: 2f56711b5c8caa94ead05eac6fbbc28c, type: 3}
+  - {fileID: 8300000, guid: 91f748c48f523d04bbc36ce5edfd2501, type: 3}
   stalkAudio:
-  - {fileID: 8300000, guid: 2f56711b5c8caa94ead05eac6fbbc28c, type: 3}
+  - {fileID: 8300000, guid: 41326f54cac28f54594f722c3f48990f, type: 3}
   shineAudio:
-  - {fileID: 8300000, guid: 6c4d7014372e283498aaa9dc638c8384, type: 3}
-  - {fileID: 8300000, guid: 74c8a03dce213f1468e61ec2f7c47b4b, type: 3}
+  - {fileID: 8300000, guid: f5f3e86930701444caacea420a55f663, type: 3}
   fleeAudio:
-  - {fileID: 8300000, guid: 91cc4ffe920638245a50116ee3ec00ef, type: 3}
-  - {fileID: 8300000, guid: f5c1edd2549916d4791309a5dbe1ba22, type: 3}
-  - {fileID: 8300000, guid: 727795f3faa8bac4f9ae6fdb0a10cf33, type: 3}
+  - {fileID: 8300000, guid: 2d7a249457ab885419554cf713812cee, type: 3}
+  - {fileID: 8300000, guid: b263bde673bb7cb49bfbce18ab9159ff, type: 3}
+  - {fileID: 8300000, guid: 310812179a09668429e1a6611090e4ee, type: 3}
+  - {fileID: 8300000, guid: a203856f48062e1409b4f23f6f0df59a, type: 3}
 --- !u!61 &4271547083133838083
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -586,6 +588,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2466639407404520490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766521153818071665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70932c47a6a182a4b83aaac0bfb382e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5630013535243388810
 GameObject:
   m_ObjectHideFlags: 0
