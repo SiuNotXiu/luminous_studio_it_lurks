@@ -450,6 +450,14 @@ PrefabInstance:
       propertyPath: MakeshiftCampsite
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: JournalP1
       value: 
@@ -534,6 +542,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6174884646622160191, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a40e026aad77b8d4d8bb49b20d3c4b6c, type: 3}
     - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_Name
       value: Campfire (7)
@@ -982,6 +994,14 @@ PrefabInstance:
       propertyPath: MakeshiftCampsite
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: JournalP1
       value: 
@@ -1066,6 +1086,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6174884646622160191, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a40e026aad77b8d4d8bb49b20d3c4b6c, type: 3}
     - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_Name
       value: Campfire (3)
@@ -1898,6 +1922,14 @@ PrefabInstance:
       propertyPath: MakeshiftCampsite
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: JournalP1
       value: 
@@ -1982,6 +2014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6174884646622160191, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a40e026aad77b8d4d8bb49b20d3c4b6c, type: 3}
     - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_Name
       value: Campfire (4)
@@ -3040,6 +3076,14 @@ PrefabInstance:
       propertyPath: MakeshiftCampsite
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: JournalP1
       value: 
@@ -3124,6 +3168,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6174884646622160191, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a40e026aad77b8d4d8bb49b20d3c4b6c, type: 3}
     - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_Name
       value: Campfire (5)
@@ -5519,6 +5567,14 @@ PrefabInstance:
       propertyPath: MakeshiftCampsite
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: JournalP1
       value: 
@@ -5603,6 +5659,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6174884646622160191, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a40e026aad77b8d4d8bb49b20d3c4b6c, type: 3}
     - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_Name
       value: Campfire (6)
@@ -6042,6 +6102,14 @@ PrefabInstance:
       propertyPath: MakeshiftCampsite
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163764137614821975, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3335159774276895905, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: JournalP1
       value: 
@@ -6126,6 +6194,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6174884646622160191, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a40e026aad77b8d4d8bb49b20d3c4b6c, type: 3}
     - target: {fileID: 8994956272622810077, guid: e877b0338127e8d4a89a889d7be22f38, type: 3}
       propertyPath: m_Name
       value: Campfire (8)
