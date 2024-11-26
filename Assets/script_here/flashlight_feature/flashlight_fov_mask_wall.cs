@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 using static UnityEngine.UI.Image;
 
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
@@ -100,6 +101,9 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                 Vector2[] uv = new Vector2[vertices.Length];
                 int[] triangles = new int[ray_count * 3];
 
+                //Color[] color_of_vertex = new Color[vertices.Length];
+                float vertex_distance = view_distance;
+
                 origin.z = mask_z_local_position;
                 vertices[0] = origin;
 
@@ -124,7 +128,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                     RaycastHit2D[] raycast_hit_2d = Physics2D.RaycastAll(end_of_sector, get_vector_from_angle(angle_reverse), view_distance, layer_that_detects_flashlight);//from the arc to the center
                     #endregion
                     //mesh rendering using local_position
-                    vertex = gameObject.transform.InverseTransformPoint(end_of_sector);
+                    vertex = transform.InverseTransformPoint(end_of_sector);
                     if (raycast_hit_2d.Length != 0)//if this raycast collided something
                     {
                         //check last first, if last is wall (light blocking)
@@ -151,8 +155,8 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                             {
                                 //wall found
                                 //mesh rendering using local_position
-                                vertex = gameObject.transform.InverseTransformPoint(raycast_hit_2d[j].point);
-
+                                vertex = transform.InverseTransformPoint(raycast_hit_2d[j].point);
+                                vertex_distance = Vector3.Distance(origin, raycast_hit_2d[i].point);
                                 //if wall found, monster behind wall shouldn't get flashed
                                 monster_flashed.Clear();
                                 bubble_flashed.Clear();
@@ -162,9 +166,9 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                                 raycast_hit_2d[raycast_hit_2d.Length - 1].point,
                                 Color.green, 0.1f);*/
 
-                                /*Debug.DrawLine(player_position,
+                                Debug.DrawLine(player_position,
                                 raycast_hit_2d[j].point,
-                                Color.red, 0.1f);*/
+                                Color.red, 0.1f);
 
                                 /*Debug.Log(raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.name);*/
                                 #endregion
@@ -207,7 +211,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                                     Color.red, 0.1f);*/
 
                     vertices[vertex_index] = vertex;
-
+                    //color_of_vertex[vertex_index] = new Color(1,1,1, vertex_distance / view_distance);
                     if (i > 0)
                     {
                         triangles[triangle_index + 0] = 0;
@@ -224,6 +228,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                 mesh.vertices = vertices;
                 mesh.uv = uv;
                 mesh.triangles = triangles;
+                //mesh.colors = color_of_vertex;
             }
         }
         StartCoroutine(this_frame_calculated_shape_coroutine());
