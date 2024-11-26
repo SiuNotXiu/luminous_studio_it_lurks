@@ -94,8 +94,10 @@ public class EnemyMovement : MonoBehaviour
         agent.updateUpAxis = false;
         agent.updateRotation = false;
         agent.speed = speed;
-        
-        
+        previousPosition = transform.position;
+
+
+
     }
 
     private void Awake()
@@ -544,21 +546,23 @@ public class EnemyMovement : MonoBehaviour
     private void FlipChecks()
     {
         
-        float currentPosX = transform.position.x;
-        float previousPosX = previousPosition.x;
+            float currentPosX = transform.position.x;
+            float previousPosX = previousPosition.x;
 
-        
-        if (currentPosX > previousPosX)
-        {
-            sr.flipX = true;    
-        }
-        else if (currentPosX < previousPosX)
-        {
-            sr.flipX = false; 
-        }
 
+            if (currentPosX > previousPosX)
+            {
+                sr.flipX = true;
+            }
+            else if (currentPosX < previousPosX)
+            {
+               sr.flipX = false;
+            }
+
+
+            previousPosition = transform.position;
         
-        previousPosition = transform.position;
+       
     }
 
     private void CornfieldRangeCheck()

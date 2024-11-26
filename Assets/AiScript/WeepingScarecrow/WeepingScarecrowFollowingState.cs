@@ -38,7 +38,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
             }
             
 
-            Debug.Log("Hi, I'm following");
+            //Debug.Log("Hi, I'm following");
         }
     }
 
