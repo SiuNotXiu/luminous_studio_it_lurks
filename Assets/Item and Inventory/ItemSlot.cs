@@ -52,7 +52,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] private battery_bar_float playerBattery;
     private bool isDropdownMenuActive = false;
     [SerializeField] private GameObject[] campsitePrefabs;
-    private int campsiteIndex = 0;
+    private static int campsiteIndex = 0;
 
     private void Update()
     {
