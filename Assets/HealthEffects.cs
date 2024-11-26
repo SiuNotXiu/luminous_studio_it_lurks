@@ -106,7 +106,7 @@ public class HealthEffects : MonoBehaviour
             //animator_mask.Play("death");
             //animator_normal.Play("death");
             ResetBGM();
-            SceneManager.LoadScene("EndOfDemo");
+            SceneManager.LoadScene("1st Scene");//need to make it start corountine
 
            
 

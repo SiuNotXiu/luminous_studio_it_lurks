@@ -95,7 +95,7 @@ public class CollectedScrapPaper : MonoBehaviour
         previousPageButton.interactable = currentPageIndex > 0;
         nextPageButton.interactable = currentPageIndex < currentMaxPage - 1;
 
-        Debug.Log($"Updated Journal - Current Page: {currentPageIndex + 1}, Max Page: {currentMaxPage}, Collected IDs: {string.Join(", ", collectedScrapIDs)}");
+        //Debug.Log($"Updated Journal - Current Page: {currentPageIndex + 1}, Max Page: {currentMaxPage}, Collected IDs: {string.Join(", ", collectedScrapIDs)}");
     }
 
 
