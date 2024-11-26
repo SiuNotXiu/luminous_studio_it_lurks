@@ -147,7 +147,11 @@ public class Item : MonoBehaviour
     {
         if (Audio.Instance != null)
         {
-            if (itemData.name == "Ginseng" || itemData.name == "Yarrow" || itemData.name == "Stick")
+            if(itemData.isKey)
+            {
+                Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Key_Pickup, Audio.Instance.SFXSource);
+            }
+            else if (itemData.name == "Ginseng" || itemData.name == "Yarrow" || itemData.name == "Stick")
             {
                 Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.Herb_Stick_Pickup, Audio.Instance.SFXSource, 0.3f, 0.9f);
             }
