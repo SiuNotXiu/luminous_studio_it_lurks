@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2766521153818071665, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3035412185471361213, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -583,6 +583,14 @@ PrefabInstance:
       propertyPath: _healtheffects
       value: 
       objectReference: {fileID: 1867807091}
+    - target: {fileID: 3547470084883853217, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
+      propertyPath: damageAudios.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf4af9c7748269348b00418c1fcb8424, type: 3}
+    - target: {fileID: 3547470084883853217, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
+      propertyPath: damageAudios.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 69f522fbc19e8d6458beb6ed76e91be0, type: 3}
     - target: {fileID: 3710824312388360329, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
       propertyPath: m_Radius
       value: 54.97363
@@ -1646,7 +1654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1041388604
 Transform:
   m_ObjectHideFlags: 0
@@ -2245,6 +2253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShapeShifter
       objectReference: {fileID: 0}
+    - target: {fileID: 8314615757749398049, guid: bd84d2e74d7d3b04c9c7a1205bb6eae7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2264,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997167477901046659, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1842244664736007893, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: idleTrigger
