@@ -39,7 +39,7 @@ public class WeepingScarecrowManager : MonoBehaviour
 
     #region<SFX>
     [SerializeField] private AudioClip[] enterSoundClips;
-    [SerializeField] private AudioClip[] flwSoundClips;
+    [SerializeField] private AudioClip flwSoundClips;
     [SerializeField] private AudioClip[] atkSoundClips;
     #endregion
 
@@ -112,7 +112,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             target = collision.transform;
-            playerMovement.ConfieldSpeed();
+            //playerMovement.ConfieldSpeed();
             
         }
     }
@@ -203,7 +203,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         return anim;
     }
 
-    public AudioClip[] GetFlwSoundClips()
+    public AudioClip GetFlwSoundClips()
     {
         return flwSoundClips;
     }

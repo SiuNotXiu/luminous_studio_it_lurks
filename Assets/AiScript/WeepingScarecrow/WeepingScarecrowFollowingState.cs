@@ -1,16 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 {
     private NavMeshAgent agent;
-    private Coroutine playSoundCoroutine;
     private Animator anim;
     private monster_database md;
-    
+    private bool sfx = false;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
@@ -20,14 +17,27 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
             anim = weepingScarecrow.GetAnimator();
 
             anim.SetBool("isRunning", true);
+
             if (agent.isStopped)
             {
                 agent.isStopped = false;
             }
 
+            // Start moving toward the target and updating position
             weepingScarecrow.StartCoroutine(UpdateTargetPosition(weepingScarecrow, agent));
-            playSoundCoroutine = weepingScarecrow.StartCoroutine(PlaySoundEffect(weepingScarecrow));
-            SoundEffectManager.instance.PlayRandomSoundFxClip(weepingScarecrow.GetFlwSoundClips(), weepingScarecrow.transform, 1f);
+
+            // Play the persistent sound effect
+            if (sfx == false)
+            {
+                SoundEffectManager.instance.PlayAndTrackSound(weepingScarecrow.GetFlwSoundClips(), weepingScarecrow.transform, 1f);
+                sfx = true;
+            }
+            else
+            {
+                SoundEffectManager.instance.ResumePersistentSound();
+            }
+            
+
             Debug.Log("Hi, I'm following");
         }
     }
@@ -37,26 +47,24 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         md = weepingScarecrow.GetMd();
         if (weepingScarecrow.GetTarget() != null)
         {
-            //Debug.Log("shiine" + weepingScarecrow.gameObject.GetComponent<monster_database>().GetShine());
-            if (weepingScarecrow.gameObject.GetComponent<monster_database>().canStop == true)  
+            if (weepingScarecrow.gameObject.GetComponent<monster_database>().canStop == true)
             {
-                //weepingScarecrow.StartCoroutine(SwitchStateDelay(weepingScarecrow));
                 anim.SetBool("isShine", true);
-                Debug.Log("switching to idle");
+                Debug.Log("Switching to idle");
                 weepingScarecrow.SwitchState(weepingScarecrow.idleState);
-                
-                
+            }
+            else
+            {
+                // Update the persistent sound position to follow the scarecrow
+                SoundEffectManager.instance.UpdatePersistentSoundPosition(weepingScarecrow.transform);
             }
         }
-      
     }
 
     public override void ExitState(WeepingScarecrowManager weepingScarecrow)
     {
-        if (playSoundCoroutine != null)
-        {
-            weepingScarecrow.StopCoroutine(playSoundCoroutine);
-        }
+        // Stop the persistent sound when exiting the state
+        SoundEffectManager.instance.PausePersistentSound();
         anim.SetBool("isRunning", false);
     }
 
@@ -69,22 +77,6 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
                 agent.SetDestination(weepingScarecrow.GetTarget().position);
             }
             yield return new WaitForSeconds(1f);
-        }
-    }
-
-    private IEnumerator SwitchStateDelay(WeepingScarecrowManager weepingScarecrow)
-    {
-        yield return new WaitForSeconds(0.6f);
-        weepingScarecrow.SwitchState(weepingScarecrow.idleState);
-    }
-
-    private IEnumerator PlaySoundEffect(WeepingScarecrowManager weepingScarecrow)
-    {
-        while (true)
-        {
-            float rand = Random.Range(2f, 4f);
-            yield return new WaitForSeconds(rand);
-            SoundEffectManager.instance.PlayRandomSoundFxClip(weepingScarecrow.GetFlwSoundClips(), weepingScarecrow.transform, 1f);
         }
     }
 }
