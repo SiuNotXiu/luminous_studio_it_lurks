@@ -8,13 +8,26 @@ public class AudioAnimation : MonoBehaviour
     public string animationStateName; // Name of the animation state to check
 
     private bool isPlayingAudio = false;
+    private bool AudioRunning = false;
+    public float adjustTimingForWalk = 0.15f;
 
     //this script is for player walking audio, should assign to player
     void Update()
     {
         // Check if the specified animation is playing
         bool isAnimationPlaying = animator.GetCurrentAnimatorStateInfo(0).IsName(animationStateName);
+        if(isAnimationPlaying)
+        {
+            Debug.Log("it true");
+        }
+        else
+        {
+            Debug.Log("it false");
+        }
 
+        
+        
+        
         if (isAnimationPlaying && !isPlayingAudio)
         {
             isPlayingAudio = true;
@@ -31,12 +44,15 @@ public class AudioAnimation : MonoBehaviour
     {
         while (isPlayingAudio) // Loop while walking
         {
-            if (Audio.Instance != null)
+            if (!AudioRunning)
             {
                 AudioClip clip = AudioSFXPlayerBehave.Instance.RandomNoiseForGrassFootstep();
-                Audio.Instance.SpecialForWalking(clip);
+                Audio.Instance.playerWalking.clip = clip;
+                Audio.Instance.playerWalking.Play();
+                AudioRunning = true;
 
-                yield return new WaitForSeconds(clip.length);
+                yield return new WaitForSeconds(clip.length + adjustTimingForWalk); 
+                AudioRunning = false; 
             }
             else
             {
