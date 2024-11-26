@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8008048189345170359}
   - component: {fileID: 8591333248837230449}
   - component: {fileID: 2330236559114282122}
+  - component: {fileID: 2427506437479299401}
   m_Layer: 13
   m_Name: WeepingScarecrow
   m_TagString: Enemy
@@ -112,6 +113,7 @@ MonoBehaviour:
   shine: 0
   flahsed: 0
   timer: 0
+  flw: 0
   playerMovement: {fileID: 0}
   enterSoundClips:
   - {fileID: 8300000, guid: b13d8a30539a743489155c2b9aaff109, type: 3}
@@ -169,8 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healtheffects: {fileID: 0}
   damageAudios:
-  - {fileID: 8300000, guid: 85bdefc5ad8a4cf44bbde76ca14aefe3, type: 3}
-  - {fileID: 8300000, guid: 9b9375518aba0ab4db3f7499aa060a9d, type: 3}
+  - {fileID: 8300000, guid: bf4af9c7748269348b00418c1fcb8424, type: 3}
+  - {fileID: 8300000, guid: 69f522fbc19e8d6458beb6ed76e91be0, type: 3}
 --- !u!50 &8591333248837230449
 Rigidbody2D:
   serializedVersion: 4
@@ -219,6 +221,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &2427506437479299401
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997167477901046659}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.62265396, y: 12.401328}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 35.079998, y: 24.802656}
+    newSize: {x: 35.079998, y: 24.802656}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.589138, y: 24.802656}
+  m_EdgeRadius: 0
 --- !u!1 &6252735796229743552
 GameObject:
   m_ObjectHideFlags: 0
