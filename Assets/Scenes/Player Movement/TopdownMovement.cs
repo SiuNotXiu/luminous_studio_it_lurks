@@ -101,6 +101,11 @@ public class TopdownMovement : MonoBehaviour
         moveSpeed = oriSpeed;
     }
 
+    public void SpeedBoost()
+    {
+        moveSpeed = speedboost;
+    }
+
     public void playerFacing()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

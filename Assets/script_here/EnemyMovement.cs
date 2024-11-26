@@ -66,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
     private bool cornfieldRangeCheck = false;
     [SerializeField]private CustomTrigger cornfieldTrigger;
     [SerializeField] private float verticalThreshold = 2f; // Adjust as per your gameplay needs
-    private float attackRange = 5f;
+    private float attackRange = 4.5f;
     #endregion
 
     #region<Sfx>
@@ -365,8 +365,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (!speedBoosted)
         {
-           /// originalSpeed = player.GetMoveSpeed();
-           // player.ChangeSpeed(originalSpeed + 8);
+            /// originalSpeed = player.GetMoveSpeed();
+            player.SpeedBoost();
             speedBoosted = true;
         }
 
@@ -377,7 +377,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (speedBoostTimer >= 2)
         {
-            //player.ChangeSpeed(originalSpeed);
+            player.OriginalSpeed();
             speedBoostTimer = 0;
             speedBoosted = false;
             currentState = EnemyState.Stalking;
@@ -751,7 +751,7 @@ public class EnemyMovement : MonoBehaviour
 
         // Draw stalking range
         Gizmos.color = Color.black;
-        Vector3 stalkingCenter = GetComponent<BoxCollider2D>().bounds.center; // Use the actual stalking center
+        Vector2 stalkingCenter = GetComponent<BoxCollider2D>().bounds.center; // Use the actual stalking center
         Gizmos.DrawWireSphere(stalkingCenter, stalkingDistance);
 
         if (target != null)

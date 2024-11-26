@@ -26,7 +26,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     private float speed = 6f;
     [SerializeField] private float timer = 0f;
     private float time = 5f;
-    private bool flw = false;
+    public bool flw = false;
     private bool inAtkArea = false;
     private Animator anim;
     private monster_database md;
@@ -56,7 +56,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         idleTrigger.ExitedTrigger += OnIdleTriggerExited;
         attackTrigger.EnteredTrigger += OnAtkTriggerEntered;
         attackTrigger.ExitedTrigger += OnAtkTriggerExited;
-        followTrigger.EnteredTrigger += OnFollowTriggerEntered;
+        
 
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = speed;
@@ -159,20 +159,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         }
     }
 
-    private void OnFollowTriggerEntered(Collider2D collision)
-    {
-        if (flw == false && target != null) 
-        {
-            anim.SetBool("isActivate", true);
-            if (soundPlayed == false)
-            {
-                SoundEffectManager.instance.PlayRandomSoundFxClip(enterSoundClips, transform, 1f);
-                soundPlayed = true;
-            }
-            StartCoroutine(FollowStateDelay());
-        }
-    
-    }
+   
     #endregion
 
     #region<Setters and Getters>
@@ -225,17 +212,15 @@ public class WeepingScarecrowManager : MonoBehaviour
     {
         return atkSoundClips;
     }
+
+    public AudioClip[] GetEnterSoundClips()
+    {
+        return enterSoundClips;
+    }
     #endregion
 
     #region<Coroutine>
-    private IEnumerator FollowStateDelay()
-    {
-        yield return new WaitForSeconds(4f);
-        SwitchState(followState);
-        flw = true;
    
-
-    }
 
     private IEnumerator Deactivate()
     {
@@ -244,4 +229,28 @@ public class WeepingScarecrowManager : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDrawGizmos()
+    {
+        BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
+        Vector2 centerPosition = collider.bounds.center;
+        // Draw the follow trigger area as a circle in the scene view
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(centerPosition, 8f);
+    }
+
+   public float Volume()
+    {
+        float volumeControl;
+        if (Audio.Instance != null)
+        {
+            volumeControl = Audio.Instance.SFXSource.volume;
+
+        }
+        else
+        {
+            volumeControl = 1f;
+        }
+        return volumeControl;
+    }
 }
