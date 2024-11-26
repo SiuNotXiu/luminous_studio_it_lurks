@@ -607,6 +607,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 9.182421
       objectReference: {fileID: 0}
+    - target: {fileID: 5630013535243388810, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6219472291518027859, guid: 2fa47c7bb4ddd5a4c8a318144e1321b6, type: 3}
       propertyPath: m_Radius
       value: 31.906378
@@ -1646,7 +1650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1041388604
 Transform:
   m_ObjectHideFlags: 0
@@ -2268,7 +2272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997167477901046659, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1842244664736007893, guid: f6f877bd09670f04d9c3d4905d64f280, type: 3}
       propertyPath: idleTrigger
