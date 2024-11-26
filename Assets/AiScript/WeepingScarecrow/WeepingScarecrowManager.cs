@@ -30,7 +30,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     private bool inAtkArea = false;
     private Animator anim;
     private monster_database md;
-    private bool soundPlayed = false;
+    public bool soundPlayed = false;
     [SerializeField]private TopdownMovement playerMovement;
     private SpriteRenderer sr;
     private Vector2 previousPosition;
@@ -123,6 +123,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         {
             target = null;
             flw = false;
+            soundPlayed = false;
             Debug.Log("istriggerexit");
             SwitchState(idleState);
             playerMovement.OriginalSpeed();
