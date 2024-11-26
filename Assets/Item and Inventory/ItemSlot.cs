@@ -166,36 +166,47 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         inventoryC.SetDropdownMenuInstance(activeDropdownMenu);
 
-        //Debug.Log("IDK CHEcking : " + InventoryController.chest_detect.isInRange);
-        if (InventoryController.chest_detect.isInRange || this.itemData.itemName == "Makeshift Camp")
-        {
-            buttonD.gameObject.SetActive(false);
-        }
-        if (P1.activeSelf)
-        {
-            //storing
-            if (this.itemData.itemTag == "PerksItem")
-            {
-                buttonU.gameObject.SetActive(false);
-            }
-            buttonC.gameObject.SetActive(false);
-            buttonF.gameObject.SetActive(false);
-        }
-        else if (!P1.activeSelf)
+        if (this.itemData.isKey)
         {
             buttonS.gameObject.SetActive(false);
-            if (this.itemData.itemTag == "CraftItem")
+            buttonC.gameObject.SetActive(false);
+            buttonF.gameObject.SetActive(false);
+            buttonU.gameObject.SetActive(false);
+            buttonD.gameObject.SetActive(false);
+        }
+        else
+        {
+            
+            if (InventoryController.chest_detect.isInRange || this.itemData.itemName == "Makeshift Camp")
             {
-                //crafting
-                buttonF.gameObject.SetActive(false);
-            }
-            else if (this.itemData.itemTag == "PerksItem")
-            {
-                //fuse
-                buttonU.gameObject.SetActive(false);
-                buttonC.gameObject.SetActive(false);
+                buttonD.gameObject.SetActive(false);
             }
 
+            if (P1.activeSelf)
+            {
+
+                if (this.itemData.itemTag == "PerksItem")
+                {
+                    buttonU.gameObject.SetActive(false);
+                }
+
+                buttonC.gameObject.SetActive(false);
+                buttonF.gameObject.SetActive(false);
+            }
+            else 
+            {
+                buttonS.gameObject.SetActive(false); 
+
+                if (this.itemData.itemTag == "CraftItem")
+                {
+                    buttonF.gameObject.SetActive(false); 
+                }
+                else if (this.itemData.itemTag == "PerksItem")
+                {
+                    buttonU.gameObject.SetActive(false);
+                    buttonC.gameObject.SetActive(false); 
+                }
+            }
         }
 
         Button[] buttons = activeDropdownMenu.GetComponentsInChildren<Button>();
