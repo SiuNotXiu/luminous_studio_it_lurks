@@ -67,6 +67,24 @@ public class TopdownMovement : MonoBehaviour
         }
 
         rb2d.velocity = moveInput * moveSpeed;
+        if (facing_right == true)
+        {
+            if (moveInput.x < 0)
+            {
+                //going left, facing right
+                moveInput.x = moveInput.x / 2;
+                rb2d.velocity = moveInput * moveSpeed;
+            }
+        }
+        if (facing_right == false)
+        {
+            if (moveInput.x > 0)
+            {
+                //going right, facing left
+                moveInput.x = moveInput.x / 2;
+                rb2d.velocity = moveInput * moveSpeed;
+            }
+        }
         playerFacing();
         if (moveInput.x != 0 || moveInput.y != 0)
         {

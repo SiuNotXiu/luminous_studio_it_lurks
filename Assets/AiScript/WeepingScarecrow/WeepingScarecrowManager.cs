@@ -29,6 +29,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     public bool flw = false;
     private bool inAtkArea = false;
     private Animator anim;
+    private Animator anim_monochrome;
     private monster_database md;
     public bool soundPlayed = false;
     [SerializeField]private TopdownMovement playerMovement;
@@ -58,14 +59,15 @@ public class WeepingScarecrowManager : MonoBehaviour
         attackTrigger.ExitedTrigger += OnAtkTriggerExited;
         
 
-        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = speed;
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        anim = gameObject.GetComponent<Animator>();
-        md = gameObject.GetComponent<monster_database>();
-        sr = gameObject.GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        anim_monochrome = transform.Find("monochrome").GetComponent<Animator>();
+        md = GetComponent<monster_database>();
+        sr = GetComponent<SpriteRenderer>();
 
         
     }
@@ -132,8 +134,8 @@ public class WeepingScarecrowManager : MonoBehaviour
             if (anim.GetBool("isActivate") == true)
             {
                 Debug.Log("idleaniation");
-                anim.SetBool("isActivate", false);
-                anim.SetBool("isDeactivate", true);
+                anim.SetBool("isActivate", false);      anim_monochrome.SetBool("isActivate", false);
+                anim.SetBool("isDeactivate", true);     anim_monochrome.SetBool("isDeactivate", true);
                 StartCoroutine(Deactivate());
             }
            
@@ -226,7 +228,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     private IEnumerator Deactivate()
     {
         yield return new WaitForSeconds(0.2f);
-        anim.SetBool("isDeactivate", false);
+        anim.SetBool("isDeactivate", false);     anim_monochrome.SetBool("isDeactivate", false);
     }
 
     #endregion
