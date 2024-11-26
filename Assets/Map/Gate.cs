@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour
 {
@@ -24,8 +25,17 @@ public class Gate : MonoBehaviour
         if (keyItemData != null)
         {
             Debug.Log($"Gate {gateID} unlocked!");
-            inventoryController.RemoveItemFromPlayerInventory(keyItemData); 
-            Destroy(gameObject); 
+            inventoryController.RemoveItemFromPlayerInventory(keyItemData);
+
+            if (gateID == "4")
+            {
+                Debug.Log("game ending");
+                SceneManager.LoadScene("Ending"); 
+            }
+            else
+            {
+                Destroy(gameObject); 
+            }
         }
         else
         {
