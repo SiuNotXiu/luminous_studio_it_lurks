@@ -33,9 +33,8 @@ public class Play : MonoBehaviour
         skip.onClick.AddListener(SkipStory);
 
         // Disable next button and fade in after delay
-        next.interactable = false;
         skip.interactable = false;
-        StartCoroutine(ButtonPrompt(10f, next, nextImage));
+        //StartCoroutine(ButtonPrompt(10f, next, nextImage));
 
         // Initialize skip button's opacity
         SetImageAlpha(skipImage, 0f);
@@ -53,9 +52,11 @@ public class Play : MonoBehaviour
         }
 
         next.interactable = false;
+        skip.interactable = true;
         SetImageAlpha(nextImage, 0f);
-        StartCoroutine(TextPrompt(14.29f, smallWord)); //unity 10sec = designer 7 sec, therefore unity 14.29f = designer 10sec
-        StartCoroutine(ButtonPrompt(20f, skip, skipImage));
+        SetImageAlpha(skipImage, 1f);
+        StartCoroutine(TextPrompt(10.14f, smallWord)); //unity 10sec = designer 7 sec, d8s = u10.14f
+        //StartCoroutine(ButtonPrompt(20f, skip, skipImage));
     }
 
     private void SkipStory()
@@ -70,23 +71,16 @@ public class Play : MonoBehaviour
             page.SetActive(false);
         }
     }
+    #region Delected code
+    /*    private IEnumerator ButtonPrompt(float delay, Button button, Image image)
+        {
+            yield return new WaitForSeconds(delay);
 
-    private IEnumerator ButtonPrompt(float delay, Button button, Image image)
-    {
-        yield return new WaitForSeconds(delay);
+            button.interactable = true;
+            yield return StartCoroutine(FadeInImage(image, 1f));
+        }*/
 
-        button.interactable = true;
-        yield return StartCoroutine(FadeInImage(image, 1f));
-    }
-
-    private IEnumerator TextPrompt(float delay, TextMeshProUGUI text)
-    {
-        yield return new WaitForSeconds(delay);
-
-        yield return StartCoroutine(FadeInText(text, 1f));
-    }
-
-    private IEnumerator FadeInImage(Image image, float duration)
+   /* private IEnumerator FadeInImage(Image image, float duration)
     {
         float elapsedTime = 0f;
         Color color = image.color;
@@ -100,7 +94,17 @@ public class Play : MonoBehaviour
         }
 
         SetImageAlpha(image, 1f);
+    }*/
+
+    #endregion
+
+    private IEnumerator TextPrompt(float delay, TextMeshProUGUI text)
+    {
+        yield return new WaitForSeconds(delay);
+
+        yield return StartCoroutine(FadeInText(text, 1f));
     }
+
 
     private IEnumerator FadeInText(TextMeshProUGUI text, float duration)
     {
