@@ -9,7 +9,7 @@ public class monster_z_depth : MonoBehaviour
 
     private void OnValidate()
     {
-        if (object_flashlight_mask == null)
+        /*if (object_flashlight_mask == null)
             GameObject.Find("flashlight_mask");
         if (object_camera_picture_for_monster == null)
             GameObject.Find("camera_picture_for_monster");
@@ -22,7 +22,7 @@ public class monster_z_depth : MonoBehaviour
         else
         {
             Debug.Log("z layer is still wrong");
-        }
+        }*/
     }
 
     private void Start()
