@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script_trigger_map_ui: {fileID: 0}
-  object_big_map_icon: {fileID: 0}
+  object_big_map_icon: {fileID: 7489729717431923736}
   material_map_icon_dissolve_appear: {fileID: -876546973899608171, guid: 40d7f3684e6c89e4a97331067f406808, type: 3}
 --- !u!1 &7489729717431923736
 GameObject:
