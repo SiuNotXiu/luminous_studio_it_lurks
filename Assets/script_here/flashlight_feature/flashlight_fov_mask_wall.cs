@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-using static UnityEngine.UI.Image;
 
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class flashlight_fov_wall_mask : MonoBehaviour
@@ -14,11 +11,11 @@ public class flashlight_fov_wall_mask : MonoBehaviour
     #region sector drawing
     [HideInInspector] public static bool this_frame_calculated_shape = false;
     [HideInInspector] public static Mesh mesh;
-    [HideInInspector] public static float fov = 90f;
+    [HideInInspector] public static float fov = 60f;
     [HideInInspector] public static int ray_count;
     [HideInInspector] public static float angle_increase;
-    [HideInInspector] public static float view_distance_initial = 7f;
-    [HideInInspector] public static float view_distance = 7f;//default value follow initial
+    [HideInInspector] public static float view_distance_initial = 10f;
+    [HideInInspector] public static float view_distance = view_distance_initial;//default value follow initial
     [HideInInspector] private Vector3 origin;
     [HideInInspector] public static Vector3 player_position;
     [HideInInspector] public static float angle;

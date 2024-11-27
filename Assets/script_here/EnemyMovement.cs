@@ -351,14 +351,14 @@ public class EnemyMovement : MonoBehaviour
         {
             sr.flipX = false;
         }
-        anim.SetBool("isWalking", false);   anim.SetBool("isWalking", false);
-        anim.SetBool("isRunning", false);   anim.SetBool("isRunning", false);
+        anim.SetBool("isWalking", false);   anim_monochrome.SetBool("isWalking", false);
+        anim.SetBool("isRunning", false);   anim_monochrome.SetBool("isRunning", false);
 
 
         if (!attack)  
         {
             attack = true;
-            anim.SetBool("isAtking", true); anim.SetBool("isAtking", true);
+            anim.SetBool("isAtking", true); anim_monochrome.SetBool("isAtking", true);
 
 
 
