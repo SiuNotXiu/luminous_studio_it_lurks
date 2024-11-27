@@ -395,7 +395,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FleeingState()
     {
-        Debug.Log("fleingstat");
+        Debug.Log("fleengstat");
         if (target != null)
         {
          
