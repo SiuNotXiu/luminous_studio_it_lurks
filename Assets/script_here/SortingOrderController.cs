@@ -53,6 +53,7 @@ public class SortingOrderController : MonoBehaviour
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
                     monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, backZ);
+                    
 
                 }
                 // Condition 4: Both below the tree - Tree in front of both
@@ -67,12 +68,13 @@ public class SortingOrderController : MonoBehaviour
             case (false, true): // Monster is null, Player is not null
 
                 playerY = playerPos.position.y;
-
+                Debug.Log("player is not null, monster is null");
 
                 if (playerY > treeY)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
                     playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, frontZ);
+                    Debug.Log("player forntz");
 
                 }
                 // Condition 4: Both below the tree - Tree in front of both
@@ -80,6 +82,7 @@ public class SortingOrderController : MonoBehaviour
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
                     playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, backZ);
+                    Debug.Log("player backz");
 
                 }
                 break;
@@ -106,7 +109,7 @@ public class SortingOrderController : MonoBehaviour
                 break;
 
             case (false, false): // Both Monster and Player are null
-                //Debug.Log("Neither Monster nor Player exists.");
+                Debug.Log("Neither Monster nor Player exists.");
                 break;
         }
 
@@ -121,13 +124,13 @@ public class SortingOrderController : MonoBehaviour
         if (collision.CompareTag("Player") && playerPos == null) 
         {
             playerPos = collision.transform;
-            //Debug.Log("Player Position Updated"+playerPos.position);
+            Debug.Log("Player Position Updated"+playerPos.position);
         }
 
         if (collision.CompareTag("Enemy") && monsterPos == null)
         {
             monsterPos = collision.transform;
-            //Debug.Log("Monster Position Updated"+monsterPos.position);
+            Debug.Log("Monster Position Updated"+monsterPos.position);
         }
     }
 
