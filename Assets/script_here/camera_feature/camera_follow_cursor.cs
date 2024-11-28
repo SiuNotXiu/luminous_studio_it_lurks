@@ -21,10 +21,14 @@ public class camera_follow_cursor : MonoBehaviour
     void Update()
     {
         //new code fix by chen jie
-        float remember_this_float = transform.position.z;
+        if(InventoryController.JournalOpen && EasterEgg.closingEgg && !trigger_map_ui.Map_Is_Open)
+        {
+            float remember_this_float = transform.position.z;
 
-        Vector3 targetPosition = Vector3.Lerp(object_player.transform.position, get_mouse_position(), 0.1f);
-        transform.position = new Vector3(targetPosition.x, targetPosition.y, remember_this_float);
+            Vector3 targetPosition = Vector3.Lerp(object_player.transform.position, get_mouse_position(), 0.1f);
+            transform.position = new Vector3(targetPosition.x, targetPosition.y, remember_this_float);
+        }
+ 
 
         //old code use by hengsiu
         /* float remember_this_float = transform.position.z;
