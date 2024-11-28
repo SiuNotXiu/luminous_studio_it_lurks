@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class trigger_map_ui : MonoBehaviour
 {
+    public static trigger_map_ui instance;
     [SerializeField] private GameObject big_map;
 
     [SerializeField] private GameObject object_big_map_background;
@@ -14,6 +15,10 @@ public class trigger_map_ui : MonoBehaviour
 
     public static bool Map_Is_Open = false;
 
+    public void OnEnable() //reset the main value in this script
+    {
+        Map_Is_Open = false;
+    }
     private void Start()
     {
         big_map.SetActive(false);
@@ -21,6 +26,18 @@ public class trigger_map_ui : MonoBehaviour
         obmb_initial_scale = object_big_map_background.transform.localScale;
         script_bms = GetComponent<big_map_scrolling>();
         #endregion
+    }
+    private void Awake()
+    {
+        // Singleton Pattern (if necessary)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -35,17 +52,10 @@ public class trigger_map_ui : MonoBehaviour
                 }
                 else
                 {
-                    Map_Is_Open = false;
-                    big_map.SetActive(false);
-                    #region for mouse scrolling zoom map
-                    object_big_map_background.transform.localScale = obmb_initial_scale;
-                    script_bms.current_zoom_count = 0;
-                    #endregion
-                    #region for mouse drag map
-                    object_map_and_icon.transform.localPosition = new Vector2(0, 0);
-                    #endregion
+                    closemap();
                 }
             }
+            //there's a pressing ecs to close function at  InventoryController script
         }
         else
         {
@@ -62,6 +72,19 @@ public class trigger_map_ui : MonoBehaviour
         }
         Map_Is_Open = true;
         big_map.SetActive(true);
+    }
+
+    public void closemap()
+    {
+        Map_Is_Open = false;
+        big_map.SetActive(false);
+        #region for mouse scrolling zoom map
+        object_big_map_background.transform.localScale = obmb_initial_scale;
+        script_bms.current_zoom_count = 0;
+        #endregion
+        #region for mouse drag map
+        object_map_and_icon.transform.localPosition = new Vector2(0, 0);
+        #endregion
     }
 
     #region flashlightONOFf

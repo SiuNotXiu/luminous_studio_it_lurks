@@ -53,7 +53,7 @@ public class TopdownMovement : MonoBehaviour
     void Update()
     {
 
-        if(InventoryController.JournalOpen && EasterEgg.closingEgg)
+        if(InventoryController.JournalOpen && EasterEgg.closingEgg && !trigger_map_ui.Map_Is_Open)
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.y = Input.GetAxisRaw("Vertical");
@@ -163,13 +163,7 @@ public class TopdownMovement : MonoBehaviour
     }
 
     #region Sound Effect
-    private void playWalk()
-    {
-        if (Audio.Instance != null)
-        {
-            //Audio.Instance.playWalking(AudioSFXPlayerBehave.Instance.GrassFootstep);
-        }
-    }
+
 
     #endregion
 

@@ -29,7 +29,10 @@ public class AudioAnimation : MonoBehaviour
         if (isAnimationPlaying && !isPlayingAudio)
         {
             isPlayingAudio = true;
-            StartCoroutine(WalkingAudioLoop());
+            if(Audio.Instance != null)
+            {
+                StartCoroutine(WalkingAudioLoop());
+            }
         }
         else if (!isAnimationPlaying && isPlayingAudio)
         {
