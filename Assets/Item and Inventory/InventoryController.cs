@@ -37,6 +37,8 @@ public class InventoryController : MonoBehaviour
     public GameObject story;
     public GameObject setting;
     public GameObject journal_p1n2;
+    public GameObject close_BTN;
+    public GameObject Inform;
 
     [Header("Switching Sprite")]
     public Image Boarder;
@@ -145,6 +147,8 @@ public class InventoryController : MonoBehaviour
         journal_display.ShowPanels();
         button_display.Show();
         button_display.ShowPanels();
+        close_BTN.SetActive(true);
+        Inform.SetActive(true);
         if (scrappaper != 0)
         {
             journal_p1n2.SetActive(false);
@@ -176,6 +180,8 @@ public class InventoryController : MonoBehaviour
         journal_display.Hide();
         button_display.Hide();
         Journal.SetActive(false);
+        close_BTN.SetActive(false); 
+        Inform.SetActive(false);
 
         TryCrafting();
 
