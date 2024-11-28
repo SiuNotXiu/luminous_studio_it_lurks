@@ -37,9 +37,9 @@ public class TopdownMovement : MonoBehaviour
         if (object_animation == null)
             object_animation = transform.Find("animation").gameObject;
         if (object_sprite_sheet_mask == null)
-            object_sprite_sheet_mask    = transform.Find("animation").Find("sprite_sheet_mask").gameObject;
+            object_sprite_sheet_mask    = GameObject.Find("sprite_sheet_mask").gameObject;
         if (object_sprite_sheet_normal == null)
-            object_sprite_sheet_normal  = transform.Find("animation").Find("sprite_sheet_normal").gameObject;
+            object_sprite_sheet_normal  = GameObject.Find("sprite_sheet_normal").gameObject;
         if (animator_mask == null)
         {
             animator_mask = object_sprite_sheet_mask.GetComponent<Animator>();

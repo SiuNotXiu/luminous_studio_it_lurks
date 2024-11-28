@@ -22,7 +22,7 @@ public class player_flashlight_direction : MonoBehaviour
     //offset based on editor
     [SerializeField] private float arm_initial_offset = 0.0f;
 
-    private void Start()
+    private void OnValidate()
     {
         #region initialize game object
         if (object_sprite_sheet_mask == null)
@@ -33,7 +33,7 @@ public class player_flashlight_direction : MonoBehaviour
         if (object_sprite_sheet_normal == null)
             object_sprite_sheet_normal = transform.Find("animation").Find("sprite_sheet_normal").gameObject;
         if (object_arm_with_flashlight == null)
-            object_arm_with_flashlight = transform.Find("animation").Find("arm_with_flashlight").gameObject;
+            object_arm_with_flashlight = GameObject.Find("arm_with_flashlight").gameObject;
 
         if (bones_head_mask == null)
             bones_head_mask = object_sprite_sheet_mask.transform.Find("bone_1").Find("bone_2").Find("bone_3").gameObject;
@@ -53,12 +53,6 @@ public class player_flashlight_direction : MonoBehaviour
         
         flashlight_fov_wall_mask.angle = flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) + flashlight_fov_wall_mask.fov / 2;
         flashlight_fov_wall_mask.player_position = object_flashlight_mask.transform.position;
-
-        //output_z = flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction);//when the cursor is at 3 o clock, the angle is 0, perfect
-
-        //Debug.Log("direction > " + flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction));
-
-
 
         if (flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) >= 90 && flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) <= 270)
         {

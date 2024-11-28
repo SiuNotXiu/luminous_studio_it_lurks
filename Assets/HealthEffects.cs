@@ -22,6 +22,11 @@ public class HealthEffects : MonoBehaviour
     private float hurtTimer = 0.3f;
 
     private Coroutine coroutine_ready_to_go_next_scene;
+    private float time_passed_after_death = 0.0f;
+    private float duration_before_auto_next_scene = 3.0f;
+    [SerializeField] private GameObject object_fade_out_filter;
+    private Color fade_out_filter_color;
+
     private void OnValidate()
     {
         #region initialization
@@ -44,6 +49,10 @@ public class HealthEffects : MonoBehaviour
                 object_sprite_sheet_normal = object_player.transform.Find("animation").Find("sprite_sheet_normal").gameObject;
                 animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
             }
+        }
+        if (object_fade_out_filter == null)
+        {
+            object_fade_out_filter = GameObject.Find("canva_game_over").transform.Find("fade_out_filter").gameObject;
         }
         #endregion
     }
@@ -157,7 +166,18 @@ public class HealthEffects : MonoBehaviour
         {
             //Debug.Log("force off");
             player_database.is_flashlight_on = false;
-            if (Input.GetMouseButtonDown(0))
+            if (time_passed_after_death < duration_before_auto_next_scene)
+            {
+                time_passed_after_death += Time.deltaTime;
+                if (time_passed_after_death >= duration_before_auto_next_scene)
+                {
+                    time_passed_after_death = duration_before_auto_next_scene;
+                }
+                fade_out_filter_color = object_fade_out_filter.GetComponent<Image>().color;
+                fade_out_filter_color.a = time_passed_after_death / duration_before_auto_next_scene;
+                object_fade_out_filter.GetComponent<Image>().color = fade_out_filter_color;
+            }
+            if (Input.GetMouseButtonDown(0) || time_passed_after_death == duration_before_auto_next_scene)
             {
                 //Debug.Log("next scene");
                 SceneManager.LoadScene("1st Scene");//need to make it start corountine

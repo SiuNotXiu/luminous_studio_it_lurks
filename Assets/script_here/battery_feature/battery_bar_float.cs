@@ -31,21 +31,21 @@ public class battery_bar_float : MonoBehaviour
     //dimmer visuals
     [SerializeField] private GameObject object_dim_filter;
 
-    private void Start()
+    private void OnValidate()
     {
         #region initialize game object
-        if (battery_green == null)
-            battery_green = GameObject.Find("Canvas").transform.Find("canvas_battery_bar").Find("green").gameObject.GetComponent<Image>();
+        //if (battery_green == null)
+        //    battery_green = GameObject.Find("canvas_battery_bar").transform.Find("green").gameObject.GetComponent<Image>();
         if (battery_green == null)
             Debug.Log("battery_green == null");
 
         if (script_flashlight_battery_blink == null)
-            script_flashlight_battery_blink = transform.Find("animation").Find("arm_with_flashlight").Find("flashlight_mask").GetComponent<flashlight_battery_blink>();
+            script_flashlight_battery_blink = GameObject.Find("arm_with_flashlight").transform.Find("flashlight_mask").GetComponent<flashlight_battery_blink>();
         if (script_flashlight_battery_blink == null)
             Debug.Log("script_flashlight_battery_blink == null");
         
         if (object_dim_filter == null)
-            object_dim_filter = transform.Find("animation").Find("arm_with_flashlight").Find("flashlight_mask").Find("flashlight_dim_filter").gameObject;
+            object_dim_filter = GameObject.Find("arm_with_flashlight").transform.Find("flashlight_mask").Find("flashlight_dim_filter").gameObject;
         if (object_dim_filter == null)
             Debug.Log("object_dim_filter == null");
         #endregion
@@ -82,12 +82,12 @@ public class battery_bar_float : MonoBehaviour
         if (script_flashlight_battery_blink != null)
             script_flashlight_battery_blink.check_should_flashlight_blink(battery_remaining, battery_max);
 
-        if (battery_remaining >= 0)
+        /*if (battery_remaining >= 0)
         {
             //visual
             if (battery_green != null)
                 battery_green.fillAmount = battery_remaining_percentage;
-        }
+        }*/
         if (battery_remaining <= 0)//only need to check this if flashlight is on
         {
             battery_remaining = 0;
