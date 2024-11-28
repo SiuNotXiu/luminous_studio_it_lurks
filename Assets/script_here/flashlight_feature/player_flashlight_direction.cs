@@ -22,6 +22,8 @@ public class player_flashlight_direction : MonoBehaviour
     //offset based on editor
     [SerializeField] private float arm_initial_offset = 0.0f;
 
+    //for physics after player die
+    [SerializeField] private HealthEffects script_health_effects;
     private void OnValidate()
     {
         #region initialize game object
@@ -45,6 +47,11 @@ public class player_flashlight_direction : MonoBehaviour
         #endregion
 
         arm_initial_offset = object_arm_with_flashlight.transform.position.z - object_sprite_sheet_mask.transform.position.z;
+
+        if (script_health_effects == null)
+        {
+            script_health_effects = GameObject.Find("HealthControll").GetComponent<HealthEffects>();
+        }
     }
     void Update()
     {
