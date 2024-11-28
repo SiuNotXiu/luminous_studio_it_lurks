@@ -68,7 +68,7 @@ public class SortingOrderController : MonoBehaviour
             case (false, true): // Monster is null, Player is not null
 
                 playerY = playerPos.position.y;
-                Debug.Log("player is not null, monster is null");
+                Debug.Log("player only");
 
                 if (playerY > treeY)
                 {
@@ -109,7 +109,7 @@ public class SortingOrderController : MonoBehaviour
                 break;
 
             case (false, false): // Both Monster and Player are null
-                Debug.Log("Neither Monster nor Player exists.");
+                //Debug.Log("Neither Monster nor Player exists.");
                 break;
         }
 
@@ -142,7 +142,7 @@ public class SortingOrderController : MonoBehaviour
 
         }
 
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Player"))
         {
             playerPos = null;
         }
