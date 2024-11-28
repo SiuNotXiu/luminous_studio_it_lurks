@@ -58,39 +58,31 @@ public class TopdownMovement : MonoBehaviour
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.y = Input.GetAxisRaw("Vertical");
 
-            moveInput.Normalize();
+            moveInput.Normalize();//prevent diagonal move too fast
         }
         else
         {
             moveInput.x = 0f;
             moveInput.y = 0f;
         }
-
-        rb2d.velocity = moveInput * moveSpeed;
-        if (facing_right == true)
-        {
-            if (moveInput.x < 0)
-            {
-                //going left, facing right
-                moveInput.x = moveInput.x / 2;
-                rb2d.velocity = moveInput * moveSpeed;
-            }
-        }
-        if (facing_right == false)
-        {
-            if (moveInput.x > 0)
-            {
-                //going right, facing left
-                moveInput.x = moveInput.x / 2;
-                rb2d.velocity = moveInput * moveSpeed;
-            }
-        }
         playerFacing();
+        rb2d.velocity = moveInput * moveSpeed;
         if (moveInput.x != 0 || moveInput.y != 0)
         {
             // Play the "walk_right" animation regardless of direction, speed will handle direction
-            animator_mask.Play("walk_right");
-            animator_normal.Play("walk_right");
+            if (Vector3.Dot(moveInput, playerFacing().normalized) >= 0)
+            {
+                animator_mask.Play("walk_right");
+                animator_normal.Play("walk_right");
+            }
+            else if (Vector3.Dot(moveInput, playerFacing().normalized) < 0)
+            {
+                //going right, facing left
+                moveInput = moveInput / 2;
+                rb2d.velocity = moveInput * moveSpeed;
+                animator_mask.Play("walk_backwards");
+                animator_normal.Play("walk_backwards");
+            }
         }
         else
         {
@@ -124,7 +116,7 @@ public class TopdownMovement : MonoBehaviour
         moveSpeed = speedboost;
     }
 
-    public void playerFacing()
+    public Vector3 playerFacing()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePosition.x < transform.position.x)
@@ -137,6 +129,7 @@ public class TopdownMovement : MonoBehaviour
             facing_right = true;
             object_animation.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+        return mousePosition;
     }
 
     public void UseAdrenaline()
