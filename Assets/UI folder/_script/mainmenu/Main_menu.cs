@@ -22,8 +22,12 @@ public class MainMenu : MonoBehaviour
 
     public GameObject main_menu;
 
+    private bool gameOnCalled = false; // Flag to track if GameOn has been called
 
-
+    private void OnEnable()
+    {
+        gameOnCalled = false;
+    }
 
     private void Start()
     {
@@ -32,7 +36,7 @@ public class MainMenu : MonoBehaviour
         button_o.onClick.AddListener(Option); // Option
         button_c.onClick.AddListener(Credit); // Credit
         button_q.onClick.AddListener(Quit); // Quit
-
+        gameOnCalled = false;
     }
 
     private void Update()
@@ -46,6 +50,8 @@ public class MainMenu : MonoBehaviour
     #region Main Menu
     public void GameOn()
     {
+        if (gameOnCalled) return; // Prevent multiple calls
+        gameOnCalled = true; // Set the flag to true
         disableAnimator();
         playClick();
         StartCoroutine(ScreenLoader.Instance.LoadLevel("Premise", false, play, main_menu)); //here got set play active to true,also audio include
