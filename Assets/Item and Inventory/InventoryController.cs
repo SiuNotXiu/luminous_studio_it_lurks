@@ -47,10 +47,16 @@ public class InventoryController : MonoBehaviour
     [SerializeField] public static CampInsideItem chestIn;
     public static Item item;
 
+    public void OnEnable() //reset the main
+    {
+        JournalOpen = true;//true is close
+    }
+
     private void Start()
     {
         InitializeItemDictionary();
     }
+
 
     // Update is called once per frame
     public void Update()
@@ -92,17 +98,27 @@ public class InventoryController : MonoBehaviour
 
 
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && JournalOpen && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-            OpenJournal();
-            button_Pg1.SetActive(false);
-            journal_p1n2.SetActive(false);
-            setting.SetActive(true);
+            if(JournalOpen && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
+            {
+                OpenJournal();
+                button_Pg1.SetActive(false);
+                journal_p1n2.SetActive(false);
+                setting.SetActive(true);
+            }
+            else if(trigger_map_ui.Map_Is_Open)
+            {
+                trigger_map_ui.instance?.closemap();
+            }
+            else
+            {
+                CloseJournal();
+            }
 
         }
         // Close Journal with Escape or the same Journal button or backspace
-        else if ((Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Journal")) && !JournalOpen)
+        else if ((Input.GetKeyDown(KeyCode.Backspace) ||  Input.GetButtonDown("Journal")) && !JournalOpen)
         {
             //Debug.Log("Cheking Journal>>>>>>>>>>>>>>" + JournalOpen);
 
