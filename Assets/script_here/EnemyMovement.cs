@@ -71,6 +71,7 @@ public class EnemyMovement : MonoBehaviour
     private bool playerDmg = false;
     private SpriteRenderer sr_monochrome;
     private player_flashlight_on_off flashlight;
+    private bool shineAnim = false;
     
     #endregion
 
@@ -197,8 +198,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void StalkingState()
     {
+        shineAnim = false;
         anim.SetBool("isWalking", true);    anim_monochrome.SetBool("isWalking", true);
         anim.SetBool("isRunning", false);   anim_monochrome.SetBool("isRunning", false);
+        if (anim.GetBool("noShine") == false)
+        {
+            anim.SetBool("noShine", true); anim_monochrome.SetBool("noShine", true);
+        }
         if (agent.isStopped)
         {
             agent.isStopped = false;
@@ -294,10 +300,16 @@ public class EnemyMovement : MonoBehaviour
 
     private void ChasingState()
     {
-        if(gameObject.GetComponent<monster_database>().GetShine() == false)
+        shineAnim = false;
+        if (gameObject.GetComponent<monster_database>().GetShine() == false)
         {
             anim.SetBool("isRunning", true); anim_monochrome.SetBool("isRunning", true);
             anim.SetBool("isWalking", false); anim_monochrome.SetBool("isWalking", false);
+            if (anim.GetBool("noShine") == false)
+            {
+                anim.SetBool("noShine", true); anim_monochrome.SetBool("noShine", true);
+            }
+            
         }
    
         if (agent.isStopped)
@@ -355,6 +367,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackState()
     {
+        shineAnim = false;
         if (agent.isStopped == false)
         {
             agent.isStopped = true;
@@ -369,6 +382,9 @@ public class EnemyMovement : MonoBehaviour
         }
         anim.SetBool("isWalking", false);   anim_monochrome.SetBool("isWalking", false);
         anim.SetBool("isRunning", false);   anim_monochrome.SetBool("isRunning", false);
+        anim.SetBool("isAtking", false); anim_monochrome.SetBool("isAtking", false);
+        anim.SetBool("isShine", false);  anim_monochrome.SetBool("isShine", false);
+
 
 
         if (!attack)  
@@ -420,6 +436,10 @@ public class EnemyMovement : MonoBehaviour
             if (anim.GetBool("isRunning") == false)
             {
                 anim.SetBool("isRunning", true); anim_monochrome.SetBool("isRunning", true);
+                if (anim.GetBool("noShine") == false)
+                {
+                    anim.SetBool("noShine", true); anim_monochrome.SetBool("noShine", true);
+                }
             }
             agent.SetDestination(transform.position);
 
@@ -555,9 +575,15 @@ public class EnemyMovement : MonoBehaviour
 
     private void FlashChecks()
     {
-
+        
         if (gameObject.GetComponent<monster_database>().GetShine() == true && currentState != EnemyState.Fleeing) 
         {
+            if (anim.GetBool("isShine") == false) 
+            {
+                anim.SetBool("noShine", false); anim_monochrome.SetBool("noShine", false);
+                anim.SetBool("isShine", true); anim_monochrome.SetBool("isShine", true);
+                StartCoroutine(EndShineAfterAnimation());
+            }
             anim.SetBool("isWalking", false); anim_monochrome.SetBool("isWalking", false);
             anim.SetBool("isRunning", false); anim_monochrome.SetBool("isRunning", false);
             anim.SetBool("isAtking", false); anim_monochrome.SetBool("isAtking", false);
@@ -578,6 +604,7 @@ public class EnemyMovement : MonoBehaviour
                 isShineAudioPlaying = false;
             }
         }
+            
        
     }
 
@@ -777,13 +804,19 @@ public class EnemyMovement : MonoBehaviour
         anim.SetBool("isAtking", false);    anim_monochrome.SetBool("isAtking", false);
     }
 
+    private IEnumerator EndShineAfterAnimation()
+    {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("isShine", false); anim_monochrome.SetBool("isShine", false);
+    }
+
 
 
     #endregion
 
     #region<PlaySfx>
 
-    
+
 
     #endregion
 
