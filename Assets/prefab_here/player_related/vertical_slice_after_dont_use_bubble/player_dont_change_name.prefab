@@ -3279,6 +3279,7 @@ MonoBehaviour:
   bones_head_normal: {fileID: 4179801737012414234}
   object_flashlight_mask: {fileID: 3733407224755349546}
   arm_initial_offset: -0.015000105
+  script_health_effects: {fileID: 0}
 --- !u!114 &1029654222785621699
 MonoBehaviour:
   m_ObjectHideFlags: 0
