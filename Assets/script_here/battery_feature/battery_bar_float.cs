@@ -63,12 +63,12 @@ public class battery_bar_float : MonoBehaviour
             battery_bar_display();
             change_dim_filter_alpha();
         }
-        if (Input.GetKeyDown(KeyCode.R))//temporary reload, later change to chermin use battery in journal
+        /*if (Input.GetKeyDown(KeyCode.R))//temporary reload, later change to chermin use battery in journal
         {
             reload_battery(which_battery_used.battery_normal);
             battery_bar_display();
             change_dim_filter_alpha();
-        }
+        }*/
     }
 
     void flashlight_on_battery_consumption()
@@ -150,6 +150,8 @@ public class battery_bar_float : MonoBehaviour
         /*if (alpha < 0.3f && alpha > 0)
             alpha = 0.3f;*/
         //object_dim_filter.GetComponent<SpriteRenderer>().material.SetFloat("_alpha", alpha);
+        if (object_dim_filter == null)
+            object_dim_filter = GameObject.Find("arm_with_flashlight").transform.Find("flashlight_mask").Find("flashlight_dim_filter").gameObject;
         object_dim_filter.GetComponent<MeshRenderer>().material.SetFloat("_alpha", alpha);
     }
 
