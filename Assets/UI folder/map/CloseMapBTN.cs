@@ -41,7 +41,7 @@ public class CloseMapBTN : MonoBehaviour
             // Example: Perform action on specific images
             if (result.gameObject.name == "CloseMapBTN")
             {
-                Debug.Log("Clicked on correct button");
+                //Debug.Log("Clicked on correct button");
                 script_trigger_map_ui.closemap();
             }
         }
