@@ -15,6 +15,10 @@ public class trigger_map_ui : MonoBehaviour
 
     public static bool Map_Is_Open = false;
 
+    public void OnEnable() //reset the main value in this script
+    {
+        Map_Is_Open = false;
+    }
     private void Start()
     {
         big_map.SetActive(false);

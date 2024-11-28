@@ -47,7 +47,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] public static CampInsideItem chestIn;
     public static Item item;
 
-    public void OnEnable() //reset the main
+    public void OnEnable() //reset the main value in this script
     {
         JournalOpen = true;//true is close
     }
