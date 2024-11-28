@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class HealthEffects : MonoBehaviour
 {
+    //this script is used by "HealthControll" not "player_dont_change_name"
+
     [SerializeField] private GameObject object_player;
     [SerializeField] private GameObject object_sprite_sheet_mask;
     [SerializeField] private GameObject object_sprite_sheet_normal;
@@ -18,6 +20,12 @@ public class HealthEffects : MonoBehaviour
     public Image redSplatterImage = null;
     public Image hurtImage = null;
     private float hurtTimer = 0.3f;
+
+    private Coroutine coroutine_ready_to_go_next_scene;
+    private float time_passed_after_death = 0.0f;
+    private float duration_before_auto_next_scene = 3.0f;
+    [SerializeField] private GameObject object_fade_out_filter;
+    private Color fade_out_filter_color;
 
     private void OnValidate()
     {
@@ -38,9 +46,13 @@ public class HealthEffects : MonoBehaviour
         {
             if (object_player != null)
             {
-                object_sprite_sheet_normal = object_player.transform.Find("sprite_sheet_normal").gameObject;
-                //animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
+                object_sprite_sheet_normal = object_player.transform.Find("animation").Find("sprite_sheet_normal").gameObject;
+                animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
             }
+        }
+        if (object_fade_out_filter == null)
+        {
+            object_fade_out_filter = GameObject.Find("canva_game_over").transform.Find("fade_out_filter").gameObject;
         }
         #endregion
     }
@@ -103,13 +115,11 @@ public class HealthEffects : MonoBehaviour
         if (currentHp <= 0)
         {
             currentHp = 0;
-            //animator_mask.Play("death");
-            //animator_normal.Play("death");
+            animator_mask.Play("death");
+            animator_normal.Play("death");
             ResetBGM();
-            SceneManager.LoadScene("1st Scene");//need to make it start corountine
-
-           
-
+            coroutine_ready_to_go_next_scene = StartCoroutine(ready_to_go_next_scene());
+            //SceneManager.LoadScene("1st Scene");//need to make it start corountine
         }
     }
 
@@ -148,6 +158,34 @@ public class HealthEffects : MonoBehaviour
 
 
     #endregion
+
+    IEnumerator ready_to_go_next_scene()
+    {
+        Debug.Log("ready_to_go_next_scene");
+        while (true)
+        {
+            //Debug.Log("force off");
+            player_database.is_flashlight_on = false;
+            if (time_passed_after_death < duration_before_auto_next_scene)
+            {
+                time_passed_after_death += Time.deltaTime;
+                if (time_passed_after_death >= duration_before_auto_next_scene)
+                {
+                    time_passed_after_death = duration_before_auto_next_scene;
+                }
+                fade_out_filter_color = object_fade_out_filter.GetComponent<Image>().color;
+                fade_out_filter_color.a = time_passed_after_death / duration_before_auto_next_scene;
+                object_fade_out_filter.GetComponent<Image>().color = fade_out_filter_color;
+            }
+            if (Input.GetMouseButtonDown(0) || time_passed_after_death == duration_before_auto_next_scene)
+            {
+                //Debug.Log("next scene");
+                SceneManager.LoadScene("1st Scene");//need to make it start corountine
+                yield break;
+            }
+            yield return null;
+        }
+    }
 }
 
 
