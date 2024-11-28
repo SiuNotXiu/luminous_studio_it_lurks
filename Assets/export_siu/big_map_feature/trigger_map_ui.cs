@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class trigger_map_ui : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class trigger_map_ui : MonoBehaviour
     [SerializeField] private GameObject object_map_and_icon;
 
     public static bool Map_Is_Open = false;
+    public GameObject inform;
+    public Button inform2;
 
     public void OnEnable() //reset the main value in this script
     {
@@ -21,6 +24,7 @@ public class trigger_map_ui : MonoBehaviour
     }
     private void Start()
     {
+        inform2.onClick.AddListener(closemap);
         big_map.SetActive(false);
         #region for mouse scrolling zoom map
         obmb_initial_scale = object_big_map_background.transform.localScale;
@@ -72,12 +76,15 @@ public class trigger_map_ui : MonoBehaviour
         }
         Map_Is_Open = true;
         big_map.SetActive(true);
+        inform.SetActive(true);
     }
 
     public void closemap()
     {
+        Debug.Log("Did it press?");
         Map_Is_Open = false;
         big_map.SetActive(false);
+        inform.SetActive(false);
         #region for mouse scrolling zoom map
         object_big_map_background.transform.localScale = obmb_initial_scale;
         script_bms.current_zoom_count = 0;
