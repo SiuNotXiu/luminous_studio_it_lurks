@@ -29,7 +29,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
             // Play the persistent sound effect
             if (sfx == false)
             {
-                SoundEffectManager.instance.PlayAndTrackSound(weepingScarecrow.GetFlwSoundClips(), weepingScarecrow.transform, 1f);
+                SoundEffectManager.instance.PlayAndTrackSound(weepingScarecrow.GetFlwSoundClips(), weepingScarecrow.transform, weepingScarecrow.Volume());
                 sfx = true;
             }
             else

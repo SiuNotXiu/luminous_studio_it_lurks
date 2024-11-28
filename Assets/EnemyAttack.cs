@@ -31,7 +31,22 @@ public class EnemyAttack : MonoBehaviour
     {
         _healtheffects.currentHp -= damage;
         _healtheffects.TakeDamage();
-        SoundEffectManager.instance.PlayRandomSoundFxClip(damageAudios, transform, 1f);
+        SoundEffectManager.instance.PlayRandomSoundFxClip(damageAudios, transform, Volume());
         
+    }
+
+    float Volume()
+    {
+        float volumeControl;
+        if (Audio.Instance != null)
+        {
+            volumeControl = Audio.Instance.SFXSource.volume;
+
+        }
+        else
+        {
+            volumeControl = 1f;
+        }
+        return volumeControl;
     }
 }

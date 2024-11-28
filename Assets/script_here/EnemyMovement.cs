@@ -404,7 +404,7 @@ public class EnemyMovement : MonoBehaviour
             if (!speedBoosted)
             {
                 /// originalSpeed = player.GetMoveSpeed();
-                //player.SpeedBoost();
+                player.SpeedBoost();
                 speedBoosted = true;
             }
         }
@@ -417,7 +417,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (speedBoostTimer >= 2)
         {
-            //player.OriginalSpeed();
+            player.OriginalSpeed();
             speedBoostTimer = 0;
             speedBoosted = false;
             currentState = EnemyState.Stalking;
