@@ -34,7 +34,7 @@ public class SortingOrderController : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     private void Update()
@@ -46,22 +46,22 @@ public class SortingOrderController : MonoBehaviour
         if (playerPos != null)
         {
             playerY = playerPos.position.y;
-           
+
 
             if (playerY > treeY)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, backZ);
-               
+
             }
             // Condition 4: Both below the tree - Tree in front of both
             else if (playerY <= treeY)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, frontZ);
-               
+
             }
         }
 
-        if(monsterPos !=null)
+        if (monsterPos != null)
         {
             monsterY = monsterPos.position.y;
             if (playerY > treeY && monsterY <= treeY)
@@ -69,7 +69,7 @@ public class SortingOrderController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
                 playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, frontZ);
                 monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, backZ);
-               
+
             }
             // Condition 2: Monster is above the tree, player is below
             else if (monsterY > treeY && playerY <= treeY)
@@ -77,19 +77,19 @@ public class SortingOrderController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
                 playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, backZ);
                 monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, frontZ);
-      
+
             }
 
         }
 
-        
-       
+
+
     }
 
     #region<OnTriggerEnter/Exit>
     private void OnTreeTriggerEnter(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && playerPos == null) 
+        if (collision.CompareTag("Player") && playerPos == null)
         {
             playerPos = collision.transform;
             //Debug.Log("Player Position Updated"+playerPos.position);

@@ -21,6 +21,7 @@ public class HealthEffects : MonoBehaviour
     public Image hurtImage = null;
     private float hurtTimer = 0.3f;
 
+    private Coroutine coroutine_ready_to_go_next_scene;
     private void OnValidate()
     {
         #region initialization
@@ -40,7 +41,7 @@ public class HealthEffects : MonoBehaviour
         {
             if (object_player != null)
             {
-                object_sprite_sheet_normal = object_player.transform.Find("sprite_sheet_normal").gameObject;
+                object_sprite_sheet_normal = object_player.transform.Find("animation").Find("sprite_sheet_normal").gameObject;
                 animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
             }
         }
@@ -108,7 +109,7 @@ public class HealthEffects : MonoBehaviour
             animator_mask.Play("death");
             animator_normal.Play("death");
             ResetBGM();
-            StartCoroutine(ready_to_go_next_scene());
+            coroutine_ready_to_go_next_scene = StartCoroutine(ready_to_go_next_scene());
             //SceneManager.LoadScene("1st Scene");//need to make it start corountine
         }
     }
@@ -151,10 +152,14 @@ public class HealthEffects : MonoBehaviour
 
     IEnumerator ready_to_go_next_scene()
     {
+        Debug.Log("ready_to_go_next_scene");
         while (true)
         {
+            //Debug.Log("force off");
+            player_database.is_flashlight_on = false;
             if (Input.GetMouseButtonDown(0))
             {
+                //Debug.Log("next scene");
                 SceneManager.LoadScene("1st Scene");//need to make it start corountine
                 yield break;
             }

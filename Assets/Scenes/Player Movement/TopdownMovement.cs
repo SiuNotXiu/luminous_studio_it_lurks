@@ -75,9 +75,9 @@ public class TopdownMovement : MonoBehaviour
         rb2d.velocity = moveInput * moveSpeed;
         if (moveInput.x != 0 || moveInput.y != 0)
         {
-            Debug.Log("moveinput > " + moveInput);
-            Debug.Log("playerFacing().normalized > " + playerFacing().normalized);
-            Debug.Log("dot product > " + Vector2.Dot(moveInput, playerFacing().normalized));
+            //Debug.Log("moveinput > " + moveInput);
+            //Debug.Log("playerFacing().normalized > " + playerFacing().normalized);
+            //Debug.Log("dot product > " + Vector2.Dot(moveInput, playerFacing().normalized));
             // Play the "walk_right" animation regardless of direction, speed will handle direction
             if (Vector2.Dot(moveInput, playerFacing().normalized) >= 0)
             {
