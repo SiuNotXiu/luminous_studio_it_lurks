@@ -8,15 +8,22 @@ public class trigger_map_ui : MonoBehaviour
     public static trigger_map_ui instance;
     [SerializeField] private GameObject big_map;
 
-    [SerializeField] private GameObject object_big_map_background;
-    [HideInInspector] private Vector2 obmb_initial_scale;
+    [SerializeField] private Vector3 obmb_initial_scale;
     [HideInInspector] private big_map_scrolling script_bms;
 
     [SerializeField] private GameObject object_map_and_icon;
+    [SerializeField] private big_map_scrolling script_big_map_scrolling;
 
     public static bool Map_Is_Open = false;
 
 
+    private void OnValidate()
+    {
+        if (script_big_map_scrolling == null)
+        {
+            script_big_map_scrolling = GameObject.Find("canvas_big_map").GetComponent<big_map_scrolling>();
+        }
+    }
     public void OnEnable() //reset the main value in this script
     {
         Map_Is_Open = false;
@@ -25,7 +32,7 @@ public class trigger_map_ui : MonoBehaviour
     {
         big_map.SetActive(false);
         #region for mouse scrolling zoom map
-        obmb_initial_scale = object_big_map_background.transform.localScale;
+        obmb_initial_scale = object_map_and_icon.transform.localScale;
         script_bms = GetComponent<big_map_scrolling>();
         #endregion
     }
@@ -74,6 +81,7 @@ public class trigger_map_ui : MonoBehaviour
         }
         Map_Is_Open = true;
         big_map.SetActive(true);
+        obmb_initial_scale = object_map_and_icon.transform.localScale;
 
     }
 
@@ -81,11 +89,11 @@ public class trigger_map_ui : MonoBehaviour
     {
         Debug.Log("Did it press?");
         Map_Is_Open = false;
-        big_map.SetActive(false);
         #region for mouse scrolling zoom map
-        object_big_map_background.transform.localScale = obmb_initial_scale;
+        object_map_and_icon.transform.localScale = obmb_initial_scale;
         script_bms.current_zoom_count = 0;
         #endregion
+        big_map.SetActive(false);
         #region for mouse drag map
         object_map_and_icon.transform.localPosition = new Vector2(0, 0);
         #endregion

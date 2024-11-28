@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class big_map_scrolling : MonoBehaviour
 {
-    //this script is used by canvas
+    //this script is used by canvas_big_map
     //to modify the scale of big_map_background
     //by mouse scrolling
     //scale recovery is in <trigger_map_ui>
 
-    [HideInInspector] private GameObject object_map_and_icon;
+    [SerializeField] private GameObject object_map_and_icon;
 
     [HideInInspector] private Vector2 obmb_initial_scale;
     [HideInInspector] private Vector2 obmb_zoom_in_scale;
@@ -40,28 +40,31 @@ public class big_map_scrolling : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.mouseScrollDelta.y != 0)//positive for up, negative for down
+        if (trigger_map_ui.Map_Is_Open == true)
         {
-            if (Input.mouseScrollDelta.y > 0)
+            if (Input.mouseScrollDelta.y != 0)//positive for up, negative for down
             {
-                //scrolling up
-                if (current_zoom_count < max_zoom_in_count)
+                if (Input.mouseScrollDelta.y > 0)
                 {
-                    //zoom in value around 5, current_zoom_in should be positive
-                    current_zoom_count++;
-                    object_map_and_icon.transform.localScale = new Vector2(object_map_and_icon.transform.localScale.x + obmb_zoom_in_scale.x,
-                                                                                 object_map_and_icon.transform.localScale.y + obmb_zoom_in_scale.y);
+                    //scrolling up
+                    if (current_zoom_count < max_zoom_in_count)
+                    {
+                        //zoom in value around 5, current_zoom_in should be positive
+                        current_zoom_count++;
+                        object_map_and_icon.transform.localScale = new Vector2(object_map_and_icon.transform.localScale.x + obmb_zoom_in_scale.x,
+                                                                                     object_map_and_icon.transform.localScale.y + obmb_zoom_in_scale.y);
+                    }
                 }
-            }
-            else if (Input.mouseScrollDelta.y < 0)
-            {
-                //scrolling down
-                if (current_zoom_count > 0)//control the minimum zoom out
+                else if (Input.mouseScrollDelta.y < 0)
                 {
-                    //zoom in value around 5, current_zoom_in should be negative
-                    current_zoom_count--;
-                    object_map_and_icon.transform.localScale = new Vector2(object_map_and_icon.transform.localScale.x + obmb_zoom_out_scale.x,
-                                                                             object_map_and_icon.transform.localScale.y + obmb_zoom_out_scale.y);
+                    //scrolling down
+                    if (current_zoom_count > 0)//control the minimum zoom out
+                    {
+                        //zoom in value around 5, current_zoom_in should be negative
+                        current_zoom_count--;
+                        object_map_and_icon.transform.localScale = new Vector2(object_map_and_icon.transform.localScale.x + obmb_zoom_out_scale.x,
+                                                                                 object_map_and_icon.transform.localScale.y + obmb_zoom_out_scale.y);
+                    }
                 }
             }
         }

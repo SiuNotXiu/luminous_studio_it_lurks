@@ -7,7 +7,7 @@ public class flashlight_z_depth : MonoBehaviour
     [SerializeField] private GameObject object_camera_main;
     [SerializeField] private GameObject object_flashlight_dim_filter;
 
-    private void Start()
+    private void OnValidate()
     {
         if (object_flashlight_dim_filter == null)
             object_flashlight_dim_filter = GameObject.Find("flashlight_dim_filter");

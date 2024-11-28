@@ -7,6 +7,7 @@ public class player_database : MonoBehaviour
 {
     [HideInInspector] public static bool is_flashlight_on = false;
     [HideInInspector] public static bool in_safe_zone = false;
+    [HideInInspector] public static bool dead = false;
 
     private void Update()
     {
