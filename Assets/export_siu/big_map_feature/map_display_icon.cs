@@ -58,7 +58,7 @@ public class map_display_icon : MonoBehaviour
     {
         //Debug.Log("222 > ");
         //Debug.Log("script_trigger_map_ui > " + script_trigger_map_ui);
-        //script_trigger_map_ui.open_map();
+        script_trigger_map_ui.open_map();
         StartCoroutine(delay_display_icon());
     }
 

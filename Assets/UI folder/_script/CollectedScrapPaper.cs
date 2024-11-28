@@ -143,6 +143,7 @@ public class CollectedScrapPaper : MonoBehaviour
     {
         while (!InventoryController.JournalOpen)
         {
+            //Debug.Log("!InventoryController.JournalOpen");
             yield return null;
         }
         if (script_big_map_icon_reveal_manager != null)

@@ -20,9 +20,18 @@ public class flashlight_player_range_z_depth : MonoBehaviour
 
     private void Update()
     {
+        float add_z_depth = 0.01f;
+        if (gameObject.name == "black_circle_for_mask_monster_in_range")
+        {
+            add_z_depth = 0.01f + 0.01f;
+        }
+        else
+        {
+            add_z_depth = 0.01f;
+        }
         target_position = new Vector3(transform.position.x,
                                       transform.position.y,
-                                      object_flashlight_mask_for_monster_in_range.transform.position.z + 0.01f);
+                                      object_flashlight_mask_for_monster_in_range.transform.position.z + add_z_depth);
         if (transform.position != target_position)
         {
             transform.position = target_position;
