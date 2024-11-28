@@ -52,14 +52,14 @@ public class SortingOrderController : MonoBehaviour
                 if (monsterY > treeY)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
-                    monsterPos.position = new Vector3(monsterPos.position.x, transform.position.y, backZ);
+                    monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, backZ);
 
                 }
                 // Condition 4: Both below the tree - Tree in front of both
                 else if (monsterY <= treeY)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
-                    monsterPos.position = new Vector3(monsterPos.position.x, transform.position.y, frontZ);
+                    monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, frontZ);
 
                 }
                 break;
@@ -72,14 +72,14 @@ public class SortingOrderController : MonoBehaviour
                 if (playerY > treeY)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
-                    playerPos.position = new Vector3(playerPos.position.x, transform.position.y, backZ);
+                    playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, frontZ);
 
                 }
                 // Condition 4: Both below the tree - Tree in front of both
                 else if (playerY <= treeY)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
-                    playerPos.position = new Vector3(playerPos.position.x, transform.position.y, backZ);
+                    playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, backZ);
 
                 }
                 break;
