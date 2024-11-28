@@ -69,15 +69,20 @@ public class TopdownMovement : MonoBehaviour
         rb2d.velocity = moveInput * moveSpeed;
         if (moveInput.x != 0 || moveInput.y != 0)
         {
+            Debug.Log("moveinput > " + moveInput);
+            Debug.Log("playerFacing().normalized > " + playerFacing().normalized);
+            Debug.Log("dot product > " + Vector2.Dot(moveInput, playerFacing().normalized));
             // Play the "walk_right" animation regardless of direction, speed will handle direction
-            if (Vector3.Dot(moveInput, playerFacing().normalized) >= 0)
+            if (Vector2.Dot(moveInput, playerFacing().normalized) >= 0)
             {
+                //Debug.Log("normal");
                 animator_mask.Play("walk_right");
                 animator_normal.Play("walk_right");
             }
-            else if (Vector3.Dot(moveInput, playerFacing().normalized) < 0)
+            else if (Vector2.Dot(moveInput, playerFacing().normalized) < 0)
             {
                 //going right, facing left
+                //Debug.Log("moving backwards");
                 moveInput = moveInput / 2;
                 rb2d.velocity = moveInput * moveSpeed;
                 animator_mask.Play("walk_backwards");
@@ -129,7 +134,8 @@ public class TopdownMovement : MonoBehaviour
             facing_right = true;
             object_animation.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        return mousePosition;
+        Vector3 mouse_direction = mousePosition - transform.position;
+        return mouse_direction;
     }
 
     public void UseAdrenaline()
