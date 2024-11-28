@@ -147,6 +147,8 @@ public class InventoryController : MonoBehaviour
         button_display.ShowPanels();
         if (scrappaper != 0)
         {
+            journal_p1n2.SetActive(false);
+            button_Pg1.SetActive(false);
             story.SetActive(true);
         }
 
