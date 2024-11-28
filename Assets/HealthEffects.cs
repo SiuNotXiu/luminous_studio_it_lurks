@@ -52,11 +52,10 @@ public class HealthEffects : MonoBehaviour
         }
         if (object_fade_out_filter == null)
         {
-            object_fade_out_filter = GameObject.Find("canva_game_over").transform.Find("fade_out_filter").gameObject;
+            object_fade_out_filter = GameObject.Find("canvas_game_over").transform.Find("fade_out_filter").gameObject;
         }
         #endregion
     }
-
 
 
     void UpdateHealth()
@@ -166,6 +165,7 @@ public class HealthEffects : MonoBehaviour
         {
             //Debug.Log("force off");
             player_database.is_flashlight_on = false;
+            object_fade_out_filter.SetActive(true);
             if (time_passed_after_death < duration_before_auto_next_scene)
             {
                 time_passed_after_death += Time.deltaTime;

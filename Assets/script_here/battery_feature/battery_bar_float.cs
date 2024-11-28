@@ -45,7 +45,7 @@ public class battery_bar_float : MonoBehaviour
             Debug.Log("script_flashlight_battery_blink == null");
         
         if (object_dim_filter == null)
-            object_dim_filter = GameObject.Find("arm_with_flashlight").transform.Find("flashlight_mask").Find("flashlight_dim_filter").gameObject;
+            object_dim_filter = GameObject.Find("flashlight_dim_filter");
         if (object_dim_filter == null)
             Debug.Log("object_dim_filter == null");
         #endregion
@@ -151,7 +151,7 @@ public class battery_bar_float : MonoBehaviour
             alpha = 0.3f;*/
         //object_dim_filter.GetComponent<SpriteRenderer>().material.SetFloat("_alpha", alpha);
         if (object_dim_filter == null)
-            object_dim_filter = GameObject.Find("arm_with_flashlight").transform.Find("flashlight_mask").Find("flashlight_dim_filter").gameObject;
+            object_dim_filter = GameObject.Find("flashlight_dim_filter");
         object_dim_filter.GetComponent<MeshRenderer>().material.SetFloat("_alpha", alpha);
     }
 
