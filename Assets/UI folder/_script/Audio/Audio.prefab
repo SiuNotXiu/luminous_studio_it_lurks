@@ -312,6 +312,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4925194257596047933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4060958168397353226}
+  - component: {fileID: 4154808257448876698}
+  m_Layer: 0
+  m_Name: SFXComic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4060958168397353226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925194257596047933}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4006555533328258805}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4154808257448876698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925194257596047933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9e045f3bfb23446b9946696cc049e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Eating: {fileID: 8300000, guid: 1789c0b658f774f42a924bbd255f3ea4, type: 3}
+  Riser: {fileID: 8300000, guid: 1328014e36bef8a45baac16bf0bee3ad, type: 3}
+  WoodFootstep: {fileID: 8300000, guid: e9ac29cdce41aa34eaf49b84d5f7dc57, type: 3}
+  WoodFootstep2: {fileID: 8300000, guid: 8cd12ef3bd23d2b40b0d8eee8e4087da, type: 3}
+  WoodFootstep3: {fileID: 8300000, guid: e573302fdfcc05e459f45362feb6109d, type: 3}
+  WoodFootstep4: {fileID: 8300000, guid: e084a62fadb347846a5367add223711a, type: 3}
+  WoodRunning: {fileID: 8300000, guid: 2f19d8a211cefa349ba3e902d11aae88, type: 3}
+  WoodRunning2: {fileID: 8300000, guid: 6d5ad1f893d867f4ba0ddcfe320a3763, type: 3}
+  WoodRunning3: {fileID: 8300000, guid: 85d4299484915d44fa6dc610d1be4b1b, type: 3}
 --- !u!1 &4969124000615952272
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +844,7 @@ Transform:
   - {fileID: 7890031629291551102}
   - {fileID: 5108993802593087488}
   - {fileID: 5326282102538368680}
+  - {fileID: 4060958168397353226}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4008868997921974985
