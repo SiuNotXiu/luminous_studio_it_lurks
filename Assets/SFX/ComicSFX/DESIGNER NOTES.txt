@@ -1,0 +1,4 @@
+Wood Footsteps: Plays for character
+Wood Running:   Plays for Michael lunging at the character
+Eating:         Plays on the 2nd and 3rd scene of the 4th panel
+Riser:          Plays at the start of the 3rd scene of the 4th panel
