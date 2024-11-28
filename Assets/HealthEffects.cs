@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class HealthEffects : MonoBehaviour
 {
+    //this script is used by "HealthControll" not "player_dont_change_name"
+
     [SerializeField] private GameObject object_player;
     [SerializeField] private GameObject object_sprite_sheet_mask;
     [SerializeField] private GameObject object_sprite_sheet_normal;
@@ -39,7 +41,7 @@ public class HealthEffects : MonoBehaviour
             if (object_player != null)
             {
                 object_sprite_sheet_normal = object_player.transform.Find("sprite_sheet_normal").gameObject;
-                //animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
+                animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
             }
         }
         #endregion
@@ -103,13 +105,11 @@ public class HealthEffects : MonoBehaviour
         if (currentHp <= 0)
         {
             currentHp = 0;
-            //animator_mask.Play("death");
-            //animator_normal.Play("death");
+            animator_mask.Play("death");
+            animator_normal.Play("death");
             ResetBGM();
-            SceneManager.LoadScene("1st Scene");//need to make it start corountine
-
-           
-
+            StartCoroutine(ready_to_go_next_scene());
+            //SceneManager.LoadScene("1st Scene");//need to make it start corountine
         }
     }
 
@@ -148,6 +148,19 @@ public class HealthEffects : MonoBehaviour
 
 
     #endregion
+
+    IEnumerator ready_to_go_next_scene()
+    {
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene("1st Scene");//need to make it start corountine
+                yield break;
+            }
+            yield return null;
+        }
+    }
 }
 
 

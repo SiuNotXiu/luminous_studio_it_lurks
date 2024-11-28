@@ -22,6 +22,8 @@ public class TopdownMovement : MonoBehaviour
 
     [SerializeField] private Animator animator_mask;
     [SerializeField] private Animator animator_normal;
+    //prevent animation overlapping
+    [SerializeField] private HealthEffects script_health_effects;
 
     //item boost (sorry gais our speed modifier will contra)
     private bool isBoostActive = false; //to prevent stacking
@@ -42,6 +44,10 @@ public class TopdownMovement : MonoBehaviour
         {
             animator_mask = object_sprite_sheet_mask.GetComponent<Animator>();
             animator_normal = object_sprite_sheet_normal.GetComponent<Animator>();
+        }
+        if (script_health_effects == null)
+        {
+            script_health_effects = GameObject.Find("HealthControll").GetComponent<HealthEffects>();
         }
     }
     void Start()
@@ -76,8 +82,11 @@ public class TopdownMovement : MonoBehaviour
             if (Vector2.Dot(moveInput, playerFacing().normalized) >= 0)
             {
                 //Debug.Log("normal");
-                animator_mask.Play("walk_right");
-                animator_normal.Play("walk_right");
+                if (script_health_effects.currentHp > 0)
+                {
+                    animator_mask.Play("walk_right");
+                    animator_normal.Play("walk_right");
+                }
             }
             else if (Vector2.Dot(moveInput, playerFacing().normalized) < 0)
             {
@@ -85,14 +94,20 @@ public class TopdownMovement : MonoBehaviour
                 //Debug.Log("moving backwards");
                 moveInput = moveInput / 2;
                 rb2d.velocity = moveInput * moveSpeed;
-                animator_mask.Play("walk_backwards");
-                animator_normal.Play("walk_backwards");
+                if (script_health_effects.currentHp > 0)
+                {
+                    animator_mask.Play("walk_backwards");
+                    animator_normal.Play("walk_backwards");
+                }
             }
         }
         else
         {
-            animator_mask.Play("idle_right");
-            animator_normal.Play("idle_right");
+            if (script_health_effects.currentHp > 0)
+            {
+                animator_mask.Play("idle_right");
+                animator_normal.Play("idle_right");
+            }
         }
     }
 
