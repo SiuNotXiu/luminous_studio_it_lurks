@@ -20,22 +20,25 @@ public class camera_follow_cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //new code fix by chen jie
-        if(InventoryController.JournalOpen && EasterEgg.closingEgg && !trigger_map_ui.Map_Is_Open)
+        //new code fix by chen jie (still cant fix the jittery buggy)
+        if (InventoryController.JournalOpen && EasterEgg.closingEgg && !trigger_map_ui.Map_Is_Open)
         {
             float remember_this_float = transform.position.z;
 
-            Vector3 targetPosition = Vector3.Lerp(object_player.transform.position, get_mouse_position(), 0.1f);
+            // Smooth interpolation with time scaling
+            Vector3 targetPosition = Vector3.Lerp(transform.position,
+                                                  (object_player.transform.position + get_mouse_position()) / 2,
+                                                  5f * Time.deltaTime);
             transform.position = new Vector3(targetPosition.x, targetPosition.y, remember_this_float);
         }
- 
+
 
         //old code use by hengsiu
-        /* float remember_this_float = transform.position.z;
-         transform.position = (get_mouse_position() + object_player.transform.position) / 2;
-         transform.position = new Vector3(transform.position.x,
-             transform.position.y,
-             remember_this_float);*/
+        /*        float remember_this_float = transform.position.z;
+                transform.position = (get_mouse_position() + object_player.transform.position) / 2;
+                transform.position = new Vector3(transform.position.x,
+                    transform.position.y,
+                    remember_this_float);*/
     }
     Vector3 get_mouse_position()
     {
