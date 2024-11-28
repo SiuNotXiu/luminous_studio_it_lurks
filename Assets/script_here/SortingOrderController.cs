@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -41,47 +42,75 @@ public class SortingOrderController : MonoBehaviour
     {
         treeY = transform.position.y + treeYOffset;
 
-
-
-        if (playerPos != null)
+        switch ((monsterPos != null, playerPos != null))
         {
-            playerY = playerPos.position.y;
-           
+            case (true, false): // Monster is not null, Player is null
+                Debug.Log("MonsterOnly");
+                monsterY = monsterPos.position.y;
 
-            if (playerY > treeY)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, backZ);
-               
-            }
-            // Condition 4: Both below the tree - Tree in front of both
-            else if (playerY <= treeY)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, frontZ);
-               
-            }
+
+                if (monsterY > treeY)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
+                    monsterPos.position = new Vector3(monsterPos.position.x, transform.position.y, backZ);
+
+                }
+                // Condition 4: Both below the tree - Tree in front of both
+                else if (monsterY <= treeY)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
+                    monsterPos.position = new Vector3(monsterPos.position.x, transform.position.y, frontZ);
+
+                }
+                break;
+
+            case (false, true): // Monster is null, Player is not null
+
+                playerY = playerPos.position.y;
+
+
+                if (playerY > treeY)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
+                    playerPos.position = new Vector3(playerPos.position.x, transform.position.y, backZ);
+
+                }
+                // Condition 4: Both below the tree - Tree in front of both
+                else if (playerY <= treeY)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
+                    playerPos.position = new Vector3(playerPos.position.x, transform.position.y, backZ);
+
+                }
+                break;
+
+            case (true, true): // Both Monster and Player are not null
+                monsterY = monsterPos.position.y;
+                playerY = playerPos.position.y;
+                if (playerY > treeY && monsterY <= treeY)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
+                    playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, frontZ);
+                    monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, backZ);
+
+                }
+                // Condition 2: Monster is above the tree, player is below
+                else if (monsterY > treeY && playerY <= treeY)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
+                    playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, backZ);
+                    monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, frontZ);
+
+                }
+
+                break;
+
+            case (false, false): // Both Monster and Player are null
+                //Debug.Log("Neither Monster nor Player exists.");
+                break;
         }
 
-        if(monsterPos !=null)
-        {
-            monsterY = monsterPos.position.y;
-            if (playerY > treeY && monsterY <= treeY)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
-                playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, frontZ);
-                monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, backZ);
-               
-            }
-            // Condition 2: Monster is above the tree, player is below
-            else if (monsterY > treeY && playerY <= treeY)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, midZ);
-                playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y, backZ);
-                monsterPos.position = new Vector3(monsterPos.position.x, monsterPos.position.y, frontZ);
-      
-            }
-
-        }
-
+        
         
        
     }
@@ -104,8 +133,16 @@ public class SortingOrderController : MonoBehaviour
 
     private void OnTreeTriggerExited(Collider2D collision)
     {
-        monsterPos = null;
-        playerPos = null;
+        if (collision.CompareTag("Enemy"))
+        {
+            monsterPos = null;
+
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            playerPos = null;
+        }
     }
     #endregion
 }
