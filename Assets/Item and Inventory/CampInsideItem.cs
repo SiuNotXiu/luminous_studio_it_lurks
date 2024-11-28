@@ -69,39 +69,42 @@ public class CampInsideItem : MonoBehaviour
         if(brokeCampsite)
         {
             luckynum = Random.Range(2, 4);//2~3
-            ItemData randomItem = itemData[2];//bandage
+            ItemData randomItem = itemData[1];//bandage
             itemDataStroing[0] = randomItem;
+            
         }
         else
         {
             luckynum = Random.Range(4, 6);//4~5
-            ItemData randomItem = itemData[1];//medkit
+            ItemData randomItem = itemData[2];//medkit
             ItemData randomItem2 = itemData[0];//battery
             itemDataStroing[0] = randomItem;
             itemDataStroing[1] = randomItem2;
 
         }
 
-        for (int i = 1; i < luckynum; i++) //-1 is to let the cmapsite got fixed specific item
+        for (int i = 1; i < luckynum; i++) //-1 is to let the campsite got fixed specific item
         {
-            // Select a random item from the itemData array
-            int randomIndex = Random.Range(0, itemData.Length);
-            ItemData randomItem = itemData[randomIndex];
-            if(brokeCampsite)
+            int randomIndex;
+
+            if (brokeCampsite)
             {
-                itemDataStroing[i] = randomItem;
+                // Ensure valid range for the random index
+                randomIndex = Random.Range(0, Mathf.Max(0, itemData.Length - 2));
             }
             else
             {
-                if(i==1)//prevent the second item already assign being change
-                {
-                    continue;
-                }
-                else
-                {
-                    itemDataStroing[i] = randomItem;
-                }
+                randomIndex = Random.Range(0, itemData.Length);
             }
+
+            ItemData randomItem = itemData[randomIndex];
+
+            if (!brokeCampsite && i == 1)
+            {
+                continue;
+            }
+
+            itemDataStroing[i] = randomItem;
 
         }
 
