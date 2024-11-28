@@ -68,6 +68,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]private CustomTrigger cornfieldTrigger;
     [SerializeField] private float verticalThreshold = 2f; // Adjust as per your gameplay needs
     private float attackRange = 4.5f;
+    private bool playerDmg = false;
+    private SpriteRenderer sr_monochrome;
+    private player_flashlight_on_off flashlight;
+    
     #endregion
 
     #region<Sfx>
@@ -89,6 +93,9 @@ public class EnemyMovement : MonoBehaviour
         lastPlayerPosition = transform.position;
         anim = GetComponent<Animator>();
         anim_monochrome = transform.Find("monochrome").GetComponent<Animator>();
+        sr_monochrome = transform.Find("monochrome").GetComponent<SpriteRenderer>();
+        flashlight = GameObject.Find("player_dont_change_name").GetComponent<player_flashlight_on_off>();
+
         agent = GetComponent<NavMeshAgent>();
         sr = GetComponent<SpriteRenderer>();
         agent.updateUpAxis = false;
@@ -116,6 +123,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         FlipChecks();
+        FlashChecks();
 
         if (!canMove)
         {
@@ -286,8 +294,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void ChasingState()
     {
-        anim.SetBool("isRunning", true);    anim_monochrome.SetBool("isRunning", true);
-        anim.SetBool("isWalking", false);   anim_monochrome.SetBool("isWalking", false);
+        if(gameObject.GetComponent<monster_database>().GetShine() == false)
+        {
+            anim.SetBool("isRunning", true); anim_monochrome.SetBool("isRunning", true);
+            anim.SetBool("isWalking", false); anim_monochrome.SetBool("isWalking", false);
+        }
+   
         if (agent.isStopped)
         {
             agent.isStopped = false;
@@ -343,13 +355,17 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackState()
     {
+        if (agent.isStopped == false)
+        {
+            agent.isStopped = true;
+        }
         if (target.position.x > transform.position.x)
         {
-            sr.flipX = true;
+            sr.flipX = true; sr_monochrome.flipX = true;
         }
         else
         {
-            sr.flipX = false;
+            sr.flipX = false; sr_monochrome.flipX = false;
         }
         anim.SetBool("isWalking", false);   anim_monochrome.SetBool("isWalking", false);
         anim.SetBool("isRunning", false);   anim_monochrome.SetBool("isRunning", false);
@@ -365,14 +381,17 @@ public class EnemyMovement : MonoBehaviour
             StartCoroutine(EndAttackAfterAnimation());
 
         }
-        
 
-        if (!speedBoosted)
+        if (playerDmg == true)
         {
-            /// originalSpeed = player.GetMoveSpeed();
-            player.SpeedBoost();
-            speedBoosted = true;
+            if (!speedBoosted)
+            {
+                /// originalSpeed = player.GetMoveSpeed();
+                //player.SpeedBoost();
+                speedBoosted = true;
+            }
         }
+      
 
         agent.isStopped = true;
         chaseTimer = 0;
@@ -381,7 +400,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (speedBoostTimer >= 2)
         {
-            player.OriginalSpeed();
+            //player.OriginalSpeed();
             speedBoostTimer = 0;
             speedBoosted = false;
             currentState = EnemyState.Stalking;
@@ -398,11 +417,18 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("fleengstat");
         if (target != null)
         {
-         
+            if (anim.GetBool("isRunning") == false)
+            {
+                anim.SetBool("isRunning", true); anim_monochrome.SetBool("isRunning", true);
+            }
             agent.SetDestination(transform.position);
 
             if(gameObject.GetComponent<monster_database>().GetFlee()==true)
             {
+                if (agent.isStopped == true)
+                {
+                    agent.isStopped = false;
+                }
                 if (!isFleeAudioPlaying)
                 {
                     SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, Volume());
@@ -517,9 +543,10 @@ public class EnemyMovement : MonoBehaviour
     {
         if (gameObject.GetComponent<monster_database>().GetFlee() == true)
         {
-           
-            
-                currentState = EnemyState.Fleeing;
+
+            inAtkArea = false;
+            currentState = EnemyState.Fleeing;
+            Debug.Log("flee check");    
             
 
         }
@@ -528,8 +555,19 @@ public class EnemyMovement : MonoBehaviour
 
     private void FlashChecks()
     {
-        if (gameObject.GetComponent<monster_database>().GetShine() == true)
+
+        if (gameObject.GetComponent<monster_database>().GetShine() == true && currentState != EnemyState.Fleeing) 
         {
+            anim.SetBool("isWalking", false); anim_monochrome.SetBool("isWalking", false);
+            anim.SetBool("isRunning", false); anim_monochrome.SetBool("isRunning", false);
+            anim.SetBool("isAtking", false); anim_monochrome.SetBool("isAtking", false);
+
+            if (agent.isStopped == false)
+            {
+                agent.isStopped = true;
+                agent.velocity = Vector3.zero;
+            }
+
             if (!isShineAudioPlaying)
             {
                 SoundEffectManager.instance.PlayRandomSoundFxClip(shineAudio, transform, Volume());
@@ -552,11 +590,11 @@ public class EnemyMovement : MonoBehaviour
 
             if (currentPosX > previousPosX)
             {
-                sr.flipX = true;
+                sr.flipX = true; sr_monochrome.flipX = true;
             }
             else if (currentPosX < previousPosX)
             {
-               sr.flipX = false;
+               sr.flipX = false; sr_monochrome.flipX = false;
             }
 
 
@@ -621,6 +659,8 @@ public class EnemyMovement : MonoBehaviour
             {
                 // Conditions met; allow attack
                 gameObject.GetComponent<EnemyAttack>().Attack();
+                flashlight.TurnOffFlashlight();
+                playerDmg = true;
                 Debug.Log("Conditions met: Attacking the player!");
             }
             else

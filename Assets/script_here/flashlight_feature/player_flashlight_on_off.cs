@@ -17,6 +17,15 @@ public class player_flashlight_on_off : MonoBehaviour
         }
     }
 
+    public void TurnOffFlashlight()
+    {
+        if (player_database.is_flashlight_on)
+        {
+            player_database.is_flashlight_on = false;
+            flashlightSFX();
+        }
+    }
+
     #region flashlightONOFf
     private void flashlightSFX()
     {
