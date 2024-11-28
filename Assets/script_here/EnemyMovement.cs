@@ -72,7 +72,8 @@ public class EnemyMovement : MonoBehaviour
     private SpriteRenderer sr_monochrome;
     private player_flashlight_on_off flashlight;
     private bool shineAnim = false;
-    
+    private Vector3 fleePosition;
+    private bool hasFleePosition = false;
     #endregion
 
     #region<Sfx>
@@ -455,13 +456,15 @@ public class EnemyMovement : MonoBehaviour
                     isFleeAudioPlaying = true;
                 }
 
-                speed = 7;
+                speed = 9;
                 agent.speed = speed;
-                // Calculate the direction away from the player
-                Vector2 fleeDirection = (transform.position - target.position).normalized;
+      
+                
+                    // Calculate the direction away from the player
+                    Vector2 fleeDirection = (transform.position - target.position).normalized;
 
-                // Set a destination in the flee direction
-                Vector3 fleePosition = transform.position + (Vector3)fleeDirection;
+                    // Set a destination in the flee direction
+                    fleePosition = transform.position + (Vector3)fleeDirection;
 
                 
                 agent.SetDestination(fleePosition);
@@ -559,6 +562,26 @@ public class EnemyMovement : MonoBehaviour
 
     #endregion
 
+    private Vector3 FindValidFleePosition(Vector3 startPosition, Vector2 direction)
+    {
+        const float stepDistance = 0.5f; // Distance to step each iteration
+        const int maxSteps = 10; // Max steps to search for a valid position
+
+        for (int i = 0; i < maxSteps; i++)
+        {
+            Vector3 newPosition = startPosition + (Vector3)(direction * stepDistance * i);
+
+            // Check if this new position is valid
+            if (Physics2D.OverlapCircle(newPosition, 0.5f, worldMask) == null)
+            {
+                return newPosition; // Return the first valid position
+            }
+        }
+
+        // If no valid position is found, return the original position
+        return startPosition;
+    }
+
     private void FleeingChecks()
     {
         if (gameObject.GetComponent<monster_database>().GetFlee() == true)
@@ -599,10 +622,11 @@ public class EnemyMovement : MonoBehaviour
                 SoundEffectManager.instance.PlayRandomSoundFxClip(shineAudio, transform, Volume());
                 isShineAudioPlaying = true;
             }
-            else
-            {
-                isShineAudioPlaying = false;
-            }
+
+        }
+        else
+        {
+            isShineAudioPlaying = false;
         }
             
        
@@ -851,6 +875,12 @@ public class EnemyMovement : MonoBehaviour
             Gizmos.color = Color.red;
             float halfVerticalThreshold = verticalThreshold / 2f;
             float halfAttackRange = attackRange / 2f;
+        }
+
+        if (currentState == EnemyState.Fleeing) // Optional: Only draw when fleeing
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(fleePosition, 0.5f); // 0.5f is the radius of the circle
         }
     }
 
