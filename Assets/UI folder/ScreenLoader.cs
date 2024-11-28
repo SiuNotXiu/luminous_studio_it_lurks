@@ -53,6 +53,7 @@ public class ScreenLoader : MonoBehaviour
         transition.SetTrigger("Start");
         if(screen == "Premise")
         {
+            yield return new WaitForSeconds(2f);
             Audio.Instance.SetBackgroundMusic(AudioSFXUI.Instance.StoryBriefPlay);
             yield return new WaitForSeconds(10.128f);
         }
