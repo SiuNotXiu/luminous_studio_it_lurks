@@ -49,7 +49,9 @@ public class battery_bar_float : MonoBehaviour
         if (object_dim_filter == null)
             Debug.Log("object_dim_filter == null");
         #endregion
-
+    }
+    private void Start()
+    {
         change_dim_filter_alpha();
     }
     void Update()
