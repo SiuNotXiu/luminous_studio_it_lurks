@@ -18,6 +18,7 @@ public class ShapeShifterManager : MonoBehaviour
         atkTrigger.EnteredTrigger += OnAtkTriggerEntered;
         atkTrigger.ExitedTrigger += OnAtkTriggerExited;
         anim = gameObject.GetComponent<Animator>();
+        anim_monochrom = transform.Find("monochrome").GetComponent<Animator>();
     }
 
     #endregion
@@ -29,6 +30,7 @@ public class ShapeShifterManager : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
 
     public Animator anim;
+    public Animator anim_monochrom;
    
     #endregion
 
