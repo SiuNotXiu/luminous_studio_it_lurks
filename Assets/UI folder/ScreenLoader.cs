@@ -48,12 +48,14 @@ public class ScreenLoader : MonoBehaviour
 
     public IEnumerator FunctionCall()
     {
-        p1.SetActive(false);
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
+        p1.SetActive(false);
         p2.SetActive(true);
-        Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.Ambience);
         transition.SetTrigger("End");
+        yield return new WaitForSeconds(transitionTime);
+        Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.Ambience);
+       
     }
 
     public IEnumerator LoadLevel(string screen, bool IsGameScene, GameObject appear = null, GameObject disable = null)
