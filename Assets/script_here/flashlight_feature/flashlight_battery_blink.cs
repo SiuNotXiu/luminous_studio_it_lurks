@@ -65,7 +65,7 @@ public class flashlight_battery_blink : MonoBehaviour
         {
             Audio.Instance.PlayClipWithSource(
                 AudioSFXPlayerBehave.Instance.RandomNoiseForFlashlightFlicker(),
-                Audio.Instance.SFXSource);
+                Audio.Instance.playerFlashlight);
         }
     }
 
