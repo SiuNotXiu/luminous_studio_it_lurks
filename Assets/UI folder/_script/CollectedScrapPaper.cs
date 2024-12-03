@@ -28,6 +28,10 @@ public class CollectedScrapPaper : MonoBehaviour
     private int currentMaxPage = 1;
     public bool[] unlockJournal;
 
+    //condition to win
+    public GameObject scrapPaper5;
+    public GameObject key;
+
     private void OnValidate()
     {
         if (object_canvas_big_map == null)
@@ -54,8 +58,28 @@ public class CollectedScrapPaper : MonoBehaviour
             Debug.Log("Id added: " + id);
             unlockJournal[id -1] = true;
             journal.OpenJournal(id);
+            CheckGot4ScrapPaper();
             StartCoroutine(WaitingForJournalClose());
             
+        }
+    }
+    public void CheckGot4ScrapPaper()
+    {
+        for(int i=0;i<4; i++)//0,1,2,3 (4 scrap paper)
+        {
+            if (unlockJournal[i])//true
+            {
+                if(unlockJournal[3])//check the last one
+                {
+                    scrapPaper5.SetActive(true);
+                    key.SetActive(true);
+                    Debug.Log("5th Scrap paper appear");
+                }
+            }
+            else
+            {
+                break;
+            }
         }
     }
 
