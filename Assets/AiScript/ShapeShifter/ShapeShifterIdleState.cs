@@ -24,8 +24,8 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
             {
                 isPlayingSound = true;
                 shapeShifter.StartCoroutine(PlaySoundEffect(shapeShifter));
-                SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetShineAudio(), shapeShifter.transform, 1f);
-                shapeShifter.anim.SetBool("Flash", true);
+                SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetShineAudio(), shapeShifter.transform, shapeShifter.Volume());
+                shapeShifter.anim.SetBool("Flash", true); shapeShifter.anim_monochrome.SetBool("Flash", true);
             }
 
             if (isShineDurationCheck == false)
@@ -42,8 +42,8 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
                 shapeShifter.StopAllCoroutines();
                 isPlayingSound = false;
             }
-            shapeShifter.anim.SetBool("KeepFlashing", false);
-            shapeShifter.anim.SetBool("Flash", false);
+            shapeShifter.anim.SetBool("KeepFlashing", false); shapeShifter.anim_monochrome.SetBool("KeepFlashing", false);
+            shapeShifter.anim.SetBool("Flash", false); shapeShifter.anim_monochrome.SetBool("Flash", false);
         }
         
     }
@@ -52,8 +52,8 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
     {
         shapeShifter.StopAllCoroutines();
         isPlayingSound = false;
-        shapeShifter.anim.SetBool("KeepFlashing", false);
-        shapeShifter.anim.SetBool("Flash", false);
+        shapeShifter.anim.SetBool("KeepFlashing", false); shapeShifter.anim_monochrome.SetBool("KeepFlashing", false);
+        shapeShifter.anim.SetBool("Flash", false); shapeShifter.anim_monochrome.SetBool("Flash", false);
     }
 
     private IEnumerator PlaySoundEffect(ShapeShifterManager shapeShifter)
@@ -69,7 +69,7 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
     private IEnumerator ShineDuration(ShapeShifterManager shapeShifter)
     {
         yield return new WaitForSeconds(2f);
-        shapeShifter.anim.SetBool("KeepFlashing", true);
+        shapeShifter.anim.SetBool("KeepFlashing", true); shapeShifter.anim_monochrome.SetBool("KeepFlashing", true);
     }
 
 }

@@ -22,7 +22,7 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
             //shapeShifter.StartCoroutine(testing.instance.Knockback(1, knockbackForce, shapeShifter.transform));
 
             atk.Attack();
-            shapeShifter.anim.SetBool("Atk", true);
+            shapeShifter.anim.SetBool("Atk", true); shapeShifter.anim_monochrome.SetBool("Atk", true);
             shapeShifter.StartCoroutine(ResetAtkAnimation(shapeShifter));
             SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetAtkAudio(), shapeShifter.transform, shapeShifter.Volume());
             attacking = true;
@@ -76,6 +76,6 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
     IEnumerator ResetAtkAnimation(ShapeShifterManager shapeShifter)
     {
         yield return new WaitForSeconds(0.1f);
-        shapeShifter.anim.SetBool("Atk", false);
+        shapeShifter.anim.SetBool("Atk", false); shapeShifter.anim_monochrome.SetBool("Atk", false);
     }
 }

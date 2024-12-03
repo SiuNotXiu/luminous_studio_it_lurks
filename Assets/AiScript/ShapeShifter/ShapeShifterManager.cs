@@ -18,6 +18,7 @@ public class ShapeShifterManager : MonoBehaviour
         atkTrigger.EnteredTrigger += OnAtkTriggerEntered;
         atkTrigger.ExitedTrigger += OnAtkTriggerExited;
         anim = gameObject.GetComponent<Animator>();
+        anim_monochrome = transform.Find("monochrome").GetComponent<Animator>();
     }
 
     #endregion
