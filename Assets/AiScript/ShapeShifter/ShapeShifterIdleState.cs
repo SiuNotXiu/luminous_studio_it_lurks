@@ -62,7 +62,7 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
         {
             float rand = Random.Range(3f,5f);
             yield return new WaitForSeconds(rand);
-            SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetShineAudio(), shapeShifter.transform, 1f);
+            SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetShineAudio(), shapeShifter.transform, shapeShifter.Volume());
         }
     }
 

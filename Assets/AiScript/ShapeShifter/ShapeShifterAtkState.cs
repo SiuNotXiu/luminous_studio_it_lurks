@@ -24,7 +24,7 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
             atk.Attack();
             shapeShifter.anim.SetBool("Atk", true);
             shapeShifter.StartCoroutine(ResetAtkAnimation(shapeShifter));
-            SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetAtkAudio(), shapeShifter.transform, 1f);
+            SoundEffectManager.instance.PlayRandomSoundFxClip(shapeShifter.GetAtkAudio(), shapeShifter.transform, shapeShifter.Volume());
             attacking = true;
             shapeShifter.StartCoroutine(AtkCd(shapeShifter));
         }

@@ -45,6 +45,20 @@ public class Item : MonoBehaviour
         {
 
             paper.CollectScrapPaper(ScrapPaperId);
+            if (ScrapPaperId == 2)
+            {
+               
+                GameObject adaptive = GameObject.Find("AdaptiveDifManager");
+                AdaptiveDif ad = adaptive.GetComponent<AdaptiveDif>();
+                ad.secondPaper = true;
+                
+            }
+            else if (ScrapPaperId == 3)
+            {
+                GameObject adaptive = GameObject.Find("AdaptiveDifManager");
+                AdaptiveDif ad = adaptive.GetComponent<AdaptiveDif>();
+                ad.thridPaper = true;
+            }
             //Debug.Log("1");
             pickingScrap();
             Destroy(gameObject);

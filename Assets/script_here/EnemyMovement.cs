@@ -74,6 +74,7 @@ public class EnemyMovement : MonoBehaviour
     private bool shineAnim = false;
     private Vector3 fleePosition;
     private bool hasFleePosition = false;
+    [SerializeField] private AdaptiveDif ad;
     #endregion
 
     #region<Sfx>
@@ -97,6 +98,7 @@ public class EnemyMovement : MonoBehaviour
         anim_monochrome = transform.Find("monochrome").GetComponent<Animator>();
         sr_monochrome = transform.Find("monochrome").GetComponent<SpriteRenderer>();
         flashlight = GameObject.Find("player_dont_change_name").GetComponent<player_flashlight_on_off>();
+        ad = GameObject.Find("AdaptiveDifManager").GetComponent<AdaptiveDif>();
 
         agent = GetComponent<NavMeshAgent>();
         sr = GetComponent<SpriteRenderer>();
@@ -188,6 +190,11 @@ public class EnemyMovement : MonoBehaviour
         if (agent.isStopped == false)
         {
             agent.isStopped = true;
+        }
+
+        if (ad.adaptiveDif == true)
+        {
+            target = GameObject.Find("player_dont_change_name").transform;
         }
 
         if (target != null && cornfield == false) 
@@ -562,25 +569,7 @@ public class EnemyMovement : MonoBehaviour
 
     #endregion
 
-    private Vector3 FindValidFleePosition(Vector3 startPosition, Vector2 direction)
-    {
-        const float stepDistance = 0.5f; // Distance to step each iteration
-        const int maxSteps = 10; // Max steps to search for a valid position
-
-        for (int i = 0; i < maxSteps; i++)
-        {
-            Vector3 newPosition = startPosition + (Vector3)(direction * stepDistance * i);
-
-            // Check if this new position is valid
-            if (Physics2D.OverlapCircle(newPosition, 0.5f, worldMask) == null)
-            {
-                return newPosition; // Return the first valid position
-            }
-        }
-
-        // If no valid position is found, return the original position
-        return startPosition;
-    }
+    
 
     private void FleeingChecks()
     {

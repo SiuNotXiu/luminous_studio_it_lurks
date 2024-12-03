@@ -103,4 +103,21 @@ public class ShapeShifterManager : MonoBehaviour
 
     #endregion
 
+    #region Sound
+    public float Volume()
+    {
+        float volumeControl;
+        if (Audio.Instance != null)
+        {
+            volumeControl = Audio.Instance.SFXSource.volume;
+
+        }
+        else
+        {
+            volumeControl = 1f;
+        }
+        return volumeControl;
+    }
+    #endregion
+
 }
