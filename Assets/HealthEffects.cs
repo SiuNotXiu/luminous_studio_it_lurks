@@ -175,11 +175,12 @@ public class HealthEffects : MonoBehaviour
                 }
                 fade_out_filter_color = object_fade_out_filter.GetComponent<Image>().color;
                 fade_out_filter_color.a = time_passed_after_death / duration_before_auto_next_scene;
-                object_fade_out_filter.GetComponent<Image>().color = fade_out_filter_color;
+                object_fade_out_filter.GetComponent<Image>().color = fade_out_filter_color; //nb, mcm ni pun boleh
             }
             if (Input.GetMouseButtonDown(0) || time_passed_after_death == duration_before_auto_next_scene)
             {
                 //Debug.Log("next scene");
+                ScreenLoader.skipAlert = true;
                 SceneManager.LoadScene("1st Scene");//need to make it start corountine
                 yield break;
             }

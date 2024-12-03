@@ -12,6 +12,9 @@ public class ScreenLoader : MonoBehaviour
 
     private GameObject p1;
     private GameObject p2;
+    public static bool skipAlert = false;
+
+
     private void Awake()
     {
         // Implement singleton pattern
@@ -30,6 +33,12 @@ public class ScreenLoader : MonoBehaviour
     {
         p1 = GameObject.Find("1st appear");
         p2 = FindInactiveObjectByName("2nd appear");
+
+        if(skipAlert)
+        {
+            p1.SetActive(false);
+            p2.SetActive(true);
+        }
 
     }
     public void ButtonCall()
@@ -69,6 +78,8 @@ public class ScreenLoader : MonoBehaviour
             Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.StoryBriefAmbience);
 
         }
+        
+
         if (IsGameScene)
         {
             //Debug.Log("play scene");

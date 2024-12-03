@@ -32,7 +32,8 @@ public class EndingSetup : MonoBehaviour
                 player.SetDirectAudioVolume(0, 1f);
             }
         }
-
+        //bgm
+        BasementBGM();
 
         PlayVideo(currentVideoIndex);
     }
@@ -50,7 +51,9 @@ public class EndingSetup : MonoBehaviour
         }
         else
         {
+            ScreenLoader.skipAlert = true;
             SceneManager.LoadScene("1st Scene");
+            ResetBGM();
             OnAllVideosFinished();
         }
     }
@@ -74,6 +77,22 @@ public class EndingSetup : MonoBehaviour
 
     private void OnAllVideosFinished()
     {      
-        Debug.Log("All videos finished!");
+        //Debug.Log("All videos finished!");
+    }
+
+    private void BasementBGM()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.BasementAmbience);
+        }
+    }
+
+    private void ResetBGM()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.Ambience);
+        }
     }
 }

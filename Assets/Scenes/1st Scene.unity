@@ -5484,6 +5484,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7328728557689242451, guid: c2696e8a0c5e3ec4481956c2de4fe96f, type: 3}
+      propertyPath: appear1
+      value: 
+      objectReference: {fileID: 184201803}
+    - target: {fileID: 7328728557689242451, guid: c2696e8a0c5e3ec4481956c2de4fe96f, type: 3}
+      propertyPath: appear2
+      value: 
+      objectReference: {fileID: 1917567547}
+    - target: {fileID: 7328728557689242451, guid: c2696e8a0c5e3ec4481956c2de4fe96f, type: 3}
       propertyPath: transition
       value: 
       objectReference: {fileID: 484081140}

@@ -18,6 +18,7 @@ public class BackToStart : MonoBehaviour
     private void Back()
     {
         ResetBGM();
+        ScreenLoader.skipAlert = true;
         SceneManager.LoadScene("1st Scene");
     }
 
