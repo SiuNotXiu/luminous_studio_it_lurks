@@ -190,7 +190,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 buttonC.gameObject.SetActive(false);
                 buttonF.gameObject.SetActive(false);
                 buttonU.gameObject.SetActive(false);
-                buttonD.gameObject.SetActive(false);
+
             }
             else
             {
