@@ -22,7 +22,10 @@ public class ScreenLoader : MonoBehaviour
         {
             Instance = this;
         }
-
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

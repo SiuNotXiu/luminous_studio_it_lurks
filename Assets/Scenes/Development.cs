@@ -6,22 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public Button dev1;
-    public Button dev2;
-
+    public Button dev;
     // Start is called before the first frame update
     void Start()
     {
-        dev1.onClick.AddListener(ChangeScene1);
-        dev2.onClick.AddListener(ChangeScene2);
+        dev.onClick.AddListener(ChangeScene);
     }
 
-    private void ChangeScene1()
+    private void ChangeScene()
     {
         SceneManager.LoadScene("Main");
-    }
-    private void ChangeScene2()
-    {
-        SceneManager.LoadScene("Ending");
     }
 }
