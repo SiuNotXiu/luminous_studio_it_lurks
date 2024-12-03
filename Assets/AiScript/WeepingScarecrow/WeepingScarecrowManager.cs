@@ -33,6 +33,7 @@ public class WeepingScarecrowManager : MonoBehaviour
     private monster_database md;
     public bool soundPlayed = false;
     [SerializeField]private TopdownMovement playerMovement;
+    private SpriteRenderer sr_monochrome;
     private SpriteRenderer sr;
     private Vector2 previousPosition;
 
@@ -68,6 +69,7 @@ public class WeepingScarecrowManager : MonoBehaviour
         anim_monochrome = transform.Find("monochrome").GetComponent<Animator>();
         md = GetComponent<monster_database>();
         sr = GetComponent<SpriteRenderer>();
+        sr_monochrome = transform.Find("monochrome").GetComponent<SpriteRenderer>();
 
         
     }
@@ -96,11 +98,11 @@ public class WeepingScarecrowManager : MonoBehaviour
 
         if (currentPosX > previousPosX)
         {
-            sr.flipX = true;
+            sr.flipX = true; sr_monochrome.flipX = true;
         }
         else if (currentPosX < previousPosX)
         {
-            sr.flipX = false;
+            sr.flipX = false; sr_monochrome.flipX = false;
         }
 
 
@@ -204,6 +206,11 @@ public class WeepingScarecrowManager : MonoBehaviour
     public Animator GetAnimator()
     {
         return anim;
+    }
+
+    public Animator GetAnimatorMonochrome()
+    {
+        return anim_monochrome;
     }
 
     public AudioClip GetFlwSoundClips()

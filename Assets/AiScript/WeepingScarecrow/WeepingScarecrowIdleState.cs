@@ -13,6 +13,7 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
     private float followTriggerRadius = 8f;
     
     private Animator anim;
+    private Animator anim_monochrome;
     
 
 
@@ -20,6 +21,7 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
     {
         agent = weepingScarecrow.GetAgent();
         anim = weepingScarecrow.GetAnimator();
+        anim_monochrome = weepingScarecrow.GetAnimatorMonochrome();
         if (agent.isStopped == false) 
         {
             agent.isStopped = true;
@@ -37,7 +39,7 @@ public class WeepingScarecrowIdleState : WeepingScarecrowBaseState
 
         if (weepingScarecrow.GetTarget() != null && Vector2.Distance(centerPosition, weepingScarecrow.GetTarget().position) <= followTriggerRadius && weepingScarecrow.flw == false)   
         {
-            anim.SetBool("isActivate", true);
+            anim.SetBool("isActivate", true); anim_monochrome.SetBool("isActivate", true);
             if (weepingScarecrow.soundPlayed == false)
             {
                 SoundEffectManager.instance.PlayRandomSoundFxClip(weepingScarecrow.GetEnterSoundClips(), weepingScarecrow.transform, weepingScarecrow.Volume());

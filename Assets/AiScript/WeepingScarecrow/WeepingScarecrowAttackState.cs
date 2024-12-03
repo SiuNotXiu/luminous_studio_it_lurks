@@ -11,12 +11,14 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
     private bool attacking = false;
     private NavMeshAgent agent;
     private Animator anim;
+    private Animator anim_monochorme;
 
     public override void EnterState(WeepingScarecrowManager weepingScarecrow)
     {
         Debug.Log("InAtkArea" + weepingScarecrow.GetInAtkArea());
         atk = weepingScarecrow.GetComponent<EnemyAttack>();
         anim = weepingScarecrow.GetAnimator();
+        anim_monochorme = weepingScarecrow.GetAnimatorMonochrome();
         agent = weepingScarecrow.GetAgent();
         if (agent.isStopped == false) 
         {
@@ -39,11 +41,11 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
             attacking = true;
 
             Debug.Log("before atk animation" + anim.GetBool("isAtking"));
-            anim.SetBool("isAtking", true);
+            anim.SetBool("isAtking", true); anim_monochorme.SetBool("isAtking", true);
             weepingScarecrow.StartCoroutine(ResetAttackAnimationCoroutine());
-            anim.SetBool("isRunning", false);
+            anim.SetBool("isRunning", false); anim_monochorme.SetBool("isRunning", false);
 
-           
+
             weepingScarecrow.StartCoroutine(AttackDelay());
         }
         else
@@ -81,7 +83,7 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
     private IEnumerator ResetAttackAnimationCoroutine()
     {
         yield return new WaitForSeconds(0.1f);
-        anim.SetBool("isAtking", false);
+        anim.SetBool("isAtking", false); anim_monochorme.SetBool("isAtking", false);
         Debug.Log("should be false" + anim.GetBool("isAtking"));
     }
 

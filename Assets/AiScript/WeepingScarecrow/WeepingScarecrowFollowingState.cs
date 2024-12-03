@@ -6,6 +6,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
 {
     private NavMeshAgent agent;
     private Animator anim;
+    private Animator anim_monochorme;
     private monster_database md;
     private bool sfx = false;
 
@@ -15,8 +16,9 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         {
             agent = weepingScarecrow.GetAgent();
             anim = weepingScarecrow.GetAnimator();
+            anim_monochorme = weepingScarecrow.GetAnimatorMonochrome();
 
-            anim.SetBool("isRunning", true);
+            anim.SetBool("isRunning", true); anim_monochorme.SetBool("isRunning", true);
 
             if (agent.isStopped)
             {
@@ -49,7 +51,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
         {
             if (weepingScarecrow.gameObject.GetComponent<monster_database>().canStop == true)
             {
-                anim.SetBool("isShine", true);
+                anim.SetBool("isShine", true); anim_monochorme.SetBool("isShine", true);
                 Debug.Log("Switching to idle");
                 weepingScarecrow.SwitchState(weepingScarecrow.idleState);
             }
@@ -65,7 +67,7 @@ public class WeepingScarecrowFollowingState : WeepingScarecrowBaseState
     {
         // Stop the persistent sound when exiting the state
         SoundEffectManager.instance.PausePersistentSound();
-        anim.SetBool("isRunning", false);
+        anim.SetBool("isRunning", false); anim_monochorme.SetBool("isRunning", false);
     }
 
     private IEnumerator UpdateTargetPosition(WeepingScarecrowManager weepingScarecrow, NavMeshAgent agent)
