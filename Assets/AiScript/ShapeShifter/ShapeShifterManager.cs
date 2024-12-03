@@ -29,7 +29,8 @@ public class ShapeShifterManager : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
 
     public Animator anim;
-   
+    public Animator anim_monochrome;
+
     #endregion
 
     #region<SFX>
