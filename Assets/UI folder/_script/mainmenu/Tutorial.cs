@@ -12,8 +12,6 @@ public class Tutorial : MonoBehaviour
     public GameObject tutorial; 
     public Button back;
     public Image tutorialImage;
-    public Sprite[] gamePic;
-
 
     //tutorial button
     public Button[] btn;
@@ -42,7 +40,7 @@ public class Tutorial : MonoBehaviour
             tutorial.SetActive(false); 
         }
     }
-    public void health()
+    private void health()
     {
         playClick();
 
@@ -60,7 +58,7 @@ public class Tutorial : MonoBehaviour
         description[1].gameObject.SetActive(true);
     }
 
-    private void objective()
+    public void objective()
     {
         playClick();
         resetInteractable();

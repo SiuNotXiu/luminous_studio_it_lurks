@@ -24,11 +24,6 @@ public class MainMenu : MonoBehaviour
 
     private bool gameOnCalled = false; // Flag to track if GameOn has been called
 
-    private void OnEnable()
-    {
-        gameOnCalled = false;
-    }
-
     private void Start()
     {
         button_g.onClick.AddListener(GameOn);  // Start game

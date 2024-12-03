@@ -25,6 +25,7 @@ public class Gate : MonoBehaviour
         if (keyItemData != null)
         {
             Debug.Log($"Gate {gateID} unlocked!");
+            GateSFX();
             inventoryController.RemoveItemFromPlayerInventory(keyItemData);
 
             if (gateID == "4")
@@ -59,5 +60,18 @@ public class Gate : MonoBehaviour
             Debug.Log($"Player exited range of gate {gateID}");
         }
     }
+
+    #region SoundEffect
+    private void GateSFX()
+    {
+        if (Audio.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(AudioSFXUI.Instance.GateOpen, Audio.Instance.SFXSource);
+        }
+    }
+
+
+
+    #endregion
 }
 

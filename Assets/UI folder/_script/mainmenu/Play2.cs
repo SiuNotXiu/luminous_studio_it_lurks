@@ -12,6 +12,8 @@ public class Play2 : MonoBehaviour
     public Button nextBTN;
     public Image nextImage;
 
+    private bool play2Called = false;
+
     void Start()
     {
         nextBTN.onClick.AddListener(Story);
@@ -19,10 +21,13 @@ public class Play2 : MonoBehaviour
         SetImageAlpha(nextImage, 0f);
         StartCoroutine(TextPrompt(4.2f, smallWord));
         StartCoroutine(ButtonPrompt(8f, nextBTN, nextImage));
+        play2Called = false;
     }
 
     private void Story()
     {
+        if (play2Called) return;
+        play2Called = true; 
         continueSFX();
         StartCoroutine(ScreenLoader.Instance.LoadLevel("Main", false, Next)); //here got set skip active to true
 

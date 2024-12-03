@@ -1934,7 +1934,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1438638654}
         m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
-        m_MethodName: health
+        m_MethodName: objective
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12152,7 +12152,6 @@ MonoBehaviour:
   tutorial: {fileID: 1438638652}
   back: {fileID: 1081865411}
   tutorialImage: {fileID: 0}
-  gamePic: []
   btn:
   - {fileID: 1362757141}
   - {fileID: 2092808922}

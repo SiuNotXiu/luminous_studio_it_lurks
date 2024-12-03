@@ -458,7 +458,7 @@ public class InventoryController : MonoBehaviour
                 return slot.itemData; 
             }
         }
-        Debug.Log("Key missing xd clown");
+        //Debug.Log("Key missing xd clown");
         return null; //key not found
     }
 }
