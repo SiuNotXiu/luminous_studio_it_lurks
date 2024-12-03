@@ -11,6 +11,8 @@ public class flashlight_battery_blink : MonoBehaviour
 
     [HideInInspector] public static float battery_percentage = 0;
     [HideInInspector] public static bool flashlight_during_blink = false;
+
+    private bool isPlaying = false;
     private void Start()
     {
         material_3d_mask_material = gameObject.GetComponent<MeshRenderer>().material;
@@ -30,13 +32,42 @@ public class flashlight_battery_blink : MonoBehaviour
         {
             /*if (gameObject.GetComponent<MeshRenderer>().material != material_none)
                 gameObject.GetComponent<MeshRenderer>().material = material_none;*/
-            flashlight_during_blink = true;
+            TriggerBlinkEffect();
         }
         else
         {
             /*if (gameObject.GetComponent<MeshRenderer>().material != material_3d_mask_material)
                 gameObject.GetComponent<MeshRenderer>().material = material_3d_mask_material;*/
-            flashlight_during_blink = false;
+            ResetBlinkEffect();
         }
     }
+    private void TriggerBlinkEffect()
+    {
+        flashlight_during_blink = true;
+        if (!isPlaying)
+        {
+            DimmerSFX();
+            isPlaying = true;
+        }
+    }
+
+    private void ResetBlinkEffect()
+    {
+        flashlight_during_blink = false;
+        isPlaying = false;
+    }
+
+
+    #region Sound
+    private void DimmerSFX()
+    {
+        if (Audio.Instance != null && AudioSFXPlayerBehave.Instance != null)
+        {
+            Audio.Instance.PlayClipWithSource(
+                AudioSFXPlayerBehave.Instance.RandomNoiseForFlashlightFlicker(),
+                Audio.Instance.SFXSource);
+        }
+    }
+
+    #endregion
 }
