@@ -11,6 +11,7 @@ TagManager:
   - ScrapPaper
   - Cornfield
   - EasterEgg
+  - Gate
   layers:
   - Default
   - TransparentFX

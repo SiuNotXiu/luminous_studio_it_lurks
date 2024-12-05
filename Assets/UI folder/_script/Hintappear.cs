@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Hintappear : MonoBehaviour
 {
-    [SerializeField] private Transform playerTransform; 
+    [SerializeField] private Transform playerTransform;
     //public RectTransform hintpanel;      
     //public Vector3 offset = new Vector3(0, 1.5f, 0); // Adjust this offset to position above the head
 
+    [SerializeField] private InventoryController inventoryController;
     public GameObject hint;
 
     bool interactible = false;
 
     private readonly HashSet<string> interactibleTags = new HashSet<string>
     {
-        "CraftItem", "PerksItem", "Campsite", "ScrapPaper", "EasterEgg"
+        "CraftItem", "PerksItem", "Campsite", "ScrapPaper", "EasterEgg", "Gate"
     };
     void Start()
     {
@@ -37,8 +38,21 @@ public class Hintappear : MonoBehaviour
     {
         if (interactibleTags.Contains(collision.tag))
         {
-            //Debug.Log($"{gameObject.name} started interacting with {collision.gameObject.name}");
-            interactible = true;
+            if (collision.CompareTag("Gate"))
+            {
+                if (PlayerHasAnyKey())
+                {
+                    interactible = true;
+                }
+                else
+                {
+                    interactible = false;
+                }
+            }
+            else
+            {
+                interactible = true;
+            }
         }
     }
 
@@ -51,6 +65,19 @@ public class Hintappear : MonoBehaviour
         }
     }
 
+
+    private bool PlayerHasAnyKey()
+    {
+        foreach (ItemSlot slot in inventoryController.itemSlot)
+        {
+            if (slot.isFull && slot.itemData != null && slot.itemData.isKey)
+            {
+                return true;
+                Debug.Log("Player have a key");
+            }
+        }
+        return false;
+    }
     #region deleted code
     /*    private void Reposition()
         {
