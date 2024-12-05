@@ -678,26 +678,26 @@ public class EnemyMovement : MonoBehaviour
 
     private void AtkChecks()
     {
-        // Get the BoxCollider2D component
+        
         BoxCollider2D collider = GetComponent<BoxCollider2D>();
 
-        // Use the bounds.center to get the world-space center of the collider
+        
         Vector2 enemyCenterPosition = collider.bounds.center;
 
-        // Player's position
+       
         Vector2 playerPosition = target.position;
 
-        // Calculate the vertical and horizontal distances
+       
         float verticalDistance = Mathf.Abs(playerPosition.y - enemyCenterPosition.y);
         float horizontalDistance = Mathf.Abs(playerPosition.x - enemyCenterPosition.x);
 
-        // Check vertical distance first
+       
         if (verticalDistance < verticalThreshold)
         {
-            // Check if the horizontal distance is within attack range
+            
             if (horizontalDistance <= attackRange)
             {
-                // Conditions met; allow attack
+                
                 gameObject.GetComponent<EnemyAttack>().Attack();
                 flashlight.TurnOffFlashlight();
                 playerDmg = true;
