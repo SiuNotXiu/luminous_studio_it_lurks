@@ -4960,15 +4960,15 @@ MonoBehaviour:
     -
     The 3rd side tab of the Journal is the crafting recipe.
 
-    - The 4th side
-    tab of the journal is the collected scrap paper section.
+    - The 4th side tab
+    of the journal is the collected scrap paper section.
 
-    - To leave the
-    journal, press "ESC", "TAB", or "BACKSPACE".
+    - To leave the journal,
+    press "ESC", "TAB", or "BACKSPACE".
 
 
-    *Keep in mind while you have
-    your journal up, the game in the background will not pause.'
+    *Keep in mind while you have your journal
+    up, the game in the background will not pause.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
   m_sharedMaterial: {fileID: 1834401537940866953, guid: 25734c03a0ab3434095dd5f35b69e8eb, type: 2}
@@ -6810,6 +6810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e0a0e5de7c5c843940cff811ea7e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainText: {fileID: 1854902810}
   smallWord: {fileID: 1458785336}
   Next: {fileID: 1560029353}
   nextBTN: {fileID: 769160621}
@@ -6825,6 +6826,7 @@ GameObject:
   - component: {fileID: 717302154}
   - component: {fileID: 717302156}
   - component: {fileID: 717302155}
+  - component: {fileID: 717302157}
   m_Layer: 5
   m_Name: TitlePNG
   m_TagString: Untagged
@@ -6848,8 +6850,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -568, y: 119}
-  m_SizeDelta: {x: 869.5481, y: 380.9123}
+  m_AnchoredPosition: {x: -537, y: 56}
+  m_SizeDelta: {x: 692.7567, y: 471}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &717302155
 MonoBehaviour:
@@ -6871,7 +6873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ad2c681dd1196404cb271b2c2baeb781, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f6be7219d15c254f8e95c8d2c84ac12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6889,6 +6891,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717302153}
   m_CullTransparentMesh: 1
+--- !u!114 &717302157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717302153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac63ce9beb33eb4b89950da3c20b9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 1392485544}
+  logoImage: {fileID: 717302155}
+  spriteMappings:
+  - backgroundSprite: {fileID: 21300000, guid: 8e5de0dc65b44774582c688a39138414, type: 3}
+    logoSprite: {fileID: 21300000, guid: bcffcbd591efc084d89a57cc97bd693d, type: 3}
+  - backgroundSprite: {fileID: 21300000, guid: 8afb5305ba2292a40834d38645236fdb, type: 3}
+    logoSprite: {fileID: 21300000, guid: 5f6be7219d15c254f8e95c8d2c84ac12, type: 3}
 --- !u!1 &717453733
 GameObject:
   m_ObjectHideFlags: 0
@@ -9852,7 +9873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -606.73486, y: -78.05115}
+  m_AnchoredPosition: {x: -606.73486, y: -139}
   m_SizeDelta: {x: -1521.8424, y: -806.6253}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134388429
@@ -11598,7 +11619,7 @@ MonoBehaviour:
     - Flashlight
     batteries are primarily found in campsites and in certain specific areas.
 
-    
+
 
     *To
     sustain battery life, it is recommended to only turn on the flashlight sparingly
@@ -12645,8 +12666,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -425}
-  m_SizeDelta: {x: 1067.4716, y: 86.3283}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1871.9493, y: 225.4812}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458785336
 MonoBehaviour:
@@ -12697,8 +12718,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 120.83
+  m_fontSizeBase: 120.83
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

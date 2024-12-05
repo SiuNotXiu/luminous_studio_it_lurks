@@ -38,7 +38,7 @@ public class ScreenLoader : MonoBehaviour
         }
 
     }
-    public void ButtonCall()
+    public void ButtonCall() //for 1st scene
     {
         StartCoroutine(FunctionCall());
     }
@@ -67,8 +67,8 @@ public class ScreenLoader : MonoBehaviour
         }
         else
         {
-            //wait
-            yield return new WaitForSeconds(transitionTime);
+            //designer like to fade in black and wait for xx sec setting
+            yield return new WaitForSeconds(5f);
         }
 
         transition.SetTrigger("End");
