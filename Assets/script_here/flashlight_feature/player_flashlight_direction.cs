@@ -10,8 +10,6 @@ public class player_flashlight_direction : MonoBehaviour
     [SerializeField] private GameObject object_sprite_sheet_mask;
     [SerializeField] private GameObject object_sprite_sheet_normal;
     [SerializeField] private GameObject object_arm_with_flashlight;
-    [SerializeField] private GameObject bones_head_mask;
-    [SerializeField] private GameObject bones_head_normal;
 
     //directional
     [SerializeField] private GameObject object_flashlight_mask;
@@ -36,11 +34,6 @@ public class player_flashlight_direction : MonoBehaviour
             object_sprite_sheet_normal = transform.Find("animation").Find("sprite_sheet_normal").gameObject;
         if (object_arm_with_flashlight == null)
             object_arm_with_flashlight = GameObject.Find("arm_with_flashlight").gameObject;
-
-        if (bones_head_mask == null)
-            bones_head_mask = object_sprite_sheet_mask.transform.Find("bone_1").Find("bone_2").Find("bone_3").gameObject;
-        if (bones_head_normal == null)
-            bones_head_normal = object_sprite_sheet_normal.transform.Find("bone_1").Find("bone_2").Find("bone_3").gameObject;
 
         if (object_flashlight_mask == null)
             object_flashlight_mask = object_arm_with_flashlight.transform.Find("flashlight_mask").gameObject;

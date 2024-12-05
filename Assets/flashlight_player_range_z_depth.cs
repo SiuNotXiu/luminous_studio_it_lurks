@@ -10,15 +10,21 @@ public class flashlight_player_range_z_depth : MonoBehaviour
     [SerializeField] private GameObject object_flashlight_mask_for_monster_in_range;
     [HideInInspector] private Vector3 target_position;
 
-    private void Start()
+    private void OnValidate()
     {
         if (object_flashlight_mask_for_monster_in_range == null)
         {
             object_flashlight_mask_for_monster_in_range = GameObject.Find("flashlight_mask_for_monster_in_range");
         }
+        modify_position();
     }
 
     private void Update()
+    {
+        modify_position();
+    }
+
+    void modify_position()
     {
         float add_z_depth = 0.01f;
         if (gameObject.name == "black_circle_for_mask_monster_in_range")
