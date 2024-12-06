@@ -22,12 +22,13 @@ public class AudioSFXEnvironment : MonoBehaviour
         }
     }
 
-    public void RandomNoiseForEnvironment()
+    public AudioClip RandomNoiseForEnvironment()
     {
         AudioClip[] randomNoises = { EnvironmentRandomNoise, EnvironmentRandomNoise2 };
         AudioClip randomClip = randomNoises[Random.Range(0, randomNoises.Length)];
+        return randomClip;
 
-        Audio.Instance.SetBackgroundMusic(randomClip);
+        //Audio.Instance.SetBackgroundMusic(randomClip);
     }
 
     public void EnterGame()

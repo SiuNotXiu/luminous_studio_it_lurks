@@ -136,18 +136,30 @@ public class Audio : MonoBehaviour
         source.clip = null;
     }
 
-    private IEnumerator ForBGMSFX(AudioClip clip)
+    public IEnumerator ForBGMSFX()
     {
-        RandomSFXForBGM.clip = clip;
+        yield return new WaitForSeconds(20f); // Initial delay
 
-        yield return new WaitForSeconds(120f); //wait for 2 minute
+        while (true)
+        {
+            if (HealthEffects.playerDead ==false) // Check if the player is alive
+            {
+                AudioClip randomclip = AudioSFXEnvironment.Instance.RandomNoiseForEnvironment();
+                RandomSFXForBGM.clip = randomclip;
+                RandomSFXForBGM.Play();
 
-        //cuz the environment audio is at specific place so it should have a condition
-        //need consider if game end still will promt the sound or not
-        //need to use main to set this
+                yield return new WaitForSeconds(120f);
+            }
+            else
+            {
+                RandomSFXForBGM.Stop(); 
+                yield break; 
+            }
+            //cuz the environment audio is at specific place so it should have a condition
+            //need consider if game end still will promt the sound or not
+            //need to use main to set this
+        }
     }
-
-
 
 
     public void JustForOnce(AudioClip clip)

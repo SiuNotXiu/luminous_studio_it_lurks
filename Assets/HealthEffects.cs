@@ -27,6 +27,7 @@ public class HealthEffects : MonoBehaviour
     [SerializeField] private GameObject object_fade_out_filter;
     private Color fade_out_filter_color;
 
+    public static bool playerDead = false;
     private void OnValidate()
     {
         #region initialization
@@ -57,7 +58,10 @@ public class HealthEffects : MonoBehaviour
         #endregion
     }
 
-
+    private void OnEnable()
+    {
+        playerDead = false;
+    }
     void UpdateHealth()
     {
         Color splatterAlpha = redSplatterImage.color;
@@ -116,6 +120,7 @@ public class HealthEffects : MonoBehaviour
             currentHp = 0;
             animator_mask.Play("death");
             animator_normal.Play("death");
+            playerDead = true;
             ResetBGM();
             coroutine_ready_to_go_next_scene = StartCoroutine(ready_to_go_next_scene());
             //SceneManager.LoadScene("1st Scene");//need to make it start corountine

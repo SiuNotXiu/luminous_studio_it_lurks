@@ -19,6 +19,7 @@ public class BackToStart : MonoBehaviour
     {
         ResetBGM();
         ScreenLoader.skipAlert = true;
+        HealthEffects.playerDead = true;
         SceneManager.LoadScene("1st Scene");
     }
 

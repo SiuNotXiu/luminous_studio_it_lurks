@@ -28,7 +28,7 @@ public class ScreenLoader : MonoBehaviour
 
     private void Start()
     {
-        p1 = GameObject.Find("1st appear");
+        p1 = FindInactiveObjectByName("1st appear");
         p2 = FindInactiveObjectByName("2nd appear");
 
         if(skipAlert)
@@ -65,10 +65,15 @@ public class ScreenLoader : MonoBehaviour
             Audio.Instance.SetBackgroundMusic(AudioSFXUI.Instance.StoryBriefPlay);
             yield return new WaitForSeconds(10.128f);
         }
+        else if (screen == "-")
+        {
+            yield return new WaitForSeconds(2f);
+        }
         else
         {
             //designer like to fade in black and wait for xx sec setting
             yield return new WaitForSeconds(5f);
+
         }
 
         transition.SetTrigger("End");
@@ -81,6 +86,12 @@ public class ScreenLoader : MonoBehaviour
 
         if (IsGameScene)
         {
+            if (screen == "Main")
+            {
+                //HealthEffects.playerDead = false; already set at health effect script
+                StartCoroutine(Audio.Instance.ForBGMSFX());
+            }
+
             //Debug.Log("play scene");
             SceneManager.LoadScene(screen);
         }

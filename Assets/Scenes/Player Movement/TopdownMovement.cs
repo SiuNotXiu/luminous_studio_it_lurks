@@ -32,6 +32,8 @@ public class TopdownMovement : MonoBehaviour
     private const float adrenalineDuration = 5f;
 
 
+    public static bool playerOncornfield = false;
+
     private void OnValidate()
     {
         if (object_animation == null)
@@ -49,6 +51,11 @@ public class TopdownMovement : MonoBehaviour
         {
             script_health_effects = GameObject.Find("HealthControll").GetComponent<HealthEffects>();
         }
+    }
+
+    private void OnEnable()
+    {
+        playerOncornfield = false;
     }
     void Start()
     {
@@ -123,11 +130,13 @@ public class TopdownMovement : MonoBehaviour
 
     public void ConfieldSpeed()
     {
+        playerOncornfield = true;
         moveSpeed = confield;
     }
 
     public void OriginalSpeed()
     {
+        playerOncornfield = false;
         moveSpeed = oriSpeed;
     }
 

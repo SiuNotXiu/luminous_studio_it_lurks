@@ -47,7 +47,15 @@ public class AudioAnimation : MonoBehaviour
         {
             if (!AudioRunning)
             {
-                AudioClip clip = AudioSFXPlayerBehave.Instance.RandomNoiseForGrassFootstep();
+                AudioClip clip;
+                if (TopdownMovement.playerOncornfield == false)
+                {
+                    clip = AudioSFXPlayerBehave.Instance.RandomNoiseForGrassFootstep();
+                }
+                else
+                {
+                    clip = AudioSFXPlayerBehave.Instance.RandomNoiseForCornfieldFootstep();
+                }
                 Audio.Instance.playerWalking.clip = clip;
                 Audio.Instance.playerWalking.Play();
                 AudioRunning = true;
