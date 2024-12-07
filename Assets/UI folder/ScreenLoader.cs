@@ -38,6 +38,7 @@ public class ScreenLoader : MonoBehaviour
             p0.SetActive(false);
             p1.SetActive(false);
             p2.SetActive(true);
+            Audio.Instance.SetBackgroundMusic(AudioSFXEnvironment.Instance.Ambience);
         }
 
     }
