@@ -16083,8 +16083,8 @@ MonoBehaviour:
   animator: {fileID: 1392485546}
   audioMainMenu: {fileID: 1392485547}
   quit: {fileID: 1818126196}
-  no: {fileID: 0}
-  yes: {fileID: 0}
+  no: {fileID: 1932650323}
+  yes: {fileID: 890944219}
 --- !u!114 &1818126199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17268,19 +17268,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 252554072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1818126196}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1932650324
 MonoBehaviour:
   m_ObjectHideFlags: 0
