@@ -10,6 +10,7 @@ public class ScreenLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 3f;
 
+    private GameObject p0;
     private GameObject p1;
     private GameObject p2;
     public static bool skipAlert = false;
@@ -28,11 +29,13 @@ public class ScreenLoader : MonoBehaviour
 
     private void Start()
     {
+        p0 = FindInactiveObjectByName("School Logo");
         p1 = FindInactiveObjectByName("1st appear");
         p2 = FindInactiveObjectByName("2nd appear");
 
         if(skipAlert)
         {
+            p0.SetActive(false);
             p1.SetActive(false);
             p2.SetActive(true);
         }
