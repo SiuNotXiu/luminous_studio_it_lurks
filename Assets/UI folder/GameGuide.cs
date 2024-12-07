@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class GameGuide : MonoBehaviour
 {
@@ -24,56 +23,68 @@ public class GameGuide : MonoBehaviour
         // Check if the guide has already been shown
         if (guide[index].hasBeenShown) return;
 
-        // Start the blinking effect
+        //blinking effect
         StartCoroutine(BlinkAndHideGuide(index));
 
-        // Mark as shown so it won't show again
+        //won't show again
         guide[index].hasBeenShown = true;
     }
 
     // Coroutine to blink the UI for 2.5 seconds
     private IEnumerator BlinkAndHideGuide(int index)
     {
-        float duration = 2.5f;               // Total duration for blinking
-        float blinkInterval = 0.25f;         // Interval between alpha toggles
+        float duration = 5f;                 // Total duration for blinking
+        float fadeSpeed = 2f;                 // Speed of the alpha change
+        float minAlpha = 0f;                  // Minimum alpha value
+        float maxAlpha = 1f;                  // Maximum alpha value
+        bool fadingOut = false;              // Controls if the fade is in or out
+        float elapsed = 0f;                  // Track how long the effect has been active
+
         var guideElement = guide[index];
-        float elapsed = 0f;
+        guideElement.imageGuide.SetActive(true);
+        Color color = guideElement.Guide.color; 
 
-        guideElement.imageGuide.SetActive(true); // Make the guide visible initially
-        Color color = guideElement.Guide.color;  // Get the current color of the guide image
-        color.a = 1f; // Set the alpha to fully visible
-
-        // Loop to blink the guide's image and collider
         while (elapsed < duration)
         {
-            elapsed += blinkInterval;
 
-            // Calculate alpha using Mathf.PingPong to toggle between 0 and 1
-            float alpha = Mathf.PingPong(elapsed / blinkInterval, 1f);
+            elapsed += Time.deltaTime;
 
-            // Update the image's alpha
-            color.a = alpha;
+            if (fadingOut)
+            {
+                color.a -= fadeSpeed * Time.deltaTime;
+                if (color.a <= minAlpha)
+                {
+                    color.a = minAlpha;
+                    fadingOut = false; 
+                }
+            }
+            else
+            {
+                color.a += fadeSpeed * Time.deltaTime;
+                if (color.a >= maxAlpha)
+                {
+                    color.a = maxAlpha;
+                    fadingOut = true; 
+                }
+            }
+
             guideElement.Guide.color = color;
 
-            // Show/hide the GuideBoxCollider based on alpha value
-            guideElement.GuideBoxCollider.SetActive(alpha > 0);
-
-            yield return new WaitForSeconds(blinkInterval);
+            yield return null; // Wait for the next frame
         }
 
-        // Hide the guide UI elements after blinking
         guideElement.imageGuide.SetActive(false);
         guideElement.GuideBoxCollider.SetActive(false);
-
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Triggered Guide!");
-        if (other.CompareTag("Player"))
+
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("Triggered Guide!");
-            // Example: Trigger the first guide when player enters
             TriggerGuide(0);
         }
     }

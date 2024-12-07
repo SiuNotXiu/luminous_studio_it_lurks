@@ -15,6 +15,7 @@ public class InventoryController : MonoBehaviour
     public GameObject Journal;
     public GameObject Description;
 
+
     // GAME SYSTEMS
     public ItemSlot[] itemSlot = new ItemSlot[6];
     public CraftingSlot[] craftingSlots = new CraftingSlot[2];
@@ -72,7 +73,7 @@ public class InventoryController : MonoBehaviour
             Switching2();
             button_Pg1.SetActive(false);
             Page1.SetActive(false);
-            Page2.SetActive(true);
+            Page2.SetActive(true);           
         }
         else if (Input.GetKeyDown(KeyCode.E) && !trigger_map_ui.Map_Is_Open && EasterEgg.closingEgg)
         {
@@ -126,6 +127,8 @@ public class InventoryController : MonoBehaviour
 
             CloseJournal();
         }
+
+
     }
 
 
@@ -137,7 +140,6 @@ public class InventoryController : MonoBehaviour
             flashlightSFX();
         }
         ONFJournal();
-
         //chest problem here in chest in
         //Debug.Log("wwwwwwwww > " + chestIn);
         //Debug.Log("Opening Journal");
