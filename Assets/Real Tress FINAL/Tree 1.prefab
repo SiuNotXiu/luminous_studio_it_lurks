@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5045130264336816372}
   - component: {fileID: 3580013172731135258}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: monochrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}

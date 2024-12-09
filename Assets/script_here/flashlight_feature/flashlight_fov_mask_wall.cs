@@ -153,7 +153,7 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                                 //wall found
                                 //mesh rendering using local_position
                                 vertex = transform.InverseTransformPoint(raycast_hit_2d[j].point);
-                                vertex_distance = Vector3.Distance(origin, raycast_hit_2d[i].point);
+                                vertex_distance = Vector3.Distance(origin, raycast_hit_2d[j].point);
                                 //if wall found, monster behind wall shouldn't get flashed
                                 monster_flashed.Clear();
                                 bubble_flashed.Clear();

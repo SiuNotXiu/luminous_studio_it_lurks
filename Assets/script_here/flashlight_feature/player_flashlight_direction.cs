@@ -50,7 +50,7 @@ public class player_flashlight_direction : MonoBehaviour
     {
         mouse_position = get_mouse_position();
         aim_direction = (mouse_position - object_arm_with_flashlight.transform.position).normalized;
-        
+
         flashlight_fov_wall_mask.angle = flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) + flashlight_fov_wall_mask.fov / 2;
         flashlight_fov_wall_mask.player_position = object_flashlight_mask.transform.position;
 
