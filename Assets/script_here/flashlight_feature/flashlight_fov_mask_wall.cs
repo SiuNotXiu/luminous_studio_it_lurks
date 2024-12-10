@@ -161,11 +161,11 @@ public class flashlight_fov_wall_mask : MonoBehaviour
                                 //drawline using world position
                                 /*Debug.DrawLine(end_of_sector,
                                 raycast_hit_2d[raycast_hit_2d.Length - 1].point,
-                                Color.green, 0.1f);*/
+                                Color.green, 0.1f);
 
                                 Debug.DrawLine(player_position,
                                 raycast_hit_2d[j].point,
-                                Color.red, 0.1f);
+                                Color.red, 0.1f);*/
 
                                 /*Debug.Log(raycast_hit_2d[raycast_hit_2d.Length - 1].collider.gameObject.name);*/
                                 #endregion
