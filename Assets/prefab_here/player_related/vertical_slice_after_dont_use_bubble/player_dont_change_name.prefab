@@ -2616,7 +2616,7 @@ Transform:
   m_GameObject: {fileID: 5944276980000617991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -197.95999}
+  m_LocalPosition: {x: 0, y: 0, z: -215.95999}
   m_LocalScale: {x: 7.85, y: 7.85, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4216,7 +4216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937143980354159534}
   - component: {fileID: 515113178107916446}
-  - component: {fileID: 6197541750318482623}
+  - component: {fileID: 6017506585870085028}
   m_Layer: 0
   m_Name: sprite_grayscale
   m_TagString: Untagged
@@ -4291,7 +4291,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6197541750318482623
+--- !u!114 &6017506585870085028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
