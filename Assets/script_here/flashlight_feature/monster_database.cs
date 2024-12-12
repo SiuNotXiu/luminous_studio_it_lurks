@@ -36,14 +36,15 @@ public class monster_database : MonoBehaviour
                 canStop = true;
             }
 
-
+            flashed = false;
         }
         else
         {
             canStop = false;
+           
         }
         //because flashlight works as lateUpdate()
-        flashed = false;
+        //flashed = false;
         
     }
 

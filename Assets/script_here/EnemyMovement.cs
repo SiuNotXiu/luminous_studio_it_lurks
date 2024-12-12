@@ -324,18 +324,18 @@ public class EnemyMovement : MonoBehaviour
         {
             agent.isStopped = false;
         }
-        // Update the chase timer for movement speed changes
+        
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
-        if (distanceToPlayer < 5f) // Close range, move slower
+        if (distanceToPlayer < 5f) 
         {
             speed = 9f;
         }
-        else if (distanceToPlayer >= 5f && distanceToPlayer <= 20f) // Mid range, normal speed
+        else if (distanceToPlayer >= 5f && distanceToPlayer <= 20f) 
         {
             speed = 13f;
         }
-        else if (distanceToPlayer > 20f) // Far range, move faster
+        else if (distanceToPlayer > 20f) 
         {
             speed = 20f;
         }
@@ -439,6 +439,8 @@ public class EnemyMovement : MonoBehaviour
     private void FleeingState()
     {
         Debug.Log("fleengstat");
+       
+
         if (target != null)
         {
             if (anim.GetBool("isRunning") == false)
@@ -457,8 +459,14 @@ public class EnemyMovement : MonoBehaviour
                 {
                     agent.isStopped = false;
                 }
+                if (!isChaseAudioPlaying)
+                {
+                    StartCoroutine(PlayChaseSound());
+                    isChaseAudioPlaying = true;
+                }
                 if (!isFleeAudioPlaying)
                 {
+                    
                     SoundEffectManager.instance.PlayRandomSoundFxClip(fleeAudio, transform, Volume());
                     isFleeAudioPlaying = true;
                 }
@@ -520,16 +528,16 @@ public class EnemyMovement : MonoBehaviour
             //Debug.Log("raycast is working");
         }
 
-        // Get the center of the BoxCollider2D
+       
         BoxCollider2D collider = GetComponent<BoxCollider2D>();
         Vector2 startPosition = collider.bounds.center;
 
         Vector2 directionToPlayer = target.position - (Vector3)startPosition;
 
-        // Perform the raycast
+        
         RaycastHit2D hit = Physics2D.Raycast(startPosition, directionToPlayer, sightRange, worldMask);
 
-        // Check if the ray hits the player
+       
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
             Debug.DrawRay(startPosition, directionToPlayer.normalized * sightRange, Color.green);
@@ -546,7 +554,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (waypoints.Count == 0 || Vector3.Distance(waypoints[waypoints.Count - 1], target.position) > waypointDistanceThreshold)
         {
-            waypoints.Add(target.position); // Add player's last known position as a waypoint
+            waypoints.Add(target.position); 
         }
     }
 
@@ -556,7 +564,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector3 currentWaypoint = waypoints[0];
 
-            // Move towards the current waypoint only if movement is allowed
+            
             agent.SetDestination(currentWaypoint);
 
             if (Vector3.Distance(transform.position, currentWaypoint) < waypointReachThreshold)

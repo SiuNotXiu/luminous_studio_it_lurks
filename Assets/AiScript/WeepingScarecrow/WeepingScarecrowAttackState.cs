@@ -34,8 +34,8 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
 
     public override void UpdateState(WeepingScarecrowManager weepingScarecrow)
     {
-
-        if (weepingScarecrow.GetInAtkArea() == true && attacking == false) 
+     
+        if (weepingScarecrow.GetInAtkArea() == true && attacking == false && weepingScarecrow.gameObject.GetComponent<monster_database>().canStop == false) 
         {
             atk.Attack();
             attacking = true;
@@ -50,6 +50,7 @@ public class WeepingScarecrowAttackState : WeepingScarecrowBaseState
         }
         else
         {
+            anim.SetBool("isAtking", false); anim_monochorme.SetBool("isAtking", false);
             weepingScarecrow.StopCoroutine(AttackDelay());
         }
 

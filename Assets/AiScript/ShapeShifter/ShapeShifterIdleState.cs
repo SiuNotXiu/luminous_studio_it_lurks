@@ -17,7 +17,7 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
     public override void UpdateState(ShapeShifterManager shapeShifter)
     {
         //Debug.Log("shapeshifter is flashed>" + shapeShifter.gameObject.GetComponent<monster_database>().flashed);
-        if (shapeShifter.gameObject.GetComponent<monster_database>().flashed == true)
+        if (shapeShifter.gameObject.GetComponent<monster_database>().GetShine() == true)
         {
             //sr.sprite = shapeShifter.GetShineSprite();
             if (!isPlayingSound) // Only start coroutine if it’s not already running
