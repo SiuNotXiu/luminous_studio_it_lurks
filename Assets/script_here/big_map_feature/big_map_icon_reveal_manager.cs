@@ -6,6 +6,13 @@ public class big_map_icon_reveal_manager : MonoBehaviour
 {
     [SerializeField] private GameObject[] object_cross;
 
+    private void Update()
+    {
+        if (object_cross[3] == null)
+        {
+            object_cross[3] = GameObject.Find("CornFieldSpawnBundle(Clone)").transform.Find("ScrapPaper_with_icon").Find("cross_4").gameObject;
+        }
+    }
     //chenjie: maybe here need to consider what kind id of paper appear what kind icon
     public void call_this_after_scrap_paper_taken(bool[] scrap_paper_revealed)//any script can trigger this event 
     {
