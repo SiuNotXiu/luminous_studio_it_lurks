@@ -57,10 +57,10 @@ public class player_flashlight_direction : MonoBehaviour
         if (flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) >= 90 && flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) <= 270)
         {
             //facing left
-            /*object_arm_with_flashlight.transform.rotation = Quaternion.Euler(0, 
+            object_arm_with_flashlight.transform.rotation = Quaternion.Euler(0, 
                                                                              180,
                                                                              0 - (flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) + 90));
-            object_flashlight_mask.transform.rotation = Quaternion.Euler(0,
+            /*object_flashlight_mask.transform.rotation = Quaternion.Euler(0,
                                                                          180,
                                                                          0);*/
             //ensure can see arm
@@ -72,10 +72,10 @@ public class player_flashlight_direction : MonoBehaviour
         else
         {
             //facing right
-            /*object_arm_with_flashlight.transform.rotation = Quaternion.Euler(0,
+            object_arm_with_flashlight.transform.rotation = Quaternion.Euler(0,
                                                                              0,
                                                                              flashlight_fov_wall_mask.get_angle_from_vector_float(aim_direction) + 90); // Rotate the arm to face the mouse (2D)
-            object_flashlight_mask.transform.rotation = Quaternion.Euler(0,
+            /*object_flashlight_mask.transform.rotation = Quaternion.Euler(0,
                                                                          0,
                                                                          0);*/
             //ensure can see arm
