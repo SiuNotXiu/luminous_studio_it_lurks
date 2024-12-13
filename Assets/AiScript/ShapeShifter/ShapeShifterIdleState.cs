@@ -36,7 +36,7 @@ public class ShapeShifterIdleState : ShapeShifterBaseState
         else
         {
             if (isPlayingSound)
-            {
+            {   
                 shapeShifter.StopCoroutine(PlaySoundEffect(shapeShifter));
                 shapeShifter.StopAllCoroutines();
                 isPlayingSound = false;
