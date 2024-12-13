@@ -28,6 +28,11 @@ public class ShapeShifterAtkState : ShapeShifterBaseState
             attacking = true;
             shapeShifter.StartCoroutine(AtkCd(shapeShifter));
         }
+
+        if (shapeShifter.inAtkArea == false)
+        {
+            shapeShifter.SwitchState(shapeShifter.idleState);
+        }
     }
 
     public override void ExitState(ShapeShifterManager shapeShifter)
