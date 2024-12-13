@@ -20,6 +20,12 @@ public class TopdownMovement : MonoBehaviour
     [SerializeField] private GameObject object_sprite_sheet_mask;
     [SerializeField] private GameObject object_sprite_sheet_normal;
 
+    //fix flickering bug
+    [HideInInspector] private GameObject temporary_game_object;
+    [HideInInspector] private Vector3 flashlight_mask_initial_localPosition;
+    [SerializeField] private GameObject object_arm_with_flashlight;
+    [SerializeField] private GameObject object_flashlight_mask;
+
     [SerializeField] private Animator animator_mask;
     [SerializeField] private Animator animator_normal;
     //prevent animation overlapping
@@ -51,6 +57,11 @@ public class TopdownMovement : MonoBehaviour
         {
             script_health_effects = GameObject.Find("HealthControll").GetComponent<HealthEffects>();
         }
+
+        if (object_flashlight_mask == null)
+            object_flashlight_mask = GameObject.Find("flashlight_mask").gameObject;
+        if (object_arm_with_flashlight == null)
+            object_arm_with_flashlight = GameObject.Find("arm_with_flashlight").gameObject;
     }
 
     private void OnEnable()
@@ -60,6 +71,8 @@ public class TopdownMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        temporary_game_object = new GameObject("flashlight_holder");
+        flashlight_mask_initial_localPosition = object_flashlight_mask.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -149,15 +162,28 @@ public class TopdownMovement : MonoBehaviour
     public Vector3 playerFacing()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (mousePosition.x < transform.position.x)
+        if ((mousePosition.x < transform.position.x && object_animation.transform.rotation.y != 180) ||((mousePosition.x > transform.position.x) && object_animation.transform.rotation.y != 0))
         {
-            facing_right = false;
-            object_animation.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        else
-        {
-            facing_right = true;
-            object_animation.transform.rotation = Quaternion.Euler(0, 0, 0);
+            object_flashlight_mask.transform.parent = temporary_game_object.transform;
+            if (mousePosition.x < transform.position.x)
+            {
+                facing_right = false;
+                //if (object_animation.transform.rotation.y != 180)
+                //{
+                    object_animation.transform.rotation = Quaternion.Euler(0, 180, 0);
+                //}
+            }
+            else
+            {
+                facing_right = true;
+                //if (object_animation.transform.rotation.y != 0)
+                //{
+                    object_animation.transform.rotation = Quaternion.Euler(0, 0, 0);
+                //}
+            }
+            object_flashlight_mask.transform.parent = object_arm_with_flashlight.transform;
+            object_flashlight_mask.transform.localPosition = flashlight_mask_initial_localPosition;
+            object_flashlight_mask.GetComponent<flashlight_z_depth>().modify_z_depth();
         }
         Vector3 mouse_direction = mousePosition - transform.position;
         return mouse_direction;
