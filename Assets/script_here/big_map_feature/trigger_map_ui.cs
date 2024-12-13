@@ -13,6 +13,7 @@ public class trigger_map_ui : MonoBehaviour
 
     [SerializeField] private GameObject object_map_and_icon;
     [SerializeField] private big_map_scrolling script_big_map_scrolling;
+    public GameObject maptap;
 
     public static bool Map_Is_Open = false;
 
@@ -31,6 +32,7 @@ public class trigger_map_ui : MonoBehaviour
     private void Start()
     {
         big_map.SetActive(false);
+        maptap.SetActive(false);
         #region for mouse scrolling zoom map
         obmb_initial_scale = object_map_and_icon.transform.localScale;
         script_bms = GetComponent<big_map_scrolling>();
@@ -81,6 +83,7 @@ public class trigger_map_ui : MonoBehaviour
         }
         Map_Is_Open = true;
         big_map.SetActive(true);
+        maptap.SetActive(true);
         obmb_initial_scale = object_map_and_icon.transform.localScale;
 
     }
@@ -93,6 +96,7 @@ public class trigger_map_ui : MonoBehaviour
         object_map_and_icon.transform.localScale = obmb_initial_scale;
         script_bms.current_zoom_count = 0;
         #endregion
+        maptap.SetActive(false);
         big_map.SetActive(false);
         #region for mouse drag map
         object_map_and_icon.transform.localPosition = new Vector2(0, 0);
