@@ -35,17 +35,19 @@ public class monster_database : MonoBehaviour
             {
                 canStop = true;
             }
-
-            flashed = false;
+            //getshine()
         }
         else
         {
             canStop = false;
-           
         }
+        if (GetComponent<ShapeShifterManager>() != null)
+        {
+            GetComponent<ShapeShifterManager>().update_fake();
+        }
+
         //because flashlight works as lateUpdate()
-        //flashed = false;
-        
+        flashed = false;
     }
 
     void die()

@@ -48,9 +48,8 @@ public class ShapeShifterManager : MonoBehaviour
     }
 
 
-    private void Update()
+    public void update_fake()//called by monster_database
     {
-        
         currentState.UpdateState(this);
     }
 
