@@ -3319,6 +3319,8 @@ MonoBehaviour:
   object_animation: {fileID: 511977253278403810}
   object_sprite_sheet_mask: {fileID: 0}
   object_sprite_sheet_normal: {fileID: 7153153074955157324}
+  object_arm_with_flashlight: {fileID: 0}
+  object_flashlight_mask: {fileID: 0}
   animator_mask: {fileID: 0}
   animator_normal: {fileID: 6116112569707795893}
   script_health_effects: {fileID: 0}
