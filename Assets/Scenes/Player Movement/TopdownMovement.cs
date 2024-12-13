@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class TopdownMovement : MonoBehaviour
 {
-    public static float moveSpeed = 6f;
+    public static float moveSpeed = 5f;
     [HideInInspector] public Rigidbody2D rb2d;
     private float speedboost = 8f;
     private float confield = 3f;
-    private float oriSpeed = 6f;
+    private float oriSpeed = 5f;
 
     private Vector2 moveInput;
     private bool facing_right = true;
