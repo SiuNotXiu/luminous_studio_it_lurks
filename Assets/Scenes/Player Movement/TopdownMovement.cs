@@ -80,6 +80,7 @@ public class TopdownMovement : MonoBehaviour
         }
         playerFacing();
         rb2d.velocity = moveInput * moveSpeed;
+        Debug.Log("MoveSpeed: " + moveSpeed);
         if (moveInput.x != 0 || moveInput.y != 0)
         {
             //Debug.Log("moveinput > " + moveInput);
